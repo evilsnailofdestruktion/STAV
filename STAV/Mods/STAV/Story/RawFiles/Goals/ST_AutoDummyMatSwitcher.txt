@@ -1,0 +1,21 @@
+Version 1
+SubGoalCombiner SGC_AND
+INITSECTION
+
+KBSECTION
+IF
+Equipped((ITEM)_Item, (CHARACTER)_Character)
+AND
+DB_Players(_Character)
+THEN
+AddCustomMaterialResourceOverride(_Item, "Engine_Default_Mesh_Lit_Opaque_9e2966c7-b61c-4bc1-bef1-a79cb5fde067", "GNO_F_NKD_Body_A_000_ba7b5e8f-27a1-035e-9109-44d4b6e6af10");
+
+IF
+Unequipped((ITEM)_Item, (CHARACTER)_Character)
+AND
+DB_Players(_Character)
+THEN
+RemoveCustomMaterialResourceOverride(_Item, "GNO_F_NKD_Body_A_000_ba7b5e8f-27a1-035e-9109-44d4b6e6af10");
+EXITSECTION
+
+ENDEXITSECTION
