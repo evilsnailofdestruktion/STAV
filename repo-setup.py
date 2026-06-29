@@ -15,7 +15,7 @@ from pathlib import Path
 REPO_DIR: str = "."
 GAME_DATA_ROOT: str = "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Baldurs Gate 3\\Data"
 PATH_TO_JUNCTION_EXE: str = "C:\\Users\\brieh\\Documents\\Projects\\Mod Tools\\Junction\\junction.exe"
-MOD_NAME_FULL: str = "SnailTats"
+MOD_NAME_FULL: str = "STAV"
 CREATE_NON_PROJECT_FILES_FOLDER: bool = True
 
 
