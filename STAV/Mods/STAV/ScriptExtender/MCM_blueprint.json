@@ -6,9 +6,28 @@
 		{
 			"TabId": "STAV",
 			"TabName": "STAV",
-			"Handles": {
-				"NameHandle": "h5b73e422gdfc9g484cgbb45g6139b176dc4f"
-			}
+			"Sections": [
+				{
+					"SectionId": "Main",
+					"SectionName": "",
+					"Settings": [
+						{
+							"Id": "STAV_UI_Panel",
+							"Name": "! Toggle UI Panel",
+							"Type": "keybinding_v2",
+							"Default": {
+								"Keyboard": {
+									"Key": "",
+									"ModifierKeys": []
+								}
+							},
+							"Options": {
+								"BlockIfLevelNotStarted": true
+							}
+						}
+					]
+				}
+			]
 		}
 	]
 }
