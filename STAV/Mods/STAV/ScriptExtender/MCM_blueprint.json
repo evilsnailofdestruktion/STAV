@@ -1,0 +1,14 @@
+{
+	"SchemaVersion": 1,
+	"Optional": true,
+	"ModName": "STAV",
+	"Tabs": [
+		{
+			"TabId": "STAV",
+			"TabName": "STAV",
+			"Handles": {
+				"NameHandle": "h5b73e422gdfc9g484cgbb45g6139b176dc4f"
+			}
+		}
+	]
+}
