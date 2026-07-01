@@ -1,0 +1,33 @@
+{
+	"SchemaVersion": 1,
+	"Optional": true,
+	"ModName": "STAV",
+	"Tabs": [
+		{
+			"TabId": "STAV",
+			"TabName": "STAV",
+			"Sections": [
+				{
+					"SectionId": "Main",
+					"SectionName": "",
+					"Settings": [
+						{
+							"Id": "STAV_UI_Panel",
+							"Name": "! Toggle UI Panel",
+							"Type": "keybinding_v2",
+							"Default": {
+								"Keyboard": {
+									"Key": "",
+									"ModifierKeys": []
+								}
+							},
+							"Options": {
+								"BlockIfLevelNotStarted": true
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
