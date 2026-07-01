@@ -1,6 +1,6 @@
 
 
-### Compile("C:\Program Files (x86)\Steam\steamapps\common\Baldurs Gate 3\Data\Mods\SnailTats_2b9e05c8-d15a-3ac2-7237-6aa263f1dceb\Story\story.div","r+")
+### Compile("C:\Program Files (x86)\Steam\steamapps\common\Baldurs Gate 3\Data\Mods\STAV\Story\story.div","r+")
 DeleteAllData
 
 DIV events not referenced:
@@ -213,6 +213,7 @@ ShowStoryElementUI( (CHARACTER)_, (INTEGER)_, (STRING)_ )
 SetVarFixedString( (GUIDSTRING)_, (STRING)_, (STRING)_ )
 QuestUpdateMessageCounter( (STRING)_, (INTEGER)_ )
 MakeWar( (CHARACTER)_, (CHARACTER)_, (INTEGER)_ )
+AddCustomMaterialResourceOverride( (GUIDSTRING)_, (STRING)_, (STRING)_ )
 AddToParty( (INTEGER)_, (INTEGER)_ )
 LockUnequip( (ITEM)_, (INTEGER)_ )
 SetCanGossip( (CHARACTER)_, (INTEGER)_ )
@@ -238,6 +239,7 @@ PlayMovieForDialog( (CHARACTER)_, (DIALOGRESOURCE)_, (STRING)_ )
 SetKnown( (ITEM)_, (INTEGER)_ )
 MoveItemTo( (CHARACTER)_, (ITEM)_, (GUIDSTRING)_, (INTEGER)_, (STRING)_ )
 ClearSpring( (GUIDSTRING)_ )
+RemoveCustomMaterialResourceOverride( (GUIDSTRING)_, (STRING)_ )
 ClearCustomMaterialOverrides( (GUIDSTRING)_ )
 StopCameraSpline( (SPLINE)_, (CHARACTER)_ )
 SetTagPriceModifier( (CHARACTER)_, (TAG)_, (REAL)_ )
