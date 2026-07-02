@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TileSet Version="2" Name="ST_TIF_MS_VT">
+	<TileSetConfig>
+		<Compression>LZ4</Compression>
+		<OneFilePerGTex>false</OneFilePerGTex>
+		<BackfillPages>true</BackfillPages>
+		<DeduplicateTiles>true</DeduplicateTiles>
+		<ZeroBorders>false</ZeroBorders>
+	</TileSetConfig>
+	
+	<Paths>
+		<SourceTextures>vt_conversion\textures</SourceTextures>
+		<VirtualTextures>STAV\Public\STAV\Assets\VTextures</VirtualTextures>
+	</Paths>
+	
+	<Layers>
+		<Layer Name="Albedo" Type="R8G8B8A8_SRGB" />
+		<Layer Name="Normal" Type="X8Y8Z8W8" />
+		<Layer Name="Physical" Type="X8Y8Z8W8" />
+	</Layers>
+
+	<Textures>
+		<Texture Name="7d6066393c1a4d43a6c478653c9ba237">
+			<Layer Name="Albedo" Source="STAV_TIF_MS_Albedo.DDS" />
+			<Layer Name="Normal" Source="STAV_TIF_MS_Normal.DDS" />
+			<Layer Name="Physical" Source="STAV_TIF_MS_Physical.DDS" />
+		</Texture>
+	</Textures>
+</TileSet>
