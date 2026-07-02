@@ -10,7 +10,7 @@
 	
 	<Paths>
 		<SourceTextures>vt_conversion\textures</SourceTextures>
-		<VirtualTextures>STAV\Public\STAV\Assets\VTextures</VirtualTextures>
+		<VirtualTextures>STAV\Public\STAV\VTextures</VirtualTextures>
 	</Paths>
 	
 	<Layers>
