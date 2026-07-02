@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TileSet Version="2" Name="ST_HUM_M_VT">
+	<TileSetConfig>
+		<Compression>LZ4</Compression>
+		<OneFilePerGTex>false</OneFilePerGTex>
+		<BackfillPages>true</BackfillPages>
+		<DeduplicateTiles>true</DeduplicateTiles>
+		<ZeroBorders>false</ZeroBorders>
+	</TileSetConfig>
+	
+	<Paths>
+		<SourceTextures>vt_conversion\textures</SourceTextures>
+		<VirtualTextures>STAV\Public\STAV\VTextures</VirtualTextures>
+	</Paths>
+	
+	<Layers>
+		<Layer Name="Albedo" Type="R8G8B8A8_SRGB" />
+		<Layer Name="Normal" Type="X8Y8Z8W8" />
+		<Layer Name="Physical" Type="X8Y8Z8W8" />
+	</Layers>
+
+	<Textures>
+		<Texture Name="bbdd7184d8924ce592079dc9969ba6ca">
+			<Layer Name="Albedo" Source="STAV_HUM_M_Albedo.DDS" />
+			<Layer Name="Normal" Source="STAV_HUM_M_Normal.DDS" />
+			<Layer Name="Physical" Source="STAV_HUM_M_Physical.DDS" />
+		</Texture>
+	</Textures>
+</TileSet>
