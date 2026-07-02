@@ -12,6 +12,11 @@
 					"SectionName": "",
 					"Settings": [
 						{
+							"Id": "STAV_UI_Open",
+							"Name": "Toggle UI Panel",
+							"Type": "event_button"
+						},
+						{
 							"Id": "STAV_UI_Panel",
 							"Name": "! Toggle UI Panel",
 							"Type": "keybinding_v2",
