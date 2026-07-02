@@ -3,6 +3,7 @@ local Utility = Ext.Require("Shared/Utility.lua")
 local L       = Ext.Require("Shared/Localization.lua")
 local NetDefs   = Ext.Require("Shared/NetDefs.lua")
 local Applying  = Ext.Require("Client/Applying.lua")
+-- local Params = Ext.Require("Shared/Params.lua") -- nudge-only; superseded by clean-path
 
 local BODY_MAX      = 60
 local HEAD_MAX      = 93
@@ -25,15 +26,34 @@ UI.State = {
 
 UI.Widgets = {}
 
+local function resolveCharacterUUID()
+	local partyEntity = Ext.Entity.GetAllEntitiesWithComponent("PartyView")[1]
+	if not partyEntity then return nil end
+	for _, view in pairs(partyEntity.PartyView.Views) do
+		if view.UserID == 1 then
+			for _, ch in pairs(view.Characters) do
+				if ch.Avatar and ch.Uuid then return ch.Uuid.EntityUuid end
+			end
+		end
+	end
+	return nil
+end
+
+local function sendLook(characterUUID)
+	NetDefs.NET_APPLY:SendToServer({
+		characterUUID = characterUUID,
+		state         = UI.State,
+	})
+end
+
 local sendTimer = nil
 
 local function syncToServer()
 	if sendTimer then return end
 	sendTimer = Ext.Timer.WaitFor(300, function()
 		sendTimer = nil
-		NetDefs.NET_APPLY:SendToServer(Ext.Json.Stringify({
-			state = UI.State,
-		}))
+		local uuid = resolveCharacterUUID()
+		if uuid then sendLook(uuid) end
 	end)
 end
 
@@ -179,7 +199,7 @@ function UI.RefreshWidgets()
 		elseif type(v) == "table" then
 			widget.Color = v
 		else
-			widget.Value = { v }
+			widget.Value = { v, 0, 0, 0 }
 		end
 	end
 end
@@ -211,6 +231,112 @@ if type(MCM) == "table" then
 	end)
 end
 
-NetDefs.NET_CC_STATE:SetHandler(function(open)
-	if open then UI.Open() else UI.Close() end
+local function ccDummyCount()
+	return #Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")
+end
+
+local function hasAny(set)
+	for _ in pairs(set) do return true end
+	return false
+end
+
+local rebuildHook = nil
+
+local function registerRebuildHook()
+	if rebuildHook then return end
+	rebuildHook = Ext.Entity.OnSystemUpdate("ClientEquipmentVisuals", function()
+		local sys = Ext.System.ClientEquipmentVisuals
+		if hasAny(sys.DestroyVisuals) or hasAny(sys.InitVisualLevel) then
+			Ext.Timer.WaitFor(100, function()
+				if ccDummyCount() > 0 then Applying.ApplyAll(UI.State) end
+			end)
+		end
+	end)
+end
+
+local function unregisterRebuildHook()
+	if rebuildHook then
+		Ext.Entity.Unsubscribe(rebuildHook)
+		rebuildHook = nil
+	end
+end
+
+--[[ nudge fallback — superseded by the clean-path server strip (Creating.lua StartChangeAppearance)
+local stavCcams = {}
+for _, slot in ipairs(Params.Slots) do stavCcams[slot.ccam] = true end
+
+local function stripStav(visual)
+	if not visual then return false end
+	local els = {}
+	local removed = false
+	for _, el in ipairs(visual.Elements) do
+		if stavCcams[tostring(el.Material)] then
+			removed = true
+		else
+			els[#els + 1] = el
+		end
+	end
+	if removed then visual.Elements = els end
+	return removed
+end
+
+local function prepareMirror()
+	local d = Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")[1]
+	if not d then return end
+	_P("[STAV] dummy born elements", d.ClientCCDummyDefinition.Visual and #d.ClientCCDummyDefinition.Visual.Elements)
+	local stripped = stripStav(d.ClientCCDummyDefinition.Visual)
+	if d.ClientCCChangeAppearanceDefinition then
+		stripped = stripStav(d.ClientCCChangeAppearanceDefinition.Definition.Visual) or stripped
+	end
+	if stripped then
+		local ok = pcall(function() Ext.UI.GetRoot():Child(1):Child(1):Child(24):Child(1).StartCharacterCreation:Execute() end)
+		_P("[STAV] nudge fired ok=", ok)
+	end
+end
+]]
+
+local function onDummyCreated()
+	UI.Open()
+	registerRebuildHook()
+	--[[ nudge fallback — superseded by clean-path
+	local char = _C()
+	if char and char.Level and char.Level.LevelName ~= "SYS_CC_I" then
+		Ext.Timer.WaitFor(100, prepareMirror)
+	end
+	]]
+end
+
+Ext.Entity.OnCreateDeferred("ClientCCDummyDefinition", function()
+	onDummyCreated()
+end)
+
+Ext.Entity.OnDestroyDeferred("ClientCCDummyDefinition", function()
+	if ccDummyCount() == 0 then
+		UI.Close()
+		unregisterRebuildHook()
+	end
+end)
+
+if ccDummyCount() > 0 then
+	onDummyCreated()
+end
+
+NetDefs.NET_APPLY_SYNC:SetHandler(function(data)
+	if not data then return end
+	Applying.ApplyLocalPreset(data.preset, data.characterUUID, data.state)
+end)
+
+NetDefs.NET_AVATAR_PING:SetHandler(function()
+	local uuid = resolveCharacterUUID()
+	if not uuid then return end
+	local entity = Ext.Entity.Get(uuid)
+	local look = entity and Vars.GetLook(entity)
+	if look then
+		for k, v in pairs(look) do
+			if UI.State[k] ~= nil then UI.State[k] = v end
+		end
+		UI.RefreshWidgets()
+	else
+		sendLook(uuid)
+	end
 end)

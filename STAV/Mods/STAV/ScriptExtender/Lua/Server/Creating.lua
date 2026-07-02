@@ -1,34 +1,20 @@
 local E       = Ext.Require("Shared/Events.lua")
+local U       = Ext.Require("Shared/Utility.lua")
 local NetDefs = Ext.Require("Shared/NetDefs.lua")
 local Vars    = Ext.Require("Shared/Vars.lua")
 local Params  = Ext.Require("Shared/Params.lua")
 
-local function commitLook(charUUID)
-	if not charUUID or not Vars.LatestLook then return end
-	local entity = Ext.Entity.Get(charUUID)
-	if not entity then return end
-	Vars.SetLook(entity, Vars.LatestLook)
-end
+local C = {}
 
--- 8 CCAM slots — one claimed per character (CCAM uuid → preset uuid)
-local SLOTS = {
-	{ ccam = "fffa139e-2b12-4175-83ab-a15eb18d486c", preset = "f3a16e69-b757-4676-af7b-e922ef30b042" },
-	{ ccam = "33346ac5-5dc6-497e-8fd5-77e26515c693", preset = "148e52a9-abac-4173-d752-f81cafd4a27e" },
-	{ ccam = "9e05a569-54dc-43b9-bff0-8c8bfd4a7b96", preset = "531e5a3a-1331-33b3-40bf-61d48c798c42" },
-	{ ccam = "a1b02643-f542-4e62-b948-b20d4351af44", preset = "b5f41781-ac6d-20e8-5e71-c336e57116b3" },
-	{ ccam = "6d1f64bd-2fb1-4b1b-89c1-554516a03eea", preset = "b60e6d34-21a4-b43b-8d02-7b539e619e7e" },
-	{ ccam = "348fa226-e411-43a0-ba82-ddf938ffedf3", preset = "4ceb7da5-7d2d-7e5a-3e87-bebdf0ecee50" },
-	{ ccam = "f666eb8c-c2a6-469f-aaea-482d0ed5d63f", preset = "43b63d89-865f-ae15-1723-192d92ac0fc2" },
-	{ ccam = "0348b311-c3b8-44c9-81ba-d22859f3a8ff", preset = "95bad513-7f5b-344f-f052-5d3b56e72f1e" },
-}
-
--- charUUID → slot index (1-8); persists across CC→game boundary in VM
-local slotMap = {}
+local slotMap   = {}
 local usedSlots = {}
+
+local stavCcams = {}
+for _, slot in ipairs(Params.Slots) do stavCcams[slot.ccam] = true end
 
 local function claimSlot(charUUID)
 	if slotMap[charUUID] then return slotMap[charUUID] end
-	for i = 1, #SLOTS do
+	for i = 1, #Params.Slots do
 		if not usedSlots[i] then
 			usedSlots[i]      = charUUID
 			slotMap[charUUID] = i
@@ -38,32 +24,10 @@ local function claimSlot(charUUID)
 	return nil
 end
 
-local function applyPreset(presetUUID, look)
-	local preset = Ext.Resource.Get(presetUUID, "MaterialPreset")
-	if not preset then return end
-	for key, p in pairs(Params) do
-		local v = look[key]
-		if v ~= nil then
-			local mapped = p.map(v)
-			if p.kind == "scalar" then
-				for _, entry in pairs(preset.Presets.ScalarParameters) do
-					if entry.Parameter == p.name then entry.Value = mapped end
-				end
-			else
-				for _, entry in pairs(preset.Presets.Vector3Parameters) do
-					if entry.Parameter == p.name then
-						entry.Value = { mapped[1], mapped[2], mapped[3] }
-					end
-				end
-			end
-		end
-	end
-end
-
 local function ensureElement(entity, ccamUUID)
-	local cca  = entity.CharacterCreationAppearance
+	local cca = entity.CharacterCreationAppearance
 	if not cca then return false end
-	local els  = {}
+	local els   = {}
 	local found = false
 	for _, el in pairs(cca.Elements) do
 		els[#els + 1] = el
@@ -74,6 +38,26 @@ local function ensureElement(entity, ccamUUID)
 	end
 	cca.Elements = els
 	return true
+end
+
+local function stripFromReal(charUUID)
+	local entity = charUUID and Ext.Entity.Get(charUUID)
+	if not entity then return end
+	local cca = entity.CharacterCreationAppearance
+	if not cca then return end
+	local els = {}
+	local removed = false
+	for _, el in ipairs(cca.Elements) do
+		if stavCcams[tostring(el.Material)] then
+			removed = true
+		else
+			els[#els + 1] = el
+		end
+	end
+	if removed then
+		cca.Elements = els
+		entity:Replicate("CharacterCreationAppearance")
+	end
 end
 
 local function applyToCharacter(charUUID)
@@ -88,43 +72,44 @@ local function applyToCharacter(charUUID)
 		STAVDebug("No free STAV slot for %s", charUUID)
 		return
 	end
-	local slot = SLOTS[slotIdx]
+	local slot = Params.Slots[slotIdx]
 
-	applyPreset(slot.preset, look)
 	if ensureElement(entity, slot.ccam) then
 		entity:Replicate("CharacterCreationAppearance")
 	end
+
+	NetDefs.NET_APPLY_SYNC:Broadcast({
+		characterUUID = charUUID,
+		preset        = slot.preset,
+		state         = look,
+	})
 end
+C.ApplyToCharacter = applyToCharacter
 
-local function broadcastCCState(open)
-	NetDefs.NET_CC_STATE:Broadcast(Ext.Json.Stringify(open))
-end
-
-E.CharacterCreationStarted.Subscribe(function()
-	broadcastCCState(true)
-end)
-
-E.CharacterCreationFinished.Subscribe(function()
-	commitLook(Osi.GetHostCharacter())
-	broadcastCCState(false)
-end)
-
-E.StartChangeAppearance.Subscribe(function()
-	broadcastCCState(true)
+E.StartChangeAppearance.Subscribe(function(p)
+	stripFromReal(p.CharacterGuid)
 end)
 
 E.ChangeAppearanceCompleted.Subscribe(function(p)
-	commitLook(p.CharacterGuid)
 	applyToCharacter(p.CharacterGuid)
-	broadcastCCState(false)
 end)
 
-E.ChangeAppearanceCancelled.Subscribe(function()
-	broadcastCCState(false)
+E.ChangeAppearanceCancelled.Subscribe(function(p)
+	applyToCharacter(p.CharacterGuid)
 end)
 
+-- On level load: ping clients (first-CC clients resend their in-memory look once their
+-- avatar resolves) and re-apply any persisted look per avatar (reload case).
 E.LevelGameplayStarted.Subscribe(function()
 	Ext.Timer.WaitFor(33, function()
-		applyToCharacter(Osi.GetHostCharacter())
+		NetDefs.NET_AVATAR_PING:Broadcast({})
+		local players = Osi.DB_Players:Get(nil)
+		if players then
+			for _, row in ipairs(players) do
+				applyToCharacter(U.Guid(row[1]))
+			end
+		end
 	end)
 end)
+
+return C
