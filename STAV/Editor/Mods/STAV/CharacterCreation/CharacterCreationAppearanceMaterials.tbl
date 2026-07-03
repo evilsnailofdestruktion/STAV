@@ -1017,5 +1017,19 @@
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="54c7f039-9a4d-9600-0be8-83121c3122aa" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_76" />
+        <field name="UUID" type="IdTableFieldDefinition" value="00894ccc-31ee-4527-94d5-a408cccb3583" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="Tattoo_0" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="haf379f4egea2dgb9e3g1b85g5e6c62967f43" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Tattoo" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="14425775-a24e-cf8f-3f55-052eac6f3405" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>
