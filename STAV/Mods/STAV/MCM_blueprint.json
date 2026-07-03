@@ -31,6 +31,26 @@
 							}
 						}
 					]
+				},
+				{
+					"SectionId": "Advanced",
+					"SectionName": "Advanced",
+					"Settings": [
+						{
+							"Id": "STAV_AutoOpenPhotoMode",
+							"Name": "Auto-open in Photo Mode",
+							"Type": "checkbox",
+							"Default": false,
+							"Description": "Automatically open the STAV panel when entering photo mode."
+						},
+						{
+							"Id": "STAV_Debug",
+							"Name": "Debug Logging",
+							"Type": "checkbox",
+							"Default": false,
+							"Description": "Enable STAV debug prints in the console."
+						}
+					]
 				}
 			]
 		}

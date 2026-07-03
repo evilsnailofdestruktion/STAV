@@ -1,5 +1,7 @@
 -- Credits to Focus
 
+local Config = Ext.Require("Shared/Config.lua")
+
 -- Config
 STAV_DebugEnabled = false
 
@@ -114,6 +116,6 @@ end
 
 -- Public
 function STAVDebug(...)
-	if not STAV_DebugEnabled then return end
+	if not (STAV_DebugEnabled or Config.Get("Debug")) then return end
 	STAVPrint():C10(string.format("[%s STAV] ", Machine)):Raw(Format(...)):Print()
 end

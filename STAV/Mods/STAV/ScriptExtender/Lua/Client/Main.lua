@@ -3,6 +3,7 @@ local Utility       = Ext.Require("Shared/Utility.lua")
 local L             = Ext.Require("Shared/Localization.lua")
 local NetDefs       = Ext.Require("Shared/NetDefs.lua")
 local Applying      = Ext.Require("Client/Applying.lua")
+local Config        = Ext.Require("Shared/Config.lua")
 
 local BODY_MAX      = 60
 local HEAD_MAX      = 93
@@ -303,6 +304,10 @@ end)
 if ccDummyCount() > 0 then
 	onDummyCreated()
 end
+
+Ext.Entity.OnCreateDeferred("PhotoModeDummy", function()
+	if Config.Get("AutoOpenPhotoMode") then UI.Open() end
+end)
 
 NetDefs.NET_APPLY_SYNC:SetHandler(function(data)
 	if not data then return end

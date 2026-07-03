@@ -43,6 +43,13 @@ local function getRenderEntities()
 			result[#result + 1] = Ext.Entity.Get(dummy)
 		end
 	end
+	for _, pm in pairs(Ext.Entity.GetAllEntitiesWithComponent("PhotoModeDummy")) do
+		local char = pm.PhotoModeDummy.Entity
+		local dummy = char and char.HasDummy and char.HasDummy.Entity
+		if dummy then
+			result[#result + 1] = dummy
+		end
+	end
 	return result
 end
 
