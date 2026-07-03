@@ -38,16 +38,10 @@ local DEFAULTS = copyState(UI.State)
 UI.Widgets = {}
 
 local function resolveCharacterUUID()
-	local partyEntity = Ext.Entity.GetAllEntitiesWithComponent("PartyView")[1]
-	if not partyEntity then return nil end
-	for _, view in pairs(partyEntity.PartyView.Views) do
-		if view.UserID == 1 then
-			for _, ch in pairs(view.Characters) do
-				if ch.Avatar and ch.Uuid then return ch.Uuid.EntityUuid end
-			end
-		end
-	end
-	return nil
+	local char = _C()
+	if not char then return nil end
+	if char.Level.LevelName == "SYS_CC_I" then return nil end
+	return char.Uuid.EntityUuid
 end
 
 local function sendLook(characterUUID)
@@ -147,8 +141,8 @@ end
 
 for _, c in ipairs({
 	{ "Text",             { 0.90, 0.90, 0.88, 1.00 } },
-	{ "TitleBgActive",    tint(ACCENT, 1.00) },
 	{ "Tab",              { 0.20, 0.21, 0.36, 0.86 } },
+	{ "TitleBgActive",    tint(ACCENT, 1.00) },
 	{ "TabHovered",       tint(ACCENT, 0.70) },
 	{ "TabActive",        tint(ACCENT, 0.90) },
 	{ "Header",           tint(ACCENT, 0.35) },
@@ -221,11 +215,10 @@ function UI.RefreshWidgets()
 	end
 end
 
-function UI.PopulateFromEntity()
-	local me = _C()
-	if not me then return end
-	local look = Vars.GetLook(me)
-	if not look then return end
+function UI.PopulateFromEntity(char)
+	char = char or _C()
+	if not char then return end
+	local look = Vars.GetLook(char) or copyState(DEFAULTS)
 	for k, v in pairs(look) do
 		if UI.State[k] ~= nil then
 			UI.State[k] = v
@@ -305,8 +298,18 @@ if ccDummyCount() > 0 then
 	onDummyCreated()
 end
 
+Ext.Entity.OnCreateDeferred("ClientControl", function(e)
+	if UI.Window.Open then UI.PopulateFromEntity(e) end
+end)
+
 Ext.Entity.OnCreateDeferred("PhotoModeDummy", function()
 	if Config.Get("AutoOpenPhotoMode") then UI.Open() end
+end)
+
+Ext.Entity.OnDestroyDeferred("PhotoModeDummy", function()
+	if Config.Get("AutoOpenPhotoMode") and #Ext.Entity.GetAllEntitiesWithComponent("PhotoModeDummy") == 0 then
+		UI.Close()
+	end
 end)
 
 NetDefs.NET_APPLY_SYNC:SetHandler(function(data)

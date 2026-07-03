@@ -1,5 +1,7 @@
 local U = Ext.Require("Shared/Utility.lua")
 
-Ext.RegisterConsoleCommand("stav", function(_)
-	STAVToggleUI()
-end)
+if Ext.IsClient() then
+	Ext.RegisterConsoleCommand("stav", function(_)
+		STAVToggleUI()
+	end)
+end
