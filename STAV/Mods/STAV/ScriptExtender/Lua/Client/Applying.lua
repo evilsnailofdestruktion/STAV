@@ -5,11 +5,13 @@ local A = {}
 local function applyParam(am, param, value)
 	local params = am.Material and am.Material.Parameters
 	if not params then return end
-	local list = param.kind == "scalar" and params.ScalarParameters or params.Vector3Parameters
+	local isScalar = param.kind == "scalar"
+	local list = isScalar and params.ScalarParameters or params.Vector3Parameters
 	for _, e in pairs(list) do
 		if e.ParameterName == param.name then
-			local mapped = param.map(value)
-			if param.kind == "scalar" then
+			local mapped = value
+			if param.map then mapped = param.map(value) end
+			if isScalar then
 				am:SetScalar(param.name, mapped)
 			else
 				am:SetVector3(param.name, { mapped[1], mapped[2], mapped[3] })
@@ -67,8 +69,9 @@ function A.ApplyLocalPreset(presetUUID, characterUUID, look)
 	if preset and look then
 		for key, p in pairs(Params.Map) do
 			local v = look[key]
-			if v ~= nil then
-				local mapped = p.map(v)
+			if v ~= nil and not Params.Toggles[key] then
+				local mapped = v
+				if p.map then mapped = p.map(v) end
 				if p.kind == "scalar" then
 					for _, entry in pairs(preset.Presets.ScalarParameters) do
 						if entry.Parameter == p.name then entry.Value = mapped end

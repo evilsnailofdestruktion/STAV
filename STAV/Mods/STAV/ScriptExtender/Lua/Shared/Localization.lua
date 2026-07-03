@@ -3,23 +3,7 @@
 --   local text = L.T("SomeKey")  -- returns translated string or fallback key
 
 local L = {}
-local translationTable = {}
-
-function L.RegisterHandles(handleMap)
-	for key, value in pairs(handleMap) do
-		translationTable[key] = value
-	end
-end
-
-function L.T(key)
-	local handle = translationTable[key]
-	if handle then
-		return Ext.Loca.GetTranslatedString(handle, key)
-	end
-	return key
-end
-
-L.RegisterHandles({
+local translationTable = {
 	["Tattoos"]           = "hbe107a60gc779g405bga284gdfba68f82969",
 	["Body"]              = "had728168g63d5g481cg9038gd5f07350958d",
 	["Head"]              = "hb75263dagfeb4g48e1g8de6g5c74d687cb57",
@@ -32,6 +16,14 @@ L.RegisterHandles({
 	["Glow Colour"]       = "h24b4b838g7e1fg442dgb7d8g1f64831c0d14",
 	["Glow Intensity"]    = "he5e05ed1g7eb8g4df0g8030gcff90b9da34c",
 	["Swirlies"]          = "hbd829e71g8edcg468fg9b63gdbb79b1fd31f",
-})
+}
+
+function L.T(key)
+	local handle = translationTable[key]
+	if handle then
+		return Ext.Loca.GetTranslatedString(handle, key)
+	end
+	return key
+end
 
 return L

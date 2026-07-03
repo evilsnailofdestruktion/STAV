@@ -1,40 +1,33 @@
 local M = {}
 
 -- UI slider index → shader true-index
-function M.BodyIndex(uiIdx)
-	return uiIdx - 1
-end
+local headCache    = { 31 }
+local headNextTrue = 0
 
-local HEAD_MAP_CACHE = nil
-
-function M.HeadIndex(uiIdx)
-	if not HEAD_MAP_CACHE then
-		HEAD_MAP_CACHE = {}
-		HEAD_MAP_CACHE[1] = 31
-		local trueIdx = 0
-		for ui = 2, 200 do
-			while trueIdx == 15 or trueIdx == 47 or trueIdx == 79 do
-				trueIdx = trueIdx + 1
-			end
-			HEAD_MAP_CACHE[ui] = trueIdx
-			trueIdx = trueIdx + 1
+local function headIndex(uiIdx)
+	while #headCache < uiIdx do
+		while headNextTrue == 15 or headNextTrue == 47 or headNextTrue == 79 do
+			headNextTrue = headNextTrue + 1
 		end
+		headCache[#headCache + 1] = headNextTrue
+		headNextTrue = headNextTrue + 1
 	end
-	return HEAD_MAP_CACHE[uiIdx] or 0
+	return headCache[uiIdx]
 end
 
 -- UI.State key → material/preset param
 M.Map = {
-	bodyMain      = { name = "BodyTattooIndex",  kind = "scalar", map = function(v) return M.BodyIndex(v) end },
-	bodyAlt       = { name = "BodyAltTatIndex",  kind = "scalar", map = function(v) return M.BodyIndex(v) end },
-	bodyGlow      = { name = "BodyGlowyIndex",   kind = "scalar", map = function(v) return M.BodyIndex(v) end },
-	headAlt       = { name = "AltTattooIndex",   kind = "scalar", map = function(v) return M.HeadIndex(v) end },
-	headGlow      = { name = "GlowTattooIndex",  kind = "scalar", map = function(v) return M.HeadIndex(v) end },
+	bodyMain      = { name = "BodyTattooIndex",  kind = "scalar", map = function(v) return v - 1 end },
+	bodyAlt       = { name = "BodyAltTatIndex",  kind = "scalar", map = function(v) return v - 1 end },
+	bodyGlow      = { name = "BodyGlowyIndex",   kind = "scalar", map = function(v) return v - 1 end },
+	headAlt       = { name = "AltTattooIndex",   kind = "scalar", map = function(v) return headIndex(v) end },
+	headGlow      = { name = "GlowTattooIndex",  kind = "scalar", map = function(v) return headIndex(v) end },
 	scar          = { name = "BodyScar",         kind = "scalar", map = function(v) return v and 1 or 0 end },
 	swirl         = { name = "Swirlies",         kind = "scalar", map = function(v) return v and 1 or 0 end },
-	glowIntensity = { name = "GlowIntensity",    kind = "scalar", map = function(v) return v end },
-	glowColor     = { name = "TatGlowColor",     kind = "vec3",   map = function(v) return v end },
-	altColor      = { name = "BodyTattooColor",  kind = "vec3",   map = function(v) return v end },
+	vampirism     = { name = "Vampirisim",       kind = "scalar", map = function(v) return v and 1 or 0 end },
+	glowIntensity = { name = "GlowIntensity",    kind = "scalar" },
+	glowColor     = { name = "TatGlowColor",     kind = "vec3"   },
+	altColor      = { name = "BodyTattooColor",  kind = "vec3"   },
 }
 
 -- 8 CCAM slots — one claimed per character (CCAM uuid → preset uuid)
@@ -47,6 +40,11 @@ M.Slots = {
 	{ ccam = "348fa226-e411-43a0-ba82-ddf938ffedf3", preset = "4ceb7da5-7d2d-7e5a-3e87-bebdf0ecee50" },
 	{ ccam = "f666eb8c-c2a6-469f-aaea-482d0ed5d63f", preset = "43b63d89-865f-ae15-1723-192d92ac0fc2" },
 	{ ccam = "0348b311-c3b8-44c9-81ba-d22859f3a8ff", preset = "95bad513-7f5b-344f-f052-5d3b56e72f1e" },
+}
+
+M.Toggles = {
+	swirl     = "2a2f351a-6603-45bd-a87f-b567c74fa9d1",
+	vampirism = "56ea96b0-d436-4efd-b200-dfdd93e83671",
 }
 
 return M

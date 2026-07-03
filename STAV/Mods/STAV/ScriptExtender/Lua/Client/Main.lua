@@ -1,9 +1,8 @@
-local Vars    = Ext.Require("Shared/Vars.lua")
-local Utility = Ext.Require("Shared/Utility.lua")
-local L       = Ext.Require("Shared/Localization.lua")
-local NetDefs   = Ext.Require("Shared/NetDefs.lua")
-local Applying  = Ext.Require("Client/Applying.lua")
--- local Params = Ext.Require("Shared/Params.lua") -- nudge-only; superseded by clean-path
+local Vars          = Ext.Require("Shared/Vars.lua")
+local Utility       = Ext.Require("Shared/Utility.lua")
+local L             = Ext.Require("Shared/Localization.lua")
+local NetDefs       = Ext.Require("Shared/NetDefs.lua")
+local Applying      = Ext.Require("Client/Applying.lua")
 
 local BODY_MAX      = 60
 local HEAD_MAX      = 93
@@ -21,8 +20,19 @@ UI.State = {
 	altColor      = { 1, 1, 1, 1 },
 	glowColor     = { 1, 1, 1, 1 },
 	glowIntensity = 1,
-	swirl			  = false
+	swirl         = false,
+	vampirism     = false
 }
+
+local function copyState(src)
+	local out = {}
+	for k, v in pairs(src) do
+		out[k] = type(v) == "table" and { v[1], v[2], v[3], v[4] } or v
+	end
+	return out
+end
+
+local DEFAULTS = copyState(UI.State)
 
 UI.Widgets = {}
 
@@ -99,13 +109,13 @@ local function addPicker(parent, label, key)
 	return p
 end
 
-local vp  = Ext.IMGUI.GetViewportSize()
-local win = Ext.IMGUI.NewWindow("STAV")
-win.Open              = false
-win.Closeable         = true
+local vp               = Ext.IMGUI.GetViewportSize()
+local win              = Ext.IMGUI.NewWindow("STAV")
+win.Open               = false
+win.Closeable          = true
 win.NoFocusOnAppearing = true
-win.Scaling           = 'Scaled'
-win.AlwaysAutoResize  = false
+win.Scaling            = 'Scaled'
+win.AlwaysAutoResize   = false
 win:SetPos({ vp[1] / 6, vp[2] / 10 })
 if vp[1] <= 1920 and vp[2] <= 1080 then
 	win:SetSize({ 480 / 1.333, 600 / 1.333 })
@@ -120,38 +130,38 @@ local function tint(base, alpha)
 end
 
 for _, s in ipairs({
-	{ "WindowRounding", 10 },
-	{ "ChildRounding", 8 },
-	{ "FrameRounding", 5 },
-	{ "GrabRounding", 4 },
-	{ "TabRounding", 5 },
+	{ "WindowRounding",   10 },
+	{ "ChildRounding",    8 },
+	{ "FrameRounding",    5 },
+	{ "GrabRounding",     4 },
+	{ "TabRounding",      5 },
 	{ "WindowBorderSize", 1 },
-	{ "WindowMinSize", 380, 380 },
-	{ "WindowPadding", 12, 12 },
-	{ "ItemSpacing", 8, 6 },
-	{ "FramePadding", 8, 4 },
+	{ "WindowMinSize",    380, 380 },
+	{ "WindowPadding",    12,  12 },
+	{ "ItemSpacing",      8,   6 },
+	{ "FramePadding",     8,   4 },
 }) do
 	if s[3] then win:SetStyle(s[1], s[2], s[3]) else win:SetStyle(s[1], s[2]) end
 end
 
 for _, c in ipairs({
-	{ "Text", { 0.90, 0.90, 0.88, 1.00 } },
-	{ "TitleBgActive", tint(ACCENT, 1.00) },
-	{ "Tab", { 0.20, 0.21, 0.36, 0.86 } },
-	{ "TabHovered", tint(ACCENT, 0.70) },
-	{ "TabActive", tint(ACCENT, 0.90) },
-	{ "Header", tint(ACCENT, 0.35) },
-	{ "HeaderHovered", tint(ACCENT, 0.60) },
-	{ "HeaderActive", tint(ACCENT, 0.80) },
-	{ "CheckMark", tint(GLOW, 1.00) },
-	{ "SliderGrab", tint(ACCENT, 0.65) },
+	{ "Text",             { 0.90, 0.90, 0.88, 1.00 } },
+	{ "TitleBgActive",    tint(ACCENT, 1.00) },
+	{ "Tab",              { 0.20, 0.21, 0.36, 0.86 } },
+	{ "TabHovered",       tint(ACCENT, 0.70) },
+	{ "TabActive",        tint(ACCENT, 0.90) },
+	{ "Header",           tint(ACCENT, 0.35) },
+	{ "HeaderHovered",    tint(ACCENT, 0.60) },
+	{ "HeaderActive",     tint(ACCENT, 0.80) },
+	{ "CheckMark",        tint(GLOW, 1.00) },
+	{ "SliderGrab",       tint(ACCENT, 0.65) },
 	{ "SliderGrabActive", tint(GLOW, 1.00) },
-	{ "Separator", tint(ACCENT, 0.40) },
+	{ "Separator",        tint(ACCENT, 0.40) },
 }) do
 	win:SetColor(c[1], c[2])
 end
 
-UI.Window = win
+UI.Window    = win
 
 local bar    = win:AddTabBar("STAV_Tabs")
 local tatTab = bar:AddTabItem(L.T("Tattoos"))
@@ -176,6 +186,12 @@ addPicker(shared, L.T("Alt Tattoo Colour"), "altColor")
 addPicker(shared, L.T("Glow Colour"), "glowColor")
 addFloatSlider(shared, L.T("Glow Intensity"), INTENSITY_MAX, "glowIntensity")
 addCheckbox(shared, L.T("Swirlies"), "swirl")
+addCheckbox(shared, L.T("Vampirism"), "vampirism")
+
+tatTab:AddDummy(0, 6)
+local resetBtn = tatTab:AddButton(L.T("Reset"))
+resetBtn.IDContext = "STAV_Reset"
+resetBtn.OnClick = function() UI.Reset() end
 
 function UI.Toggle()
 	UI.Window.Open = not UI.Window.Open
@@ -216,6 +232,13 @@ function UI.PopulateFromEntity()
 	end
 	UI.RefreshWidgets()
 	Applying.ApplyAll(UI.State)
+end
+
+function UI.Reset()
+	UI.State = copyState(DEFAULTS)
+	UI.RefreshWidgets()
+	Applying.ApplyAll(UI.State)
+	syncToServer()
 end
 
 function STAVToggleUI()
@@ -261,49 +284,9 @@ local function unregisterRebuildHook()
 	end
 end
 
---[[ nudge fallback — superseded by the clean-path server strip (Creating.lua StartChangeAppearance)
-local stavCcams = {}
-for _, slot in ipairs(Params.Slots) do stavCcams[slot.ccam] = true end
-
-local function stripStav(visual)
-	if not visual then return false end
-	local els = {}
-	local removed = false
-	for _, el in ipairs(visual.Elements) do
-		if stavCcams[tostring(el.Material)] then
-			removed = true
-		else
-			els[#els + 1] = el
-		end
-	end
-	if removed then visual.Elements = els end
-	return removed
-end
-
-local function prepareMirror()
-	local d = Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")[1]
-	if not d then return end
-	_P("[STAV] dummy born elements", d.ClientCCDummyDefinition.Visual and #d.ClientCCDummyDefinition.Visual.Elements)
-	local stripped = stripStav(d.ClientCCDummyDefinition.Visual)
-	if d.ClientCCChangeAppearanceDefinition then
-		stripped = stripStav(d.ClientCCChangeAppearanceDefinition.Definition.Visual) or stripped
-	end
-	if stripped then
-		local ok = pcall(function() Ext.UI.GetRoot():Child(1):Child(1):Child(24):Child(1).StartCharacterCreation:Execute() end)
-		_P("[STAV] nudge fired ok=", ok)
-	end
-end
-]]
-
 local function onDummyCreated()
 	UI.Open()
 	registerRebuildHook()
-	--[[ nudge fallback — superseded by clean-path
-	local char = _C()
-	if char and char.Level and char.Level.LevelName ~= "SYS_CC_I" then
-		Ext.Timer.WaitFor(100, prepareMirror)
-	end
-	]]
 end
 
 Ext.Entity.OnCreateDeferred("ClientCCDummyDefinition", function()

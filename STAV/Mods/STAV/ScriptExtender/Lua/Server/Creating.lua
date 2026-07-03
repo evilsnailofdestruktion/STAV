@@ -11,6 +11,7 @@ local usedSlots = {}
 
 local stavCcams = {}
 for _, slot in ipairs(Params.Slots) do stavCcams[slot.ccam] = true end
+for _, ccam in pairs(Params.Toggles) do stavCcams[ccam] = true end
 
 local function claimSlot(charUUID)
 	if slotMap[charUUID] then return slotMap[charUUID] end
@@ -24,17 +25,27 @@ local function claimSlot(charUUID)
 	return nil
 end
 
-local function ensureElement(entity, ccamUUID)
+local function applyElements(entity, tattooCcam, look)
 	local cca = entity.CharacterCreationAppearance
 	if not cca then return false end
-	local els   = {}
-	local found = false
-	for _, el in pairs(cca.Elements) do
-		els[#els + 1] = el
-		if el.Material == ccamUUID then found = true end
+	local els        = {}
+	local haveTattoo = false
+	for _, el in ipairs(cca.Elements) do
+		local m = tostring(el.Material)
+		if m == tattooCcam then
+			haveTattoo = true
+			els[#els + 1] = el
+		elseif not stavCcams[m] then
+			els[#els + 1] = el
+		end
 	end
-	if not found then
-		els[#els + 1] = { Material = ccamUUID }
+	if not haveTattoo then
+		els[#els + 1] = { Material = tattooCcam }
+	end
+	for key, ccam in pairs(Params.Toggles) do
+		if look[key] then
+			els[#els + 1] = { Material = ccam }
+		end
 	end
 	cca.Elements = els
 	return true
@@ -74,7 +85,7 @@ local function applyToCharacter(charUUID)
 	end
 	local slot = Params.Slots[slotIdx]
 
-	if ensureElement(entity, slot.ccam) then
+	if applyElements(entity, slot.ccam, look) then
 		entity:Replicate("CharacterCreationAppearance")
 	end
 
