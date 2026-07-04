@@ -16,6 +16,8 @@ local translationTable = {
 	["Glow Colour"]       = "h24b4b838g7e1fg442dgb7d8g1f64831c0d14",
 	["Glow Intensity"]    = "he5e05ed1g7eb8g4df0g8030gcff90b9da34c",
 	["Swirlies"]          = "hbd829e71g8edcg468fg9b63gdbb79b1fd31f",
+	["Vampirism"]			 = "h1cba0ec1gfcb1g48cbg9b82gac8aff69c550",
+	["Reset"]				 = "h9ceb4c21ga27cg4ea3gbf1bgf02d336152e2"
 }
 
 function L.T(key)

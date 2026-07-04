@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<save>
+	<version major="4" minor="8" revision="0" build="500" lslib_meta="v1,bswap_guids,lsf_keys_adjacency" />
+		<region id="VirtualTextureBank">
+		<node id="VirtualTextureBank">
+			<children>
+				<node id="Resource">
+					<attribute id="GTexFileName" type="FixedString" value="6f3963871efa40e1928fcecff8e0553f" />
+					<attribute id="ID" type="FixedString" value="c60f0355-4683-4188-a976-527e38e4ddeb" />
+					<attribute id="Name" type="LSString" value="STAV_ELF_M_NKD_Body_A" />
+					<attribute id="Prefetch" type="bool" value="False" />
+					<attribute id="PrefetchMipLevel" type="int8" value="-1" />
+					<attribute id="ReferencedColorSpaces" type="uint32" value="6" />
+					<attribute id="VirtualTextureLayerConfig" type="uint32" value="3" />
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

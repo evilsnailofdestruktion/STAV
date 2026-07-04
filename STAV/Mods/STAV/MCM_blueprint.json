@@ -14,7 +14,10 @@
 						{
 							"Id": "STAV_UI_Open",
 							"Name": "Toggle UI Panel",
-							"Type": "event_button"
+							"Type": "event_button",
+							"Handles": {
+								"NameHandle": "h0f99ff3fg4643g454bg9873g6b011998cb2f"
+							}
 						},
 						{
 							"Id": "STAV_UI_Panel",
@@ -35,20 +38,31 @@
 				{
 					"SectionId": "Advanced",
 					"SectionName": "Advanced",
+					"Handles": {
+						"NameHandle": "h5e138bc4gf04dg4f65g977fg94d21267cf05"
+					},
 					"Settings": [
 						{
 							"Id": "STAV_AutoOpenPhotoMode",
 							"Name": "Auto-open in Photo Mode",
 							"Type": "checkbox",
 							"Default": false,
-							"Description": "Automatically open the STAV panel when entering photo mode."
+							"Description": "Automatically open the STAV panel when entering photo mode.",
+							"Handles": {
+								"NameHandle": "h72af5f23gd8d5g4decg8cefg038b93dbfab4",
+								"DescriptionHandle": "h70f7ccbeg75a3g4d91g80cdg63d7c8168cd9"
+							}
 						},
 						{
 							"Id": "STAV_Debug",
 							"Name": "Debug Logging",
 							"Type": "checkbox",
 							"Default": false,
-							"Description": "Enable STAV debug prints in the console."
+							"Description": "Enable STAV debug prints in the console.",
+							"Handles": {
+								"NameHandle": "h8be41d65g1606g40f3gb4a3gc3c5bdc588a8",
+								"DescriptionHandle": "hec331c0fgc896g4797g99bbge3b4d5b35c6a"
+							}
 						}
 					]
 				}

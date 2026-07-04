@@ -64,7 +64,7 @@ end
 
 local function onChange(key, value)
 	UI.State[key] = value
-	STAVDebug("%s = %s", key, tostring(value))
+	UI.Changed = true
 	Applying.Apply(key, value)
 	syncToServer()
 end
@@ -327,7 +327,7 @@ NetDefs.NET_AVATAR_PING:SetHandler(function()
 			if UI.State[k] ~= nil then UI.State[k] = v end
 		end
 		UI.RefreshWidgets()
-	else
+	elseif UI.Changed then
 		sendLook(uuid)
 	end
 end)

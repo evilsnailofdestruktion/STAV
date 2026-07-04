@@ -152,4 +152,23 @@
   <content contentuid="h974f3eeag298dge23bgd5b8g6125e0b3ab06" version="1">Scar 22</content>
   <content contentuid="hfd4457cag27ebgaa1ag421bg199a188cb5b4" version="1">Scar 23</content>
   <content contentuid="hecf80ff6ga399gb79cgab18g3e9caefe927e" version="1">Scar 24</content>
+  <content contentuid="hbe107a60gc779g405bga284gdfba68f82969" version="1">Tattoos</content>
+  <content contentuid="had728168g63d5g481cg9038gd5f07350958d" version="1">Body</content>
+  <content contentuid="hb75263dagfeb4g48e1g8de6g5c74d687cb57" version="1">Head</content>
+  <content contentuid="h2b46fe7dg4dbfg4f5agb3cdg8ddba4a1aeb2" version="1">Shared</content>
+  <content contentuid="h02214271g2763g4fd4g8df9g78ddfd25a5de" version="1">Body Scar</content>
+  <content contentuid="h4c156923g1df2g4fc0g8d85g1108dfae9019" version="1">Main Tattoo</content>
+  <content contentuid="hf61918adgf88eg4d03g9aacg98e7c3f6fd3a" version="1">Alt Tattoo</content>
+  <content contentuid="hb69427e0g557ag432fgbf6dgc2b62bd0aaca" version="1">Glow Tattoo</content>
+  <content contentuid="h813692a2g6214g4768ga749gf8a2d35b1f7b" version="1">Alt Tattoo Colour</content>
+  <content contentuid="h24b4b838g7e1fg442dgb7d8g1f64831c0d14" version="1">Glow Colour</content>
+  <content contentuid="he5e05ed1g7eb8g4df0g8030gcff90b9da34c" version="1">Glow Intensity</content>
+  <content contentuid="hbd829e71g8edcg468fg9b63gdbb79b1fd31f" version="1">Swirlies</content>
+  <content contentuid="h1cba0ec1gfcb1g48cbg9b82gac8aff69c550" version="1">Vampirism</content>
+  <content contentuid="h9ceb4c21ga27cg4ea3gbf1bgf02d336152e2" version="1">Reset</content>
+  <content contentuid="h0f99ff3fg4643g454bg9873g6b011998cb2f" version="1">Toggle UI Panel</content>
+  <content contentuid="h72af5f23gd8d5g4decg8cefg038b93dbfab4" version="1">Auto-open in Photo Mode</content>
+  <content contentuid="h70f7ccbeg75a3g4d91g80cdg63d7c8168cd9" version="1">Automatically open the STAV panel when entering photo mode.</content>
+  <content contentuid="h8be41d65g1606g40f3gb4a3gc3c5bdc588a8" version="1">Debug Logging</content>
+  <content contentuid="hec331c0fgc896g4797g99bbge3b4d5b35c6a" version="1">Enable STAV debug prints in the console.</content>
 </contentList>
