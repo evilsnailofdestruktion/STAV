@@ -762,9 +762,9 @@
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="26214da4-6c60-56b7-4494-3cf0078417cd" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -775,9 +775,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h2f185526g2cf5g1a0cg3a15gae0188312365" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="8b6be127-fdd2-4b43-6986-faaa4a0d76a7" />
       </fields>
     </stat_object>
@@ -789,9 +789,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3ebe019eg6d0bge23cg666ega2d682bf9472" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="28ebc6b4-b706-e7cf-2cf2-553abd26c3d5" />
       </fields>
     </stat_object>
@@ -803,9 +803,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3926c46cg3cc1gfb9ag5228g852f2c430c44" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="faf5bd56-ba05-70ee-6a3f-55f326dba1d6" />
       </fields>
     </stat_object>
@@ -817,9 +817,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h8235549fg5d6fg47bdg9598g771c2cfbb620" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="d10c182e-4882-5c79-a629-257de7c6be80" />
       </fields>
     </stat_object>
@@ -831,9 +831,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he1b72329gc64fgd0a7gc006g1628578bfe2b" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="d17b41fb-b0bb-e803-8118-36a56d8e7ca3" />
       </fields>
     </stat_object>
@@ -845,9 +845,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0f22dce9g2bb8g60eeg3bd9g848b60c96029" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="3b4b31f6-4b16-fa18-648e-2407ec3e0a9b" />
       </fields>
     </stat_object>
@@ -859,9 +859,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdd115186g9d48g819fg274dge5fb8974b2cd" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="5997c362-ec4d-8a6e-9422-7ce5a6d0bba8" />
       </fields>
     </stat_object>
@@ -873,9 +873,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha2991145g08e6g6e96g9413g78681851a797" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="ac9e1d74-fc01-5faa-8375-f975582ba79b" />
       </fields>
     </stat_object>
@@ -887,9 +887,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h72638fdbg7891g4e53gb86dg0c205c6fbc72" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="53a95ba6-f8aa-f158-6da9-fa53d8d05f2a" />
       </fields>
     </stat_object>
@@ -901,9 +901,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hdbeddd04gaa52gf1b2g1351gd53378d908fb" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="2c18fb5a-5776-ea2b-98fa-b7c96aa52d6a" />
       </fields>
     </stat_object>
@@ -915,9 +915,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf07a5c21g3223gfb4ag86bbg751111ee28d4" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="3f14bb7d-75f0-8a4e-435b-ab03fc44743f" />
       </fields>
     </stat_object>
@@ -929,9 +929,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="he840fde8g7a74g4c0fgfa2agf5b1cdae9a93" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="cb57ea13-48f9-56e5-2b05-ba84527adc1f" />
       </fields>
     </stat_object>
@@ -943,9 +943,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4c0a2472g716eg867aga0cdg34cb7bf4457d" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="687d07de-95ba-506e-51f2-c6397653ae88" />
       </fields>
     </stat_object>
@@ -957,9 +957,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h498885feg8872gb9f9g5ca5gadb6d855fec4" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="4eaff249-6361-4b1f-d4dd-91e31097cb41" />
       </fields>
     </stat_object>
@@ -971,9 +971,9 @@
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h03d65c85g956bg0affgc729g60566e4673b3" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Makeup" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
-        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
-        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="ec4e58e3-1ef1-2dbf-23be-58ce65fdc950" />
       </fields>
     </stat_object>

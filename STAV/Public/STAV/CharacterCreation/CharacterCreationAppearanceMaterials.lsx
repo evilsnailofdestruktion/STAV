@@ -590,9 +590,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h73a63c95g884fg1ac4gd650g075e9ce6cce9" version="2"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="26214da4-6c60-56b7-4494-3cf0078417cd"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -601,9 +601,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h2f185526g2cf5g1a0cg3a15gae0188312365" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="8b6be127-fdd2-4b43-6986-faaa4a0d76a7"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -612,9 +612,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h3ebe019eg6d0bge23cg666ega2d682bf9472" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="28ebc6b4-b706-e7cf-2cf2-553abd26c3d5"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -623,9 +623,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h3926c46cg3cc1gfb9ag5228g852f2c430c44" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="faf5bd56-ba05-70ee-6a3f-55f326dba1d6"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -634,9 +634,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h8235549fg5d6fg47bdg9598g771c2cfbb620" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="d10c182e-4882-5c79-a629-257de7c6be80"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -645,9 +645,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="he1b72329gc64fgd0a7gc006g1628578bfe2b" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="d17b41fb-b0bb-e803-8118-36a56d8e7ca3"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -656,9 +656,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h0f22dce9g2bb8g60eeg3bd9g848b60c96029" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="3b4b31f6-4b16-fa18-648e-2407ec3e0a9b"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -667,9 +667,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="hdd115186g9d48g819fg274dge5fb8974b2cd" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="5997c362-ec4d-8a6e-9422-7ce5a6d0bba8"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -678,9 +678,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="ha2991145g08e6g6e96g9413g78681851a797" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="ac9e1d74-fc01-5faa-8375-f975582ba79b"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -689,9 +689,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h72638fdbg7891g4e53gb86dg0c205c6fbc72" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="53a95ba6-f8aa-f158-6da9-fa53d8d05f2a"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -700,9 +700,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="hdbeddd04gaa52gf1b2g1351gd53378d908fb" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="2c18fb5a-5776-ea2b-98fa-b7c96aa52d6a"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -711,9 +711,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="hf07a5c21g3223gfb4ag86bbg751111ee28d4" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="3f14bb7d-75f0-8a4e-435b-ab03fc44743f"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -722,9 +722,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="he840fde8g7a74g4c0fgfa2agf5b1cdae9a93" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="cb57ea13-48f9-56e5-2b05-ba84527adc1f"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -733,9 +733,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h4c0a2472g716eg867aga0cdg34cb7bf4457d" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="687d07de-95ba-506e-51f2-c6397653ae88"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -744,9 +744,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h498885feg8872gb9f9g5ca5gadb6d855fec4" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="4eaff249-6361-4b1f-d4dd-91e31097cb41"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -755,9 +755,9 @@
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h03d65c85g956bg0affgc729g60566e4673b3" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_02"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="ec4e58e3-1ef1-2dbf-23be-58ce65fdc950"/>
                     <attribute id="MaterialType" type="FixedString" value="Makeup"/>
@@ -892,17 +892,6 @@
                     <attribute id="UUID" type="guid" value="abfa0ced-695b-417e-ab14-33989af0b4f9"/>
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
-                    <attribute id="DisplayName" type="TranslatedString" handle="h5c1a4ac6gf448ge23egc94dgde4175ff3fcd" version="1"/>
-                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
-                    <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
-                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
-                    <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
-                    <attribute id="MaterialPresetUUID" type="guid" value="585f9d6c-73b4-da79-e2e3-5722775c002f"/>
-                    <attribute id="MaterialType" type="FixedString" value="Scar"/>
-                    <attribute id="Name" type="FixedString" value="CC_Scar_19_Standard"/>
-                    <attribute id="UUID" type="guid" value="53d49795-0471-4088-954d-ea3b682c4321"/>
-                </node>
-                <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h913a5fd6gf92agd82dgfd3fg48926e3eae97" version="1"/>
                     <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
                     <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
@@ -912,6 +901,17 @@
                     <attribute id="MaterialType" type="FixedString" value="Scar"/>
                     <attribute id="Name" type="FixedString" value="CC_Scar_18_Standard"/>
                     <attribute id="UUID" type="guid" value="9e4ae88c-789c-4171-a91b-63ec2e476513"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h5c1a4ac6gf448ge23egc94dgde4175ff3fcd" version="1"/>
+                    <attribute id="FemaleCameraName" type="FixedString" value="Camera_01"/>
+                    <attribute id="FemaleRootTemplate" type="guid" value="7957d6fb-e8e1-4017-af63-56d4854fd84f"/>
+                    <attribute id="MaleCameraName" type="FixedString" value="Camera_01"/>
+                    <attribute id="MaleRootTemplate" type="guid" value="903b38b5-2703-40b4-9208-3ef388817543"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="585f9d6c-73b4-da79-e2e3-5722775c002f"/>
+                    <attribute id="MaterialType" type="FixedString" value="Scar"/>
+                    <attribute id="Name" type="FixedString" value="CC_Scar_19_Standard"/>
+                    <attribute id="UUID" type="guid" value="53d49795-0471-4088-954d-ea3b682c4321"/>
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="ha0e2dea8g77dcgd9edgc343ga417db2c23d4" version="1"/>
