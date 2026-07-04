@@ -1031,5 +1031,215 @@
         <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_02" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_92" />
+        <field name="UUID" type="IdTableFieldDefinition" value="0d76e352-aea5-4c0d-a3ec-13f47056df14" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_10_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5cf8c8d0gfe15g0a14g71bdg87446f8ca45c" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="a0d9aa9c-111b-124d-e2f2-d1c323f6bece" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_93" />
+        <field name="UUID" type="IdTableFieldDefinition" value="7d1af3e8-4e5b-4d7a-8063-12f9becec6ce" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_11_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h599d3a46gc204g0347g499dg1e208de2ae8c" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="1cacdbb7-9fa5-37dc-1365-b615435a3f0c" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_94" />
+        <field name="UUID" type="IdTableFieldDefinition" value="8296e100-d4b1-4c4f-ae96-f6648416bc5d" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_12_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4fed545cgcbf3g3948ge7e8ga36321f4e88d" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="9a3262f2-9aa1-4820-b393-1263e4fc3a41" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_95" />
+        <field name="UUID" type="IdTableFieldDefinition" value="8ee3ed69-eaee-4b86-b990-e8708e752711" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_13_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc8c7dbadg6fd8g492egd7ffgab68bc274d87" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="47c7fb57-c49b-f8e7-954d-52c2eb2dc359" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_96" />
+        <field name="UUID" type="IdTableFieldDefinition" value="9d1ecaa2-51de-4a41-a086-66c8e15d7742" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_14_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h64cf558egb9d4g8a61g3d19g6eb4090bbac8" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="20b805a1-684b-8d92-33b6-f56338285128" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_97" />
+        <field name="UUID" type="IdTableFieldDefinition" value="468d71a5-c9ba-4267-b08e-92c647566a11" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_15_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc77e8e52g76a7g3d1cg75bbga1e78b64c9dc" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="d3cf766b-580c-d03b-d850-c7290775b449" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_98" />
+        <field name="UUID" type="IdTableFieldDefinition" value="1225b1de-71b5-4a6d-a443-e7a527d7a0cf" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_16_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcf305980ge98agb647gc559g4a817e2d3b50" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="dbf21dc5-83de-3497-ea84-325094b5c767" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_99" />
+        <field name="UUID" type="IdTableFieldDefinition" value="abfa0ced-695b-417e-ab14-33989af0b4f9" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_17_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5031a962g2da6g1842g7156gad9543d02b90" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="40ee3ded-2297-1cf5-da4e-271a7f46a54a" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_77" />
+        <field name="UUID" type="IdTableFieldDefinition" value="9e4ae88c-789c-4171-a91b-63ec2e476513" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_18_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h913a5fd6gf92agd82dgfd3fg48926e3eae97" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="1ef08134-e131-ba93-d59b-6f6c79aa1861" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_100" />
+        <field name="UUID" type="IdTableFieldDefinition" value="53d49795-0471-4088-954d-ea3b682c4321" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_19_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h5c1a4ac6gf448ge23egc94dgde4175ff3fcd" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="585f9d6c-73b4-da79-e2e3-5722775c002f" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_78" />
+        <field name="UUID" type="IdTableFieldDefinition" value="22483663-81bb-4f63-8904-c0447c205582" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_20_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="ha0e2dea8g77dcgd9edgc343ga417db2c23d4" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="0412c7ef-7b3d-9cfe-3f71-294ec17af640" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_79" />
+        <field name="UUID" type="IdTableFieldDefinition" value="7d72cb92-be33-4f51-94df-d35a7d7c163d" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_21_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcdc37ec2gaa24gd47bgf616gabe919ed4e60" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="c674740e-1a24-d717-e154-17b06f1776e0" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_80" />
+        <field name="UUID" type="IdTableFieldDefinition" value="db04b96c-9eed-4778-ba8f-17b4da9e132d" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_22_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h974f3eeag298dge23bgd5b8g6125e0b3ab06" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="cf084730-b748-d8ff-a21b-35201f7f2f54" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_81" />
+        <field name="UUID" type="IdTableFieldDefinition" value="4868fcd0-abaf-4d0a-bab4-426885aba954" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_23_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hfd4457cag27ebgaa1ag421bg199a188cb5b4" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="fa53a106-db00-7322-366b-ce80382b98a2" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_82" />
+        <field name="UUID" type="IdTableFieldDefinition" value="56ce1a45-38f4-45dc-b3d6-dac6b15b6a84" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="CC_Scar_24_Standard" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hecf80ff6ga399gb79cgab18g3e9caefe927e" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Scar" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="ddb80220-0223-5380-a402-4eb3e2c047a3" />
+        <field name="MaleRootTemplate" type="GuidTableFieldDefinition" value="903b38b5-2703-40b4-9208-3ef388817543" />
+        <field name="MaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleCameraName" type="FixedStringTableFieldDefinition" value="Camera_01" />
+        <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>
