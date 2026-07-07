@@ -7,9 +7,7 @@ local USER_VAR_FLAGS = {
 	Persistent = true
 }
 
-for _, varName in ipairs({
-	"STAV_Look"
-}) do
+for _, varName in ipairs({"STAV_Look"}) do
 	Ext.Vars.RegisterUserVariable(varName, USER_VAR_FLAGS)
 end
 

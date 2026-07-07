@@ -119,5 +119,6 @@ end
 
 E.SessionLoaded  = Event(ExtEvent(Ext.Events.SessionLoaded))
 E.ResetCompleted = Event(ExtEvent(Ext.Events.ResetCompleted))
+E.StatsLoaded	  = Event(ExtEvent(Ext.Events.StatsLoaded))
 
 return E
