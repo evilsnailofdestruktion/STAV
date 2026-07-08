@@ -782,14 +782,14 @@
                     <attribute id="DisplayName" type="TranslatedString" handle="h91f8e419g35eag29a1gceaag4248a822fb33" version="1"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="a9217c1e-c4ef-c110-42d9-5046fa513bf6"/>
                     <attribute id="MaterialType" type="FixedString" value="Passive"/>
-                    <attribute id="Name" type="FixedString" value="ST_Vampirisim_On"/>
+                    <attribute id="Name" type="FixedString" value="ST_Vampirism_On"/>
                     <attribute id="UUID" type="guid" value="56ea96b0-d436-4efd-b200-dfdd93e83671"/>
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">
                     <attribute id="DisplayName" type="TranslatedString" handle="h3bc48dd1g3a66g78c9g40d2g912776536f38" version="1"/>
                     <attribute id="MaterialPresetUUID" type="guid" value="54c7f039-9a4d-9600-0be8-83121c3122aa"/>
                     <attribute id="MaterialType" type="FixedString" value="Passive"/>
-                    <attribute id="Name" type="FixedString" value="ST_Vampirisim_Off"/>
+                    <attribute id="Name" type="FixedString" value="ST_Vampirism_Off"/>
                     <attribute id="UUID" type="guid" value="cbb043fb-00a3-456f-b330-463e6c4d8972"/>
                 </node>
                 <node id="CharacterCreationAppearanceMaterial">

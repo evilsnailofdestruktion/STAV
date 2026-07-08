@@ -141,7 +141,7 @@
 						</node>
 						<node id="ScalarParameters">
 							<attribute id="Enabled" type="bool" value="False" />
-							<attribute id="ParameterName" type="FixedString" value="Vampirisim" />
+							<attribute id="ParameterName" type="FixedString" value="Vampirism" />
 							<attribute id="GroupName" type="FixedString" value="STVamp" />
 							<attribute id="ExportAsPreset" type="bool" value="True" />
 							<attribute id="Value" type="float" value="0" />

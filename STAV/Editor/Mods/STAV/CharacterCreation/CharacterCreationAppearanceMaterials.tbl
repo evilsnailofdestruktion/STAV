@@ -1001,7 +1001,7 @@
       <fields>
         <field name="Name" type="NameTableFieldDefinition" value="New_Stat_75" />
         <field name="UUID" type="IdTableFieldDefinition" value="56ea96b0-d436-4efd-b200-dfdd93e83671" />
-        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Vampirisim_On" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Vampirism_On" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h91f8e419g35eag29a1gceaag4248a822fb33" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="a9217c1e-c4ef-c110-42d9-5046fa513bf6" />
@@ -1011,7 +1011,7 @@
       <fields>
         <field name="Name" type="NameTableFieldDefinition" value="New_Stat_74" />
         <field name="UUID" type="IdTableFieldDefinition" value="cbb043fb-00a3-456f-b330-463e6c4d8972" />
-        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Vampirisim_Off" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Vampirism_Off" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h3bc48dd1g3a66g78c9g40d2g912776536f38" version="1" />
         <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="54c7f039-9a4d-9600-0be8-83121c3122aa" />

@@ -24,7 +24,7 @@ M.Map = {
 	headGlow      = { name = "GlowTattooIndex",  kind = "scalar", map = function(v) return headIndex(v) end },
 	scar          = { name = "BodyScar",         kind = "scalar", map = function(v) return v and 1 or 0 end },
 	swirl         = { name = "Swirlies",         kind = "scalar", map = function(v) return v and 1 or 0 end },
-	vampirism     = { name = "Vampirisim",       kind = "scalar", map = function(v) return v and 1 or 0 end },
+	vampirism     = { name = "Vampirism",       kind = "scalar", map = function(v) return v and 1 or 0 end },
 	glowIntensity = { name = "GlowIntensity",    kind = "scalar" },
 	glowColor     = { name = "TatGlowColor",     kind = "vec3"   },
 	altColor      = { name = "BodyTattooColor",  kind = "vec3"   },
