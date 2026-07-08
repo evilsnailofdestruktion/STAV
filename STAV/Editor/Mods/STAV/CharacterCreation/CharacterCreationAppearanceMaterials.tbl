@@ -1241,5 +1241,165 @@
         <field name="FemaleRootTemplate" type="GuidTableFieldDefinition" value="7957d6fb-e8e1-4017-af63-56d4854fd84f" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_84" />
+        <field name="UUID" type="IdTableFieldDefinition" value="aee9078e-171a-433c-8396-2f4275aff346" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_09" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6bc68489g15afg40afg28f3gb09005f7151e" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="af535070-75a6-0429-f1b6-dbc1c76f7c4b" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_85" />
+        <field name="UUID" type="IdTableFieldDefinition" value="cc148c66-7906-4c6f-993f-a90e89f5fa2f" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_10" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hd0276d2bg152bgb1ffg5047ge042033731ec" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="138a9f78-83c2-531a-446d-cb7fd1f5fb82" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_86" />
+        <field name="UUID" type="IdTableFieldDefinition" value="240f41df-d95c-4bb6-9106-f8121c11787d" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_11" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h738dd946gcc9fgdd44g7a48g0813395efab9" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="10a451cd-0340-f659-0355-ff1ff2a9f8b6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_87" />
+        <field name="UUID" type="IdTableFieldDefinition" value="98c23a1e-6a8e-4a36-ac58-39d9504c4837" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_12" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h4ef3a5ceg31acg448dg2729g0f09dfba6c5d" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="85178d2f-5c2f-da23-4116-592049ff2e17" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_88" />
+        <field name="UUID" type="IdTableFieldDefinition" value="0b272392-25c2-43e0-8f51-3bf1d21bd07b" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_13" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0c143b69g62b3g4d40g21f4gf3527c6c051c" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="65903fec-5ff6-5f92-7610-2064de9b2208" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_89" />
+        <field name="UUID" type="IdTableFieldDefinition" value="1e6654e0-a1aa-4799-be7f-37b4c1e57ad9" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_14" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h82185478ga7f8gaf19g6932g2dc31d651162" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="5dcf52af-f514-7134-9d45-c9696f23875c" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_90" />
+        <field name="UUID" type="IdTableFieldDefinition" value="2a079995-68fb-4fad-b752-e624b117e8a9" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_15" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6ea82f9dgcf7bg217bgb3dfg07671a33346c" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="54244a40-9aa8-9515-86d9-89179e821870" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_91" />
+        <field name="UUID" type="IdTableFieldDefinition" value="b330ef33-6615-45c2-b32c-c3023338c628" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_16" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h683ba05eg7ef3g1ad3ga8aag4adb0afa83e0" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="f27f9323-0555-82e4-3138-769f2b2b6b8b" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_83" />
+        <field name="UUID" type="IdTableFieldDefinition" value="a573ef20-9807-4731-9db1-3eb9ecde7fd6" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_17" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h54438351gc86dg8660g24bag35589fc2c116" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="1db6dac7-0963-245f-e1c4-594a4f68c60e" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_101" />
+        <field name="UUID" type="IdTableFieldDefinition" value="ab224214-5f43-4c43-bd01-a3414be8b482" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_18" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h0a173749g31fegc8c6g27f5gd9a2c1fdfd9c" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="b244ddd2-a86c-67d5-8a32-8fc03e7411d7" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_102" />
+        <field name="UUID" type="IdTableFieldDefinition" value="f414f91e-7ad5-4fef-905b-39c945ebadc1" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_19" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hcc556c3ag621cg2ac3g0f95g3ef2d19aa075" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="1abc9854-4af5-e969-479a-c16827e42784" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_103" />
+        <field name="UUID" type="IdTableFieldDefinition" value="dc8bb620-752f-4b9c-b1c0-3f664071b9d7" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_20" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h6aa22924gf3efg6f97ge78ag6b3cf97c3177" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="693ccc25-e9e3-90f0-9961-1c5849859ce9" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_104" />
+        <field name="UUID" type="IdTableFieldDefinition" value="cb67e389-429d-49b0-8413-43a937fb360c" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_21" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h06dfd214g9a3bg0c0bg23a2g8ea1d030c1e4" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="4bf6ab3a-b402-a196-d6f3-22ccf007e262" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_105" />
+        <field name="UUID" type="IdTableFieldDefinition" value="2525b01c-fcb4-4ae2-9c6f-111789963ec0" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_22" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf349b336g8d0fg4d61gbd2eg0e9c5c290cfb" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="fe66e378-fd29-d44d-e906-503096afee81" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_106" />
+        <field name="UUID" type="IdTableFieldDefinition" value="6e3aee33-1239-4d25-9912-e985e65494e3" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_23" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h823ca267g6023g6185g6cd7g7598e0acbc04" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="a6e202e4-e0ff-71ec-a251-01a77a1faba6" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_107" />
+        <field name="UUID" type="IdTableFieldDefinition" value="8f87881e-6d89-4ce6-b784-3fc7976fa72e" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_Tattoos_24" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hf1a10cd7gb5a4g4defg6563g5a139930d7ff" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="0bed6d08-aae1-0a2f-9448-4c44cf5add95" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>

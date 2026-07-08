@@ -968,6 +968,118 @@
                     <attribute id="Name" type="FixedString" value="CC_Scar_24_Standard"/>
                     <attribute id="UUID" type="guid" value="56ce1a45-38f4-45dc-b3d6-dac6b15b6a84"/>
                 </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h54438351gc86dg8660g24bag35589fc2c116" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="1db6dac7-0963-245f-e1c4-594a4f68c60e"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_17"/>
+                    <attribute id="UUID" type="guid" value="a573ef20-9807-4731-9db1-3eb9ecde7fd6"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h6bc68489g15afg40afg28f3gb09005f7151e" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="af535070-75a6-0429-f1b6-dbc1c76f7c4b"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_09"/>
+                    <attribute id="UUID" type="guid" value="aee9078e-171a-433c-8396-2f4275aff346"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hd0276d2bg152bgb1ffg5047ge042033731ec" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="138a9f78-83c2-531a-446d-cb7fd1f5fb82"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_10"/>
+                    <attribute id="UUID" type="guid" value="cc148c66-7906-4c6f-993f-a90e89f5fa2f"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h738dd946gcc9fgdd44g7a48g0813395efab9" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="10a451cd-0340-f659-0355-ff1ff2a9f8b6"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_11"/>
+                    <attribute id="UUID" type="guid" value="240f41df-d95c-4bb6-9106-f8121c11787d"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h4ef3a5ceg31acg448dg2729g0f09dfba6c5d" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="85178d2f-5c2f-da23-4116-592049ff2e17"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_12"/>
+                    <attribute id="UUID" type="guid" value="98c23a1e-6a8e-4a36-ac58-39d9504c4837"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h0c143b69g62b3g4d40g21f4gf3527c6c051c" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="65903fec-5ff6-5f92-7610-2064de9b2208"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_13"/>
+                    <attribute id="UUID" type="guid" value="0b272392-25c2-43e0-8f51-3bf1d21bd07b"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h82185478ga7f8gaf19g6932g2dc31d651162" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="5dcf52af-f514-7134-9d45-c9696f23875c"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_14"/>
+                    <attribute id="UUID" type="guid" value="1e6654e0-a1aa-4799-be7f-37b4c1e57ad9"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h6ea82f9dgcf7bg217bgb3dfg07671a33346c" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="54244a40-9aa8-9515-86d9-89179e821870"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_15"/>
+                    <attribute id="UUID" type="guid" value="2a079995-68fb-4fad-b752-e624b117e8a9"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h683ba05eg7ef3g1ad3ga8aag4adb0afa83e0" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="f27f9323-0555-82e4-3138-769f2b2b6b8b"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_16"/>
+                    <attribute id="UUID" type="guid" value="b330ef33-6615-45c2-b32c-c3023338c628"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h0a173749g31fegc8c6g27f5gd9a2c1fdfd9c" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="b244ddd2-a86c-67d5-8a32-8fc03e7411d7"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_18"/>
+                    <attribute id="UUID" type="guid" value="ab224214-5f43-4c43-bd01-a3414be8b482"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hcc556c3ag621cg2ac3g0f95g3ef2d19aa075" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="1abc9854-4af5-e969-479a-c16827e42784"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_19"/>
+                    <attribute id="UUID" type="guid" value="f414f91e-7ad5-4fef-905b-39c945ebadc1"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h6aa22924gf3efg6f97ge78ag6b3cf97c3177" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="693ccc25-e9e3-90f0-9961-1c5849859ce9"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_20"/>
+                    <attribute id="UUID" type="guid" value="dc8bb620-752f-4b9c-b1c0-3f664071b9d7"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h06dfd214g9a3bg0c0bg23a2g8ea1d030c1e4" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="4bf6ab3a-b402-a196-d6f3-22ccf007e262"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_21"/>
+                    <attribute id="UUID" type="guid" value="cb67e389-429d-49b0-8413-43a937fb360c"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hf349b336g8d0fg4d61gbd2eg0e9c5c290cfb" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="fe66e378-fd29-d44d-e906-503096afee81"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_22"/>
+                    <attribute id="UUID" type="guid" value="2525b01c-fcb4-4ae2-9c6f-111789963ec0"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="h823ca267g6023g6185g6cd7g7598e0acbc04" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="a6e202e4-e0ff-71ec-a251-01a77a1faba6"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_23"/>
+                    <attribute id="UUID" type="guid" value="6e3aee33-1239-4d25-9912-e985e65494e3"/>
+                </node>
+                <node id="CharacterCreationAppearanceMaterial">
+                    <attribute id="DisplayName" type="TranslatedString" handle="hf1a10cd7gb5a4g4defg6563g5a139930d7ff" version="1"/>
+                    <attribute id="MaterialPresetUUID" type="guid" value="0bed6d08-aae1-0a2f-9448-4c44cf5add95"/>
+                    <attribute id="MaterialType" type="FixedString" value="Passive"/>
+                    <attribute id="Name" type="FixedString" value="ST_Tattoos_24"/>
+                    <attribute id="UUID" type="guid" value="8f87881e-6d89-4ce6-b784-3fc7976fa72e"/>
+                </node>
             </children>
         </node>
     </region>
