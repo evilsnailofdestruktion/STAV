@@ -8745,7 +8745,7 @@
                 </node>
                 <node id="TextureAtlasPath">
                     <attribute id="Path" type="string" value="Assets/Textures/Icons/Generated_2b9e05c8-d15a-3ac2-7237-6aa263f1dceb_CCIcons.dds"/>
-                    <attribute id="UUID" type="FixedString" value="40c3104a-123a-3782-9430-cae5ecfb17a4"/>
+                    <attribute id="UUID" type="FixedString" value="66bf3952-9f99-a625-9e5c-8ddfc34b82ad"/>
                 </node>
                 <node id="TextureAtlasTextureSize">
                     <attribute id="Height" type="int32" value="4096"/>
