@@ -1,7 +1,6 @@
 Ext.Require("Shared/Events.lua")
 Ext.Require("Shared/Utility.lua")
 Ext.Require("Shared/Printing.lua")
-Ext.Require("Visualising.lua")
 Ext.Require("Shared/Config.lua")
 Ext.Require("Shared/Vars.lua")
 Ext.Require("Shared/NetDefs.lua")
