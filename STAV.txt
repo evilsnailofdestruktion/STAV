@@ -293,20 +293,6 @@ ORIGIN_Wyll_159cdf9e-6665-4450-9375-8494e233b0e4 <bdeebe6f-4e34-ae70-5f25-ea0ead
 ORIGIN_Wyll_Devil_7ea87604-e604-4a6d-a7ac-b7b2f293c000 <faf5255f-4dfa-d8bb-7e7a-5e4b7e11497c>
 Wyll <f2b3631a-2641-49c9-6a10-45e4fbdcfa44>
 
-Hirelings:
-Hirelings_Stats_Player_Barbarian_DONOTUSE_aa621720-3722-43e2-98ca-4feb12c238fc_000_5a3eca21-f521-1b01-2662-02a8910e5e7f
-Hirelings_Stats_Player_Bard_DONOTUSE_85b629ca-bcb9-4729-8400-615dc97e7a76_000_26247b5b-5316-7e87-f129-ea50c0940ddf
-Hirelings_Stats_Player_Cleric_DONOTUSE_4b0a059b-4bae-4884-8bdf-a683c5f2cbea_000_c6409356-f8ca-23eb-e805-9889ada8d5d6
-Hirelings_Stats_Player_Druid_DONOTUSE_af688084-ad49-4e23-ba17-d2b34920beb3_000_e0862cb9-4195-91bd-7f55-235f00711ee6
-Hirelings_Stats_Player_Fighter_DONOTUSE_d9401d40-453b-4512-84ee-d1c6ab29afea_000_8352cbc1-4eb6-93d4-d6df-7e5be56976a2
-Hirelings_Stats_Player_Monk_DONOTUSE_481bdfb0-104b-4f30-9ec0-dbc09d8bc502_000_3f0d6e9e-aa88-2bb0-fe17-b7701be9cfd2
-Hirelings_Stats_Player_Paladin_DONOTUSE_cf5ca185-f2f3-46ad-b7fc-f0ddc34d81ec_000_0b8e4fef-e985-e19e-0958-a66183572cc6
-Hirelings_Stats_Player_Ranger_DONOTUSE_15e83382-c44d-447d-874e-5426e8ed7694_000_b5b4319e-a9ab-0fb3-880d-957ba0142053
-Hirelings_Stats_Player_Rogue_DONOTUSE_6df14611-1da5-4f2a-9300-ff74778d49b4_000_0d36546b-7187-fa6d-c59e-349320e2a744
-Hirelings_Stats_Player_Sorcerer_1215e534-4fe5-4ea1-a449-8f2307e1939c_000_30d28ea0-433a-9ab0-3da2-f474c152b124
-Hirelings_Stats_Player_Warlock_DONOTUSE_8864a654-b9fa-4513-8a77-7fc50e2b3647_000_18dc397d-4090-b546-fd00-22d4d169a3e6
-Hirelings_Stats_Player_Wizard_DONOTUSE_3d24f5eb-7220-4e00-bc02-3e6ac819ac26_000_d346112a-c694-14c2-2fc8-4cf007b0a127
-
 Player:
 Elves_Female_Drow_Lolth_Player_e285d7b5-6b09-4857-89aa-a91e9e6898e5_000_187188d8-929a-d800-d5c3-33453a8cc25a
 Elves_Female_Drow_Seldarine_Player_7a727073-1f49-4396-b899-b71d9d706cd5_000_27b58c9a-5efa-e736-d81e-98d124a6bb8a
@@ -380,6 +366,32 @@ Tieflings_Male_Asmodeus_Player_Strong_e2a05c9a-7366-4833-86e8-80764e111b71_000_3
 Tieflings_Male_Mephistopheles_Player_Strong_76b33e27-4a95-4e0d-8113-81b5c61fc2e1_000_ee113dde-55da-ce62-5d4e-a98ccf9606cd
 Tieflings_Male_Zariel_Player_Strong_3232f9b3-2ad5-442c-9861-92624b258e5b_000_ea87e65b-5d45-26c0-c5bf-54a974913b91
 
+Hirelings_Stats_Player_Barbarian_DONOTUSE_aa621720-3722-43e2-98ca-4feb12c238fc <5a3eca21-f521-1b01-2662-02a8910e5e7f>
+Hirelings_Stats_Player_Barbarian_PortraitVisual <dcd500e5-8ea6-ff2c-2532-5b258caba792>
+Hirelings_Stats_Player_Bard_DONOTUSE_85b629ca-bcb9-4729-8400-615dc97e7a76 <26247b5b-5316-7e87-f129-ea50c0940ddf>
+Hirelings_Stats_Player_Bard_PortraitVisual <a2ca5933-70ad-124e-9111-526fd6f8a327>
+Hirelings_Stats_Player_Cleric_DONOTUSE_4b0a059b-4bae-4884-8bdf-a683c5f2cbea <c6409356-f8ca-23eb-e805-9889ada8d5d6>
+Hirelings_Stats_Player_Cleric_PortraitVisual <d1366b40-24e6-c883-7d81-84d674aefd98>
+Hirelings_Stats_Player_Druid_DONOTUSE_af688084-ad49-4e23-ba17-d2b34920beb3 <e0862cb9-4195-91bd-7f55-235f00711ee6>
+Hirelings_Stats_Player_Druid_PortraitVisual <757550b1-bd01-a4f2-ae35-7ba871946a3d>
+Hirelings_Stats_Player_Fighter_DONOTUSE_d9401d40-453b-4512-84ee-d1c6ab29afea <8352cbc1-4eb6-93d4-d6df-7e5be56976a2>
+Hirelings_Stats_Player_Fighter_PortraitVisual <3701f575-b3bb-c5f2-e6f8-6e711d0ed169>
+Hirelings_Stats_Player_Monk_DONOTUSE_481bdfb0-104b-4f30-9ec0-dbc09d8bc502 <3f0d6e9e-aa88-2bb0-fe17-b7701be9cfd2>
+Hirelings_Stats_Player_Monk_PortraitVisual <28d368c5-5699-99f1-e514-7b2e72f69947>
+Hirelings_Stats_Player_Paladin_DONOTUSE_cf5ca185-f2f3-46ad-b7fc-f0ddc34d81ec <0b8e4fef-e985-e19e-0958-a66183572cc6>
+Hirelings_Stats_Player_Paladin_PortraitVisual <f7c6473e-142e-cff8-0920-9a68a655b5dd>
+Hirelings_Stats_Player_Ranger_DONOTUSE_15e83382-c44d-447d-874e-5426e8ed7694 <b5b4319e-a9ab-0fb3-880d-957ba0142053>
+Hirelings_Stats_Player_Ranger_PortraitVisual <e18ee197-0283-52ae-4151-7a568cc3f611>
+Hirelings_Stats_Player_Rogue_DONOTUSE_6df14611-1da5-4f2a-9300-ff74778d49b4 <0d36546b-7187-fa6d-c59e-349320e2a744>
+Hirelings_Stats_Player_Rogue_PortraitVisual <ec8710ad-85e3-07a3-88e8-ded5961ed920>
+Hirelings_Stats_Player_Sorcerer_1215e534-4fe5-4ea1-a449-8f2307e1939c <30d28ea0-433a-9ab0-3da2-f474c152b124>
+Hirelings_Stats_Player_Sorcerer_DONOTUSE_1215e534-4fe5-4ea1-a449-8f2307e1939c <946357a9-33da-ff09-f300-50274b55f7fa>
+Hirelings_Stats_Player_Sorcerer_PortraitVisual <994f09fe-5f95-b18d-64ee-fee0dd5f1234>
+Hirelings_Stats_Player_Warlock_DONOTUSE_8864a654-b9fa-4513-8a77-7fc50e2b3647 <18dc397d-4090-b546-fd00-22d4d169a3e6>
+Hirelings_Stats_Player_Warlock_PortraitVisual <a06d3127-c163-46f9-be2c-e16e8c1e0b39>
+Hirelings_Stats_Player_Wizard_DONOTUSE_3d24f5eb-7220-4e00-bc02-3e6ac819ac26 <d346112a-c694-14c2-2fc8-4cf007b0a127>
+Hirelings_Stats_Player_Wizard_PortraitVisual <7eb8f8c3-4539-177b-0bd6-6e5f1e6b908e>
+
 Player Portraits:
 Elves_Female_Drow_Seldarine_Player_PortraitVisual <2cc252c2-4eef-ce10-245b-de39bb45b39d>
 Elves_Male_Drow_Seldarine_Player_PortraitVisual <477d8a7b-4025-eb61-b8ff-91c848a4c82e>
@@ -426,19 +438,6 @@ S_GOB_DrowCommander_PortraitVisual <63dcb01e-630a-b575-ef5c-10ff738b7d51>
 ORIGIN_Shadowheart_PortraitVisual <a4cb151d-de86-1cd2-3cbe-327fc71eec82>
 ORIGIN_Wyll_PortraitVisual <252f4a0d-d502-0985-52f2-973c38377faa>
 ORIGIN_Wyll_Devil_PortraitVisual <38721e3d-c3b5-a0eb-3048-128846b3cc0e>
-
-Hirelings_Stats_Player_Barbarian_PortraitVisual <dcd500e5-8ea6-ff2c-2532-5b258caba792>
-Hirelings_Stats_Player_Bard_PortraitVisual <a2ca5933-70ad-124e-9111-526fd6f8a327>
-Hirelings_Stats_Player_Cleric_PortraitVisual <d1366b40-24e6-c883-7d81-84d674aefd98>
-Hirelings_Stats_Player_Druid_PortraitVisual <757550b1-bd01-a4f2-ae35-7ba871946a3d>
-Hirelings_Stats_Player_Fighter_PortraitVisual <3701f575-b3bb-c5f2-e6f8-6e711d0ed169>
-Hirelings_Stats_Player_Monk_PortraitVisual <28d368c5-5699-99f1-e514-7b2e72f69947>
-Hirelings_Stats_Player_Paladin_PortraitVisual <f7c6473e-142e-cff8-0920-9a68a655b5dd>
-Hirelings_Stats_Player_Ranger_PortraitVisual <e18ee197-0283-52ae-4151-7a568cc3f611>
-Hirelings_Stats_Player_Rogue_PortraitVisual <ec8710ad-85e3-07a3-88e8-ded5961ed920>
-Hirelings_Stats_Player_Sorcerer_PortraitVisual <994f09fe-5f95-b18d-64ee-fee0dd5f1234>
-Hirelings_Stats_Player_Warlock_PortraitVisual <a06d3127-c163-46f9-be2c-e16e8c1e0b39>
-Hirelings_Stats_Player_Wizard_PortraitVisual <7eb8f8c3-4539-177b-0bd6-6e5f1e6b908e>
 
 Presets: 
 ST_Swirlies_Off_2d051aaf-eea8-54bc-5f66-900b8c56ea25
