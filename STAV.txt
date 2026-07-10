@@ -210,51 +210,88 @@ ST_Shadowheart_BodyScarNM_b6987be1-aae4-1bea-d9fe-63291810053b
 ST_Wyll_BodyScar_c641d02d-e466-ac9b-3e7e-bf534d485417
 ST_Wyll_BodyScarNM_d9662fd1-f7f6-c482-b473-e1b60ecbd9b9
 
-Origin Char Vis:
-~~CINE_ORIGIN_Shadowheart_068fb2d0-6e33-4388-9325-413024d0d654_a48523ae-0f47-ec7d-e3a0-2e7ce657a9f2~~
-CINE_ORIGIN_Wyll_Infernal_Robe_b26d7a6d-1c26-4410-af2e-3f935eb82963_dec1a8bc-f710-001d-9d0f-51e87aafde6c
-ORIGIN_Astarion_5614c25e-0213-479f-864c-e95895adb30f_be9fbfe1-cf9c-7864-55d3-bbd6d329150b
-ORIGIN_Astarion_Hidden_Race_300b2a01-5a5b-48e8-a344-5aeaefbc7b1f_4c344a90-588a-59a9-5495-3fc33893b3b0
-ORIGIN_Astarion_PortraitVisual_14c23242-b819-0d30-f5ba-5e6c9b4b6088
-ORIGIN_Gale_7d427a86-81f0-418d-a32a-3b5676c86bfa_62d788a1-f777-4608-8ee1-55325ccf3360
-ORIGIN_Gale_EPI_NoTattoo_97c36197-f09d-4faa-889d-5a37bdb905df_9be0bb8c-8ee2-4edb-86e9-1bf024acba67
-~~ORIGIN_Gale_God_458fa72d-10e7-46bd-896b-0bb60e71bb29_955ce3b5-45d6-12e6-55ad-a880f901fa78~~
-ORIGIN_INTRO_Astarion_ec0f5943-403f-415f-a80d-3e9740a6c907_b2da9993-29a6-dc63-23dd-8b319047230c
-??ORIGIN_INTRO_DarkUrge_d677bc47-7173-4541-833a-c7e9801d467e_38b4a89a-05f2-018c-22d1-71c6d7a79e96??
-ORIGIN_INTRO_Gale_ecdd3d86-a932-4384-bd38-20a8bc5cb44c_d486eb45-1949-3226-c6cc-1c3df31a0449
-ORIGIN_INTRO_Karlach_9d668ec3-f2a2-4b28-a63c-b19b2fff6350_7abb8ab4-2f85-8785-2762-ff11afc6f372
-ORIGIN_INTRO_Laezel_0a4d2393-866c-4f71-b353-9ff641235f45_31227da2-963d-c611-11ad-52cf15e14580
-ORIGIN_INTRO_Shadowheart_5e6916c7-d085-439e-8cdb-64c935685e98_5b3f87f9-2a3e-00ca-d173-0b608f870995
-ORIGIN_INTRO_Wyll_cb240a30-c46d-4254-bc59-68954f2aac3a_5261cf40-599a-4db7-ce6c-8cf71173c4fb
-ORIGIN_Karlach_3ab0a797-0904-47cb-955d-cdc3ec32409c_39d59978-8a65-a8ec-6e8b-0d391f4035e3
-ORIGIN_Laezel_3a0351bd-0b2f-4fbf-84a6-30ad80bb3100_1088f4ee-579b-b49e-72cc-7ecc5fc5be79
-ORIGIN_Laezel_PortraitVisual_685e521d-a4a8-0199-1064-05840a43d28e
-ORIGIN_Minsc_9d5f838a-8595-490c-85d5-8a2a69414356_9404e0a4-fafd-47ec-ad6d-52d63cb116ff
-ORIGIN_Shadowheart_2ac51f22-e357-4639-b81d-022d462c8c6a_9ab62da4-a028-c237-b5b9-ca897f62b771
-ORIGIN_Shadowheart_PortraitVisual_a4cb151d-de86-1cd2-3cbe-327fc71eec82
-ORIGIN_Shadowheart_Wrath_21a2b2f6-5bf9-4d7d-bff5-a5c0dbc115de_f9dad0cb-4b58-c911-7eea-7d4c9871b04e
-ORIGIN_Wyll_159cdf9e-6665-4450-9375-8494e233b0e4_bdeebe6f-4e34-ae70-5f25-ea0eadb77a34
-ORIGIN_Wyll_Devil_7ea87604-e604-4a6d-a7ac-b7b2f293c000_faf5255f-4dfa-d8bb-7e7a-5e4b7e11497c
-ORIGIN_Wyll_Devil_PortraitVisual_38721e3d-c3b5-a0eb-3048-128846b3cc0e
-ORIGIN_Wyll_PortraitVisual_252f4a0d-d502-0985-52f2-973c38377faa
->>S_Player_GenericOrigin_24247531-c432-4f0f-8f35-6c90c4844aa8_01c764c0-b9ca-9c13-39d6-d6705ecaae22<<
-TEMP_ORIGIN_Gale_Naked_83f57c27-1540-4815-b894-ed809883f266_871320c7-8b7a-8f2c-467a-1d727a025e76
+Companion Char Vis:
+ORIGIN_Astarion_PortraitVisual <14c23242-b819-0d30-f5ba-5e6c9b4b6088>
+Astarion_Dressed <6788a271-9ad5-074f-8a5f-12b7dcb29174>
+Astarion_Partial_Dressed <572763d2-d40a-1def-510b-f878b9cd8da8>
+Astarion_Undressed <a66864fa-0820-7ed4-d26a-8dc0d397a5e5>
+KeyArt_Astarion_002_20661bb9-074b-45be-b589-120c92a979a3 <9ea09cc5-7842-d0d6-8961-93de27f16888>
+KeyArt_Astarion_0f99b3e8-2798-4b96-a254-de73a397212d <1bf04545-26b5-95b9-92b6-18495961ba32>
+KEYART_ELF_M_Astarion <28de6f26-806e-f02b-1e2b-8eb791406a89>
+ORIGIN_Astarion_5614c25e-0213-479f-864c-e95895adb30f <be9fbfe1-cf9c-7864-55d3-bbd6d329150b>
+ORIGIN_Astarion_Hidden_Race_300b2a01-5a5b-48e8-a344-5aeaefbc7b1f <4c344a90-588a-59a9-5495-3fc33893b3b0>
+ORIGIN_INTRO_Astarion_ec0f5943-403f-415f-a80d-3e9740a6c907 <b2da9993-29a6-dc63-23dd-8b319047230c>
+S_LOW_CazadorsPalace_RitualRoom_Astarion_Ritual_a042de0c-f526-40a1-9299-19223d0922b8 <255e4a19-65dc-27d5-bf7c-885ca92d6ea6>
+S_LOW_CazadorsPalace_RitualRoom_Astarion_Ritual <8b717bd5-cdc9-66b4-9ae0-908f9b9173a2>
+S_Player_Astarion_c7c13742-bacd-460a-8f65-f864fe41f255 <f0c1cd99-8f94-e5ba-86b3-bfc048af906e>
+TEMP_Astarion_Dressed_f1fe95f7-223c-43db-8ad5-84a617804dfd <96824355-8954-2b76-5a1d-9503b93f796b>
+TEMP_Astarion_Shirtless_d7254077-2adc-4729-99e1-c3b9cc6e96e4 <7407f64a-af3f-1f9d-ae7d-8704227c5c27>
 
-Player As Origin:
-S_Player_Astarion_c7c13742-bacd-460a-8f65-f864fe41f255_f0c1cd99-8f94-e5ba-86b3-bfc048af906e
-??S_Player_DarkUrge_c66bc36f-7cb0-41fa-92f0-6d81d7d17ba3_7eecb199-6397-e553-7d36-d55c5ca363c9<<
-??S_Player_DarkUrge_PortraitVisual_5027e5b0-874b-0f9e-0c03-75e31f6384c5<<
-S_Player_Gale_ad9af97d-75da-406a-ae13-7071c563f604_9f2b34c6-7914-efec-0f17-24a8a3abc758
-S_Player_Gale_PortraitVisual_04262cdf-e58d-606d-af9f-a29d72643644
-S_Player_GenericOrigin_24247531-c432-4f0f-8f35-6c90c4844aa8_01c764c0-b9ca-9c13-39d6-d6705ecaae22
-S_Player_Jaheira_91b6b200-7d00-4d62-8dc9-99e8339dfa1a_966e8a68-24a0-fd94-8323-74f7b091df7c
-S_Player_Jaheira_PortraitVisual_b90c6552-4529-e6ef-1084-34c56eca1521
-S_Player_Karlach_2c76687d-93a2-477b-8b18-8a14b549304c_ce24301b-f705-ab7d-4354-d51ab93c5ae3
-S_Player_Karlach_PortraitVisual_2dd12288-c71c-7db2-925c-2f884c1727bc
-S_Player_Minsc_0de603c5-42e2-4811-9dad-f652de080eba_b933b9ae-e37a-95ff-0801-1dd31069ecfc
-S_Player_Minsc_PortraitVisual_6acff363-4407-0b10-0a7c-c1e27fe03c58
-S_Player_ShadowHeart_3ed74f06-3c60-42dc-83f6-f034cb47c679_508d18b3-3988-4f5e-58ef-b668ae53e704
-S_Player_ShadowHeart_3ed74f06-3c60-42dc-83f6-f034cb47c679_0f6f29d0-e0c7-1a9f-e658-4a3f48f62d63
+Gale <1a4faa8c-7fca-1f62-e499-87d362d90512>
+Keyart_Gale_22a21b15-45c6-4a29-9c58-33909df22f18 <31548f9b-a200-9624-0817-61a71a50931a>
+Mindflayer_Form_Player_Gale_God_ee59c821-1372-4530-a4a6-1a22962c9fc5 <16f11ba6-0417-6e20-1ecb-fb43c8f14fc7>
+ORIGIN_Gale_7d427a86-81f0-418d-a32a-3b5676c86bfa <62d788a1-f777-4608-8ee1-55325ccf3360>
+ORIGIN_Gale_EPI_NoTattoo_97c36197-f09d-4faa-889d-5a37bdb905df <9be0bb8c-8ee2-4edb-86e9-1bf024acba67>
+ORIGIN_Gale_God_458fa72d-10e7-46bd-896b-0bb60e71bb29 <955ce3b5-45d6-12e6-55ad-a880f901fa78>
+ORIGIN_INTRO_Gale_ecdd3d86-a932-4384-bd38-20a8bc5cb44c <d486eb45-1949-3226-c6cc-1c3df31a0449>
+S_GLO_Gale_Tressym_ada7ee81-829d-48c7-ba73-9c9ec191d236 <143495e5-b2fa-7e67-2e80-cb395f1e15d7>
+S_ORI_Gale_LastNightAlive_AvatarDouble_1cedd0c1-6bfe-4f32-a1e7-78b0acf209a9 <a2a33089-9378-7555-1cbb-c05ec5e17f0c>
+S_Player_Gale_ad9af97d-75da-406a-ae13-7071c563f604 <9f2b34c6-7914-efec-0f17-24a8a3abc758>
+S_Player_Gale_PortraitVisual <04262cdf-e58d-606d-af9f-a29d72643644>
+TEMP_ORIGIN_Gale_Naked_83f57c27-1540-4815-b894-ed809883f266 <871320c7-8b7a-8f2c-467a-1d727a025e76>
+
+Companion_Halsin_1a3d9848-f86e-4f4c-bba5-125ab605c69e <a9af1b0f-f66a-b844-c22a-33151e1ed4fc>
+Companion_Halsin_Shirtless_104a4a59-a923-4673-957a-4b48691f6bb8 <881301f4-4ccb-29ae-4336-3abf9cfba9f0>
+S_GLO_Halsin_7628bc0e-52b8-42a7-856a-13a6fd413323 <b7830265-b4d4-3419-bd41-1fe1099ccf16>
+
+LOW_CountingHouse_JaheiraClone_5fddca8b-b23d-425c-ae40-37c70b7ed2df <f09fbd8b-ee7d-4142-5a69-2be414c8852c>
+S_Player_Jaheira_91b6b200-7d00-4d62-8dc9-99e8339dfa1a <966e8a68-24a0-fd94-8323-74f7b091df7c>
+S_Player_Jaheira_PortraitVisual <b90c6552-4529-e6ef-1084-34c56eca1521>
+
+ORIGIN_INTRO_Karlach_9d668ec3-f2a2-4b28-a63c-b19b2fff6350 <7abb8ab4-2f85-8785-2762-ff11afc6f372>
+ORIGIN_Karlach_3ab0a797-0904-47cb-955d-cdc3ec32409c <39d59978-8a65-a8ec-6e8b-0d391f4035e3>
+S_Player_Karlach_2c76687d-93a2-477b-8b18-8a14b549304c <ce24301b-f705-ab7d-4354-d51ab93c5ae3>
+S_Player_Karlach_PortraitVisual <2dd12288-c71c-7db2-925c-2f884c1727bc>
+UNI_PLA_Karlach_Headless_3c3bedb4-917a-4663-9a8a-d18611aaac95 <5757770a-12aa-a3f6-35dd-39beeaf5489d>
+
+KEYART_GTY_F_Laezel <3a42ea31-54d2-6d3e-cf39-79b064972f5f>
+Laezel <b707448b-a558-c3fc-55a2-87fd5c87407e>
+ORIGIN_INTRO_Laezel_0a4d2393-866c-4f71-b353-9ff641235f45 <31227da2-963d-c611-11ad-52cf15e14580>
+ORIGIN_Laezel_3a0351bd-0b2f-4fbf-84a6-30ad80bb3100 <1088f4ee-579b-b49e-72cc-7ecc5fc5be79>
+ORIGIN_Laezel_PortraitVisual <685e521d-a4a8-0199-1064-05840a43d28e>
+
+ORIGIN_Minsc_9d5f838a-8595-490c-85d5-8a2a69414356 <9404e0a4-fafd-47ec-ad6d-52d63cb116ff>
+S_Player_Minsc_0de603c5-42e2-4811-9dad-f652de080eba <b933b9ae-e37a-95ff-0801-1dd31069ecfc>
+S_Player_Minsc_PortraitVisual <6acff363-4407-0b10-0a7c-c1e27fe03c58>
+
+S_GOB_DrowCommander_25721313-0c15-4935-8176-9f134385451b <383236f9-c7ab-7163-4638-d2e2702ec513>
+S_GOB_DrowCommander_PortraitVisual <63dcb01e-630a-b575-ef5c-10ff738b7d51>
+CINE_Elves_Female_Drow_Minthara_ea2388ae-f585-40c7-82b1-712f444732de <6248f8a8-839e-956f-6986-e10a55406c81>
+Elves_Female_Drow_Minthara_9d85d0f6-5231-4738-a674-bf28ff19e515 <d1bc342f-c995-bad7-4622-4e3f09f3e5ed>
+Elves_Female_Drow_Minthara_Vanity_632a4fe8-bfd9-4c9e-a671-50530c8c9b45 <ee1200f2-51a4-7b28-f046-1d29de15a651>
+Minthara <a261b2a4-a3ba-9baf-0ec1-f6557e2ce22a>
+TEMP_Minthara_Hoodless_2f1d1763-9f7d-45f6-a102-5bd388fb7e86 <39350e36-2c69-bc20-c2b8-981dfa5b263b>
+TEMP_Minthara_Naked_3333491e-dc88-4b61-8539-fed9f3af5ca1 <5a78cb10-4528-5b3c-4029-1dff2d302dbc>
+
+ORIGIN_Shadowheart_PortraitVisual <a4cb151d-de86-1cd2-3cbe-327fc71eec82>
+CINE_ORIGIN_Shadowheart_068fb2d0-6e33-4388-9325-413024d0d654 <a48523ae-0f47-ec7d-e3a0-2e7ce657a9f2>
+CINE_Placeholder_Shadowheart_DJArmour_83397916-046e-4384-a8b5-b3b8f08bfdc7 <da027039-ae35-8012-c351-44a7e7c890a5>
+KeyArt_Shadowheart_2593cba3-c8c2-4a8c-9436-e3d10b4a5222 <fa6a72dc-9ba4-eb5f-f442-40c4ab5d2418>
+ORIGIN_INTRO_Shadowheart_5e6916c7-d085-439e-8cdb-64c935685e98 <5b3f87f9-2a3e-00ca-d173-0b608f870995>
+ORIGIN_Shadowheart_2ac51f22-e357-4639-b81d-022d462c8c6a <9ab62da4-a028-c237-b5b9-ca897f62b771>
+ORIGIN_Shadowheart_Wrath_21a2b2f6-5bf9-4d7d-bff5-a5c0dbc115de <f9dad0cb-4b58-c911-7eea-7d4c9871b04e>
+S_Player_ShadowHeart_3ed74f06-3c60-42dc-83f6-f034cb47c679 <0f6f29d0-e0c7-1a9f-e658-4a3f48f62d63>
+S_Player_ShadowHeart_3ed74f06-3c60-42dc-83f6-f034cb47c679 <508d18b3-3988-4f5e-58ef-b668ae53e704>
+
+ORIGIN_Wyll_PortraitVisual <252f4a0d-d502-0985-52f2-973c38377faa>
+ORIGIN_Wyll_Devil_PortraitVisual <38721e3d-c3b5-a0eb-3048-128846b3cc0e>
+CINE_ORIGIN_Wyll_Infernal_Robe_b26d7a6d-1c26-4410-af2e-3f935eb82963 <dec1a8bc-f710-001d-9d0f-51e87aafde6c>
+KEYART_HUM_M_Wyll <e85e0c93-1dc9-c156-bd0e-45f5290b0f0f>
+KeyArt_Wyll_b8cd142d-1ac9-4e90-9fd1-c4c171111677 <ccd88084-87ef-fd3c-5720-ee8066d4f465>
+ORIGIN_INTRO_Wyll_cb240a30-c46d-4254-bc59-68954f2aac3a <5261cf40-599a-4db7-ce6c-8cf71173c4fb>
+ORIGIN_Wyll_159cdf9e-6665-4450-9375-8494e233b0e4 <bdeebe6f-4e34-ae70-5f25-ea0eadb77a34>
+ORIGIN_Wyll_Devil_7ea87604-e604-4a6d-a7ac-b7b2f293c000 <faf5255f-4dfa-d8bb-7e7a-5e4b7e11497c>
+Wyll <f2b3631a-2641-49c9-6a10-45e4fbdcfa44>
 
 Hirelings:
 Hirelings_Stats_Player_Barbarian_DONOTUSE_aa621720-3722-43e2-98ca-4feb12c238fc_000_5a3eca21-f521-1b01-2662-02a8910e5e7f
@@ -380,16 +417,15 @@ Tieflings_Male_Asmodeus_Player_Strong_PortraitVisual <a9afff3b-121d-085e-12af-9e
 S_Player_DarkUrge_PortraitVisual <5027e5b0-874b-0f9e-0c03-75e31f6384c5>
 
 ORIGIN_Astarion_PortraitVisual <14c23242-b819-0d30-f5ba-5e6c9b4b6088>
-ORIGIN_Laezel_PortraitVisual <685e521d-a4a8-0199-1064-05840a43d28e>
-ORIGIN_Shadowheart_PortraitVisual <a4cb151d-de86-1cd2-3cbe-327fc71eec82>
-ORIGIN_Wyll_Devil_PortraitVisual <38721e3d-c3b5-a0eb-3048-128846b3cc0e>
-ORIGIN_Wyll_PortraitVisual <252f4a0d-d502-0985-52f2-973c38377faa>
-S_GOB_DrowCommander_PortraitVisual <63dcb01e-630a-b575-ef5c-10ff738b7d51>
 S_Player_Gale_PortraitVisual <04262cdf-e58d-606d-af9f-a29d72643644>
 S_Player_Jaheira_PortraitVisual <b90c6552-4529-e6ef-1084-34c56eca1521>
 S_Player_Karlach_PortraitVisual <2dd12288-c71c-7db2-925c-2f884c1727bc>
+ORIGIN_Laezel_PortraitVisual <685e521d-a4a8-0199-1064-05840a43d28e>
 S_Player_Minsc_PortraitVisual <6acff363-4407-0b10-0a7c-c1e27fe03c58>
-
+S_GOB_DrowCommander_PortraitVisual <63dcb01e-630a-b575-ef5c-10ff738b7d51>
+ORIGIN_Shadowheart_PortraitVisual <a4cb151d-de86-1cd2-3cbe-327fc71eec82>
+ORIGIN_Wyll_PortraitVisual <252f4a0d-d502-0985-52f2-973c38377faa>
+ORIGIN_Wyll_Devil_PortraitVisual <38721e3d-c3b5-a0eb-3048-128846b3cc0e>
 
 Hirelings_Stats_Player_Barbarian_PortraitVisual <dcd500e5-8ea6-ff2c-2532-5b258caba792>
 Hirelings_Stats_Player_Bard_PortraitVisual <a2ca5933-70ad-124e-9111-526fd6f8a327>
