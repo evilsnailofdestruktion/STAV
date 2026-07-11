@@ -1,0 +1,1183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<save>
+	<version major="4" minor="8" revision="0" build="500"/>
+	<region id="TextureAtlasInfo">
+		<node id="root">
+			<children>
+				<node id="TextureAtlasIconSize">
+					<attribute id="Height" type="int32" value="150"/>
+					<attribute id="Width" type="int32" value="150"/>
+				</node>
+				<node id="TextureAtlasPath">
+					<attribute id="Path" type="string" value="Public/STAV/Icons/ST_CC_Icons.DDS"/>
+					<attribute id="UUID" type="FixedString" value="f8e00036-e3d3-1fcd-17f3-5404b515f2e7"/>
+				</node>
+				<node id="TextureAtlasTextureSize">
+					<attribute id="Height" type="int32" value="2048"/>
+					<attribute id="Width" type="int32" value="2048"/>
+				</node>
+			</children>
+		</node>
+	</region>
+	<region id="IconUVList">
+		<node id="root">
+			<children>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Beard_00000000-0000-0000-0000-000000000000"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Horns_00000000-0000-0000-0000-000000000000"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_26214da4-6c60-56b7-4494-3cf0078417cd"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_28ebc6b4-b706-e7cf-2cf2-553abd26c3d5"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_2c18fb5a-5776-ea2b-98fa-b7c96aa52d6a"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_3b4b31f6-4b16-fa18-648e-2407ec3e0a9b"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_3f14bb7d-75f0-8a4e-435b-ab03fc44743f"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_4eaff249-6361-4b1f-d4dd-91e31097cb41"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_53a95ba6-f8aa-f158-6da9-fa53d8d05f2a"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_5997c362-ec4d-8a6e-9422-7ce5a6d0bba8"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_687d07de-95ba-506e-51f2-c6397653ae88"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_8b6be127-fdd2-4b43-6986-faaa4a0d76a7"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_ac9e1d74-fc01-5faa-8375-f975582ba79b"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_cb57ea13-48f9-56e5-2b05-ba84527adc1f"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_d10c182e-4882-5c79-a629-257de7c6be80"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_d17b41fb-b0bb-e803-8118-36a56d8e7ca3"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_ec4e58e3-1ef1-2dbf-23be-58ce65fdc950"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Makeup_faf5bd56-ba05-70ee-6a3f-55f326dba1d6"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_0412c7ef-7b3d-9cfe-3f71-294ec17af640"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_1cacdbb7-9fa5-37dc-1365-b615435a3f0c"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_1ef08134-e131-ba93-d59b-6f6c79aa1861"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_20b805a1-684b-8d92-33b6-f56338285128"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_40ee3ded-2297-1cf5-da4e-271a7f46a54a"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_47c7fb57-c49b-f8e7-954d-52c2eb2dc359"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_585f9d6c-73b4-da79-e2e3-5722775c002f"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_9a3262f2-9aa1-4820-b393-1263e4fc3a41"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_a0d9aa9c-111b-124d-e2f2-d1c323f6bece"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_c674740e-1a24-d717-e154-17b06f1776e0"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_cf084730-b748-d8ff-a21b-35201f7f2f54"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_d3cf766b-580c-d03b-d850-c7290775b449"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_dbf21dc5-83de-3497-ea84-325094b5c767"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_ddb80220-0223-5380-a402-4eb3e2c047a3"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Scar_fa53a106-db00-7322-366b-ce80382b98a2"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_02fa31bd-4f98-a58f-0b98-1f1b5a7d5831"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_0de48ff6-3f1c-3c59-40dc-0deaed79cddd"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_12e688b1-f3ad-dc43-6c65-aac01b2080c7"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_136d40bf-e023-3591-2d5e-c18943bd6961"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_14425775-a24e-cf8f-3f55-052eac6f3405"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_22cf9726-56ea-3c7c-9547-c48bad761ee8"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_2a9e04c7-973e-6a3e-7081-3f24adadf87d"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.87915039"/>
+					<attribute id="V2" type="float" value="0.9519043"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_2ab045af-2d1d-9748-a488-1ce8d47bc1fe"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_2da9ac82-3fe5-dbf5-2d9f-93cd59e0c968"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_2e106901-b836-9775-658c-f4ba23d00451"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_395866e6-eab2-d288-09bb-a691eb37ec7e"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_3e584687-9fff-7efb-ed3d-f952a90914ed"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_445ff5e3-f3aa-b207-af1c-88effe3e5dba"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_4ea8371b-789c-1cbd-9103-eab5cbb3a9b0"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_4f3a3fa9-f3a7-1abb-a4ce-e365655f0ce7"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_51b35f19-c465-e0dd-9eba-d3d70d4e9d24"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_54b7f1ef-e663-9d76-63c3-19c4b1258615"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_629a7110-dd22-9e77-c8e0-cc422d6c5b96"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_6c89ba40-c14d-7ab8-8036-9c40cff818b6"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_79941100-d7d3-98e3-f40a-71d9015f0cb8"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_7ac8f865-85ea-ee22-f00f-b745f5eaad36"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_88bc14aa-ca06-1ffb-6daf-fc89b654ab98"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_8915c8a6-d4cb-eea5-f6d0-f15ae562c220"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_89bd0c83-986f-4d9c-f4e8-5361bce3fbb2"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_8a6157d9-cc12-d1dc-0d6f-eba176d046e1"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_8f3e32cc-7b59-1d9c-0989-103547343a36"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_910e897d-0966-f2e8-bd22-a3c145df0102"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_9182c627-5510-28bb-9e21-ddf07d73bf26"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_944b1b75-82a5-1d82-dd56-50ddcf59068d"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.87915039"/>
+					<attribute id="V2" type="float" value="0.9519043"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_98b1cece-ad7c-c2b9-0bf3-c62a66b44f50"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_a1edbd09-2a7d-b507-41e8-149ac3de4d17"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_a5ce512e-1734-7916-cff0-024649a5d015"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_a6f22b02-a69c-1191-f0c5-bc34fe4bfc05"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_a933f198-e47d-691c-fb35-1b50b0ba78d3"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_acff44fb-f522-b51a-7c12-5715073156f2"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.87915039"/>
+					<attribute id="V2" type="float" value="0.9519043"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_b4b8f6c0-59a0-0c90-c604-5f2c95cd13f6"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_b623c42e-67cc-6c9b-8780-6c4f2b0a2a3f"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_b70492e4-805c-977d-2938-37b9c5f51e73"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_bec8b8b8-bf26-d73a-9883-8f6c38702deb"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_bf264dda-1e14-1eee-14ba-d31545ccb147"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.87915039"/>
+					<attribute id="V2" type="float" value="0.9519043"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_cabfb182-a4e7-32bb-37e1-deec2ae12465"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_dd1d533f-b4fb-0406-263f-0533a0245c41"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_ddda238b-4717-d769-261c-929057e376e9"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_e3d8f870-a1dc-c75d-80be-5cc916588685"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_ed04b457-9867-c7f6-4f31-97a90a02ee9d"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_edecdc50-e45f-74c6-d8bd-afad5fb4e128"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_f3a57996-6c88-5fdf-6f66-84615e68dfa0"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_f3fb6a3c-3ff7-473e-011a-00aa6b1b81ce"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="0_Tattoo_ff047bd8-63de-ea4e-b024-24a99937c3ea"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Beard_00000000-0000-0000-0000-000000000000"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Head_555b1e26-9a79-c11b-134d-a557b317bd93"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Horns_00000000-0000-0000-0000-000000000000"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_26214da4-6c60-56b7-4494-3cf0078417cd"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_28ebc6b4-b706-e7cf-2cf2-553abd26c3d5"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_2c18fb5a-5776-ea2b-98fa-b7c96aa52d6a"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_3b4b31f6-4b16-fa18-648e-2407ec3e0a9b"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_3f14bb7d-75f0-8a4e-435b-ab03fc44743f"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_4eaff249-6361-4b1f-d4dd-91e31097cb41"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_53a95ba6-f8aa-f158-6da9-fa53d8d05f2a"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_5997c362-ec4d-8a6e-9422-7ce5a6d0bba8"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_687d07de-95ba-506e-51f2-c6397653ae88"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_8b6be127-fdd2-4b43-6986-faaa4a0d76a7"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_ac9e1d74-fc01-5faa-8375-f975582ba79b"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_cb57ea13-48f9-56e5-2b05-ba84527adc1f"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.2199707"/>
+					<attribute id="V2" type="float" value="0.29272461"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_d10c182e-4882-5c79-a629-257de7c6be80"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_d17b41fb-b0bb-e803-8118-36a56d8e7ca3"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_ec4e58e3-1ef1-2dbf-23be-58ce65fdc950"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Makeup_faf5bd56-ba05-70ee-6a3f-55f326dba1d6"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.29321289"/>
+					<attribute id="V2" type="float" value="0.3659668"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_0412c7ef-7b3d-9cfe-3f71-294ec17af640"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_1cacdbb7-9fa5-37dc-1365-b615435a3f0c"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_1ef08134-e131-ba93-d59b-6f6c79aa1861"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_20b805a1-684b-8d92-33b6-f56338285128"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_40ee3ded-2297-1cf5-da4e-271a7f46a54a"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_47c7fb57-c49b-f8e7-954d-52c2eb2dc359"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_585f9d6c-73b4-da79-e2e3-5722775c002f"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_9a3262f2-9aa1-4820-b393-1263e4fc3a41"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_a0d9aa9c-111b-124d-e2f2-d1c323f6bece"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_c674740e-1a24-d717-e154-17b06f1776e0"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_cf084730-b748-d8ff-a21b-35201f7f2f54"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_d3cf766b-580c-d03b-d850-c7290775b449"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.14672852"/>
+					<attribute id="V2" type="float" value="0.21948242"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_dbf21dc5-83de-3497-ea84-325094b5c767"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.073486328"/>
+					<attribute id="V2" type="float" value="0.14624023"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_ddb80220-0223-5380-a402-4eb3e2c047a3"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Scar_fa53a106-db00-7322-366b-ce80382b98a2"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_02fa31bd-4f98-a58f-0b98-1f1b5a7d5831"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_0de48ff6-3f1c-3c59-40dc-0deaed79cddd"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_12e688b1-f3ad-dc43-6c65-aac01b2080c7"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_136d40bf-e023-3591-2d5e-c18943bd6961"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_14425775-a24e-cf8f-3f55-052eac6f3405"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.00024414062"/>
+					<attribute id="V2" type="float" value="0.072998047"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_22cf9726-56ea-3c7c-9547-c48bad761ee8"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_2a9e04c7-973e-6a3e-7081-3f24adadf87d"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.87915039"/>
+					<attribute id="V2" type="float" value="0.9519043"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_2ab045af-2d1d-9748-a488-1ce8d47bc1fe"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_2da9ac82-3fe5-dbf5-2d9f-93cd59e0c968"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_2e106901-b836-9775-658c-f4ba23d00451"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_395866e6-eab2-d288-09bb-a691eb37ec7e"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_3e584687-9fff-7efb-ed3d-f952a90914ed"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_445ff5e3-f3aa-b207-af1c-88effe3e5dba"/>
+					<attribute id="U1" type="float" value="0.2199707"/>
+					<attribute id="U2" type="float" value="0.29272461"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_4ea8371b-789c-1cbd-9103-eab5cbb3a9b0"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_4f3a3fa9-f3a7-1abb-a4ce-e365655f0ce7"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_51b35f19-c465-e0dd-9eba-d3d70d4e9d24"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_54b7f1ef-e663-9d76-63c3-19c4b1258615"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.36645508"/>
+					<attribute id="V2" type="float" value="0.43920898"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_629a7110-dd22-9e77-c8e0-cc422d6c5b96"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_6c89ba40-c14d-7ab8-8036-9c40cff818b6"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_79941100-d7d3-98e3-f40a-71d9015f0cb8"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_7ac8f865-85ea-ee22-f00f-b745f5eaad36"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_88bc14aa-ca06-1ffb-6daf-fc89b654ab98"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_8915c8a6-d4cb-eea5-f6d0-f15ae562c220"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_89bd0c83-986f-4d9c-f4e8-5361bce3fbb2"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_8a6157d9-cc12-d1dc-0d6f-eba176d046e1"/>
+					<attribute id="U1" type="float" value="0.14672852"/>
+					<attribute id="U2" type="float" value="0.21948242"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_8f3e32cc-7b59-1d9c-0989-103547343a36"/>
+					<attribute id="U1" type="float" value="0.73266602"/>
+					<attribute id="U2" type="float" value="0.80541992"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_910e897d-0966-f2e8-bd22-a3c145df0102"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_9182c627-5510-28bb-9e21-ddf07d73bf26"/>
+					<attribute id="U1" type="float" value="0.8059082"/>
+					<attribute id="U2" type="float" value="0.87866211"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_944b1b75-82a5-1d82-dd56-50ddcf59068d"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.87915039"/>
+					<attribute id="V2" type="float" value="0.9519043"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_98b1cece-ad7c-c2b9-0bf3-c62a66b44f50"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_a1edbd09-2a7d-b507-41e8-149ac3de4d17"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_a5ce512e-1734-7916-cff0-024649a5d015"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_a6f22b02-a69c-1191-f0c5-bc34fe4bfc05"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.8059082"/>
+					<attribute id="V2" type="float" value="0.87866211"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_a933f198-e47d-691c-fb35-1b50b0ba78d3"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_acff44fb-f522-b51a-7c12-5715073156f2"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.87915039"/>
+					<attribute id="V2" type="float" value="0.9519043"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_b4b8f6c0-59a0-0c90-c604-5f2c95cd13f6"/>
+					<attribute id="U1" type="float" value="0.00024414062"/>
+					<attribute id="U2" type="float" value="0.072998047"/>
+					<attribute id="V1" type="float" value="0.87915039"/>
+					<attribute id="V2" type="float" value="0.9519043"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_b623c42e-67cc-6c9b-8780-6c4f2b0a2a3f"/>
+					<attribute id="U1" type="float" value="0.43969727"/>
+					<attribute id="U2" type="float" value="0.51245117"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_b70492e4-805c-977d-2938-37b9c5f51e73"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.43969727"/>
+					<attribute id="V2" type="float" value="0.51245117"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_bec8b8b8-bf26-d73a-9883-8f6c38702deb"/>
+					<attribute id="U1" type="float" value="0.36645508"/>
+					<attribute id="U2" type="float" value="0.43920898"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_bf264dda-1e14-1eee-14ba-d31545ccb147"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.87915039"/>
+					<attribute id="V2" type="float" value="0.9519043"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_cabfb182-a4e7-32bb-37e1-deec2ae12465"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_dd1d533f-b4fb-0406-263f-0533a0245c41"/>
+					<attribute id="U1" type="float" value="0.87915039"/>
+					<attribute id="U2" type="float" value="0.9519043"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_ddda238b-4717-d769-261c-929057e376e9"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_e3d8f870-a1dc-c75d-80be-5cc916588685"/>
+					<attribute id="U1" type="float" value="0.65942383"/>
+					<attribute id="U2" type="float" value="0.73217773"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_ed04b457-9867-c7f6-4f31-97a90a02ee9d"/>
+					<attribute id="U1" type="float" value="0.29321289"/>
+					<attribute id="U2" type="float" value="0.3659668"/>
+					<attribute id="V1" type="float" value="0.73266602"/>
+					<attribute id="V2" type="float" value="0.80541992"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_edecdc50-e45f-74c6-d8bd-afad5fb4e128"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.51293945"/>
+					<attribute id="V2" type="float" value="0.58569336"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_f3a57996-6c88-5fdf-6f66-84615e68dfa0"/>
+					<attribute id="U1" type="float" value="0.073486328"/>
+					<attribute id="U2" type="float" value="0.14624023"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_f3fb6a3c-3ff7-473e-011a-00aa6b1b81ce"/>
+					<attribute id="U1" type="float" value="0.58618164"/>
+					<attribute id="U2" type="float" value="0.65893555"/>
+					<attribute id="V1" type="float" value="0.58618164"/>
+					<attribute id="V2" type="float" value="0.65893555"/>
+				</node>
+				<node id="IconUV">
+					<attribute id="MapKey" type="FixedString" value="1_Tattoo_ff047bd8-63de-ea4e-b024-24a99937c3ea"/>
+					<attribute id="U1" type="float" value="0.51293945"/>
+					<attribute id="U2" type="float" value="0.58569336"/>
+					<attribute id="V1" type="float" value="0.65942383"/>
+					<attribute id="V2" type="float" value="0.73217773"/>
+				</node>
+			</children>
+		</node>
+	</region>
+</save>

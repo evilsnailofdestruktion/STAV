@@ -227,6 +227,7 @@ S_Player_Astarion_c7c13742-bacd-460a-8f65-f864fe41f255 <f0c1cd99-8f94-e5ba-86b3-
 TEMP_Astarion_Dressed_f1fe95f7-223c-43db-8ad5-84a617804dfd <96824355-8954-2b76-5a1d-9503b93f796b>
 TEMP_Astarion_Shirtless_d7254077-2adc-4729-99e1-c3b9cc6e96e4 <7407f64a-af3f-1f9d-ae7d-8704227c5c27>
 
+S_Player_Gale_PortraitVisual <04262cdf-e58d-606d-af9f-a29d72643644>
 Gale <1a4faa8c-7fca-1f62-e499-87d362d90512>
 Keyart_Gale_22a21b15-45c6-4a29-9c58-33909df22f18 <31548f9b-a200-9624-0817-61a71a50931a>
 Mindflayer_Form_Player_Gale_God_ee59c821-1372-4530-a4a6-1a22962c9fc5 <16f11ba6-0417-6e20-1ecb-fb43c8f14fc7>
@@ -237,35 +238,34 @@ ORIGIN_INTRO_Gale_ecdd3d86-a932-4384-bd38-20a8bc5cb44c <d486eb45-1949-3226-c6cc-
 S_GLO_Gale_Tressym_ada7ee81-829d-48c7-ba73-9c9ec191d236 <143495e5-b2fa-7e67-2e80-cb395f1e15d7>
 S_ORI_Gale_LastNightAlive_AvatarDouble_1cedd0c1-6bfe-4f32-a1e7-78b0acf209a9 <a2a33089-9378-7555-1cbb-c05ec5e17f0c>
 S_Player_Gale_ad9af97d-75da-406a-ae13-7071c563f604 <9f2b34c6-7914-efec-0f17-24a8a3abc758>
-S_Player_Gale_PortraitVisual <04262cdf-e58d-606d-af9f-a29d72643644>
 TEMP_ORIGIN_Gale_Naked_83f57c27-1540-4815-b894-ed809883f266 <871320c7-8b7a-8f2c-467a-1d727a025e76>
 
 Companion_Halsin_1a3d9848-f86e-4f4c-bba5-125ab605c69e <a9af1b0f-f66a-b844-c22a-33151e1ed4fc>
 Companion_Halsin_Shirtless_104a4a59-a923-4673-957a-4b48691f6bb8 <881301f4-4ccb-29ae-4336-3abf9cfba9f0>
 S_GLO_Halsin_7628bc0e-52b8-42a7-856a-13a6fd413323 <b7830265-b4d4-3419-bd41-1fe1099ccf16>
 
+S_Player_Jaheira_PortraitVisual <b90c6552-4529-e6ef-1084-34c56eca1521>
 LOW_CountingHouse_JaheiraClone_5fddca8b-b23d-425c-ae40-37c70b7ed2df <f09fbd8b-ee7d-4142-5a69-2be414c8852c>
 S_Player_Jaheira_91b6b200-7d00-4d62-8dc9-99e8339dfa1a <966e8a68-24a0-fd94-8323-74f7b091df7c>
-S_Player_Jaheira_PortraitVisual <b90c6552-4529-e6ef-1084-34c56eca1521>
 
+S_Player_Karlach_PortraitVisual <2dd12288-c71c-7db2-925c-2f884c1727bc>
 ORIGIN_INTRO_Karlach_9d668ec3-f2a2-4b28-a63c-b19b2fff6350 <7abb8ab4-2f85-8785-2762-ff11afc6f372>
 ORIGIN_Karlach_3ab0a797-0904-47cb-955d-cdc3ec32409c <39d59978-8a65-a8ec-6e8b-0d391f4035e3>
 S_Player_Karlach_2c76687d-93a2-477b-8b18-8a14b549304c <ce24301b-f705-ab7d-4354-d51ab93c5ae3>
-S_Player_Karlach_PortraitVisual <2dd12288-c71c-7db2-925c-2f884c1727bc>
 UNI_PLA_Karlach_Headless_3c3bedb4-917a-4663-9a8a-d18611aaac95 <5757770a-12aa-a3f6-35dd-39beeaf5489d>
 
+ORIGIN_Laezel_PortraitVisual <685e521d-a4a8-0199-1064-05840a43d28e>
 KEYART_GTY_F_Laezel <3a42ea31-54d2-6d3e-cf39-79b064972f5f>
 Laezel <b707448b-a558-c3fc-55a2-87fd5c87407e>
 ORIGIN_INTRO_Laezel_0a4d2393-866c-4f71-b353-9ff641235f45 <31227da2-963d-c611-11ad-52cf15e14580>
 ORIGIN_Laezel_3a0351bd-0b2f-4fbf-84a6-30ad80bb3100 <1088f4ee-579b-b49e-72cc-7ecc5fc5be79>
-ORIGIN_Laezel_PortraitVisual <685e521d-a4a8-0199-1064-05840a43d28e>
 
+S_Player_Minsc_PortraitVisual <6acff363-4407-0b10-0a7c-c1e27fe03c58>
 ORIGIN_Minsc_9d5f838a-8595-490c-85d5-8a2a69414356 <9404e0a4-fafd-47ec-ad6d-52d63cb116ff>
 S_Player_Minsc_0de603c5-42e2-4811-9dad-f652de080eba <b933b9ae-e37a-95ff-0801-1dd31069ecfc>
-S_Player_Minsc_PortraitVisual <6acff363-4407-0b10-0a7c-c1e27fe03c58>
 
-S_GOB_DrowCommander_25721313-0c15-4935-8176-9f134385451b <383236f9-c7ab-7163-4638-d2e2702ec513>
 S_GOB_DrowCommander_PortraitVisual <63dcb01e-630a-b575-ef5c-10ff738b7d51>
+S_GOB_DrowCommander_25721313-0c15-4935-8176-9f134385451b <383236f9-c7ab-7163-4638-d2e2702ec513>
 CINE_Elves_Female_Drow_Minthara_ea2388ae-f585-40c7-82b1-712f444732de <6248f8a8-839e-956f-6986-e10a55406c81>
 Elves_Female_Drow_Minthara_9d85d0f6-5231-4738-a674-bf28ff19e515 <d1bc342f-c995-bad7-4622-4e3f09f3e5ed>
 Elves_Female_Drow_Minthara_Vanity_632a4fe8-bfd9-4c9e-a671-50530c8c9b45 <ee1200f2-51a4-7b28-f046-1d29de15a651>
@@ -293,78 +293,181 @@ ORIGIN_Wyll_159cdf9e-6665-4450-9375-8494e233b0e4 <bdeebe6f-4e34-ae70-5f25-ea0ead
 ORIGIN_Wyll_Devil_7ea87604-e604-4a6d-a7ac-b7b2f293c000 <faf5255f-4dfa-d8bb-7e7a-5e4b7e11497c>
 Wyll <f2b3631a-2641-49c9-6a10-45e4fbdcfa44>
 
-Player:
-Elves_Female_Drow_Lolth_Player_e285d7b5-6b09-4857-89aa-a91e9e6898e5_000_187188d8-929a-d800-d5c3-33453a8cc25a
-Elves_Female_Drow_Seldarine_Player_7a727073-1f49-4396-b899-b71d9d706cd5_000_27b58c9a-5efa-e736-d81e-98d124a6bb8a
-Elves_Male_Drow_Lolth_Player_bc3cde9c-cf02-48ff-b44f-a53a1e009a35_000_f2f3f92a-d471-bee8-064e-0614e238b0d0
-Elves_Male_Drow_Seldarine_Player_091745ab-6acc-46be-8902-5aa61aa94815_000_0f54ca06-abfa-2b82-5982-58edae2f68e2
-Elves_Female_Drow_Lolth_Player_Strong_26931701-4e21-42e2-94b4-d294884565aa_000_fa98fc6b-a18d-7dd1-b9ed-709039e41e73
-Elves_Female_Drow_Seldarine_Player_Strong_5bff4b36-c9c9-4216-8ecc-0e27950c93c0_000_1357ce70-9407-2f0d-8aa8-b22c206b8950
-Elves_Male_Drow_Lolth_Player_Strong_4a69511d-eb58-407c-a4f7-c774a8cc7b83_000_dd25a73b-cdf6-7c41-e098-35828550112f
-Elves_Male_Drow_Seldarine_Player_Strong_230cf7e3-4040-4706-b6ba-22c552d3569a_000_52a2168f-d199-69bb-ca2f-cbdf6e3a2c04
-Dwarves_Female_Duergar_Player_483ef445-facf-4a3b-aeff-6863d890975e_000_252f9e78-9f65-a2e3-1236-84d1b8387306
-Dwarves_Female_Hill_Player_70cddf7f-fab6-4470-9815-85c255e05d27_000_0f089ef3-2587-0603-8479-3c9b0679f9b8
-Dwarves_Female_Hill_Player_Dev_4e4557b0-4162-495b-9f66-e366d21ed4a7_000_011d925e-12b8-9a6f-1d8e-06ad9bffd0fc
-Dwarves_Female_Mountain_Player_9ae40e0d-6d9a-4570-8384-e92b3dac492f_000_aee6c3ff-dad0-0fc2-57a1-3b0d5e4b95c2
-Dwarves_Male_Duergar_Player_be3d3a2b-9ecb-4dbe-9441-8995b618e895_000_8d6c967f-b24b-fce2-a54a-d9bbf0b79da9
-Dwarves_Male_Hill_Player_Dev_ece7776c-dc06-4655-835d-01b66e2c6164_000_7997cde4-12c2-354b-cc1e-ff51ca00032c
-Dwarves_Male_Mountain_Player_001_37faa83f-5a21-4ec3-ba54-d8a249c11f68_000_3fcf0675-a947-7d6e-5941-0d8d51ce7f95
-Dwarves_Male_Mountain_Player_bf348a66-d31d-4745-900a-250edc3cc641_000_2acd2062-1c34-6890-0494-72c1df17973f
-BASE_Dwarves_Male_Hill_Player_72f584af-b29b-4e79-be4a-a175b2e1f864_000_c6d50cc6-0120-90cb-b776-4cda0d2bc7d3
-Elves_Female_High_Player_f08563b3-748d-4783-837b-b8620bc60b22_000_d67bd924-3c1f-c33a-5298-feca5bbdc284
-Elves_Female_Wood_Player_50e44ccc-28a0-44eb-998e-f085f7fe8f7c_000_69c6d55e-2faa-16a0-f0bd-7e3dce4529cf
-Elves_Male_High_Player_bfb31ea0-c6b3-4677-8c6e-662e089c18fb_000_015bd884-82d1-cc15-2a0f-0cb8524028f4
-Elves_Male_Wood_Player_7c6da5a0-f068-49cc-86d8-a30af1ece7ac_000_f0c009b2-7868-784e-f2fc-dde5ac934aba
-Elves_Female_High_Player_Strong_71906e50-a5c0-41a8-843a-4c668b79841f_000_5064dd4e-d4ec-e30a-c784-a98596d7070f
-Elves_Female_Wood_Player_Strong_04a44672-c84b-49fe-a3e8-796eb40c8a15_000_eb370ddf-f7a4-4349-116e-f489556bab1d
-Elves_Male_High_Player_Strong_f744622b-7104-4e7a-84d0-0a9aca579a1c_000_c457d519-ddf4-a023-667a-38d2565511e3
-Elves_Male_Wood_Player_Strong_e294ea88-f404-4888-aadd-984ccab70d95_000_dbe45e58-e009-91ae-91f1-e5311cbef090
-BASE_Gnomes_Female_Deep_Player_ddb47381-471d-41ea-b269-2702ab9d7f83_000_2a1aaf1e-683f-9af2-c8d1-2354634bbc45
-BASE_Gnomes_Female_Regular_Player_ebe6b8c1-6df3-491e-b48b-3b6350c5e324_000_4d66cbb8-05d8-807a-622c-55fbdf0719a9
-Gnomes_Female_Forest_Player_7b532ee4-f59d-418c-8eff-7b6df269c355_000_7556599d-28e9-14df-15a5-3e3c9d01bea4
-BASE_Gnomes_Male_Deep_Player_f660278d-6b97-4bfd-850d-66d40fd89d78_000_6bec6b31-b86b-2c6b-68e1-fea2a943fec5
-BASE_Gnomes_Male_Regular_Player_c8129923-a547-4ee4-9c37-1138ea4df830_000_eabe1080-a24e-5aed-1a26-7594172bfefd
-Gnomes_Male_Forest_Player_130fc56f-4361-41a4-955b-fee0e4541670_000_00313806-830f-9427-8b09-f1505de92a50
-BASE_Githyanki_Female_Player_7bb034aa-d355-4973-9b61-4d83cf29d510_000_40b40a77-9484-9cb2-f49a-1ae083815cf3
-BASE_Githyanki_Male_Player_ba63c9de-13fc-4011-94a1-0ca11c29893e_000_538eb02f-9e1b-4740-7e4f-024573ce2de7
-BASE_HalfElves_Female_Drow_Player_72fc6418-6572-466e-bdc0-d7321006bf96_000_eb625697-be9f-2820-6e2e-39d0d4a30a45
-HalfElves_Female_High_Player_01718a36-3102-4dd2-b141-4f5f042deb10_000_1c36f857-0a5e-a0e2-66d9-9c5b24daf824
-HalfElves_Female_High_Player_Dev_a90c4dc3-fa8e-4f12-9f13-bec14a1dbb8c_000_23dac105-2cac-772e-3f25-f6f6416f4957
-HalfElves_Female_Wood_Player_79823ceb-01e6-4edd-962a-51cc9d00573a_000_d6b3078b-e4f1-ecfc-4801-b1a6da80e1be
-BASE_HalfElves_Male_Drow_Player_9b4d82b8-5cce-4d6e-9821-4b7902abc300_000_a4453c57-324b-60de-7e9a-ba17e5c31ba3
-HalfElves_Male_High_Player_cc2efa0d-d72b-4394-bb11-57f4f494127a_000_d598ca76-ca77-2fb1-3010-ebff8dcaf3c5
-HalfElves_Male_High_Player_Dev_782183f9-ceb5-4a96-8ac4-56af0319641d_000_0d8094d2-9d1e-6da2-b028-a1e376df46ce
-HalfElves_Male_Wood_Player_80e26779-a7a8-4ac2-a934-5616ab5db8d7_000_0ccfb296-7f21-9281-08e0-1d75992072bb
-HalfElves_Female_Drow_Player_Strong_79e8f135-f3ea-4905-a65e-585c90517d20_000_9f6ddfe1-e89d-c5e5-e54d-c1e2a755324c
-HalfElves_Female_High_Player_Strong_83d30a0f-aa95-4447-863e-1007208ac7bf_000_3a01c388-506f-3b91-721a-9c5692db3357
-HalfElves_Female_Wood_Player_Strong_c09d882c-677e-4089-a810-a62f21bf0487_000_639f5904-682b-2413-fbfc-191af52808b6
-HalfElves_Male_Drow_Player_Strong_431eb107-884f-482d-b11f-5ff275c91734_000_e34dae3b-3dc7-3499-a68b-27288dbffd85
-HalfElves_Male_High_Player_Strong_86b9b8fb-87bd-4a19-a034-adb38d7d90ab_000_9f573c86-3162-1d53-884b-05d8a00511ab
-HalfElves_Male_Wood_Player_Strong_db42af19-b9c0-44f0-bba8-dd320b190492_000_a7739671-73cb-1005-8694-2ae556825885
-Halflings_Female_Lightfoot_Player_18878721-88ef-4dbc-a760-d1f6a9a20aea_000_a871cdb8-4d0e-9de8-8221-1c1f8950b49d
-Halflings_Female_Lightfoot_Player_Dev_22e6afea-c8db-40f0-8bb6-f3287d01d6f1_000_752afaa1-8f92-a72d-3500-df162e899489
-Halflings_Female_Stout_Player_0c44cf75-a73c-4165-b57e-8a4af925214e_000_788c94fb-c9a1-fbc7-7fd4-03d8a031e66e
-Halflings_Male_Lightfoot_Player_598cd559-3fb9-4b23-a3b8-a8b5b5d7b8f7_000_a05d6235-48f4-93be-d113-38c550815176
-Halflings_Male_Stout_Player_b18d6de5-7861-42fe-a464-8be9a67cfd16_000_8e776d9d-344a-3265-50a3-6bd2bd6de5f8
-HalfOrcs_Female_Player_cf7809c0-2b84-4062-8aef-0184ccea4aba_000_6bcf04be-942d-2980-2e59-089a5a6ba36e
-HalfOrcs_Male_Player_51af09b7-6062-4d8e-88d0-09e9225b06e6_000_355b3b3c-cdae-8805-04dd-d6299920876f
-Humans_Female_Player_df4aee69-40ea-480d-aa96-1abe82c28b66_000_65508880-7afc-74cf-97eb-8d85c80b79b4
-Humans_Male_Player_fd7f2707-8f86-4836-bda8-e0db99c389cc_000_40b6c0b8-693d-3726-6819-acbc8481f208
-Humans_Female_Strong_Player_3303e8f6-a7e4-4b24-b64c-d64bbc152803_000_3cea72b5-bbc3-a9d8-3bb9-edb85ef9738c
-Humans_Male_Strong_Player_056fffd0-9009-4627-84c2-f0a22e311ec7_000_0a9d0823-9a79-7a0b-9d37-c0ae1976051f
-Tieflings_Female_Asmodeus_Player_aadac54f-38c0-4486-b45f-01c30e2e9323_000_0a902841-1c5b-7acc-9620-91b284a65436
-Tieflings_Female_Asmodeus_Player_Dev_fecb40db-3672-480a-a1d4-4439ffb031cd_000_b2a2a57a-7690-681f-ad5c-61aa4c9754db
-Tieflings_Female_Mephistopheles_Player_7fada45e-9347-4530-8193-1fcd0242d8dd_000_4d42fb67-449d-1c13-8661-09610d477183
-Tieflings_Female_Zariel_Player_99748fb4-4e64-4e7f-8c39-71fa880d2b30_000_d74056a1-922b-2e5b-54b9-e67de157d433
-Tieflings_Male_Asmodeus_Player_cc71e73a-53eb-4f49-ab31-e80d5d5f1ef2_000_a178a41d-05c3-3bc8-4879-15d2effe3300
-Tieflings_Male_Mephistopheles_Player_498af440-0d7d-40e5-a7f1-141ce68bbfed_000_127ae5d8-a7bd-0498-1d71-4e479d247922
-Tieflings_Male_Zariel_Player_1fde348c-ea64-4ca6-a20c-b6841fbd3e43_000_96b61e9f-9901-4406-fa22-f29631339bb9
-Tieflings_Female_Asmodeus_Player_Strong_7abd78c4-41cc-4910-aaf2-4e06fd314303_000_fcff3667-ddc0-1b32-2b7f-1acedfa0cf50
-Tieflings_Female_Mephistopheles_Player_Strong_541e214e-d183-4c69-8c46-76c6cab0a52b_000_b873fc5f-67fb-72ca-ec6c-38f225d03477
-Tieflings_Female_Zariel_Player_Strong_7c098ecd-b4d5-4431-bd31-de6bc1886725_000_8bbe62dd-9fe5-f6e4-4700-884354f6a346
-Tieflings_Male_Asmodeus_Player_Strong_e2a05c9a-7366-4833-86e8-80764e111b71_000_351d13d4-a4de-0dd0-24df-3a194285c7e6
-Tieflings_Male_Mephistopheles_Player_Strong_76b33e27-4a95-4e0d-8113-81b5c61fc2e1_000_ee113dde-55da-ce62-5d4e-a98ccf9606cd
-Tieflings_Male_Zariel_Player_Strong_3232f9b3-2ad5-442c-9861-92624b258e5b_000_ea87e65b-5d45-26c0-c5bf-54a974913b91
+Player Charvis:
+Elves_Female_Drow_Seldarine_Player_PortraitVisual <2cc252c2-4eef-ce10-245b-de39bb45b39d>
+Elves_Female_Drow_Lolth_Player_e285d7b5-6b09-4857-89aa-a91e9e6898e5 <187188d8-929a-d800-d5c3-33453a8cc25a>
+Elves_Female_Drow_Seldarine_Player_7a727073-1f49-4396-b899-b71d9d706cd5 <27b58c9a-5efa-e736-d81e-98d124a6bb8a>
+
+Elves_Male_Drow_Seldarine_Player_PortraitVisual <477d8a7b-4025-eb61-b8ff-91c848a4c82e>
+Elves_Male_Drow_Lolth_Player_bc3cde9c-cf02-48ff-b44f-a53a1e009a35 <f2f3f92a-d471-bee8-064e-0614e238b0d0>
+Elves_Male_Drow_Player_Trailer_9355b967-6ef3-4178-ade6-01c71f6cdcf0 <3b9ceab9-c731-db57-afc0-04d7eb424874>
+Elves_Male_Drow_Seldarine_Player_091745ab-6acc-46be-8902-5aa61aa94815 <0f54ca06-abfa-2b82-5982-58edae2f68e2>
+
+Elves_Female_Drow_Lolth_Player_Strong_PortraitVisual <06bc048a-2d5a-9943-b202-9d9261e9cde2>
+Elves_Female_Drow_Lolth_Player_Strong_26931701-4e21-42e2-94b4-d294884565aa <fa98fc6b-a18d-7dd1-b9ed-709039e41e73>
+Elves_Female_Drow_Seldarine_Player_Strong_5bff4b36-c9c9-4216-8ecc-0e27950c93c0 <1357ce70-9407-2f0d-8aa8-b22c206b8950>
+
+Elves_Male_Drow_Lolth_Player_Strong_PortraitVisual <f6bdb7da-ceb8-fd9e-9c04-78c93d3f0806>
+Elves_Male_Drow_Lolth_Player_Strong_4a69511d-eb58-407c-a4f7-c774a8cc7b83 <dd25a73b-cdf6-7c41-e098-35828550112f>
+Elves_Male_Drow_Seldarine_Player_Strong_230cf7e3-4040-4706-b6ba-22c552d3569a <52a2168f-d199-69bb-ca2f-cbdf6e3a2c04>
+
+Dragonborn_Black_Female_Player_0a3f21d0-7714-4c41-a32a-5ee4a152391a <d7792b19-9392-541a-3afb-414ec199896b>
+Dragonborn_Black_Male_Player_465db991-7868-43ea-8190-36a725096f49 <6101d4fc-0860-9cf0-df9b-fdc1e192f973>
+Dragonborn_Blue_Female_Player_834579dd-3f0c-495f-be61-721854a279ce <1a268ce1-8b64-9957-b677-5c095ee858bd>
+Dragonborn_Blue_Male_Player_e7efb92e-c944-4840-abf1-e125a7436b4e <af057dec-6c50-930d-ba8c-3833f91af504>
+Dragonborn_Brass_Female_Player_1b702a85-60f3-4197-9e58-bb87901a3f48 <cfd1bccf-42f3-5948-9ef3-6ede68b7aa6b>
+Dragonborn_Brass_Male_Player_da2036b9-1602-4262-a82e-d16e6ea181f2 <0b17ddc5-d9d0-7525-5f4f-b3af3bb1a466>
+Dragonborn_Bronze_Female_Player_0b77848f-dd46-42d3-a902-f10ed9457590 <123464e8-4abd-ba0e-d913-f5b285af3485>
+Dragonborn_Bronze_Male_Player_15c90da6-2c31-4cc7-9cba-d30a5155d5b9 <a7f9506b-226b-e900-2b8f-be5bd94e4ca9>
+Dragonborn_Copper_Female_Player_1d8afdc2-1403-4570-b7ce-3f3ae94f325b <9d609ac8-4942-d1b3-4f5e-4aa1ad44f8ab>
+Dragonborn_Copper_Male_Player_4de6d8b2-d0c3-49c1-b332-b3761cfcfb33 <b16fb1db-e3d5-81f8-b665-b11f7ebf5a19>
+Dragonborn_Female_Player_61943f98-adab-4bfd-91e1-9c20557edc73 <4334a17f-7139-8527-8be3-735c2ceae42a>
+Dragonborn_Female_Player_PortraitVisual <b968af7c-502a-5036-37cd-ad45fde0e818>
+Dragonborn_Gold_Female_Player_4151f7ff-6b19-4d5f-aa54-bea130d0d0a1 <156983cb-3f71-3a48-4b84-6ae09c8e92a4>
+Dragonborn_Gold_Male_Player_d30bb765-ecb4-4029-94c2-cfdcf4b2b75f <10c7ee0d-736b-e14d-6006-95556005b870>
+Dragonborn_Green_Female_Player_8517cdc1-b179-499b-9c25-4ac9396b3249 <693a5d1e-9538-6045-eb03-930f3e351009>
+Dragonborn_Green_Male_Player_ae902e1b-0496-4a77-be90-e7b601b3b830 <d5e2a21b-50d6-20e6-1bf4-f56efde731c0>
+Dragonborn_Male_Player_87930b5f-a8bf-4fbf-ba7a-b1d37bd7deb0 <1beb597d-0011-77a7-fab7-02cf9eb23b70>
+Dragonborn_Male_Player_DarkUrge_4888dfaa-2e0a-4c10-9c8a-d5345aeb4746 <a80aa34c-f221-4191-9a63-486d53684f75>
+Dragonborn_Male_Player_PortraitVisual <04cd2719-4f3a-4799-a710-e38effb0be52>
+Dragonborn_Red_Female_Player_9eddde7c-27b1-4e9a-8a19-0d9f3996ffa4 <2f03dead-6333-3805-bd6a-bfa6700bb7bb>
+Dragonborn_Red_Male_Player_3de79eab-402e-4a70-8716-dfd32a492110 <8f678b1f-eb18-7773-cd4c-9defeefa48f4>
+Dragonborn_Silver_Female_Player_2ab6daaa-54b4-4836-92aa-3579da76f574 <0269a70b-0f3f-ae60-fbea-fff496f80a33>
+Dragonborn_Silver_Male_Player_8b607fe5-7217-4975-872c-f380f9a52041 <fb99d424-6e8e-a9da-a74c-24b1f126900e>
+Dragonborn_White_Female_Player_101f3588-8b35-4ca6-ba7b-33216158b3d4 <9aa6009f-995f-5040-e88b-e737b2156e07>
+Dragonborn_White_Male_Player_1f69a29f-8284-4d1d-a0e6-fba9fb02ac56 <6fa0f8f5-f579-64bd-2a8e-800184fc28aa>
+
+Dwarves_Female_Hill_Player_PortraitVisual <9598d919-8272-0377-d2a5-879c0012f3fd>
+Dwarves_Female_Duergar_Player_483ef445-facf-4a3b-aeff-6863d890975e <252f9e78-9f65-a2e3-1236-84d1b8387306>
+Dwarves_Female_Hill_Player_70cddf7f-fab6-4470-9815-85c255e05d27 <0f089ef3-2587-0603-8479-3c9b0679f9b8>
+Dwarves_Female_Hill_Player_Dev_4e4557b0-4162-495b-9f66-e366d21ed4a7 <011d925e-12b8-9a6f-1d8e-06ad9bffd0fc>
+Dwarves_Female_Mountain_Player_9ae40e0d-6d9a-4570-8384-e92b3dac492f <aee6c3ff-dad0-0fc2-57a1-3b0d5e4b95c2>
+Dwarves_Female_Player_Trailer_e5dd9979-a8b5-408d-b04b-033a18ccbdd4 <44f07c8c-b28e-72ef-fa2e-7645fd410387>
+
+BASE_Dwarves_Male_Hill_Player_PortraitVisual <9dab2880-c88d-f2d8-98aa-358e962b8afa>
+BASE_Dwarves_Male_Hill_Player_72f584af-b29b-4e79-be4a-a175b2e1f864 <c6d50cc6-0120-90cb-b776-4cda0d2bc7d3>
+Dwarves_Male_Duergar_Player_be3d3a2b-9ecb-4dbe-9441-8995b618e895 <8d6c967f-b24b-fce2-a54a-d9bbf0b79da9>
+Dwarves_Male_Hill_Player_Dev_ece7776c-dc06-4655-835d-01b66e2c6164 <7997cde4-12c2-354b-cc1e-ff51ca00032c>
+Dwarves_Male_Mountain_Player_001_37faa83f-5a21-4ec3-ba54-d8a249c11f68 <3fcf0675-a947-7d6e-5941-0d8d51ce7f95>
+Dwarves_Male_Mountain_Player_bf348a66-d31d-4745-900a-250edc3cc641 <2acd2062-1c34-6890-0494-72c1df17973f>
+Dwarves_Male_Player_Trailer_84ab938b-e2c6-42e1-a83a-2ad7729344db <664b1ba1-6f84-3446-7f83-03b7d82b3d99>
+
+Elves_Female_High_Player_PortraitVisual <e1254a4e-3d52-76c2-7b19-52e93941b6dd>
+Elves_Female_Player_Trailer_1a19ca00-585a-468e-a005-e74efd5d1b8f <fa671c8c-487a-297a-9d73-5fb7b769a3e7>
+Elves_Female_High_Player_f08563b3-748d-4783-837b-b8620bc60b22 <d67bd924-3c1f-c33a-5298-feca5bbdc284>
+Elves_Female_Wood_Player_50e44ccc-28a0-44eb-998e-f085f7fe8f7c <69c6d55e-2faa-16a0-f0bd-7e3dce4529cf>
+
+Elves_Male_High_Player_PortraitVisual <f7af9f10-cd33-3b88-e96a-d52952e81f5b>
+Elves_Male_High_Player_bfb31ea0-c6b3-4677-8c6e-662e089c18fb <015bd884-82d1-cc15-2a0f-0cb8524028f4>
+Elves_Male_Wood_Player_7c6da5a0-f068-49cc-86d8-a30af1ece7ac <f0c009b2-7868-784e-f2fc-dde5ac934aba>
+
+Elves_Female_High_Player_Strong_PortraitVisual <8d3b10f3-7f7c-626d-0d13-4d6223de9f94>
+Elves_Female_High_Player_Strong_71906e50-a5c0-41a8-843a-4c668b79841f <5064dd4e-d4ec-e30a-c784-a98596d7070f>
+Elves_Female_Wood_Player_Strong_04a44672-c84b-49fe-a3e8-796eb40c8a15 <eb370ddf-f7a4-4349-116e-f489556bab1d>
+
+Elves_Male_High_Player_Strong_PortraitVisual <76172a38-007d-6213-d75c-820a8b67004a>
+Elves_Male_High_Player_Strong_f744622b-7104-4e7a-84d0-0a9aca579a1c <c457d519-ddf4-a023-667a-38d2565511e3>
+Elves_Male_Wood_Player_Strong_e294ea88-f404-4888-aadd-984ccab70d95 <dbe45e58-e009-91ae-91f1-e5311cbef090>
+
+BASE_Githyanki_Female_Player_PortraitVisual <00f931b5-7105-da0c-8992-26beeb53dbbc>
+BASE_Githyanki_Female_Player_7bb034aa-d355-4973-9b61-4d83cf29d510 <40b40a77-9484-9cb2-f49a-1ae083815cf3>
+
+BASE_Githyanki_Male_Player_PortraitVisual <2c0ba7ad-66be-884e-b680-9b7e5a2203a0>
+BASE_Githyanki_Male_Player_ba63c9de-13fc-4011-94a1-0ca11c29893e <538eb02f-9e1b-4740-7e4f-024573ce2de7>
+Githyanki_Male_Player_Trailer_8e436890-f719-4061-ab9e-991a5b9aa4dd <6a07e0d8-4110-54f7-c013-19ed2ff990ed>
+
+BASE_Gnomes_Female_Regular_Player_PortraitVisual <80232477-0852-54ea-532a-f216bdf4be61>
+BASE_Gnomes_Female_Regular_Player_ebe6b8c1-6df3-491e-b48b-3b6350c5e324 <4d66cbb8-05d8-807a-622c-55fbdf0719a9>
+BASE_Gnomes_Female_Deep_Player_ddb47381-471d-41ea-b269-2702ab9d7f83 <2a1aaf1e-683f-9af2-c8d1-2354634bbc45>
+Gnomes_Female_Forest_Player_7b532ee4-f59d-418c-8eff-7b6df269c355 <7556599d-28e9-14df-15a5-3e3c9d01bea4>
+
+BASE_Gnomes_Male_Regular_Player_PortraitVisual <2190c1fe-8bf0-cf21-24f7-482defce3814>
+BASE_Gnomes_Male_Regular_Player_c8129923-a547-4ee4-9c37-1138ea4df830 <eabe1080-a24e-5aed-1a26-7594172bfefd>
+BASE_Gnomes_Male_Deep_Player_f660278d-6b97-4bfd-850d-66d40fd89d78 <6bec6b31-b86b-2c6b-68e1-fea2a943fec5>
+Gnomes_Male_Forest_Player_130fc56f-4361-41a4-955b-fee0e4541670 <00313806-830f-9427-8b09-f1505de92a50>
+
+HalfElves_Female_High_Player_PortraitVisual <a58738bb-b385-080c-11da-85a2787a9b3d>
+BASE_HalfElves_Female_Drow_Player_72fc6418-6572-466e-bdc0-d7321006bf96 <eb625697-be9f-2820-6e2e-39d0d4a30a45>
+HalfElves_Female_High_Player_01718a36-3102-4dd2-b141-4f5f042deb10 <1c36f857-0a5e-a0e2-66d9-9c5b24daf824>
+HalfElves_Female_High_Player_Dev_a90c4dc3-fa8e-4f12-9f13-bec14a1dbb8c <23dac105-2cac-772e-3f25-f6f6416f4957>
+HalfElves_Female_Wood_Player_79823ceb-01e6-4edd-962a-51cc9d00573a <d6b3078b-e4f1-ecfc-4801-b1a6da80e1be>
+
+HalfElves_Male_High_Player_PortraitVisual <345d747b-fd96-f13c-cae5-a7f750e65040>
+BASE_HalfElves_Male_Drow_Player_9b4d82b8-5cce-4d6e-9821-4b7902abc300 <a4453c57-324b-60de-7e9a-ba17e5c31ba3>
+HalfElves_Male_High_Player_cc2efa0d-d72b-4394-bb11-57f4f494127a <d598ca76-ca77-2fb1-3010-ebff8dcaf3c5>
+HalfElves_Male_High_Player_Dev_782183f9-ceb5-4a96-8ac4-56af0319641d <0d8094d2-9d1e-6da2-b028-a1e376df46ce>
+HalfElves_Male_Wood_Player_80e26779-a7a8-4ac2-a934-5616ab5db8d7 <0ccfb296-7f21-9281-08e0-1d75992072bb>
+
+HalfElves_Female_High_Player_Strong_PortraitVisual <93acb59c-c9d9-f59d-41dc-b6d7e0e6fba6>
+HalfElves_Female_Drow_Player_Strong_79e8f135-f3ea-4905-a65e-585c90517d20 <9f6ddfe1-e89d-c5e5-e54d-c1e2a755324c>
+HalfElves_Female_High_Player_Strong_83d30a0f-aa95-4447-863e-1007208ac7bf <3a01c388-506f-3b91-721a-9c5692db3357>
+HalfElves_Female_Wood_Player_Strong_c09d882c-677e-4089-a810-a62f21bf0487 <639f5904-682b-2413-fbfc-191af52808b6>
+
+HalfElves_Male_High_Player_Strong_PortraitVisual <a97ff4b7-f9d9-0c00-9c1b-65275ba4b704>
+HalfElves_Male_Drow_Player_Strong_431eb107-884f-482d-b11f-5ff275c91734 <e34dae3b-3dc7-3499-a68b-27288dbffd85>
+HalfElves_Male_High_Player_Strong_86b9b8fb-87bd-4a19-a034-adb38d7d90ab <9f573c86-3162-1d53-884b-05d8a00511ab>
+HalfElves_Male_Wood_Player_Strong_db42af19-b9c0-44f0-bba8-dd320b190492 <a7739671-73cb-1005-8694-2ae556825885>
+
+Halflings_Female_Lightfoot_Player_PortraitVisual <da852f7d-e4ed-610b-4d31-91fcc032e4fe>
+Halflings_Female_Lightfoot_Player_18878721-88ef-4dbc-a760-d1f6a9a20aea <a871cdb8-4d0e-9de8-8221-1c1f8950b49d>
+Halflings_Female_Lightfoot_Player_Dev_22e6afea-c8db-40f0-8bb6-f3287d01d6f1 <752afaa1-8f92-a72d-3500-df162e899489>
+Halflings_Female_Stout_Player_0c44cf75-a73c-4165-b57e-8a4af925214e <788c94fb-c9a1-fbc7-7fd4-03d8a031e66e>
+
+Halflings_Male_Lightfoot_Player_PortraitVisual <9badecc0-804e-94d8-135e-cd70bb9e00bc>
+Halflings_Male_Player_Trailer_71b4bc5a-d9da-4505-bd14-4b2459cdb14b <ca90df09-a517-fa81-d248-8b111d352c5a>
+Halflings_Male_Lightfoot_Player_598cd559-3fb9-4b23-a3b8-a8b5b5d7b8f7 <a05d6235-48f4-93be-d113-38c550815176>
+Halflings_Male_Stout_Player_b18d6de5-7861-42fe-a464-8be9a67cfd16 <8e776d9d-344a-3265-50a3-6bd2bd6de5f8>
+
+HalfOrcs_Female_Player_PortraitVisual <1586dcb3-51ff-7489-bfa4-81263bf56686>
+HalfOrcs_Female_Player_cf7809c0-2b84-4062-8aef-0184ccea4aba <6bcf04be-942d-2980-2e59-089a5a6ba36e>
+
+HalfOrcs_Male_Player_PortraitVisual <cd67df82-8a06-2005-740f-9c7762097834>
+HalfOrcs_Male_Player_51af09b7-6062-4d8e-88d0-09e9225b06e6 <355b3b3c-cdae-8805-04dd-d6299920876f>
+
+Humans_Female_Player_PortraitVisual <51214aaf-d81d-60f3-b7a6-28002ade0a6f>
+Humans_Female_Player_df4aee69-40ea-480d-aa96-1abe82c28b66 <65508880-7afc-74cf-97eb-8d85c80b79b4>
+Humans_Female_Player_Trailer_089a0904-d5ae-4de0-9fe6-3811006e2fc4 <fedf1050-a2b6-e913-1cd2-e3b9effd2b90>
+Humans_Female_Player_VoiceDummy_33c09c28-3f20-4c74-80f5-4c8fa53750f5 <1a1e412a-37ca-9425-6cfd-67ee7429d616>
+
+Humans_Male_Player_PortraitVisual <71aaadda-22e0-f962-14ff-f57d57a2e726>
+Humans_Male_Player_fd7f2707-8f86-4836-bda8-e0db99c389cc <40b6c0b8-693d-3726-6819-acbc8481f208>
+Humans_Male_Player_Monk_Test_3c9d9b86-64e0-428d-ba57-d0984f3d2a3a <58106c8e-8b3b-0854-5720-61c543805888>
+
+Humans_Female_Strong_Player_PortraitVisual <df8ba65b-48da-8f7c-a814-c2fcb65ae67a>
+Humans_Female_Strong_Player_3303e8f6-a7e4-4b24-b64c-d64bbc152803 <3cea72b5-bbc3-a9d8-3bb9-edb85ef9738c>
+
+Humans_Male_Strong_Player_PortraitVisual <1d4e0fe8-969c-1050-8f3e-96f172a3d153>
+Humans_Male_Strong_Player_056fffd0-9009-4627-84c2-f0a22e311ec7 <0a9d0823-9a79-7a0b-9d37-c0ae1976051f>
+Humans_Male_Strong_Player_Trailer_491fea3e-4691-4136-93ed-5eac397a79a3 <783884de-ba13-3c69-1890-c59d2e4bcba8>
+
+Tieflings_Female_Asmodeus_Player_PortraitVisual <41ac6638-8590-4c25-2789-44cdc8ef87d8>
+Tieflings_Female_Asmodeus_Player_aadac54f-38c0-4486-b45f-01c30e2e9323 <0a902841-1c5b-7acc-9620-91b284a65436>
+Tieflings_Female_Asmodeus_Player_Dev_fecb40db-3672-480a-a1d4-4439ffb031cd <b2a2a57a-7690-681f-ad5c-61aa4c9754db>
+Tieflings_Female_Mephistopheles_Player_7fada45e-9347-4530-8193-1fcd0242d8dd <4d42fb67-449d-1c13-8661-09610d477183>
+Tieflings_Female_Zariel_Player_99748fb4-4e64-4e7f-8c39-71fa880d2b30 <d74056a1-922b-2e5b-54b9-e67de157d433>
+
+Tieflings_Male_Asmodeus_Player_PortraitVisual <35fa926e-18f4-2d3e-872a-04ab9e95b76c>
+Tieflings_Male_Asmodeus_Player_cc71e73a-53eb-4f49-ab31-e80d5d5f1ef2 <a178a41d-05c3-3bc8-4879-15d2effe3300>
+Tieflings_Male_Mephistopheles_Player_498af440-0d7d-40e5-a7f1-141ce68bbfed <127ae5d8-a7bd-0498-1d71-4e479d247922>
+Tieflings_Male_Zariel_Player_1fde348c-ea64-4ca6-a20c-b6841fbd3e43 <96b61e9f-9901-4406-fa22-f29631339bb9>
+
+Tieflings_Female_Asmodeus_Player_Strong_PortraitVisual <f1cdcf6d-7469-14ec-380f-3cb5df440340>
+Tieflings_Female_Asmodeus_Player_Strong_7abd78c4-41cc-4910-aaf2-4e06fd314303 <fcff3667-ddc0-1b32-2b7f-1acedfa0cf50>
+Tieflings_Female_Mephistopheles_Player_Strong_541e214e-d183-4c69-8c46-76c6cab0a52b <b873fc5f-67fb-72ca-ec6c-38f225d03477>
+Tieflings_Female_Zariel_Player_Strong_7c098ecd-b4d5-4431-bd31-de6bc1886725 <8bbe62dd-9fe5-f6e4-4700-884354f6a346>
+
+Tieflings_Male_Asmodeus_Player_Strong_PortraitVisual <a9afff3b-121d-085e-12af-9e9fb07c788f>
+Tieflings_Male_Asmodeus_Player_Strong_e2a05c9a-7366-4833-86e8-80764e111b71 <351d13d4-a4de-0dd0-24df-3a194285c7e6>
+Tieflings_Male_Mephistopheles_Player_Strong_76b33e27-4a95-4e0d-8113-81b5c61fc2e1 <ee113dde-55da-ce62-5d4e-a98ccf9606cd>
+Tieflings_Male_Zariel_Player_Strong_3232f9b3-2ad5-442c-9861-92624b258e5b <ea87e65b-5d45-26c0-c5bf-54a974913b91>
+
+S_Player_DarkUrge_PortraitVisual <5027e5b0-874b-0f9e-0c03-75e31f6384c5>
+S_Player_DarkUrge_c66bc36f-7cb0-41fa-92f0-6d81d7d17ba3 <7eecb199-6397-e553-7d36-d55c5ca363c9>
+
+S_EPI_PlayerAscensionBodyDouble_8a9038e8-16cd-4adc-bd49-08724368b05f <a53e39b5-cb02-1c14-81c1-3463b70041b4>
+S_LOW_SteelwatchGame_Player1_19545343-80af-454c-8d5a-5ee46e184c30 <eb4eca3c-c388-eeeb-02eb-04053c41aca7>
+S_LOW_SteelwatchGame_Player2_bfaf2ac8-8a22-4cec-8db8-e3046db89e29 <c37c0235-c5c4-0aa6-dc1c-525d6d65f9d0>
+S_LOW_SteelwatchGame_Player3_0d6593c5-1739-4c35-ae0f-a975ecf702c3 <f357e181-3494-2eb6-a259-16e47a8281f1>
 
 Hirelings_Stats_Player_Barbarian_DONOTUSE_aa621720-3722-43e2-98ca-4feb12c238fc <5a3eca21-f521-1b01-2662-02a8910e5e7f>
 Hirelings_Stats_Player_Barbarian_PortraitVisual <dcd500e5-8ea6-ff2c-2532-5b258caba792>
@@ -392,56 +495,7 @@ Hirelings_Stats_Player_Warlock_PortraitVisual <a06d3127-c163-46f9-be2c-e16e8c1e0
 Hirelings_Stats_Player_Wizard_DONOTUSE_3d24f5eb-7220-4e00-bc02-3e6ac819ac26 <d346112a-c694-14c2-2fc8-4cf007b0a127>
 Hirelings_Stats_Player_Wizard_PortraitVisual <7eb8f8c3-4539-177b-0bd6-6e5f1e6b908e>
 
-Player Portraits:
-Elves_Female_Drow_Seldarine_Player_PortraitVisual <2cc252c2-4eef-ce10-245b-de39bb45b39d>
-Elves_Male_Drow_Seldarine_Player_PortraitVisual <477d8a7b-4025-eb61-b8ff-91c848a4c82e>
-Elves_Female_Drow_Lolth_Player_Strong_PortraitVisual <06bc048a-2d5a-9943-b202-9d9261e9cde2>
-Elves_Male_Drow_Lolth_Player_Strong_PortraitVisual <f6bdb7da-ceb8-fd9e-9c04-78c93d3f0806>
-Dragonborn_Female_Player_PortraitVisual <b968af7c-502a-5036-37cd-ad45fde0e818>
-Dragonborn_Male_Player_PortraitVisual <04cd2719-4f3a-4799-a710-e38effb0be52>
-Dwarves_Female_Hill_Player_PortraitVisual <9598d919-8272-0377-d2a5-879c0012f3fd>
-BASE_Dwarves_Male_Hill_Player_PortraitVisual <9dab2880-c88d-f2d8-98aa-358e962b8afa>
-Elves_Female_High_Player_PortraitVisual <e1254a4e-3d52-76c2-7b19-52e93941b6dd>
-Elves_Male_High_Player_PortraitVisual <f7af9f10-cd33-3b88-e96a-d52952e81f5b>
-Elves_Female_High_Player_Strong_PortraitVisual <8d3b10f3-7f7c-626d-0d13-4d6223de9f94>
-Elves_Male_High_Player_Strong_PortraitVisual <76172a38-007d-6213-d75c-820a8b67004a>
-BASE_Gnomes_Female_Regular_Player_PortraitVisual <80232477-0852-54ea-532a-f216bdf4be61>
-BASE_Gnomes_Male_Regular_Player_PortraitVisual <2190c1fe-8bf0-cf21-24f7-482defce3814>
-BASE_Githyanki_Female_Player_PortraitVisual <00f931b5-7105-da0c-8992-26beeb53dbbc>
-BASE_Githyanki_Male_Player_PortraitVisual <2c0ba7ad-66be-884e-b680-9b7e5a2203a0>
-HalfElves_Female_High_Player_PortraitVisual <a58738bb-b385-080c-11da-85a2787a9b3d>
-HalfElves_Male_High_Player_PortraitVisual <345d747b-fd96-f13c-cae5-a7f750e65040>
-HalfElves_Female_High_Player_Strong_PortraitVisual <93acb59c-c9d9-f59d-41dc-b6d7e0e6fba6>
-HalfElves_Male_High_Player_Strong_PortraitVisual <a97ff4b7-f9d9-0c00-9c1b-65275ba4b704>
-Halflings_Female_Lightfoot_Player_PortraitVisual <da852f7d-e4ed-610b-4d31-91fcc032e4fe>
-Halflings_Male_Lightfoot_Player_PortraitVisual <9badecc0-804e-94d8-135e-cd70bb9e00bc>
-HalfOrcs_Female_Player_PortraitVisual <1586dcb3-51ff-7489-bfa4-81263bf56686>
-HalfOrcs_Male_Player_PortraitVisual <cd67df82-8a06-2005-740f-9c7762097834>
-Humans_Female_Player_PortraitVisual <51214aaf-d81d-60f3-b7a6-28002ade0a6f>
-Humans_Male_Player_PortraitVisual <71aaadda-22e0-f962-14ff-f57d57a2e726>
-Humans_Female_Strong_Player_PortraitVisual <df8ba65b-48da-8f7c-a814-c2fcb65ae67a>
-Humans_Male_Strong_Player_PortraitVisual <1d4e0fe8-969c-1050-8f3e-96f172a3d153>
-Tieflings_Female_Asmodeus_Player_PortraitVisual <41ac6638-8590-4c25-2789-44cdc8ef87d8>
-Tieflings_Male_Asmodeus_Player_PortraitVisual <35fa926e-18f4-2d3e-872a-04ab9e95b76c>
-Tieflings_Female_Asmodeus_Player_Strong_PortraitVisual <f1cdcf6d-7469-14ec-380f-3cb5df440340>
-Tieflings_Male_Asmodeus_Player_Strong_PortraitVisual <a9afff3b-121d-085e-12af-9e9fb07c788f>
-
-S_Player_DarkUrge_PortraitVisual <5027e5b0-874b-0f9e-0c03-75e31f6384c5>
-
-ORIGIN_Astarion_PortraitVisual <14c23242-b819-0d30-f5ba-5e6c9b4b6088>
-S_Player_Gale_PortraitVisual <04262cdf-e58d-606d-af9f-a29d72643644>
-S_Player_Jaheira_PortraitVisual <b90c6552-4529-e6ef-1084-34c56eca1521>
-S_Player_Karlach_PortraitVisual <2dd12288-c71c-7db2-925c-2f884c1727bc>
-ORIGIN_Laezel_PortraitVisual <685e521d-a4a8-0199-1064-05840a43d28e>
-S_Player_Minsc_PortraitVisual <6acff363-4407-0b10-0a7c-c1e27fe03c58>
-S_GOB_DrowCommander_PortraitVisual <63dcb01e-630a-b575-ef5c-10ff738b7d51>
-ORIGIN_Shadowheart_PortraitVisual <a4cb151d-de86-1cd2-3cbe-327fc71eec82>
-ORIGIN_Wyll_PortraitVisual <252f4a0d-d502-0985-52f2-973c38377faa>
-ORIGIN_Wyll_Devil_PortraitVisual <38721e3d-c3b5-a0eb-3048-128846b3cc0e>
-
 Presets: 
-ST_Swirlies_Off_2d051aaf-eea8-54bc-5f66-900b8c56ea25
-ST_Swirlies_On_5fa1f181-e933-bdb5-f6b9-ac2dac22efa2
 ST_Tattoos_01_f3a16e69-b757-4676-af7b-e922ef30b042
 ST_Tattoos_02_148e52a9-abac-4173-d752-f81cafd4a27e
 ST_Tattoos_03_531e5a3a-1331-33b3-40bf-61d48c798c42
@@ -466,8 +520,10 @@ ST_Tattoos_21_4bf6ab3a-b402-a196-d6f3-22ccf007e262
 ST_Tattoos_22_fe66e378-fd29-d44d-e906-503096afee81
 ST_Tattoos_23_a6e202e4-e0ff-71ec-a251-01a77a1faba6
 ST_Tattoos_24_0bed6d08-aae1-0a2f-9448-4c44cf5add95
-ST_Vampirism_Off_54c7f039-9a4d-9600-0be8-83121c3122aa
+ST_Swirlies_On_5fa1f181-e933-bdb5-f6b9-ac2dac22efa2
+ST_Swirlies_Off_2d051aaf-eea8-54bc-5f66-900b8c56ea25
 ST_Vampirism_On_a9217c1e-c4ef-c110-42d9-5046fa513bf6
+ST_Vampirism_Off_54c7f039-9a4d-9600-0be8-83121c3122aa
 
 CCAppearanceMaterials:
 1 fffa139e-2b12-4175-83ab-a15eb18d486c
