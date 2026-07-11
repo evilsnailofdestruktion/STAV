@@ -1,0 +1,124 @@
+{
+  "Mappings": [
+      {
+        "GTexName": "1ee24b649b2246ebbcbe94db03a30a78", 
+        "GTS": "Public/STAV/VTextures/ST_DRO_F_VT.gts"
+      },
+      {
+        "GTexName": "8ed1715f773a4b76b7549e7c96106385", 
+        "GTS": "Public/STAV/VTextures/ST_DRO_FS_VT.gts"
+      },
+      {
+        "GTexName": "bdf6983af99a4d58bfb2474d86a28499", 
+        "GTS": "Public/STAV/VTextures/ST_DRO_M_VT.gts"
+      },
+      {
+        "GTexName": "e9f590ee089e40fdb9da3db92d230690", 
+        "GTS": "Public/STAV/VTextures/ST_DRO_MS_VT.gts"
+      },
+      {
+        "GTexName": "e34455a2023043fb83f8a0dabb947767", 
+        "GTS": "Public/STAV/VTextures/ST_DWR_F_VT.gts"
+      },
+      {
+        "GTexName": "16a634ac11ba48189737b30c6d1e937e", 
+        "GTS": "Public/STAV/VTextures/ST_DWR_M_VT.gts"
+      },
+      {
+        "GTexName": "b9c2113b0477434797c4fc85fa27f5b1", 
+        "GTS": "Public/STAV/VTextures/ST_ELF_F_VT.gts"
+      },
+      {
+        "GTexName": "fd2bb8e4a66e41fb8a6691adb0bf4c5b", 
+        "GTS": "Public/STAV/VTextures/ST_ELF_FS_VT.gts"
+      },
+      {
+        "GTexName": "6f3963871efa40e1928fcecff8e0553f", 
+        "GTS": "Public/STAV/VTextures/ST_ELF_M_VT.gts"
+      },
+      {
+        "GTexName": "d780aa85ec104ee5bc05e4bdf543cbf4", 
+        "GTS": "Public/STAV/VTextures/ST_ELF_MS_VT.gts"
+      },
+      {
+        "GTexName": "f55b4d78ee374465ab7b2a23b1afee45", 
+        "GTS": "Public/STAV/VTextures/ST_GNO_F_VT.gts"
+      },
+      {
+        "GTexName": "bb22a254d849481d903b95816c3fff35", 
+        "GTS": "Public/STAV/VTextures/ST_GNO_M_VT.gts"
+      },
+      {
+        "GTexName": "b153a86ff20641e296370a2dabd145c1", 
+        "GTS": "Public/STAV/VTextures/ST_GTY_F_VT.gts"
+      },
+      {
+        "GTexName": "b77a8c42c7a74e5c9c09bdaae3b92896", 
+        "GTS": "Public/STAV/VTextures/ST_GTY_M_VT.gts"
+      },
+      {
+        "GTexName": "cfb18ebdf835411c80d1c780520fb430", 
+        "GTS": "Public/STAV/VTextures/ST_HEL_F_VT.gts"
+      },
+      {
+        "GTexName": "548ba354fd414dc39d352cc9d33373e5", 
+        "GTS": "Public/STAV/VTextures/ST_HEL_FS_VT.gts"
+      },
+      {
+        "GTexName": "a4bc844cac5b456e912327b87002264f", 
+        "GTS": "Public/STAV/VTextures/ST_HEL_M_VT.gts"
+      },
+      {
+        "GTexName": "e4c2d515f7a44de48147d74aa9804aa4", 
+        "GTS": "Public/STAV/VTextures/ST_HEL_MS_VT.gts"
+      },
+      {
+        "GTexName": "2f510d15cb2146e6b41aa91f18981de8", 
+        "GTS": "Public/STAV/VTextures/ST_HFL_F_VT.gts"
+      },
+      {
+        "GTexName": "b6d693ff650b4e53984877f08dceae0a", 
+        "GTS": "Public/STAV/VTextures/ST_HFL_M_VT.gts"
+      },
+      {
+        "GTexName": "9d1684772b09421db711e740ad3ffd51", 
+        "GTS": "Public/STAV/VTextures/ST_HRC_F_VT.gts"
+      },
+      {
+        "GTexName": "c630f91d0b1140359070fe8ecf1d1988", 
+        "GTS": "Public/STAV/VTextures/ST_HRC_M_VT.gts"
+      },
+      {
+        "GTexName": "192b2b13e9d54b9a9aae525d8d0e562b", 
+        "GTS": "Public/STAV/VTextures/ST_HUM_F_VT.gts"
+      },
+      {
+        "GTexName": "d3d7887694a94b5aba8650db62d37c11", 
+        "GTS": "Public/STAV/VTextures/ST_HUM_FS_VT.gts"
+      },
+      {
+        "GTexName": "bbdd7184d8924ce592079dc9969ba6ca", 
+        "GTS": "Public/STAV/VTextures/ST_HUM_M_VT.gts"
+      },
+      {
+        "GTexName": "79200c8c7cd64a2ba6c76feff6a79611", 
+        "GTS": "Public/STAV/VTextures/ST_HUM_MS_VT.gts"
+      },
+      {
+        "GTexName": "f54dad4b01644abe9706a034465077b1", 
+        "GTS": "Public/STAV/VTextures/ST_TIF_F_VT.gts"
+      },
+      {
+        "GTexName": "34589cf207f04503ba395f2935d2852b", 
+        "GTS": "Public/STAV/VTextures/ST_TIF_FS_VT.gts"
+      },
+      {
+        "GTexName": "8a8e59cc112842798ea2416649432c9f", 
+        "GTS": "Public/STAV/VTextures/ST_TIF_M_VT.gts"
+      },
+      {
+        "GTexName": "7d6066393c1a4d43a6c478653c9ba237", 
+        "GTS": "Public/STAV/VTextures/ST_TIF_MS_VT.gts"
+      }
+  ]
+}
