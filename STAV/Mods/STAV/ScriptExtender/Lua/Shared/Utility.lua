@@ -42,14 +42,12 @@ function U.ScanInventory(entity, visit)
 	end
 end
 
-function U.ResolveDisplayName(handle, fallback)
-	local translated = Ext.Loca.GetTranslatedString(handle, fallback)
-	return (translated ~= "" and translated ~= handle) and translated or fallback
-end
-
 function U.GetDisplayName(uuid, fallback)
-	local handle = Osi.GetDisplayName(uuid)
-	return U.ResolveDisplayName(handle, fallback or uuid)
+	local entity = U.GetEntity(uuid)
+	if not entity then return fallback or uuid end
+	if entity.CustomName then return entity.CustomName.Name end
+	if entity.DisplayName then return entity.DisplayName.Name:Get() or fallback or uuid end
+	return fallback or uuid
 end
 
 function U.GetStatusDuration(target, statusId)

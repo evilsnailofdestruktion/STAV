@@ -33,7 +33,7 @@ local Machine = Ext.IsServer() and "S" or "C"
 local RESET   = "\x1b[0m"
 
 local function Format(...)
-	return #{ ... } <= 1 and tostring((...)) or string.format(...)
+	return select("#", ...) <= 1 and tostring((...)) or string.format(...)
 end
 
 local function Lerp(a, b, t)
@@ -115,7 +115,16 @@ for i, color in ipairs(PRESETS) do
 end
 
 -- Public
+STAVPalette = {
+	Colours = PRESETS,
+	Names   = {
+		"Red", "Orange", "Yellow", "Green", "Blue", "Violet", "White", "Silver", "Black", "Magenta",
+		"Blush", "Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green",
+		"Neon Unseelie Violet", "Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet",
+	},
+}
+
 function STAVDebug(...)
 	if not (STAV_DebugEnabled or Config.Get("Debug")) then return end
-	STAVPrint():C10(string.format("[%s STAV] ", Machine)):Raw(Format(...)):Print()
+	STAVPrint():C18(string.format("[%s STAV] ", Machine)):Raw(Format(...)):Print()
 end

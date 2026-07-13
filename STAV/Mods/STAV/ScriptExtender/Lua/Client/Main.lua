@@ -5,7 +5,7 @@ local NetDefs       = Ext.Require("Shared/NetDefs.lua")
 local Applying      = Ext.Require("Client/Applying.lua")
 local Config        = Ext.Require("Shared/Config.lua")
 
-local BODY_MAX      = 60
+local BODY_MAX      = 96
 local HEAD_MAX      = 93
 local INTENSITY_MAX = 5
 
@@ -112,16 +112,67 @@ win.NoFocusOnAppearing = true
 win.Scaling            = 'Scaled'
 win.AlwaysAutoResize   = false
 win:SetPos({ vp[1] / 6, vp[2] / 10 })
-if vp[1] <= 1920 and vp[2] <= 1080 then
-	win:SetSize({ 480 / 1.333, 600 / 1.333 })
-else
-	win:SetSize({ 480, 600 })
-end
-local ACCENT = { 0.424, 0.447, 0.796 }
-local GLOW   = { 0.58, 0.62, 1.00 }
+win:SetSize({ 593, 809 })
 
 local function tint(base, alpha)
 	return { base[1], base[2], base[3], alpha }
+end
+
+local function scale(c, f)
+	return { c[1] * f, c[2] * f, c[3] * f }
+end
+
+local function lighten(c, t)
+	return { c[1] + (1 - c[1]) * t, c[2] + (1 - c[2]) * t, c[3] + (1 - c[3]) * t }
+end
+
+local DARK = { 0.09, 0.09, 0.11 }
+
+local THEMES = {
+	chromed = function(accent, glow)
+		return {
+			{ "TitleBgActive",    tint(accent, 1.00) },
+			{ "Tab",              tint(scale(accent, 0.5), 0.86) },
+			{ "TabHovered",       tint(accent, 0.70) },
+			{ "TabActive",        tint(accent, 0.90) },
+			{ "Header",           tint(accent, 0.35) },
+			{ "HeaderHovered",    tint(accent, 0.60) },
+			{ "HeaderActive",     tint(accent, 0.80) },
+			{ "CheckMark",        tint(glow, 1.00) },
+			{ "SliderGrab",       tint(accent, 0.65) },
+			{ "SliderGrabActive", tint(glow, 1.00) },
+			{ "Separator",        tint(accent, 0.00) },
+		}
+	end,
+	ccee = function(accent, glow)
+		return {
+			{ "TitleBgActive",    tint(DARK, 1.00) },
+			{ "Tab",              tint(DARK, 0.90) },
+			{ "TabHovered",       tint(accent, 0.45) },
+			{ "TabActive",        tint(accent, 0.65) },
+			{ "Header",           tint(accent, 0.00) },
+			{ "HeaderHovered",    tint(accent, 0.20) },
+			{ "HeaderActive",     tint(accent, 0.30) },
+			{ "CheckMark",        tint(accent, 1.00) },
+			{ "SliderGrab",       tint(accent, 0.65) },
+			{ "SliderGrabActive", tint(glow, 1.00) },
+			{ "Separator",        tint(accent, 0.90) },
+		}
+	end,
+}
+
+local function applyTheme(style, accentIdx)
+	local rgb    = STAVPalette.Colours[accentIdx] or STAVPalette.Colours[18]
+	local accent = { rgb[1] / 255, rgb[2] / 255, rgb[3] / 255 }
+	local glow   = lighten(accent, 0.45)
+	for _, c in ipairs((THEMES[style] or THEMES.chromed)(accent, glow)) do
+		win:SetColor(c[1], c[2])
+	end
+	win:SetColor("ResizeGrip", tint(accent, 0.18))
+	win:SetColor("ResizeGripHovered", tint(accent, 0.60))
+	win:SetColor("ResizeGripActive", tint(accent, 0.90))
+	win:SetColor("SeparatorHovered", tint(accent, 0.60))
+	win:SetColor("SeparatorActive", tint(accent, 0.90))
 end
 
 for _, s in ipairs({
@@ -140,53 +191,93 @@ for _, s in ipairs({
 end
 
 for _, c in ipairs({
-	{ "Text",             { 0.90, 0.90, 0.88, 1.00 } },
-	{ "Tab",              { 0.20, 0.21, 0.36, 0.86 } },
-	{ "TitleBgActive",    tint(ACCENT, 1.00) },
-	{ "TabHovered",       tint(ACCENT, 0.70) },
-	{ "TabActive",        tint(ACCENT, 0.90) },
-	{ "Header",           tint(ACCENT, 0.35) },
-	{ "HeaderHovered",    tint(ACCENT, 0.60) },
-	{ "HeaderActive",     tint(ACCENT, 0.80) },
-	{ "CheckMark",        tint(GLOW, 1.00) },
-	{ "SliderGrab",       tint(ACCENT, 0.65) },
-	{ "SliderGrabActive", tint(GLOW, 1.00) },
-	{ "Separator",        tint(ACCENT, 0.40) },
+	{ "Text",           { 0.90, 0.90, 0.88, 1.00 } },
+	{ "WindowBg",       { 0.07, 0.07, 0.07, 0.95 } },
+	{ "FrameBg",        { 0.20, 0.20, 0.22, 1.00 } },
+	{ "FrameBgHovered", { 0.26, 0.26, 0.29, 1.00 } },
+	{ "FrameBgActive",  { 0.30, 0.30, 0.33, 1.00 } },
+	{ "Button",         { 0.22, 0.22, 0.25, 1.00 } },
+	{ "ButtonHovered",  { 0.28, 0.28, 0.32, 1.00 } },
+	{ "ButtonActive",   { 0.33, 0.33, 0.37, 1.00 } },
+	{ "PopupBg",        { 0.12, 0.12, 0.14, 0.98 } },
+	{ "ScrollbarBg",          { 0.12, 0.12, 0.14, 1.00 } },
+	{ "ScrollbarGrab",        { 0.30, 0.30, 0.33, 1.00 } },
+	{ "ScrollbarGrabHovered", { 0.36, 0.36, 0.40, 1.00 } },
+	{ "ScrollbarGrabActive",  { 0.42, 0.42, 0.47, 1.00 } },
 }) do
 	win:SetColor(c[1], c[2])
 end
 
+applyTheme(Config.Get("ThemeStyle"), Config.Get("ThemeAccent"))
+
 UI.Window    = win
 
 local bar    = win:AddTabBar("STAV_Tabs")
-local tatTab = bar:AddTabItem(L.T("Tattoos"))
+local mainTab = bar:AddTabItem(L.T("Main"))
 
-tatTab:AddDummy(0, 4)
+mainTab:AddDummy(0, 4)
 
-local body = tatTab:AddCollapsingHeader(L.T("Body"))
+local body = mainTab:AddCollapsingHeader(L.T("Body"))
 body.DefaultOpen = true
 addCheckbox(body, L.T("Body Scar"), "scar")
 addSlider(body, L.T("Main Tattoo"), BODY_MAX, "bodyMain")
 addSlider(body, L.T("Alt Tattoo"), BODY_MAX, "bodyAlt")
 addSlider(body, L.T("Glow Tattoo"), BODY_MAX, "bodyGlow")
+mainTab:AddSeparator()
 
-local head = tatTab:AddCollapsingHeader(L.T("Head"))
+local head = mainTab:AddCollapsingHeader(L.T("Head"))
 head.DefaultOpen = true
 addSlider(head, L.T("Alt Tattoo"), HEAD_MAX, "headAlt")
 addSlider(head, L.T("Glow Tattoo"), HEAD_MAX, "headGlow")
+mainTab:AddSeparator()
 
-local shared = tatTab:AddCollapsingHeader(L.T("Shared"))
+local shared = mainTab:AddCollapsingHeader(L.T("Shared"))
 shared.DefaultOpen = true
 addPicker(shared, L.T("Alt Tattoo Colour"), "altColor")
 addPicker(shared, L.T("Glow Colour"), "glowColor")
 addFloatSlider(shared, L.T("Glow Intensity"), INTENSITY_MAX, "glowIntensity")
 addCheckbox(shared, L.T("Swirlies"), "swirl")
 addCheckbox(shared, L.T("Vampirism"), "vampirism")
+mainTab:AddSeparator()
 
-tatTab:AddDummy(0, 6)
-local resetBtn = tatTab:AddButton(L.T("Reset"))
+mainTab:AddDummy(0, 6)
+local resetBtn = mainTab:AddButton(L.T("Reset"))
 resetBtn.IDContext = "STAV_Reset"
 resetBtn.OnClick = function() UI.Reset() end
+
+local themeTab = bar:AddTabItem(L.T("Themes"))
+themeTab:AddDummy(0, 4)
+
+local chromedCb = themeTab:AddCheckbox(L.T("Chromed"), Config.Get("ThemeStyle") ~= "ccee")
+chromedCb.IDContext = "STAV_ThemeChromed"
+local cceeCb = themeTab:AddCheckbox("CCEE", Config.Get("ThemeStyle") == "ccee")
+cceeCb.IDContext = "STAV_ThemeCcee"
+cceeCb.SameLine = true
+
+local function setStyle(style)
+	Config.Set("ThemeStyle", style)
+	chromedCb.Checked = style == "chromed"
+	cceeCb.Checked = style == "ccee"
+	applyTheme(style, Config.Get("ThemeAccent"))
+end
+
+chromedCb.OnChange = function() setStyle("chromed") end
+cceeCb.OnChange = function() setStyle("ccee") end
+
+local accentNames = {}
+for i, name in ipairs(STAVPalette.Names) do
+	accentNames[i] = L.T(name)
+end
+
+local accentCombo = themeTab:AddCombo(L.T("Accent"))
+accentCombo.IDContext = "STAV_ThemeAccent"
+accentCombo.Options = accentNames
+accentCombo.SelectedIndex = Config.Get("ThemeAccent") - 1
+accentCombo.OnChange = function(w)
+	local idx = w.SelectedIndex + 1
+	Config.Set("ThemeAccent", idx)
+	applyTheme(Config.Get("ThemeStyle"), idx)
+end
 
 function UI.Toggle()
 	UI.Window.Open = not UI.Window.Open
@@ -215,16 +306,19 @@ function UI.RefreshWidgets()
 	end
 end
 
-function UI.PopulateFromEntity(char)
-	char = char or _C()
-	if not char then return end
-	local look = Vars.GetLook(char) or copyState(DEFAULTS)
+local function seedState(look)
 	for k, v in pairs(look) do
 		if UI.State[k] ~= nil then
 			UI.State[k] = v
 		end
 	end
 	UI.RefreshWidgets()
+end
+
+function UI.PopulateFromEntity(char)
+	char = char or _C()
+	if not char then return end
+	seedState(Vars.GetLook(char) or copyState(DEFAULTS))
 	Applying.ApplyAll(UI.State)
 end
 
@@ -257,14 +351,16 @@ local function hasAny(set)
 	return false
 end
 
-local rebuildHook = nil
+local rebuildHook  = nil
+local rebuildTimer = nil
 
 local function registerRebuildHook()
 	if rebuildHook then return end
 	rebuildHook = Ext.Entity.OnSystemUpdate("ClientEquipmentVisuals", function()
 		local sys = Ext.System.ClientEquipmentVisuals
-		if hasAny(sys.DestroyVisuals) or hasAny(sys.InitVisualLevel) then
-			Ext.Timer.WaitFor(100, function()
+		if (hasAny(sys.DestroyVisuals) or hasAny(sys.InitVisualLevel)) and not rebuildTimer then
+			rebuildTimer = Ext.Timer.WaitFor(100, function()
+				rebuildTimer = nil
 				if ccDummyCount() > 0 then Applying.ApplyAll(UI.State) end
 			end)
 		end
@@ -312,22 +408,52 @@ Ext.Entity.OnDestroyDeferred("PhotoModeDummy", function()
 	end
 end)
 
+local TL_APPLY_DELAY = 333
+
+local function findTimelineOwner(actor)
+	for _, e in pairs(Ext.Entity.GetAllEntitiesWithComponent("Origin")) do
+		if e.TimelineActorData and e.TimelineActorData.Actor == actor then return e end
+	end
+end
+
+-- Cutscene actors are TLPreviewDummy entities whose visual streams in ~189ms
+-- after the entity is created; defer past that, then apply the owner's look.
+Ext.Entity.OnCreateDeferred("TLPreviewDummy", function(e)
+	Ext.Timer.WaitFor(TL_APPLY_DELAY, function()
+		if not (e.Visual and e.Visual.Visual) then return end
+		local tac = e.ClientTimelineActorControl
+		if not tac then return end
+		local owner = findTimelineOwner(tac.Actor)
+		local look = owner and Vars.GetLook(owner)
+		if not look then
+			local uuid = resolveCharacterUUID()
+			local own = uuid and Ext.Entity.Get(uuid)
+			if own and e.TLPreviewDummy.OriginalCharacterTemplate == own.GameObjectVisual.RootTemplateId then
+				look = Vars.GetLook(own)
+				if not look and UI.Changed then look = UI.State end
+			end
+		end
+		if not look then return end
+		STAVDebug("TL %s: applying (%s)", e.TLPreviewDummy.Name, owner and "owner" or "self")
+		Applying.ApplyLookToEntity(e, look)
+	end)
+end)
+
 NetDefs.NET_APPLY_SYNC:SetHandler(function(data)
-	if not data then return end
 	Applying.ApplyLocalPreset(data.preset, data.characterUUID, data.state)
 end)
 
 NetDefs.NET_AVATAR_PING:SetHandler(function()
 	local uuid = resolveCharacterUUID()
 	if not uuid then return end
-	local entity = Ext.Entity.Get(uuid)
-	local look = entity and Vars.GetLook(entity)
+	local look = Vars.GetLook(Ext.Entity.Get(uuid))
 	if look then
-		for k, v in pairs(look) do
-			if UI.State[k] ~= nil then UI.State[k] = v end
-		end
-		UI.RefreshWidgets()
+		STAVDebug("Aavatar ping: seeded from persisted look for %s", uuid)
+		seedState(look)
 	elseif UI.Changed then
+		STAVDebug("Avatar ping: resending unsynced look for %s", uuid)
 		sendLook(uuid)
+	else
+		STAVDebug("Avatar ping: no-op for %s", uuid)
 	end
 end)

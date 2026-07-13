@@ -43,13 +43,17 @@ local function getRenderEntities()
 			result[#result + 1] = Ext.Entity.Get(dummy)
 		end
 	end
+	local target = _C()
 	for _, pm in pairs(Ext.Entity.GetAllEntitiesWithComponent("PhotoModeDummy")) do
 		local char = pm.PhotoModeDummy.Entity
-		local dummy = char and char.HasDummy and char.HasDummy.Entity
-		if dummy then
-			result[#result + 1] = dummy
+		if char and target and char.Uuid.EntityUuid == target.Uuid.EntityUuid then
+			local dummy = char.HasDummy and char.HasDummy.Entity
+			if dummy then
+				result[#result + 1] = dummy
+			end
 		end
 	end
+	STAVDebug("getRenderEntities found %d target(s)", #result)
 	return result
 end
 
@@ -63,11 +67,18 @@ function A.Apply(key, value)
 	end
 end
 
-function A.ApplyAll(state)
-	for key, value in pairs(state) do
-		if Params.Map[key] then
-			A.Apply(key, value)
+function A.ApplyLookToEntity(entity, look)
+	walkMaterials(entity, function(am)
+		for key, param in pairs(Params.Map) do
+			local value = look[key]
+			if value ~= nil then applyParam(am, param, value) end
 		end
+	end)
+end
+
+function A.ApplyAll(state)
+	for _, entity in ipairs(getRenderEntities()) do
+		A.ApplyLookToEntity(entity, state)
 	end
 end
 

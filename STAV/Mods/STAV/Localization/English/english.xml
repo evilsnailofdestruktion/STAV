@@ -152,7 +152,23 @@
   <content contentuid="h974f3eeag298dge23bgd5b8g6125e0b3ab06" version="1">Scar 22</content>
   <content contentuid="hfd4457cag27ebgaa1ag421bg199a188cb5b4" version="1">Scar 23</content>
   <content contentuid="hecf80ff6ga399gb79cgab18g3e9caefe927e" version="1">Scar 24</content>
-  <content contentuid="hbe107a60gc779g405bga284gdfba68f82969" version="1">Tattoos</content>
+  <content contentuid="h54438351gc86dg8660g24bag35589fc2c116" version="1">ST_Tattoos</content>
+  <content contentuid="h6bc68489g15afg40afg28f3gb09005f7151e" version="1">ST_Tattoos</content>
+  <content contentuid="hd0276d2bg152bgb1ffg5047ge042033731ec" version="1">ST_Tattoos</content>
+  <content contentuid="h738dd946gcc9fgdd44g7a48g0813395efab9" version="1">ST_Tattoos</content>
+  <content contentuid="h4ef3a5ceg31acg448dg2729g0f09dfba6c5d" version="1">ST_Tattoos</content>
+  <content contentuid="h0c143b69g62b3g4d40g21f4gf3527c6c051c" version="1">ST_Tattoos</content>
+  <content contentuid="h82185478ga7f8gaf19g6932g2dc31d651162" version="1">ST_Tattoos</content>
+  <content contentuid="h6ea82f9dgcf7bg217bgb3dfg07671a33346c" version="1">ST_Tattoos</content>
+  <content contentuid="h683ba05eg7ef3g1ad3ga8aag4adb0afa83e0" version="1">ST_Tattoos</content>
+  <content contentuid="h0a173749g31fegc8c6g27f5gd9a2c1fdfd9c" version="1">ST_Tattoos</content>
+  <content contentuid="hcc556c3ag621cg2ac3g0f95g3ef2d19aa075" version="1">ST_Tattoos</content>
+  <content contentuid="h6aa22924gf3efg6f97ge78ag6b3cf97c3177" version="1">ST_Tattoos</content>
+  <content contentuid="h06dfd214g9a3bg0c0bg23a2g8ea1d030c1e4" version="1">ST_Tattoos</content>
+  <content contentuid="hf349b336g8d0fg4d61gbd2eg0e9c5c290cfb" version="1">ST_Tattoos</content>
+  <content contentuid="h823ca267g6023g6185g6cd7g7598e0acbc04" version="1">ST_Tattoos</content>
+  <content contentuid="hf1a10cd7gb5a4g4defg6563g5a139930d7ff" version="1">ST_Tattoos</content>
+  <content contentuid="hbe107a60gc779g405bga284gdfba68f82969" version="1">Main</content>
   <content contentuid="had728168g63d5g481cg9038gd5f07350958d" version="1">Body</content>
   <content contentuid="hb75263dagfeb4g48e1g8de6g5c74d687cb57" version="1">Head</content>
   <content contentuid="h2b46fe7dg4dbfg4f5agb3cdg8ddba4a1aeb2" version="1">Shared</content>
@@ -171,20 +187,27 @@
   <content contentuid="h70f7ccbeg75a3g4d91g80cdg63d7c8168cd9" version="1">Automatically open the STAV panel when entering photo mode.</content>
   <content contentuid="h8be41d65g1606g40f3gb4a3gc3c5bdc588a8" version="1">Debug Logging</content>
   <content contentuid="hec331c0fgc896g4797g99bbge3b4d5b35c6a" version="1">Enable STAV debug prints in the console.</content>
-  <content contentuid="h54438351gc86dg8660g24bag35589fc2c116" version="1">ST_Tattoos</content>
-  <content contentuid="h6bc68489g15afg40afg28f3gb09005f7151e" version="1">ST_Tattoos</content>
-  <content contentuid="hd0276d2bg152bgb1ffg5047ge042033731ec" version="1">ST_Tattoos</content>
-  <content contentuid="h738dd946gcc9fgdd44g7a48g0813395efab9" version="1">ST_Tattoos</content>
-  <content contentuid="h4ef3a5ceg31acg448dg2729g0f09dfba6c5d" version="1">ST_Tattoos</content>
-  <content contentuid="h0c143b69g62b3g4d40g21f4gf3527c6c051c" version="1">ST_Tattoos</content>
-  <content contentuid="h82185478ga7f8gaf19g6932g2dc31d651162" version="1">ST_Tattoos</content>
-  <content contentuid="h6ea82f9dgcf7bg217bgb3dfg07671a33346c" version="1">ST_Tattoos</content>
-  <content contentuid="h683ba05eg7ef3g1ad3ga8aag4adb0afa83e0" version="1">ST_Tattoos</content>
-  <content contentuid="h0a173749g31fegc8c6g27f5gd9a2c1fdfd9c" version="1">ST_Tattoos</content>
-  <content contentuid="hcc556c3ag621cg2ac3g0f95g3ef2d19aa075" version="1">ST_Tattoos</content>
-  <content contentuid="h6aa22924gf3efg6f97ge78ag6b3cf97c3177" version="1">ST_Tattoos</content>
-  <content contentuid="h06dfd214g9a3bg0c0bg23a2g8ea1d030c1e4" version="1">ST_Tattoos</content>
-  <content contentuid="hf349b336g8d0fg4d61gbd2eg0e9c5c290cfb" version="1">ST_Tattoos</content>
-  <content contentuid="h823ca267g6023g6185g6cd7g7598e0acbc04" version="1">ST_Tattoos</content>
-  <content contentuid="hf1a10cd7gb5a4g4defg6563g5a139930d7ff" version="1">ST_Tattoos</content>
+  <content contentuid="hcd0bed63g4b5dg40fdg8324g384da5864daf" version="1">Themes</content>
+  <content contentuid="h0c008b66g6d1cg4546g8679g50068a42313d" version="1">Chromed</content>
+  <content contentuid="h6f3c1ae7gc7e4g4d68g9606g6589b2463ba0" version="1">Accent</content>
+  <content contentuid="h3f930a28g38f1g461dgbadagd441672ab0f1" version="1">Red</content>
+  <content contentuid="hb6a79fb5g0933g4214gad2cgf3a35ead7f4f" version="1">Orange</content>
+  <content contentuid="h159896f6g6036g460fgb1d7g24e53cab0b48" version="1">Yellow</content>
+  <content contentuid="h6c8271e9gbecdg4ef0g9049g09385e375b13" version="1">Green</content>
+  <content contentuid="hc04c39ffg6b8eg4e8cg90f7gb4d87b98f99a" version="1">Blue</content>
+  <content contentuid="h413d3f96ge5a4g4bbbgaba6gc17ec839f175" version="1">Violet</content>
+  <content contentuid="h71ec8977gdbabg4f00g8d39gab4fb223f470" version="1">White</content>
+  <content contentuid="heb6b9907g0b03g4c73g97a6g80f88f1429a5" version="1">Silver</content>
+  <content contentuid="hf267a96bg5416g4f88gb42cg4ad9814c9825" version="1">Black</content>
+  <content contentuid="h95955df8g3c96g4c39gb089g308fe4e2440f" version="1">Magenta</content>
+  <content contentuid="haca46d3agc268g40a8g9119g15a2c237a96f" version="1">Blush</content>
+  <content contentuid="hc02c521bg84f7g4017gb746g76ef7cd8c175" version="1">Seelie Green</content>
+  <content contentuid="hc2618f32ge8e7g41fdg8b73gabc0bc29e480" version="1">Unseelie Violet</content>
+  <content contentuid="hda7e5cbbgb4f2g416eg943agbc0c459ffeb9" version="1">Deep Teal</content>
+  <content contentuid="hd76bc332g94dag4aa4ga1c4ga7f0c63dedb9" version="1">Neon Seelie Green</content>
+  <content contentuid="h35388a14gfd10g46e2g934bgda3f11225c8f" version="1">Neon Unseelie Violet</content>
+  <content contentuid="h6201e53fg6709g4bf0gb6d3g8cf0742c5a5c" version="1">Neon Teal</content>
+  <content contentuid="h3a73e52fgfb29g4294ga68egb895e4477226" version="1">Twilight Veil</content>
+  <content contentuid="h9b8d8926gc00bg4144ga14dg0847887c22ac" version="1">Gloaming Wisp</content>
+  <content contentuid="hf383c4e9g0ca8g41ceg9403g0789ba6d7b0c" version="1">Dusk Violet</content>
 </contentList>
