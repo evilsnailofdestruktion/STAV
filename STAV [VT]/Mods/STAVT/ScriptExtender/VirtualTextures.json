@@ -119,6 +119,50 @@
       {
         "GTexName": "7d6066393c1a4d43a6c478653c9ba237", 
         "GTS": "Public/STAV/VTextures/ST_TIF_MS_VT.gts"
+      },
+      {
+        "GTexName": "bbe9abf81e7d47b7a9e7199c1d2d469f", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Astarion_VT.gts"
+      },
+      {
+        "GTexName": "bcc8bf7a0fb443b6abd75c623262d87f", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Gale_VT.gts"
+      },
+      {
+        "GTexName": "9fddf132b0e342d99865977f508aab16", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_GaleNoTats_VT.gts"
+      },
+      {
+        "GTexName": "17988d7b0d6d42feb07a6641783c48d4", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Halsin_VT.gts"
+      },
+      {
+        "GTexName": "1f94637ba64248a89a7b0b44fa37274a", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Jaheira_VT.gts"
+      },
+      {
+        "GTexName": "aa8ed5383e83411f8cd65320440cb432", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Karlach_VT.gts"
+      },
+      {
+        "GTexName": "103d7b474e5b4133b4a5c136aba92e07", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Laezel_VT.gts"
+      },
+      {
+        "GTexName": "3d2272511aa2432f83c3f1f13f890067", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Minsc_VT.gts"
+      },
+      {
+        "GTexName": "3f7cf15440a04ab2947e7a75296e84ef", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Minthara_VT.gts"
+      },
+      {
+        "GTexName": "39c7c3b790814100ad26a722ab9e6d15", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Shadowheart_VT.gts"
+      },
+      {
+        "GTexName": "6bdf7bdf567a4d2e8fd5733c15b77b65", 
+        "GTS": "Public/STAV/VTextures/Companions/ST_Wyll_VT.gts"
       }
   ]
 }

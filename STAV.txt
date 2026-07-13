@@ -64,18 +64,18 @@ TIF_FS_NKD_Body_A_000_cbbd294d-468c-bd37-ef2f-d2351ff2b45f
 TIF_MS_NKD_Body_A_000_f31189c6-50ce-a198-93bb-cfa54fb75079
 
 Companion Bodies:
-ELF_ M_NKD_Body_Astarion_000_2e8da869-974a-209e-ea85-cecf69edcb64
-HUM_M_NKD_Body_Gale_000_edd2cb50-b537-76ad-134e-c75c65d99705
-HUM_M_NKD_Body_Gale_NoTat_000_c7be9d7e-8883-03af-f7d4-44b8730a71f4
-ELF_MS_NKD_Body_Halsin_000_cd3b1f46-fd4f-bfff-7e91-ee7cfbf3d574
-HFL_F_NKD_Body_Jaheira_000_cebf12f5-c510-7e4a-513c-c3421a2e94ba
-TIF_FS_NKD_Body_Karlach_A_000_9c097fef-2bff-a0b3-17f1-5fa6b99d5aa8
-TIF_FS_NKD_Body_Karlach_A_Glow_000_1ece701e-a4f7-a466-f3ad-b8418191e284
-GTY_F_NKD_Body_Laezel_000_b153fa26-d9a8-9337-5dee-ffddaad4b282
-HUM_MS_NKD_Body_Minsc_000_b7bae40d-b2fd-4c10-6de4-9a492dc43e47
-DRO_F_NKD_Body_Minthara_000_e35a200e-2fff-a8d3-d1c8-66d0cff91c2c
-HFL_F_NKD_Body_Shadowheart_000_31ea4499-1f05-e225-1e1a-d3928fe3cd98
-HUM_M_NKD_Body_Wyll_000_ecfbf57a-704d-34df-7689-cda0b6c9ec99
+ELF_M_NKD_Body_Astarion_000 2e8da869-974a-209e-ea85-cecf69edcb64
+HUM_M_NKD_Body_Gale_000 edd2cb50-b537-76ad-134e-c75c65d99705
+HUM_M_NKD_Body_Gale_NoTat_000 c7be9d7e-8883-03af-f7d4-44b8730a71f4
+ELF_MS_NKD_Body_Halsin_000 cd3b1f46-fd4f-bfff-7e91-ee7cfbf3d574
+HFL_F_NKD_Body_Jaheira_000 cebf12f5-c510-7e4a-513c-c3421a2e94ba
+TIF_FS_NKD_Body_Karlach_A_000 9c097fef-2bff-a0b3-17f1-5fa6b99d5aa8
+TIF_FS_NKD_Body_Karlach_A_Glow_000 1ece701e-a4f7-a466-f3ad-b8418191e284
+GTY_F_NKD_Body_Laezel_000 b153fa26-d9a8-9337-5dee-ffddaad4b282
+HUM_MS_NKD_Body_Minsc_000 b7bae40d-b2fd-4c10-6de4-9a492dc43e47
+DRO_F_NKD_Body_Minthara_000 e35a200e-2fff-a8d3-d1c8-66d0cff91c2c
+HFL_F_NKD_Body_Shadowheart_000 31ea4499-1f05-e225-1e1a-d3928fe3cd98
+HUM_M_NKD_Body_Wyll_000 ecfbf57a-704d-34df-7689-cda0b6c9ec99
 
 Companion Heads:
 DRO_F_NKD_Head_Minthara_000_e18d1b72-c2ac-f8bd-04cf-7b0156cc112f
