@@ -182,11 +182,20 @@
   <content contentuid="hbd829e71g8edcg468fg9b63gdbb79b1fd31f" version="1">Swirlies</content>
   <content contentuid="h1cba0ec1gfcb1g48cbg9b82gac8aff69c550" version="1">Vampirism</content>
   <content contentuid="h9ceb4c21ga27cg4ea3gbf1bgf02d336152e2" version="1">Reset</content>
+  <content contentuid="hd9d3201bg359eg4ae5g9705g43b5f3c07bd7" version="1">Presets</content>
+  <content contentuid="h79d382a8gbd53g4fa4gb4ecga36a86c716f5" version="1">New Preset Name</content>
+  <content contentuid="hbc44634dg8c9bg4ed9gae5dge260ea8d60d8" version="1">Save as New</content>
+  <content contentuid="hcbd703aeg8c2eg4766gbe34g03f2e5d1ca5a" version="1">Delete</content>
+  <content contentuid="h392f604cgbf77g4be6ga086ge37070bdf66c" version="1">Export As</content>
+  <content contentuid="hc1295e87ge8d5g4fffg9509g2b6a61061334" version="1">Export</content>
+  <content contentuid="hc9cbb4ebg100dg4847gaa7ag6d388019d1db" version="1">Invalid export filename.</content>
+  <content contentuid="he0fb457dg68ceg41dcgb8f3g936a616e81b2" version="1">Exported</content>
+  <content contentuid="h33f9abd8g3261g47f8gb1fegdde1ed9df892" version="1">Import From</content>
+  <content contentuid="h97907478g8e62g4590gb08dg26a0511c9971" version="1">Filename...</content>
+  <content contentuid="h4028d3c8gd1c5g4276gab27g095e3d1ac284" version="1">Import</content>
+  <content contentuid="h6f6d69d1g25b3g4703ga525g5bdded8c8f12" version="1">Preset file not found or invalid.</content>
+  <content contentuid="h52e55529gd500g4a5fg8ceage6252b0a1ceb" version="1">Imported</content>
   <content contentuid="h0f99ff3fg4643g454bg9873g6b011998cb2f" version="1">Toggle UI Panel</content>
-  <content contentuid="h72af5f23gd8d5g4decg8cefg038b93dbfab4" version="1">Auto-open in Photo Mode</content>
-  <content contentuid="h70f7ccbeg75a3g4d91g80cdg63d7c8168cd9" version="1">Automatically open the STAV panel when entering photo mode.</content>
-  <content contentuid="h8be41d65g1606g40f3gb4a3gc3c5bdc588a8" version="1">Debug Logging</content>
-  <content contentuid="hec331c0fgc896g4797g99bbge3b4d5b35c6a" version="1">Enable STAV debug prints in the console.</content>
   <content contentuid="hcd0bed63g4b5dg40fdg8324g384da5864daf" version="1">Themes</content>
   <content contentuid="h0c008b66g6d1cg4546g8679g50068a42313d" version="1">Chromed</content>
   <content contentuid="h6f3c1ae7gc7e4g4d68g9606g6589b2463ba0" version="1">Accent</content>
@@ -210,4 +219,8 @@
   <content contentuid="h3a73e52fgfb29g4294ga68egb895e4477226" version="1">Twilight Veil</content>
   <content contentuid="h9b8d8926gc00bg4144ga14dg0847887c22ac" version="1">Gloaming Wisp</content>
   <content contentuid="hf383c4e9g0ca8g41ceg9403g0789ba6d7b0c" version="1">Dusk Violet</content>
+  <content contentuid="h5e138bc4gf04dg4f65g977fg94d21267cf05" version="1">Advanced</content>
+  <content contentuid="hd58efd5agda7fg4fbdgb5b5gdf0d4a88b2b7" version="1">Auto-open in Character Creation</content>
+  <content contentuid="h72af5f23gd8d5g4decg8cefg038b93dbfab4" version="1">Auto-open in Photo Mode</content>
+  <content contentuid="h8be41d65g1606g40f3gb4a3gc3c5bdc588a8" version="1">Debug Logging</content>
 </contentList>

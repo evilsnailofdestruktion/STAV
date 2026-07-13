@@ -2,17 +2,12 @@ local M = {}
 
 local PATH = "STAV/config.json"
 
--- config key → MCM setting id
-local MCM_IDS = {
-	AutoOpenPhotoMode = "STAV_AutoOpenPhotoMode",
-	Debug             = "STAV_Debug",
-}
-
 local DEFAULT = {
-	AutoOpenPhotoMode = false,
+	AutoOpenCC        = true,
+	AutoOpenPhotoMode = true,
 	Debug             = false,
 	ThemeStyle        = "chromed",
-	ThemeAccent       = 18,
+	ThemeAccent       = 16,
 }
 
 local data = {}
@@ -36,13 +31,7 @@ local function load()
 	end
 end
 
--- MCM first, config as fallback
 function M.Get(key)
-	local id = MCM_IDS[key]
-	if id and type(MCM) == "table" then
-		local v = MCM.Get(id)
-		if v ~= nil then return v end
-	end
 	return data[key]
 end
 

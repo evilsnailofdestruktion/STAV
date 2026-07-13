@@ -115,7 +115,7 @@ for i, color in ipairs(PRESETS) do
 end
 
 -- Public
-STAVPalette = {
+local Palette = {
 	Colours = PRESETS,
 	Names   = {
 		"Red", "Orange", "Yellow", "Green", "Blue", "Violet", "White", "Silver", "Black", "Magenta",
@@ -126,5 +126,7 @@ STAVPalette = {
 
 function STAVDebug(...)
 	if not (STAV_DebugEnabled or Config.Get("Debug")) then return end
-	STAVPrint():C18(string.format("[%s STAV] ", Machine)):Raw(Format(...)):Print()
+	STAVPrint():C16(string.format("[%s STAV] ", Machine)):Raw(Format(...)):Print()
 end
+
+return { Palette = Palette }

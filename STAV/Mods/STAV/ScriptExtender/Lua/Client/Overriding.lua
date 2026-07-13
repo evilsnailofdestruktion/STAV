@@ -58,6 +58,7 @@ local function applyParam(list, param)
 	list[#list + 1] = param
 end
 
+-- Credit to Volitio for most of this
 local function patchMaterial(mat, params, source)
 	if source then mat.SourceFile = source end
 	for _, s in ipairs(params.Scalars) do
