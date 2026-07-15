@@ -1401,5 +1401,15 @@
         <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="0bed6d08-aae1-0a2f-9448-4c44cf5add95" />
       </fields>
     </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_108" />
+        <field name="UUID" type="IdTableFieldDefinition" value="0e46d4ad-f0ba-4e03-8083-9c4d5e8c373b" />
+        <field name="NameFS" type="FixedStringTableFieldDefinition" value="ST_DB_Body_Only" />
+        <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="h29d5e17cg4e8dg2da8gfe08g6af20a3a152a" version="1" />
+        <field name="MaterialType" type="EnumerationTableFieldDefinition" value="Passive" enumeration_type_name="CharacterCreatorMaterialType" version="1" />
+        <field name="MaterialPresetUUID" type="GuidTableFieldDefinition" value="c69396af-b4ad-16b8-7a8c-465dce93a7b6" />
+      </fields>
+    </stat_object>
   </stat_objects>
 </stats>
