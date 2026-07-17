@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <stats stat_object_definition_id="f3402ee2-d145-40f1-85ff-ff9c82ff50e8">
-  <stat_objects />
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_10" />
+        <field name="UUID" type="IdTableFieldDefinition" value="08595af9-c540-4b9e-a42d-9c90f2dc355b" />
+        <field name="Passive" type="FixedStringTableFieldDefinition" value="DraconicScales" />
+        <field name="AppearanceMaterialUUIDs" type="GuidListTableFieldDefinition" value="0e46d4ad-f0ba-4e03-8083-9c4d5e8c373b;f03b33ae-5d47-4cb5-80bc-ea06a3c55c96;2ec072c2-f2b7-4b8e-b021-4c5edd146980;73c8603e-69d0-449e-a330-b152747b7f47;1b7d9530-1f64-4163-8961-b1814e08fab4;70ec4180-d127-461c-9c11-802dcea8af20" />
+        <field name="ColorMaterialUUIDs" type="GuidListTableFieldDefinition" value="b340ae88-0ff6-47d7-a3bc-36dfb82539a2;47eec87d-24ce-4417-8ecb-a1ba267eface;e9210a4a-bcc3-4865-840d-ebfb45f6aff1;05ac9dbb-2abf-4e2c-a685-89902ed4cf3f;5eda6b9c-3836-42d0-ad20-6f391aea4f52" />
+      </fields>
+    </stat_object>
+  </stat_objects>
 </stats>

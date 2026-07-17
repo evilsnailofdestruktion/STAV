@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stats stat_object_definition_id="53912403-fe14-4ce0-89aa-96acb1dee21a">
+  <stat_objects>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_0" />
+        <field name="UUID" type="IdTableFieldDefinition" value="3e098688-e1b4-427d-8373-7b6058d60df2" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="4b6e7ec9-145b-4a95-9d8a-b2181de2749e" />
+        <field name="FSName" type="StringTableFieldDefinition" value="Human" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_1" />
+        <field name="UUID" type="IdTableFieldDefinition" value="53057e98-3065-45f8-96c2-d4bf2055cda9" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a" />
+        <field name="FSName" type="StringTableFieldDefinition" value="Elf" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_2" />
+        <field name="UUID" type="IdTableFieldDefinition" value="aaffeb7b-5b70-436a-ac81-73c19d01efa7" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="a43498f5-d72f-4a05-b721-1feea9acb3ad" />
+        <field name="FSName" type="StringTableFieldDefinition" value="Drow" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_3" />
+        <field name="UUID" type="IdTableFieldDefinition" value="654f51c5-44d8-4692-83a3-9d498bdba576" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6" />
+        <field name="FSName" type="StringTableFieldDefinition" value="HalfElf" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_4" />
+        <field name="UUID" type="IdTableFieldDefinition" value="2ebee796-eb00-4d3d-a636-916dce51cff2" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="d93def5b-a2df-4675-8a33-e47c9647eeae" />
+        <field name="FSName" type="StringTableFieldDefinition" value="Dwarf" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_5" />
+        <field name="UUID" type="IdTableFieldDefinition" value="03080b29-39db-44d8-a7a6-9a241342e645" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="c1d4adfe-9f00-44b4-a433-a45250d00631" />
+        <field name="FSName" type="StringTableFieldDefinition" value="Gnome" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_6" />
+        <field name="UUID" type="IdTableFieldDefinition" value="4f684841-733b-4222-9659-dda980b209b6" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="7e1ae395-6f2a-456b-ab64-1012c18065d4" />
+        <field name="FSName" type="StringTableFieldDefinition" value="Halfling" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_7" />
+        <field name="UUID" type="IdTableFieldDefinition" value="4903b986-0341-4fcb-bb90-b36190e46c80" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="1640733f-c32b-4d9d-9132-5ca6e985155c" />
+        <field name="FSName" type="StringTableFieldDefinition" value="Tiefling" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_8" />
+        <field name="UUID" type="IdTableFieldDefinition" value="c990a19f-dcaf-4d16-a27e-c674778f6ad1" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="81e2cb57-6a12-4429-b3a5-f72549355b3b" />
+        <field name="FSName" type="StringTableFieldDefinition" value="Githyanki" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_9" />
+        <field name="UUID" type="IdTableFieldDefinition" value="2c291259-b120-4702-9a6f-bd3f8a8e64f3" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6" />
+        <field name="FSName" type="StringTableFieldDefinition" value="HalfOrc" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+    <stat_object is_substat="false">
+      <fields>
+        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_44" />
+        <field name="UUID" type="IdTableFieldDefinition" value="ccd1b2a2-4de9-4d0c-b6b4-fb1cd9c94b5b" />
+        <field name="TableUUID" type="GuidTableFieldDefinition" value="35aa255d-3eb7-4e93-8092-7545ced25b09" />
+        <field name="FSName" type="StringTableFieldDefinition" value="DraconicBloodline" />
+        <field name="Level" type="ByteTableFieldDefinition" value="1" />
+        <field name="ProgressionType" type="ByteTableFieldDefinition" value="1" />
+        <field name="PassivesRemoved" type="StringTableFieldDefinition" value="DraconicScales" />
+      </fields>
+    </stat_object>
+  </stat_objects>
+</stats>

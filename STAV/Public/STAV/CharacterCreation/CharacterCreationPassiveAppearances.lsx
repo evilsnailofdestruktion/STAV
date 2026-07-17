@@ -2,6 +2,48 @@
 <save>
     <version major="4" minor="8" revision="0" build="500"/>
     <region id="CharacterCreationPassiveAppearances">
-        <node id="root"/>
+        <node id="root">
+            <children>
+                <node id="CharacterCreationPassiveAppearance">
+                    <attribute id="Passive" type="FixedString" value="DraconicScales"/>
+                    <attribute id="UUID" type="guid" value="08595af9-c540-4b9e-a42d-9c90f2dc355b"/>
+                    <children>
+                        <node id="AppearanceMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="0e46d4ad-f0ba-4e03-8083-9c4d5e8c373b"/>
+                        </node>
+                        <node id="AppearanceMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="f03b33ae-5d47-4cb5-80bc-ea06a3c55c96"/>
+                        </node>
+                        <node id="AppearanceMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="2ec072c2-f2b7-4b8e-b021-4c5edd146980"/>
+                        </node>
+                        <node id="AppearanceMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="73c8603e-69d0-449e-a330-b152747b7f47"/>
+                        </node>
+                        <node id="AppearanceMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="1b7d9530-1f64-4163-8961-b1814e08fab4"/>
+                        </node>
+                        <node id="AppearanceMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="70ec4180-d127-461c-9c11-802dcea8af20"/>
+                        </node>
+                        <node id="ColorMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="b340ae88-0ff6-47d7-a3bc-36dfb82539a2"/>
+                        </node>
+                        <node id="ColorMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="47eec87d-24ce-4417-8ecb-a1ba267eface"/>
+                        </node>
+                        <node id="ColorMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="e9210a4a-bcc3-4865-840d-ebfb45f6aff1"/>
+                        </node>
+                        <node id="ColorMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="05ac9dbb-2abf-4e2c-a685-89902ed4cf3f"/>
+                        </node>
+                        <node id="ColorMaterialUUIDs">
+                            <attribute id="Object" type="guid" value="5eda6b9c-3836-42d0-ad20-6f391aea4f52"/>
+                        </node>
+                    </children>
+                </node>
+            </children>
+        </node>
     </region>
 </save>
