@@ -1,22 +1,22 @@
-FACE:
+## FACE:
 AltTattooIndex
 GlowTattooIndex
 
-BODY:
+## BODY:
 BodyTattooIndex
 BodyAltTatIndex
 BodyGlowyIndex
 BodyScar - this is a float, if set to 1 it allows users to use a scar on the body
 BodyScarMap - This is the actual texture, its a new material parameter but should match the texture name of the race/bodytype (ie f gnomes is ST_GNO_F_BodyScar.DDS)
 
-BOTH:
+## BOTH:
 BodyTattooColor - used for alt tat
 TatGlowColor
 Swirlies - changeling skin
 Vampirism
 GlowIntensity
 
-Special Cases:
+## Special Cases:
 Gith F
 SecretTatIndex = 1
 Gith M
@@ -29,7 +29,7 @@ Laezel TattooIndex = 54
 Minsc TattooIndex = 58
 Minthara TattooIndex = 55
 
-Player Bodies:
+## Player Bodies:
 DRO_F_NKD_Body_A_000_cd69fa48-def6-c323-ce85-07321817f10f
 DRO_M_NKD_Body_A_000_c0759310-a004-7e3c-a4b8-8c25da11c770
 DRO_FS_NKD_Body_A_000_3c6fb944-8b68-a4e1-9b4b-60dfebffdb90
@@ -63,7 +63,7 @@ TIF_M_NKD_Body_A_000_d2d1745c-979d-b1be-4f41-64c6adcd6d9a
 TIF_FS_NKD_Body_A_000_cbbd294d-468c-bd37-ef2f-d2351ff2b45f
 TIF_MS_NKD_Body_A_000_f31189c6-50ce-a198-93bb-cfa54fb75079
 
-Companion Bodies:
+## Companion Bodies:
 ELF_M_NKD_Body_Astarion_000 2e8da869-974a-209e-ea85-cecf69edcb64
 HUM_M_NKD_Body_Gale_000 edd2cb50-b537-76ad-134e-c75c65d99705
 HUM_M_NKD_Body_Gale_NoTat_000 c7be9d7e-8883-03af-f7d4-44b8730a71f4
@@ -77,7 +77,7 @@ DRO_F_NKD_Body_Minthara_000 e35a200e-2fff-a8d3-d1c8-66d0cff91c2c
 HFL_F_NKD_Body_Shadowheart_000 31ea4499-1f05-e225-1e1a-d3928fe3cd98
 HUM_M_NKD_Body_Wyll_000 ecfbf57a-704d-34df-7689-cda0b6c9ec99
 
-Companion Heads:
+## Companion Heads:
 DRO_F_NKD_Head_Minthara_000_e18d1b72-c2ac-f8bd-04cf-7b0156cc112f
 ELF_M_NKD_Head_Astarion_000_02995da7-b456-0bc1-7fcc-613a8e3da2fc
 ELF_MS_NKD_Head_Halsin_000_460435c7-0835-ffb7-9e16-287f653088fd
@@ -88,7 +88,7 @@ HUM_M_NKD_Head_Wyll_000_b629d63d-c1f1-7629-a9eb-3fd838695ae0
 HUM_MS_NKD_Head_MInsc_000_e7f40b8e-92d3-4d35-4ef9-2a4445ca812b
 TIF_FS_NKD_Head_Karlach_000_83895f2c-9bef-bcf0-5eec-008bf094d593
 
-Companion Head LODS:
+## Companion Head LODS:
 DRO_F_NKD_Head_Minthara_LOD1_000_df3ddae0-6302-b788-8358-6d8c09d21fed
 DRO_F_NKD_Head_Minthara_LOD2_000_0120169a-64f0-2259-70bc-a2027cdbde4a
 DRO_F_NKD_Head_Minthara_LOD4_000_01b08198-2ef3-eb71-21be-051811451884
@@ -126,69 +126,69 @@ TIF_FS_NKD_Head_Karlach_Scar_LOD1_000_a65191c9-33ff-fcd0-08d9-7e1ea090e6fe
 TIF_FS_NKD_Head_Karlach_Scar_LOD2_000_2161e6ae-7a9d-5119-d11b-623670a3d376
 TIF_FS_NKD_Head_Karlach_Scar_LOD4_000_8e255c8c-78a9-709c-8f2b-289608243d9f
 
-Player BodyScars:
-ST_DRO_F_BodyScar_177d9651-a423-3770-5088-c3500a5fce43
-ST_DRO_F_BodyScarNM_cb161336-5fbd-5591-658a-982bc27627e5
-ST_DRO_M_BodyScar_fdbae7c9-d775-600f-0865-fc995bff0b17
-ST_DRO_M_BodyScarNM_a4013880-eb0a-aa33-c329-707e34a25679
-ST_DRO_FS_BodyScar_394e4cd4-d012-1f85-7933-60ac1ea115da
-ST_DRO_FS_BodyScarNM_107566c1-c337-0095-679f-4f52f19a57b9
-ST_DRO_MS_BodyScar_68b0f72b-f556-c38e-78d3-66a541e08fcb
-ST_DRO_MS_BodyScarNM_ba35b3aa-4c7f-f491-c943-04d406723160
-ST_DWR_F_BodyScar_76681765-7ac2-6134-24a0-897cd37c0494
-ST_DWR_F_BodyScarNM_1e520ff2-eafc-6e60-9abc-0b8bda41ce1c
-ST_DWR_M_BodyScar_06d248e3-980b-fa8a-618e-de1470d32246
-ST_DWR_M_BodyScarNM_1208c8d1-fd24-4935-091c-1d56d1c34c4a
-ST_ELF_F_BodyScar_87ad225e-2de1-a762-d208-39c3c3b96723
-ST_ELF_F_BodyScarNM_22deb4f1-b0a3-d5d1-3410-0b89cbf94ee4
-ST_ELF_M_BodyScar_6001a6c1-cc17-0ac9-0f10-6c9aebb3fdac
-ST_ELF_M_BodyScarNM_34bd8390-f840-a469-6ae6-87f1051ab37e
-ST_ELF_FS_BodyScar_9197fa34-0023-7be5-eb3b-7b23ef0cf328
-ST_ELF_FS_BodyScarNM_656f2e91-f632-75ed-1ea0-8a97e171770b
-ST_ELF_MS_BodyScar_3261579a-7d3f-b79c-6c94-7d21fe790186
-ST_ELF_MS_BodyScarNM_b7e1c4e2-4b76-87b6-8088-a9891504474f
-ST_GNO_F_BodyScar_95bab133-8a3e-3bc4-717b-382245c44cfb
-ST_GNO_F_BodyScarNM_9d847ca0-c61a-22fd-08e4-cbec060000a9
-ST_GNO_M_BodyScar_cfbbd055-754d-7d3d-8702-97dd4cd99775
-ST_GNO_M_BodyScarNM_32452228-fa47-ee0f-ac5f-373a964e2a41
-ST_GTY_F_BodyScar_0485bafc-c277-8467-780f-479d3647beef
-ST_GTY_F_BodyScarNM_2b8c5bde-ca5d-a705-3b68-16612406b4fe
-ST_GTY_M_BodyScar_3c633e10-4a9d-00a0-835f-5a96b31e4d9e
-ST_GTY_M_BodyScarNM_8c01e83d-24e7-7052-b017-d2ad3b236301
-ST_HEL_F_BodyScar_139c241e-ce56-28ad-69a6-fd88b06f227e
-ST_HEL_F_BodyScarNM_616b487f-69b1-782e-96c1-1e2eca87071c
-ST_HEL_M_BodyScar_a9f5d4d4-7411-b1d8-cb1d-565f08cdf399
-ST_HEL_M_BodyScarNM_e785f4cc-4606-ceca-1bd4-5afe3f1af5c1
-ST_HEL_FS_BodyScar_dcfaca4f-1ea5-c2c0-f726-a074ff44d5f2
-ST_HEL_FS_BodyScarNM_dd5e642d-650c-7924-f27d-aff72da7a05a
-ST_HEL_MS_BodyScar_de72144e-d209-55ff-cc6b-7059ffceaec8
-ST_HEL_MS_BodyScarNM_e83e069b-5e2f-75f7-83de-8504ef407229
-ST_HFL_F_BodyScar_111c2884-7255-3e4c-69fa-f85b5c1fa2dc
-ST_HFL_F_BodyScarNM_8263041d-948f-4282-1b9e-eabcb9d9a6bd
-ST_HFL_M_BodyScar_89db60b7-9acc-fdac-8e35-cd16515a110c
-ST_HFL_M_BodyScarNM_c5edddf9-aec3-369f-86f9-057daa8843f5
-ST_HRC_F_BodyScar_979dd69a-030d-dba2-59ff-b92bab2a253d
-ST_HRC_F_BodyScarNM_161582e2-b873-9bf1-6a35-272975afef19
-ST_HRC_M_BodyScar_63a41edd-c1f9-eae8-fe2b-eaa192a202e2
-ST_HRC_M_BodyScarNM_0e68518b-6b8c-6e79-e3ac-55316f54a1a9
-ST_HUM_F_BodyScar_3a455836-ea21-8484-8555-9fe10ab1e7d7
-ST_HUM_F_BodyScarNM_43a7cd87-3dc0-1bf7-a45d-25dab6b30c90
-ST_HUM_M_BodyScar_e2f00285-cae4-e67a-a61f-f28d5ff776f4
-ST_HUM_M_BodyScarNM_12db9050-1119-96b6-f383-1e8f8a22d7f5
-ST_HUM_FS_BodyScar_ca13e6c7-2aa7-a1af-6bed-d2abf5819ec8
-ST_HUM_FS_BodyScarNM_084a1858-ff3b-5811-7979-0d431507b748
-ST_HUM_MS_BodyScar_dac0daa8-c2a0-e825-4fc4-c97edfca8b32
-ST_HUM_MS_BodyScarNM_c0aab432-6422-c6c0-7098-a642f53796da
-ST_TIF_F_BodyScar_69613ab6-b4d1-1779-dcfe-bb6a1849f5b9
-ST_TIF_F_BodyScarNM_5b644a59-4ae9-6645-1fb0-0bf6bf4334b8
-ST_TIF_M_BodyScar_8100e196-c478-e9ac-0c9e-06ad0a1aeb72
-ST_TIF_M_BodyScarNM_4e29c3d8-fc1a-6f58-9c95-cc7f76a31ce9
-ST_TIF_FS_BodyScar_4ac22bf7-1d73-21a5-dbce-7986298089bd
-ST_TIF_FS_BodyScarNM_107f258d-f162-b12b-b5a7-47eeb2ac3478
-ST_TIF_MS_BodyScar_f6bb08e2-8ab8-83f9-7a3e-cd8a3a17c64e
-ST_TIF_MS_BodyScarNM_c43e53f8-50ab-dd78-c711-624094888964
+## Player BodyScars:
+ST_DRO_F_BodyScar       177d9651-a423-3770-5088-c3500a5fce43
+ST_DRO_F_BodyScarNM     cb161336-5fbd-5591-658a-982bc27627e5
+ST_DRO_M_BodyScar       fdbae7c9-d775-600f-0865-fc995bff0b17
+ST_DRO_M_BodyScarNM     a4013880-eb0a-aa33-c329-707e34a25679
+ST_DRO_FS_BodyScar      394e4cd4-d012-1f85-7933-60ac1ea115da
+ST_DRO_FS_BodyScarNM    107566c1-c337-0095-679f-4f52f19a57b9
+ST_DRO_MS_BodyScar      68b0f72b-f556-c38e-78d3-66a541e08fcb
+ST_DRO_MS_BodyScarNM    ba35b3aa-4c7f-f491-c943-04d406723160
+ST_DWR_F_BodyScar       76681765-7ac2-6134-24a0-897cd37c0494
+ST_DWR_F_BodyScarNM     1e520ff2-eafc-6e60-9abc-0b8bda41ce1c
+ST_DWR_M_BodyScar       06d248e3-980b-fa8a-618e-de1470d32246
+ST_DWR_M_BodyScarNM     1208c8d1-fd24-4935-091c-1d56d1c34c4a
+ST_ELF_F_BodyScar       87ad225e-2de1-a762-d208-39c3c3b96723
+ST_ELF_F_BodyScarNM     22deb4f1-b0a3-d5d1-3410-0b89cbf94ee4
+ST_ELF_M_BodyScar       6001a6c1-cc17-0ac9-0f10-6c9aebb3fdac
+ST_ELF_M_BodyScarNM     34bd8390-f840-a469-6ae6-87f1051ab37e
+ST_ELF_FS_BodyScar      9197fa34-0023-7be5-eb3b-7b23ef0cf328
+ST_ELF_FS_BodyScarNM    656f2e91-f632-75ed-1ea0-8a97e171770b
+ST_ELF_MS_BodyScar      3261579a-7d3f-b79c-6c94-7d21fe790186
+ST_ELF_MS_BodyScarNM    b7e1c4e2-4b76-87b6-8088-a9891504474f
+ST_GNO_F_BodyScar       95bab133-8a3e-3bc4-717b-382245c44cfb
+ST_GNO_F_BodyScarNM     9d847ca0-c61a-22fd-08e4-cbec060000a9
+ST_GNO_M_BodyScar       cfbbd055-754d-7d3d-8702-97dd4cd99775
+ST_GNO_M_BodyScarNM     32452228-fa47-ee0f-ac5f-373a964e2a41
+ST_GTY_F_BodyScar       0485bafc-c277-8467-780f-479d3647beef
+ST_GTY_F_BodyScarNM     2b8c5bde-ca5d-a705-3b68-16612406b4fe
+ST_GTY_M_BodyScar       3c633e10-4a9d-00a0-835f-5a96b31e4d9e
+ST_GTY_M_BodyScarNM     8c01e83d-24e7-7052-b017-d2ad3b236301
+ST_HEL_F_BodyScar       139c241e-ce56-28ad-69a6-fd88b06f227e
+ST_HEL_F_BodyScarNM     616b487f-69b1-782e-96c1-1e2eca87071c
+ST_HEL_M_BodyScar       a9f5d4d4-7411-b1d8-cb1d-565f08cdf399
+ST_HEL_M_BodyScarNM     e785f4cc-4606-ceca-1bd4-5afe3f1af5c1
+ST_HEL_FS_BodyScar      dcfaca4f-1ea5-c2c0-f726-a074ff44d5f2
+ST_HEL_FS_BodyScarNM    dd5e642d-650c-7924-f27d-aff72da7a05a
+ST_HEL_MS_BodyScar      de72144e-d209-55ff-cc6b-7059ffceaec8
+ST_HEL_MS_BodyScarNM    e83e069b-5e2f-75f7-83de-8504ef407229
+ST_HFL_F_BodyScar       111c2884-7255-3e4c-69fa-f85b5c1fa2dc
+ST_HFL_F_BodyScarNM     8263041d-948f-4282-1b9e-eabcb9d9a6bd
+ST_HFL_M_BodyScar       89db60b7-9acc-fdac-8e35-cd16515a110c
+ST_HFL_M_BodyScarNM     c5edddf9-aec3-369f-86f9-057daa8843f5
+ST_HRC_F_BodyScar       979dd69a-030d-dba2-59ff-b92bab2a253d
+ST_HRC_F_BodyScarNM     161582e2-b873-9bf1-6a35-272975afef19
+ST_HRC_M_BodyScar       63a41edd-c1f9-eae8-fe2b-eaa192a202e2
+ST_HRC_M_BodyScarNM     0e68518b-6b8c-6e79-e3ac-55316f54a1a9
+ST_HUM_F_BodyScar       3a455836-ea21-8484-8555-9fe10ab1e7d7
+ST_HUM_F_BodyScarNM     43a7cd87-3dc0-1bf7-a45d-25dab6b30c90
+ST_HUM_M_BodyScar       e2f00285-cae4-e67a-a61f-f28d5ff776f4
+ST_HUM_M_BodyScarNM     12db9050-1119-96b6-f383-1e8f8a22d7f5
+ST_HUM_FS_BodyScar      ca13e6c7-2aa7-a1af-6bed-d2abf5819ec8
+ST_HUM_FS_BodyScarNM    084a1858-ff3b-5811-7979-0d431507b748
+ST_HUM_MS_BodyScar      dac0daa8-c2a0-e825-4fc4-c97edfca8b32
+ST_HUM_MS_BodyScarNM    c0aab432-6422-c6c0-7098-a642f53796da
+ST_TIF_F_BodyScar       69613ab6-b4d1-1779-dcfe-bb6a1849f5b9
+ST_TIF_F_BodyScarNM     5b644a59-4ae9-6645-1fb0-0bf6bf4334b8
+ST_TIF_M_BodyScar       8100e196-c478-e9ac-0c9e-06ad0a1aeb72
+ST_TIF_M_BodyScarNM     4e29c3d8-fc1a-6f58-9c95-cc7f76a31ce9
+ST_TIF_FS_BodyScar      4ac22bf7-1d73-21a5-dbce-7986298089bd
+ST_TIF_FS_BodyScarNM    107f258d-f162-b12b-b5a7-47eeb2ac3478
+ST_TIF_MS_BodyScar      f6bb08e2-8ab8-83f9-7a3e-cd8a3a17c64e
+ST_TIF_MS_BodyScarNM    c43e53f8-50ab-dd78-c711-624094888964
 
-Companion BodyScars:
+## Companion BodyScars:
 ST_Astarion_BodyScar_a8019fca-9d39-fb6f-e79a-b7d7aff2fc88
 ST_Astarion_BodyScarNM_5ef09d5a-b114-e5b4-8ba0-1d6e67170242
 ST_Gale_BodyScar_996c16c9-9d96-2264-9fde-f39283d1f737
@@ -210,7 +210,7 @@ ST_Shadowheart_BodyScarNM_b6987be1-aae4-1bea-d9fe-63291810053b
 ST_Wyll_BodyScar_c641d02d-e466-ac9b-3e7e-bf534d485417
 ST_Wyll_BodyScarNM_d9662fd1-f7f6-c482-b473-e1b60ecbd9b9
 
-Companion Char Vis:
+## Companion Char Vis:
 ORIGIN_Astarion_PortraitVisual <14c23242-b819-0d30-f5ba-5e6c9b4b6088>
 Astarion_Dressed <6788a271-9ad5-074f-8a5f-12b7dcb29174>
 Astarion_Partial_Dressed <572763d2-d40a-1def-510b-f878b9cd8da8>
@@ -293,7 +293,7 @@ ORIGIN_Wyll_159cdf9e-6665-4450-9375-8494e233b0e4 <bdeebe6f-4e34-ae70-5f25-ea0ead
 ORIGIN_Wyll_Devil_7ea87604-e604-4a6d-a7ac-b7b2f293c000 <faf5255f-4dfa-d8bb-7e7a-5e4b7e11497c>
 Wyll <f2b3631a-2641-49c9-6a10-45e4fbdcfa44>
 
-Player Charvis:
+## Player Charvis:
 Elves_Female_Drow_Seldarine_Player_PortraitVisual <2cc252c2-4eef-ce10-245b-de39bb45b39d>
 Elves_Female_Drow_Lolth_Player_e285d7b5-6b09-4857-89aa-a91e9e6898e5 <187188d8-929a-d800-d5c3-33453a8cc25a>
 Elves_Female_Drow_Seldarine_Player_7a727073-1f49-4396-b899-b71d9d706cd5 <27b58c9a-5efa-e736-d81e-98d124a6bb8a>
@@ -495,7 +495,7 @@ Hirelings_Stats_Player_Warlock_PortraitVisual <a06d3127-c163-46f9-be2c-e16e8c1e0
 Hirelings_Stats_Player_Wizard_DONOTUSE_3d24f5eb-7220-4e00-bc02-3e6ac819ac26 <d346112a-c694-14c2-2fc8-4cf007b0a127>
 Hirelings_Stats_Player_Wizard_PortraitVisual <7eb8f8c3-4539-177b-0bd6-6e5f1e6b908e>
 
-Presets: 
+## Presets: 
 ST_Tattoos_01_f3a16e69-b757-4676-af7b-e922ef30b042
 ST_Tattoos_02_148e52a9-abac-4173-d752-f81cafd4a27e
 ST_Tattoos_03_531e5a3a-1331-33b3-40bf-61d48c798c42
@@ -525,7 +525,7 @@ ST_Swirlies_Off_2d051aaf-eea8-54bc-5f66-900b8c56ea25
 ST_Vampirism_On_a9217c1e-c4ef-c110-42d9-5046fa513bf6
 ST_Vampirism_Off_54c7f039-9a4d-9600-0be8-83121c3122aa
 
-CCAppearanceMaterials:
+## CCAppearanceMaterials:
 1 fffa139e-2b12-4175-83ab-a15eb18d486c
 2 33346ac5-5dc6-497e-8fd5-77e26515c693
 3 9e05a569-54dc-43b9-bff0-8c8bfd4a7b96
