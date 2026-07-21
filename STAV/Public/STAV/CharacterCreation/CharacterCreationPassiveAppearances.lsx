@@ -5,7 +5,7 @@
         <node id="root">
             <children>
                 <node id="CharacterCreationPassiveAppearance">
-                    <attribute id="Passive" type="FixedString" value="DraconicScales"/>
+                    <attribute id="Passive" type="FixedString" value="ST_DraconicScales"/>
                     <attribute id="UUID" type="guid" value="08595af9-c540-4b9e-a42d-9c90f2dc355b"/>
                     <children>
                         <node id="AppearanceMaterialUUIDs">
