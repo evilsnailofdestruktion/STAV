@@ -7,7 +7,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Human"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="4b6e7ec9-145b-4a95-9d8a-b2181de2749e"/>
                     <attribute id="UUID" type="guid" value="3e098688-e1b4-427d-8373-7b6058d60df2"/>
@@ -15,7 +15,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Elf"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="eb9db11d-1091-49fa-9006-2f52bbb76f6a"/>
                     <attribute id="UUID" type="guid" value="53057e98-3065-45f8-96c2-d4bf2055cda9"/>
@@ -23,7 +23,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Drow"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="a43498f5-d72f-4a05-b721-1feea9acb3ad"/>
                     <attribute id="UUID" type="guid" value="aaffeb7b-5b70-436a-ac81-73c19d01efa7"/>
@@ -31,7 +31,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="HalfElf"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="5f06db9e-31b0-41d9-bfbe-3446323c4bf6"/>
                     <attribute id="UUID" type="guid" value="654f51c5-44d8-4692-83a3-9d498bdba576"/>
@@ -39,7 +39,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Dwarf"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="d93def5b-a2df-4675-8a33-e47c9647eeae"/>
                     <attribute id="UUID" type="guid" value="2ebee796-eb00-4d3d-a636-916dce51cff2"/>
@@ -47,7 +47,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Gnome"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="c1d4adfe-9f00-44b4-a433-a45250d00631"/>
                     <attribute id="UUID" type="guid" value="03080b29-39db-44d8-a7a6-9a241342e645"/>
@@ -55,7 +55,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Halfling"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="7e1ae395-6f2a-456b-ab64-1012c18065d4"/>
                     <attribute id="UUID" type="guid" value="4f684841-733b-4222-9659-dda980b209b6"/>
@@ -63,7 +63,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Tiefling"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="1640733f-c32b-4d9d-9132-5ca6e985155c"/>
                     <attribute id="UUID" type="guid" value="4903b986-0341-4fcb-bb90-b36190e46c80"/>
@@ -71,7 +71,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="Githyanki"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="81e2cb57-6a12-4429-b3a5-f72549355b3b"/>
                     <attribute id="UUID" type="guid" value="c990a19f-dcaf-4d16-a27e-c674778f6ad1"/>
@@ -79,7 +79,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="HalfOrc"/>
-                    <attribute id="PassivesAdded" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesAdded" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="2"/>
                     <attribute id="TableUUID" type="guid" value="74e2e44d-e8c0-4b99-a6dc-c02f43cea8a6"/>
                     <attribute id="UUID" type="guid" value="2c291259-b120-4702-9a6f-bd3f8a8e64f3"/>
@@ -87,7 +87,7 @@
                 <node id="Progression">
                     <attribute id="Level" type="uint8" value="1"/>
                     <attribute id="Name" type="LSString" value="DraconicBloodline"/>
-                    <attribute id="PassivesRemoved" type="LSString" value="DraconicScales"/>
+                    <attribute id="PassivesRemoved" type="LSString" value="ST_DraconicScales"/>
                     <attribute id="ProgressionType" type="uint8" value="1"/>
                     <attribute id="TableUUID" type="guid" value="35aa255d-3eb7-4e93-8092-7545ced25b09"/>
                     <attribute id="UUID" type="guid" value="ccd1b2a2-4de9-4d0c-b6b4-fb1cd9c94b5b"/>

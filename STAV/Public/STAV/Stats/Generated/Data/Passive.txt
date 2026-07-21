@@ -1,4 +1,4 @@
-new entry "DraconicScales"
+new entry "ST_DraconicScales"
 type "PassiveData"
 data "DisplayName" "hc1cb2dffg2882g7e03g0fdag15ceeeabd307;2"
 data "Description" "hd6827b07gf47dg028bg8aa5g80d9b7d37bc8;1"

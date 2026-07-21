@@ -9,7 +9,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="Human" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -20,7 +20,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="Elf" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -31,7 +31,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="Drow" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -42,7 +42,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="HalfElf" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -53,7 +53,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="Dwarf" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -64,7 +64,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="Gnome" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -75,7 +75,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="Halfling" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -86,7 +86,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="Tiefling" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -97,7 +97,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="Githyanki" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -108,7 +108,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="HalfOrc" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="2" />
-        <field name="PassivesAdded" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
     <stat_object is_substat="false">
@@ -119,7 +119,7 @@
         <field name="FSName" type="StringTableFieldDefinition" value="DraconicBloodline" />
         <field name="Level" type="ByteTableFieldDefinition" value="1" />
         <field name="ProgressionType" type="ByteTableFieldDefinition" value="1" />
-        <field name="PassivesRemoved" type="StringTableFieldDefinition" value="DraconicScales" />
+        <field name="PassivesRemoved" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
   </stat_objects>

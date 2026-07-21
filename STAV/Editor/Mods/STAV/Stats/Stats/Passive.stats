@@ -4,7 +4,7 @@
     <stat_object is_substat="false">
       <fields>
         <field name="UUID" type="IdTableFieldDefinition" value="2ecece82-749a-46ba-95f7-c825fb32ee7c" />
-        <field name="Name" type="NameTableFieldDefinition" value="DraconicScales" />
+        <field name="Name" type="NameTableFieldDefinition" value="ST_DraconicScales" />
         <field name="DisplayName" type="TranslatedStringTableFieldDefinition" handle="hc1cb2dffg2882g7e03g0fdag15ceeeabd307" version="2" />
         <field name="Description" type="TranslatedStringTableFieldDefinition" handle="hd6827b07gf47dg028bg8aa5g80d9b7d37bc8" version="1" />
         <field name="Icon" type="StringTableFieldDefinition" value="PassiveFeature_DraconicAncestry_White" />
