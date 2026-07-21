@@ -39,11 +39,11 @@ local DEFAULTS = copyState(UI.State)
 
 UI.Widgets = {}
 
-local function resolveCharacterUUID()
+local function resolveCharacter()
 	local char = _C()
 	if not char then return nil end
 	if char.Level.LevelName == "SYS_CC_I" then return nil end
-	return char.Uuid.EntityUuid
+	return char
 end
 
 local function sendLook(characterUUID)
@@ -59,8 +59,8 @@ local function syncToServer()
 	if sendTimer then return end
 	sendTimer = Ext.Timer.WaitFor(300, function()
 		sendTimer = nil
-		local uuid = resolveCharacterUUID()
-		if uuid then sendLook(uuid) end
+		local char = resolveCharacter()
+		if char then sendLook(char.Uuid.EntityUuid) end
 	end)
 end
 
@@ -373,8 +373,8 @@ end
 
 local function recordActive(name)
 	UI.ActivePresetName = name or ""
-	local uuid = resolveCharacterUUID()
-	if uuid then charPresets[uuid] = (name ~= "" and name) or nil end
+	local char = resolveCharacter()
+	if char then charPresets[char.Uuid.EntityUuid] = (name ~= "" and name) or nil end
 end
 
 presetCombo.OnChange = function(c)
@@ -534,6 +534,7 @@ end
 
 function UI.ApplyLook(look)
 	seedState(look)
+	UI.Changed = true
 	Applying.ApplyAll(UI.State)
 	syncToServer()
 end
@@ -639,8 +640,7 @@ local function applyTimelineLook(e)
 	local owner = findTimelineOwner(tac.Actor)
 	local look = owner and Vars.GetLook(owner)
 	if not look then
-		local uuid = resolveCharacterUUID()
-		local own = uuid and Ext.Entity.Get(uuid)
+		local own = resolveCharacter()
 		if own and e.TLPreviewDummy.OriginalCharacterTemplate == own.GameObjectVisual.RootTemplateId then
 			look = Vars.GetLook(own)
 			if not look and UI.Changed then look = UI.State end
@@ -670,9 +670,10 @@ NetDefs.NET_APPLY_SYNC:SetHandler(function(data)
 end)
 
 NetDefs.NET_AVATAR_PING:SetHandler(function()
-	local uuid = resolveCharacterUUID()
-	if not uuid then return end
-	local look = Vars.GetLook(Ext.Entity.Get(uuid))
+	local char = resolveCharacter()
+	if not char then return end
+	local uuid = char.Uuid.EntityUuid
+	local look = Vars.GetLook(char)
 	if look then
 		STAVDebug("Avatar ping: seeded from persisted look for %s", uuid)
 		seedState(look)

@@ -112,4 +112,6 @@ M.Toggles = {
 	vampirism = "56ea96b0-d436-4efd-b200-dfdd93e83671",
 }
 
+M.ScalesPassive = "ST_DraconicScales"
+
 return M

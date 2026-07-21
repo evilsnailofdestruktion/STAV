@@ -1,3 +1,5 @@
+local U = Ext.Require("Shared/Utility.lua")
+
 local M = {}
 
 local PATH = "STAV/config.json"
@@ -13,9 +15,7 @@ local DEFAULT = {
 local data = {}
 
 local function load()
-	local raw = Ext.IO.LoadFile(PATH)
-	local parsed
-	if raw then pcall(function() parsed = Ext.Json.Parse(raw) end) end
+	local parsed = U.TryParseJson(Ext.IO.LoadFile(PATH))
 	local dirty = false
 	for key, default in pairs(DEFAULT) do
 		local v = parsed and parsed[key]
@@ -26,7 +26,7 @@ local function load()
 			dirty = true
 		end
 	end
-	if not raw or dirty then
+	if dirty then
 		Ext.IO.SaveFile(PATH, Ext.Json.Stringify(data))
 	end
 end

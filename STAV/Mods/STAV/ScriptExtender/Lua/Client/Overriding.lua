@@ -12,13 +12,11 @@ local patched     = {}
 
 local function stavSourceFile()
 	if sourceFile then return sourceFile end
-	for _, entry in pairs(Vis.Companions) do
-		if not entry.shader then
-			local mat = Ext.Resource.Get(entry.material, "Material")
-			if mat then
-				sourceFile = mat.SourceFile
-				break
-			end
+	for _, entry in pairs(Vis.Player) do
+		local mat = Ext.Resource.Get(entry.material, "Material")
+		if mat then
+			sourceFile = mat.SourceFile
+			break
 		end
 	end
 	return sourceFile
@@ -154,6 +152,16 @@ local function gatherHead(entry, p)
 	if head and next(matIds) then addMats(p, matIds, head) end
 end
 
+local function applyEntry(plan, entry, useCompat, source, withHead)
+	for _, charvis in ipairs(entry.charvis) do
+		local p = planFor(plan, charvis)
+		if p then
+			if useCompat then gatherCompatBody(entry, p, source) else gatherDefaultBody(entry, p) end
+			if withHead then gatherHead(entry, p) end
+		end
+	end
+end
+
 local function commit(plan)
 	for _, p in pairs(plan) do
 		if p.rmo then
@@ -190,7 +198,7 @@ local function readConfig(mod)
 		warnConfig(mod, "Missing 'Entries' object")
 		return nil
 	end
-	return data.Entries
+	return data
 end
 
 local function entryError(entry)
@@ -203,11 +211,11 @@ local function entryError(entry)
 	if entry.type == "override" and not U.IsGuid(entry.material) then return "'material' must be a valid UUID (required for override)" end
 end
 
-local function collectEntries(mod, external)
-	local entries = readConfig(mod)
-	if not entries then return false end
+local function collectEntries(mod, external, races)
+	local data = readConfig(mod)
+	if not data then return false end
 	local added = false
-	for label, entry in pairs(entries) do
+	for label, entry in pairs(data.Entries) do
 		local err = entryError(entry)
 		if err then
 			warnConfig(mod, string.format("Entry '%s' %s", tostring(label), err))
@@ -216,70 +224,80 @@ local function collectEntries(mod, external)
 			added = true
 		end
 	end
+	if type(data.Races) == "table" then
+		for _, race in ipairs(data.Races) do
+			if U.IsGuid(race) then
+				races[race] = true
+				added = true
+			else
+				warnConfig(mod, string.format("Race '%s' is not a valid UUID", tostring(race)))
+			end
+		end
+	elseif data.Races ~= nil then
+		warnConfig(mod, "'Races' must be an array of UUIDs")
+	end
 	return added
 end
 
 local function discover()
-	local base, targeted, external, mods = false, {}, {}, 0
+	local base, targeted, external, races, mods = false, {}, {}, {}, 0
 	for _, modId in ipairs(Ext.Mod.GetLoadOrder()) do
 		local spec = Vis.Compat[modId]
 		if spec then
 			if spec.all then base = true else targeted[#targeted + 1] = spec end
 		end
 		local mod = Ext.Mod.GetMod(modId)
-		if mod and collectEntries(mod, external) then mods = mods + 1 end
+		if mod and collectEntries(mod, external, races) then mods = mods + 1 end
 	end
-	return base, targeted, external, mods
+	return base, targeted, external, races, mods
+end
+
+local function applyScalesPassives(races)
+	local tables = {}
+	for race in pairs(races) do
+		local r = Ext.StaticData.Get(race, "Race")
+		if r and r.ProgressionTableUUID then tables[r.ProgressionTableUUID] = true end
+	end
+	if not next(tables) then return end
+	for _, uuid in pairs(Ext.StaticData.GetAll("Progression")) do
+		local prog = Ext.StaticData.Get(uuid, "Progression")
+		if tables[prog.TableUUID] and prog.Level == 1 then
+			local added = prog.PassivesAdded or ""
+			if not added:find(Params.ScalesPassive, 1, true) then
+				prog.PassivesAdded = added == "" and Params.ScalesPassive or added .. ";" .. Params.ScalesPassive
+			end
+		end
+	end
 end
 
 local function applyAll()
 	local start = Ext.Timer.MonotonicTime()
-	local base, targeted, external, raceMods = discover()
+	local base, targeted, external, races, raceMods = discover()
 	local plan = {}
 
 	for _, entry in pairs(Vis.Companions) do
 		local source = base and (entry.shader and Ext.Resource.Get(entry.material, "Material").SourceFile or stavSourceFile())
-		for _, charvis in ipairs(entry.charvis) do
-			local p = planFor(plan, charvis)
-			if p then
-				if base then gatherCompatBody(entry, p, source)
-				else gatherDefaultBody(entry, p) end
-				gatherHead(entry, p)
-			end
-		end
+		applyEntry(plan, entry, base, source, true)
 	end
 
 	for _, entry in pairs(Vis.Player) do
-		for _, charvis in ipairs(entry.charvis) do
-			local p = planFor(plan, charvis)
-			if p then gatherDefaultBody(entry, p) end
-		end
+		applyEntry(plan, entry, false, nil, false)
 	end
 
 	for _, spec in ipairs(targeted) do
 		for _, entry in pairs(spec) do
 			local source = entry.shader and Ext.Resource.Get(entry.material, "Material").SourceFile or stavSourceFile()
-			for _, charvis in ipairs(entry.charvis) do
-				local p = planFor(plan, charvis)
-				if p then
-					gatherCompatBody(entry, p, source)
-					gatherHead(entry, p)
-				end
-			end
+			applyEntry(plan, entry, true, source, true)
 		end
 	end
 
 	for _, entry in ipairs(external) do
-		for _, charvis in ipairs(entry.charvis) do
-			local p = planFor(plan, charvis)
-			if p then
-				if entry.type == "override" then gatherDefaultBody(entry, p)
-				else gatherCompatBody(entry, p, stavSourceFile()) end
-			end
-		end
+		local compat = entry.type ~= "override"
+		applyEntry(plan, entry, compat, compat and stavSourceFile() or nil, false)
 	end
 
 	commit(plan)
+	applyScalesPassives(races)
 	STAVDebug("Materials and %d race mods patched in %dms", raceMods, Ext.Timer.MonotonicTime() - start)
 end
 

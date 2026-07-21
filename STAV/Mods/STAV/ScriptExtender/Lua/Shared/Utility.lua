@@ -34,6 +34,12 @@ function U.GetPartyMembers()
 	return members
 end
 
+function U.TryParseJson(raw)
+	if type(raw) ~= "string" or raw == "" then return nil end
+	local ok, data = pcall(Ext.Json.Parse, raw)
+	return ok and type(data) == "table" and data or nil
+end
+
 function U.ScanInventory(entity, visit)
 	if not entity.InventoryOwner then return end
 	for _, entry in pairs(entity.InventoryOwner.PrimaryInventory.InventoryContainer.Items) do

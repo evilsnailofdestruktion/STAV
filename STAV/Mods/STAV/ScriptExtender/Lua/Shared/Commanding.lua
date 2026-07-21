@@ -21,12 +21,14 @@ if Ext.IsClient() then
 		end
 
 		local found = {}
+		local races = {}
 		local seg = "/" .. mod.Info.Directory .. "/"
 		for _, t in pairs(Ext.Template.GetAllRootTemplates()) do
 			if t.TemplateType == "character" and t.FileName:find(seg, 1, true) then
 				local ct = t --[[@as CharacterTemplate]]
 				local cv = ct.CharacterVisualResourceID
 				if cv and cv ~= "" then found[cv] = ct.Name end
+				if ct.Race and ct.Race ~= "" then races[ct.Race] = true end
 			end
 		end
 
@@ -58,7 +60,11 @@ if Ext.IsClient() then
 			return
 		end
 
-		Ext.IO.SaveFile("STAVConfig.json", Ext.Json.Stringify({ Entries = entries }))
-		STAVPrint():C16(string.format("[STAV] Exported %d %s charvis for %s to Script Extender/STAVConfig.json", count, kind, mod.Info.Name)):Print()
+		local raceList = {}
+		for race in pairs(races) do raceList[#raceList + 1] = race end
+		table.sort(raceList)
+
+		Ext.IO.SaveFile("STAVConfig.json", Ext.Json.Stringify({ Entries = entries, Races = raceList }))
+		STAVPrint():C16(string.format("[STAV] Exported %d %s charvis and %d races for %s to Script Extender/STAVConfig.json", count, kind, #raceList, mod.Info.Name)):Print()
 	end)
 end

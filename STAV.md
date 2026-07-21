@@ -30,63 +30,64 @@ Minsc TattooIndex = 58
 Minthara TattooIndex = 55
 
 ## Player Bodies:
-DRO_F_NKD_Body_A_000_cd69fa48-def6-c323-ce85-07321817f10f
-DRO_M_NKD_Body_A_000_c0759310-a004-7e3c-a4b8-8c25da11c770
-DRO_FS_NKD_Body_A_000_3c6fb944-8b68-a4e1-9b4b-60dfebffdb90
-DRO_MS_NKD_Body_A_000_663ff294-20df-8dd2-e409-e60b8044f997
-DWR_F_NKD_Body_A_000_f40c211c-5a5f-647c-e503-c4db338df300
-DWR_M_NKD_Body_A_000_10432221-9250-adc3-c530-a717a5ec46c9
-ELF_F_NKD_Body_A_000_d1d50fe6-0fb2-533c-d8f6-7ab074df2913
-ELF_M_NKD_Body_A_000_4c58d01d-b005-f1b9-7084-6f1193de67f6
-ELF_FS_NKD_Body_A_000_16ffd4b3-3b00-f623-3686-703c2b828fdc
-ELF_MS_NKD_Body_A_000_d232a086-0ded-c1ad-2c22-53336c2590b2
-GNO_F_NKD_Body_A_000_ba7b5e8f-27a1-035e-9109-44d4b6e6af10
-GNO_M_NKD_Body_A_000_6a67f147-229c-e6b8-25d1-2b427bde7a0b
-GTY_F_NKD_Body_A_000_73b1a66a-dc9a-9488-8adf-a1e4af9151af
-GTY_M_NKD_Body_A_000_6f701dcf-672b-966e-9136-62f4769bb72c
-HEL_F_NKD_Body_A_000_e9cdaf51-7e6f-4c8e-33f6-2c780f1166b0
-HEL_M_NKD_Body_A_000_c05cc830-d12f-4eee-8cac-cd7b40d2550d
-HEL_FS_NKD_Body_A_000_c30c53d5-d0b5-4b41-a958-6bf5a4696d25
-HEL_MS_NKD_Body_A_000_f455e079-c0d2-fe8c-9954-8fde6b76be36
-HFL_F_NKD_Body_A_000_d840a2bd-14ce-6e7f-8c1c-3562c9d26e73
-HFL_M_NKD_Body_A_000_3cc12b3a-0c0a-2ecf-521f-82ed080de616
-HRC_F_NKD_Body_A_000_a79321f5-f966-485c-20d7-ddd87dc0329c
-HRC_M_NKD_Body_A_000_b2dca29f-e14c-ce03-920b-32574161abcf
-HUM_F_NKD_Body_A_000_608a2e39-56cc-c57c-be07-30812f08b5c3
-HUM_F_NKD_Body_A_Mannequin_000_5eb4e4ff-0350-570f-6f30-353af265fea8
-HUM_M_NKD_Body_A_000_cfd6618f-adc0-c531-06e7-24283aa05da3
-HUM_M_NKD_Body_A_Mannequin_000_d44c97d0-ac8f-c3c5-fe25-fd534e210781
-HUM_FS_NKD_Body_A_000_3f3de6bd-56fa-63a5-7b72-5cd6a9deabc7
-HUM_MS_NKD_Body_A_000_9f688deb-c24f-ca3d-524b-43dddda3b1a8
-TIF_F_NKD_Body_A_000_cec04751-16eb-ddb2-2a55-7c0fa3f48a02
-TIF_M_NKD_Body_A_000_d2d1745c-979d-b1be-4f41-64c6adcd6d9a
-TIF_FS_NKD_Body_A_000_cbbd294d-468c-bd37-ef2f-d2351ff2b45f
-TIF_MS_NKD_Body_A_000_f31189c6-50ce-a198-93bb-cfa54fb75079
+DRO_F_NKD_Body_A_000       cd69fa48-def6-c323-ce85-07321817f10f
+DRO_M_NKD_Body_A_000       c0759310-a004-7e3c-a4b8-8c25da11c770
+DRO_FS_NKD_Body_A_000      3c6fb944-8b68-a4e1-9b4b-60dfebffdb90
+DRO_MS_NKD_Body_A_000      663ff294-20df-8dd2-e409-e60b8044f997
+DWR_F_NKD_Body_A_000       f40c211c-5a5f-647c-e503-c4db338df300
+DWR_M_NKD_Body_A_000       10432221-9250-adc3-c530-a717a5ec46c9
+ELF_F_NKD_Body_A_000       d1d50fe6-0fb2-533c-d8f6-7ab074df2913
+ELF_M_NKD_Body_A_000       4c58d01d-b005-f1b9-7084-6f1193de67f6
+ELF_FS_NKD_Body_A_000      16ffd4b3-3b00-f623-3686-703c2b828fdc
+ELF_MS_NKD_Body_A_000      d232a086-0ded-c1ad-2c22-53336c2590b2
+GNO_F_NKD_Body_A_000       ba7b5e8f-27a1-035e-9109-44d4b6e6af10
+GNO_M_NKD_Body_A_000       6a67f147-229c-e6b8-25d1-2b427bde7a0b
+GTY_F_NKD_Body_A_000       73b1a66a-dc9a-9488-8adf-a1e4af9151af
+GTY_M_NKD_Body_A_000       6f701dcf-672b-966e-9136-62f4769bb72c
+HEL_F_NKD_Body_A_000       e9cdaf51-7e6f-4c8e-33f6-2c780f1166b0
+HEL_M_NKD_Body_A_000       c05cc830-d12f-4eee-8cac-cd7b40d2550d
+HEL_FS_NKD_Body_A_000      c30c53d5-d0b5-4b41-a958-6bf5a4696d25
+HEL_MS_NKD_Body_A_000      f455e079-c0d2-fe8c-9954-8fde6b76be36
+HFL_F_NKD_Body_A_000       d840a2bd-14ce-6e7f-8c1c-3562c9d26e73
+HFL_M_NKD_Body_A_000       3cc12b3a-0c0a-2ecf-521f-82ed080de616
+HRC_F_NKD_Body_A_000       a79321f5-f966-485c-20d7-ddd87dc0329c
+HRC_M_NKD_Body_A_000       b2dca29f-e14c-ce03-920b-32574161abcf
+HUM_F_NKD_Body_A_000       608a2e39-56cc-c57c-be07-30812f08b5c3
+HUM_M_NKD_Body_A_000       cfd6618f-adc0-c531-06e7-24283aa05da3
+HUM_FS_NKD_Body_A_000      3f3de6bd-56fa-63a5-7b72-5cd6a9deabc7
+HUM_MS_NKD_Body_A_000      9f688deb-c24f-ca3d-524b-43dddda3b1a8
+TIF_F_NKD_Body_A_000       cec04751-16eb-ddb2-2a55-7c0fa3f48a02
+TIF_M_NKD_Body_A_000       d2d1745c-979d-b1be-4f41-64c6adcd6d9a
+TIF_FS_NKD_Body_A_000      cbbd294d-468c-bd37-ef2f-d2351ff2b45f
+TIF_MS_NKD_Body_A_000      f31189c6-50ce-a198-93bb-cfa54fb75079
+
+HUM_F_NKD_Body_A_Mannequin_000      5eb4e4ff-0350-570f-6f30-353af265fea8
+HUM_M_NKD_Body_A_Mannequin_000      d44c97d0-ac8f-c3c5-fe25-fd534e210781
 
 ## Companion Bodies:
-ELF_M_NKD_Body_Astarion_000 2e8da869-974a-209e-ea85-cecf69edcb64
-HUM_M_NKD_Body_Gale_000 edd2cb50-b537-76ad-134e-c75c65d99705
-HUM_M_NKD_Body_Gale_NoTat_000 c7be9d7e-8883-03af-f7d4-44b8730a71f4
-ELF_MS_NKD_Body_Halsin_000 cd3b1f46-fd4f-bfff-7e91-ee7cfbf3d574
-HFL_F_NKD_Body_Jaheira_000 cebf12f5-c510-7e4a-513c-c3421a2e94ba
-TIF_FS_NKD_Body_Karlach_A_000 9c097fef-2bff-a0b3-17f1-5fa6b99d5aa8
-TIF_FS_NKD_Body_Karlach_A_Glow_000 1ece701e-a4f7-a466-f3ad-b8418191e284
-GTY_F_NKD_Body_Laezel_000 b153fa26-d9a8-9337-5dee-ffddaad4b282
-HUM_MS_NKD_Body_Minsc_000 b7bae40d-b2fd-4c10-6de4-9a492dc43e47
-DRO_F_NKD_Body_Minthara_000 e35a200e-2fff-a8d3-d1c8-66d0cff91c2c
-HFL_F_NKD_Body_Shadowheart_000 31ea4499-1f05-e225-1e1a-d3928fe3cd98
-HUM_M_NKD_Body_Wyll_000 ecfbf57a-704d-34df-7689-cda0b6c9ec99
+ELF_M_NKD_Body_Astarion_000            2e8da869-974a-209e-ea85-cecf69edcb64
+HUM_M_NKD_Body_Gale_000                edd2cb50-b537-76ad-134e-c75c65d99705
+HUM_M_NKD_Body_Gale_NoTat_000          c7be9d7e-8883-03af-f7d4-44b8730a71f4
+ELF_MS_NKD_Body_Halsin_000             cd3b1f46-fd4f-bfff-7e91-ee7cfbf3d574
+HFL_F_NKD_Body_Jaheira_000             cebf12f5-c510-7e4a-513c-c3421a2e94ba
+TIF_FS_NKD_Body_Karlach_A_000          9c097fef-2bff-a0b3-17f1-5fa6b99d5aa8
+TIF_FS_NKD_Body_Karlach_A_Glow_000     1ece701e-a4f7-a466-f3ad-b8418191e284
+GTY_F_NKD_Body_Laezel_000              b153fa26-d9a8-9337-5dee-ffddaad4b282
+HUM_MS_NKD_Body_Minsc_000              b7bae40d-b2fd-4c10-6de4-9a492dc43e47
+DRO_F_NKD_Body_Minthara_000            e35a200e-2fff-a8d3-d1c8-66d0cff91c2c
+HFL_F_NKD_Body_Shadowheart_000         31ea4499-1f05-e225-1e1a-d3928fe3cd98
+HUM_M_NKD_Body_Wyll_000                ecfbf57a-704d-34df-7689-cda0b6c9ec99
 
 ## Companion Heads:
-DRO_F_NKD_Head_Minthara_000_e18d1b72-c2ac-f8bd-04cf-7b0156cc112f
-ELF_M_NKD_Head_Astarion_000_02995da7-b456-0bc1-7fcc-613a8e3da2fc
-ELF_MS_NKD_Head_Halsin_000_460435c7-0835-ffb7-9e16-287f653088fd
-GTY_F_NKD_Head_Laezel_000_724aa124-f516-aae1-a3b4-68cf6c43923b
-HEL_F_NKD_Head_Jaheira_000_d605b703-b294-5f7b-ebd6-9496caa12e32
-HUM_M_NKD_Head_Gale_000_b034a0a4-8549-a151-abd2-d3837ec58a05
-HUM_M_NKD_Head_Wyll_000_b629d63d-c1f1-7629-a9eb-3fd838695ae0
-HUM_MS_NKD_Head_MInsc_000_e7f40b8e-92d3-4d35-4ef9-2a4445ca812b
-TIF_FS_NKD_Head_Karlach_000_83895f2c-9bef-bcf0-5eec-008bf094d593
+DRO_F_NKD_Head_Minthara_000      e18d1b72-c2ac-f8bd-04cf-7b0156cc112f
+ELF_M_NKD_Head_Astarion_000      02995da7-b456-0bc1-7fcc-613a8e3da2fc
+ELF_MS_NKD_Head_Halsin_000       460435c7-0835-ffb7-9e16-287f653088fd
+GTY_F_NKD_Head_Laezel_000        724aa124-f516-aae1-a3b4-68cf6c43923b
+HEL_F_NKD_Head_Jaheira_000       d605b703-b294-5f7b-ebd6-9496caa12e32
+HUM_M_NKD_Head_Gale_000          b034a0a4-8549-a151-abd2-d3837ec58a05
+HUM_M_NKD_Head_Wyll_000          b629d63d-c1f1-7629-a9eb-3fd838695ae0
+HUM_MS_NKD_Head_MInsc_000        e7f40b8e-92d3-4d35-4ef9-2a4445ca812b
+TIF_FS_NKD_Head_Karlach_000      83895f2c-9bef-bcf0-5eec-008bf094d593
 
 ## Companion Head LODS:
 DRO_F_NKD_Head_Minthara_LOD1_000_df3ddae0-6302-b788-8358-6d8c09d21fed
@@ -189,26 +190,26 @@ ST_TIF_MS_BodyScar      f6bb08e2-8ab8-83f9-7a3e-cd8a3a17c64e
 ST_TIF_MS_BodyScarNM    c43e53f8-50ab-dd78-c711-624094888964
 
 ## Companion BodyScars:
-ST_Astarion_BodyScar_a8019fca-9d39-fb6f-e79a-b7d7aff2fc88
-ST_Astarion_BodyScarNM_5ef09d5a-b114-e5b4-8ba0-1d6e67170242
-ST_Gale_BodyScar_996c16c9-9d96-2264-9fde-f39283d1f737
-ST_Gale_BodyScarNM_69bc5c47-a2dd-d19b-5437-335ac3809a8e
-ST_Halsin_BodyScar_b3b25a5a-c28d-1468-b759-e119f1ad475a
-ST_Halsin_BodyScarNM_249959cb-89b9-2ea2-1402-649a88b6b8e1
-ST_Jaheira_BodyScar_872397ef-7d2d-139c-55c4-29a9ff58159c
-ST_Jaheira_BodyScarNM_df8d649a-a7ff-246a-74f7-6e0c5894508d
-ST_Karlach_BodyScar_847f848a-53bf-87f8-105b-de75f01ff600
-ST_Karlach_BodyScarNM_38f1af8d-c9ab-c64d-13aa-143062de1349
-ST_Laezel_BodyScar_8b8585b6-1832-756b-14e8-ee9f9beb7cb9
-ST_Laezel_BodyScarNM_66533581-5c36-817e-b22f-0086eccf4b41
-ST_Minsc_BodyScar_2432d1f5-b05b-98bd-7599-98b9f73beffe
-ST_Minsc_BodyScarNM_3dc4f7df-1933-548d-6b27-e061039c1db8
-ST_Minthara_BodyScar_ef953551-4cc3-643e-5250-bc4edbb5ea52
-ST_Minthara_BodyScarNM_8215e82c-8774-8234-afa3-cbdf7093a9bb
-ST_Shadowheart_BodyScar_f0804a81-6622-f7e0-efe0-c665626980b1
-ST_Shadowheart_BodyScarNM_b6987be1-aae4-1bea-d9fe-63291810053b
-ST_Wyll_BodyScar_c641d02d-e466-ac9b-3e7e-bf534d485417
-ST_Wyll_BodyScarNM_d9662fd1-f7f6-c482-b473-e1b60ecbd9b9
+ST_Astarion_BodyScar             a8019fca-9d39-fb6f-e79a-b7d7aff2fc88
+ST_Astarion_BodyScarNM           5ef09d5a-b114-e5b4-8ba0-1d6e67170242
+ST_Gale_BodyScar                 996c16c9-9d96-2264-9fde-f39283d1f737
+ST_Gale_BodyScarNM               69bc5c47-a2dd-d19b-5437-335ac3809a8e
+ST_Halsin_BodyScar               b3b25a5a-c28d-1468-b759-e119f1ad475a
+ST_Halsin_BodyScarNM             249959cb-89b9-2ea2-1402-649a88b6b8e1
+ST_Jaheira_BodyScar              872397ef-7d2d-139c-55c4-29a9ff58159c
+ST_Jaheira_BodyScarNM            df8d649a-a7ff-246a-74f7-6e0c5894508d
+ST_Karlach_BodyScar              847f848a-53bf-87f8-105b-de75f01ff600
+ST_Karlach_BodyScarNM            38f1af8d-c9ab-c64d-13aa-143062de1349
+ST_Laezel_BodyScar               8b8585b6-1832-756b-14e8-ee9f9beb7cb9
+ST_Laezel_BodyScarNM             66533581-5c36-817e-b22f-0086eccf4b41
+ST_Minsc_BodyScar                2432d1f5-b05b-98bd-7599-98b9f73beffe
+ST_Minsc_BodyScarNM_             3dc4f7df-1933-548d-6b27-e061039c1db8
+ST_Minthara_BodyScar             ef953551-4cc3-643e-5250-bc4edbb5ea52
+ST_Minthara_BodyScarNM           8215e82c-8774-8234-afa3-cbdf7093a9bb
+ST_Shadowheart_BodyScar          f0804a81-6622-f7e0-efe0-c665626980b1
+ST_Shadowheart_BodyScarNM        b6987be1-aae4-1bea-d9fe-63291810053b
+ST_Wyll_BodyScar                 c641d02d-e466-ac9b-3e7e-bf534d485417
+ST_Wyll_BodyScarNM               d9662fd1-f7f6-c482-b473-e1b60ecbd9b9
 
 ## Companion Char Vis:
 ORIGIN_Astarion_PortraitVisual <14c23242-b819-0d30-f5ba-5e6c9b4b6088>
@@ -496,34 +497,34 @@ Hirelings_Stats_Player_Wizard_DONOTUSE_3d24f5eb-7220-4e00-bc02-3e6ac819ac26 <d34
 Hirelings_Stats_Player_Wizard_PortraitVisual <7eb8f8c3-4539-177b-0bd6-6e5f1e6b908e>
 
 ## Presets: 
-ST_Tattoos_01_f3a16e69-b757-4676-af7b-e922ef30b042
-ST_Tattoos_02_148e52a9-abac-4173-d752-f81cafd4a27e
-ST_Tattoos_03_531e5a3a-1331-33b3-40bf-61d48c798c42
-ST_Tattoos_04_b5f41781-ac6d-20e8-5e71-c336e57116b3
-ST_Tattoos_05_b60e6d34-21a4-b43b-8d02-7b539e619e7e
-ST_Tattoos_06_4ceb7da5-7d2d-7e5a-3e87-bebdf0ecee50
-ST_Tattoos_07_43b63d89-865f-ae15-1723-192d92ac0fc2
-ST_Tattoos_08_95bad513-7f5b-344f-f052-5d3b56e72f1e
-ST_Tattoos_09_af535070-75a6-0429-f1b6-dbc1c76f7c4b
-ST_Tattoos_10_138a9f78-83c2-531a-446d-cb7fd1f5fb82
-ST_Tattoos_11_10a451cd-0340-f659-0355-ff1ff2a9f8b6
-ST_Tattoos_12_85178d2f-5c2f-da23-4116-592049ff2e17
-ST_Tattoos_13_65903fec-5ff6-5f92-7610-2064de9b2208
-ST_Tattoos_14_5dcf52af-f514-7134-9d45-c9696f23875c
-ST_Tattoos_15_54244a40-9aa8-9515-86d9-89179e821870
-ST_Tattoos_16_f27f9323-0555-82e4-3138-769f2b2b6b8b
-ST_Tattoos_17_1db6dac7-0963-245f-e1c4-594a4f68c60e
-ST_Tattoos_18_b244ddd2-a86c-67d5-8a32-8fc03e7411d7
-ST_Tattoos_19_1abc9854-4af5-e969-479a-c16827e42784
-ST_Tattoos_20_693ccc25-e9e3-90f0-9961-1c5849859ce9
-ST_Tattoos_21_4bf6ab3a-b402-a196-d6f3-22ccf007e262
-ST_Tattoos_22_fe66e378-fd29-d44d-e906-503096afee81
-ST_Tattoos_23_a6e202e4-e0ff-71ec-a251-01a77a1faba6
-ST_Tattoos_24_0bed6d08-aae1-0a2f-9448-4c44cf5add95
-ST_Swirlies_On_5fa1f181-e933-bdb5-f6b9-ac2dac22efa2
-ST_Swirlies_Off_2d051aaf-eea8-54bc-5f66-900b8c56ea25
-ST_Vampirism_On_a9217c1e-c4ef-c110-42d9-5046fa513bf6
-ST_Vampirism_Off_54c7f039-9a4d-9600-0be8-83121c3122aa
+ST_Tattoos_01        f3a16e69-b757-4676-af7b-e922ef30b042
+ST_Tattoos_02        148e52a9-abac-4173-d752-f81cafd4a27e
+ST_Tattoos_03        531e5a3a-1331-33b3-40bf-61d48c798c42
+ST_Tattoos_04        b5f41781-ac6d-20e8-5e71-c336e57116b3
+ST_Tattoos_05        b60e6d34-21a4-b43b-8d02-7b539e619e7e
+ST_Tattoos_06        4ceb7da5-7d2d-7e5a-3e87-bebdf0ecee50
+ST_Tattoos_07        43b63d89-865f-ae15-1723-192d92ac0fc2
+ST_Tattoos_08        95bad513-7f5b-344f-f052-5d3b56e72f1e
+ST_Tattoos_09        af535070-75a6-0429-f1b6-dbc1c76f7c4b
+ST_Tattoos_10        138a9f78-83c2-531a-446d-cb7fd1f5fb82
+ST_Tattoos_11        10a451cd-0340-f659-0355-ff1ff2a9f8b6
+ST_Tattoos_12        85178d2f-5c2f-da23-4116-592049ff2e17
+ST_Tattoos_13        65903fec-5ff6-5f92-7610-2064de9b2208
+ST_Tattoos_14        5dcf52af-f514-7134-9d45-c9696f23875c
+ST_Tattoos_15        54244a40-9aa8-9515-86d9-89179e821870
+ST_Tattoos_16        f27f9323-0555-82e4-3138-769f2b2b6b8b
+ST_Tattoos_17        1db6dac7-0963-245f-e1c4-594a4f68c60e
+ST_Tattoos_18        b244ddd2-a86c-67d5-8a32-8fc03e7411d7
+ST_Tattoos_19        1abc9854-4af5-e969-479a-c16827e42784
+ST_Tattoos_20        693ccc25-e9e3-90f0-9961-1c5849859ce9
+ST_Tattoos_21        4bf6ab3a-b402-a196-d6f3-22ccf007e262
+ST_Tattoos_22        fe66e378-fd29-d44d-e906-503096afee81
+ST_Tattoos_23        a6e202e4-e0ff-71ec-a251-01a77a1faba6
+ST_Tattoos_24        0bed6d08-aae1-0a2f-9448-4c44cf5add95
+ST_Swirlies_On       5fa1f181-e933-bdb5-f6b9-ac2dac22efa2
+ST_Swirlies_Off      2d051aaf-eea8-54bc-5f66-900b8c56ea25
+ST_Vampirism_On      a9217c1e-c4ef-c110-42d9-5046fa513bf6
+ST_Vampirism_Off     54c7f039-9a4d-9600-0be8-83121c3122aa
 
 ## CCAppearanceMaterials:
 1 fffa139e-2b12-4175-83ab-a15eb18d486c

@@ -385,7 +385,7 @@ local COMPANIONS_VIS = {
 		charvis   = {
 			"5757770a-12aa-a3f6-35dd-39beeaf5489d"
 		},
-		material  = "1ece701e-a4f7-a466-f3ad-b8418191e284",
+		material  = "9c097fef-2bff-a0b3-17f1-5fa6b99d5aa8",
 		scarMap   = "847f848a-53bf-87f8-105b-de75f01ff600",
 		scarMapNM = "38f1af8d-c9ab-c64d-13aa-143062de1349",
 		overrides = {

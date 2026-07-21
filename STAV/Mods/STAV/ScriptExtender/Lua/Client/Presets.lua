@@ -1,3 +1,5 @@
+local U = Ext.Require("Shared/Utility.lua")
+
 local M = {}
 
 local DIR = "STAV"
@@ -6,14 +8,8 @@ local function presetPath(name)
 	return DIR .. "/" .. name .. ".json"
 end
 
-local function parseJson(raw)
-	if type(raw) ~= "string" or raw == "" then return nil end
-	local ok, data = pcall(Ext.Json.Parse, raw)
-	return ok and type(data) == "table" and data or nil
-end
-
 local function loadIndex()
-	local data = parseJson(Ext.IO.LoadFile(DIR .. "/index.json"))
+	local data = U.TryParseJson(Ext.IO.LoadFile(DIR .. "/index.json"))
 	return data and type(data.names) == "table" and data.names or {}
 end
 
@@ -44,13 +40,13 @@ end
 function M.Load(name)
 	name = M.Normalize(name)
 	if not name then return nil end
-	return parseJson(Ext.IO.LoadFile(presetPath(name)))
+	return U.TryParseJson(Ext.IO.LoadFile(presetPath(name)))
 end
 
 function M.Save(name, values)
 	name = M.Normalize(name)
 	if not name then return end
-	Ext.IO.SaveFile(presetPath(name), Ext.Json.Stringify(values))
+	M.Export(name, values)
 	register(name)
 end
 
@@ -74,8 +70,7 @@ end
 
 function M.Import(name)
 	name = M.Normalize(name)
-	if not name then return nil end
-	if not parseJson(Ext.IO.LoadFile(presetPath(name))) then return nil end
+	if not name or not M.Load(name) then return nil end
 	register(name)
 	return name
 end
