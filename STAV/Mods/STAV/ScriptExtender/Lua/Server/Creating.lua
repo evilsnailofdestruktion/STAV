@@ -19,7 +19,7 @@ local function claimSlot(charUUID)
 		if not usedSlots[i] then
 			usedSlots[i]      = charUUID
 			slotMap[charUUID] = i
-			STAVDebug("claimed slot %d for %s", i, charUUID)
+			STAVDebug():Raw("Claimed slot "):C3(i):Raw(" for "):C21(charUUID):Print()
 			return i
 		end
 	end
@@ -69,7 +69,7 @@ local function stripFromReal(charUUID)
 	if removed then
 		cca.Elements = els
 		entity:Replicate("CharacterCreationAppearance")
-		STAVDebug("stripped STAV elements from %s", charUUID)
+		STAVDebug():Raw("Stripped STAV elements from "):C21(charUUID):Print()
 	end
 end
 
@@ -82,7 +82,7 @@ local function applyToCharacter(charUUID)
 
 	local slotIdx = claimSlot(charUUID)
 	if not slotIdx then
-		STAVDebug("No free STAV slot for %s", charUUID)
+		STAVDebug():Raw("No free STAV slot for "):C21(charUUID):Print()
 		return
 	end
 	local slot = Params.Slots[slotIdx]
@@ -94,7 +94,7 @@ local function applyToCharacter(charUUID)
 			preset        = slot.preset,
 			state         = look,
 		})
-		STAVDebug("applied look to %s (slot %d)", charUUID, slotIdx)
+		STAVDebug():Raw("Applied look to "):C21(charUUID):Raw(" (slot "):C3(slotIdx):Raw(")"):Print()
 	end
 end
 C.ApplyToCharacter = applyToCharacter

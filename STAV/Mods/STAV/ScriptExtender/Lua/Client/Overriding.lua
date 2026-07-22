@@ -33,7 +33,7 @@ local function objectsOf(visual)
 	if not visual or visual == "" then return nil end
 	local vr = Ext.Resource.Get(visual, "Visual")
 	if not vr then
-		STAVDebug("Visual %s did not resolve", visual)
+		STAVDebug():Raw("Visual "):C5(visual):Raw(" did not resolve"):Print()
 		return nil
 	end
 	return vr.Objects
@@ -88,7 +88,7 @@ local function planFor(plan, charvis)
 	if p then return p end
 	local cv = Ext.Resource.Get(charvis, "CharacterVisual")
 	if not cv then
-		STAVDebug("Charvis %s did not resolve", charvis)
+		STAVDebug():Raw("Charvis "):C5(charvis):Raw(" did not resolve"):Print()
 		return nil
 	end
 	p = { cv = cv }
@@ -213,22 +213,19 @@ end
 
 local function collectEntries(mod, external, races)
 	local data = readConfig(mod)
-	if not data then return false end
-	local added = false
+	if not data then return end
 	for label, entry in pairs(data.Entries) do
 		local err = entryError(entry)
 		if err then
 			warnConfig(mod, string.format("Entry '%s' %s", tostring(label), err))
 		else
 			external[#external + 1] = entry
-			added = true
 		end
 	end
 	if type(data.Races) == "table" then
 		for _, race in ipairs(data.Races) do
 			if U.IsGuid(race) then
 				races[race] = true
-				added = true
 			else
 				warnConfig(mod, string.format("Race '%s' is not a valid UUID", tostring(race)))
 			end
@@ -236,29 +233,32 @@ local function collectEntries(mod, external, races)
 	elseif data.Races ~= nil then
 		warnConfig(mod, "'Races' must be an array of UUIDs")
 	end
-	return added
 end
 
 local function discover()
-	local base, targeted, external, races, mods = false, {}, {}, {}, 0
+	local base, targeted, external, races = false, {}, {}, {}
 	for _, modId in ipairs(Ext.Mod.GetLoadOrder()) do
 		local spec = Vis.Compat[modId]
 		if spec then
 			if spec.all then base = true else targeted[#targeted + 1] = spec end
 		end
 		local mod = Ext.Mod.GetMod(modId)
-		if mod and collectEntries(mod, external, races) then mods = mods + 1 end
+		if mod then collectEntries(mod, external, races) end
 	end
-	return base, targeted, external, races, mods
+	return base, targeted, external, races
 end
 
 local function applyScalesPassives(races)
 	local tables = {}
+	local count = 0
 	for race in pairs(races) do
 		local r = Ext.StaticData.Get(race, "Race")
-		if r and r.ProgressionTableUUID then tables[r.ProgressionTableUUID] = true end
+		if r and r.ProgressionTableUUID then
+			tables[r.ProgressionTableUUID] = true
+			count = count + 1
+		end
 	end
-	if not next(tables) then return end
+	if not next(tables) then return count end
 	for _, uuid in pairs(Ext.StaticData.GetAll("Progression")) do
 		local prog = Ext.StaticData.Get(uuid, "Progression")
 		if tables[prog.TableUUID] and prog.Level == 1 then
@@ -268,11 +268,12 @@ local function applyScalesPassives(races)
 			end
 		end
 	end
+	return count
 end
 
 local function applyAll()
 	local start = Ext.Timer.MonotonicTime()
-	local base, targeted, external, races, raceMods = discover()
+	local base, targeted, external, races = discover()
 	local plan = {}
 
 	for _, entry in pairs(Vis.Companions) do
@@ -297,8 +298,11 @@ local function applyAll()
 	end
 
 	commit(plan)
-	applyScalesPassives(races)
-	STAVDebug("Materials and %d race mods patched in %dms", raceMods, Ext.Timer.MonotonicTime() - start)
+	local raceCount = applyScalesPassives(races)
+	STAVDebug():Raw("Materials and "):C21(raceCount):Raw(" races patched in "):C3(Ext.Timer.MonotonicTime() - start):Raw(" ms"):Print()
 end
 
-E.StatsLoaded.Subscribe(applyAll)
+E.StatsLoaded.Subscribe(function()
+	STAVPrint():GradC(16, 21):G("[STAV] Snailzx Tattoos And VTs "):C17("v" .. U.Version):G(" loaded"):Print()
+	applyAll()
+end)

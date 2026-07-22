@@ -1,9 +1,5 @@
 -- Credits to Focus
-
 local Config = Ext.Require("Shared/Config.lua")
-
--- Config
-STAV_DebugEnabled = false
 
 local PRESETS = {
 	{ 255, 0,   0 },		-- C1  #ff0000 Red
@@ -25,16 +21,13 @@ local PRESETS = {
 	{ 0,   194, 203 },	-- C17 #00c2cb Neon Teal
 	{ 109, 114, 203 },	-- C18 #6c72cb Twilight Veil | Faeblue | Witchlight
 	{ 114, 108, 208 },	-- C19 #726cd0 Gloaming Wisp
-	{ 120, 101, 213 }		-- C20 #7865d5 Dusk Violet | Duskbloom | Nightshade
+	{ 120, 101, 213 },	-- C20 #7865d5 Dusk Violet | Duskbloom | Nightshade
+	{ 211, 152, 255 }		-- C21 #D398FF Fae Lilac
 }
 
 -- Internals
 local Machine = Ext.IsServer() and "S" or "C"
 local RESET   = "\x1b[0m"
-
-local function Format(...)
-	return select("#", ...) <= 1 and tostring((...)) or string.format(...)
-end
 
 local function Lerp(a, b, t)
 	return math.floor(a + (b - a) * t + 0.5)
@@ -42,10 +35,6 @@ end
 
 local function RgbToANSI(r, g, b)
 	return string.format("\x1b[1;38;2;%d;%d;%dm", r, g, b)
-end
-
-local function RawPrint(...)
-	print(Format(...))
 end
 
 -- CoreBuilder
@@ -56,13 +45,8 @@ function STAVPrint()
 	return setmetatable({ _segs = {} }, CoreBuilder)
 end
 
-function CoreBuilder:Colour(text, r, g, b)
-	self._segs[#self._segs + 1] = { Text = tostring(text), Color = { r, g, b } }
-	return self
-end
-
 -- Set the line-wide gradient endpoints (by preset). Text added with :G is
--- coloured across the whole line at Build time; fixed-colour inserts (C methods)
+-- coloured across the whole line at Build time, fixed-colour inserts (C methods)
 -- are lifted out and don't consume gradient positions.
 function CoreBuilder:GradC(startPreset, endPreset)
 	self._grad = { PRESETS[startPreset], PRESETS[endPreset] }
@@ -95,8 +79,8 @@ function CoreBuilder:Build()
 				seg.Text:sub(i, i) .. RESET
 				g = g + 1
 			end
-		elseif seg.Color then
-			parts[#parts + 1] = RgbToANSI(seg.Color[1], seg.Color[2], seg.Color[3]) .. seg.Text .. RESET
+		elseif seg.Ansi then
+			parts[#parts + 1] = seg.Ansi .. seg.Text .. RESET
 		else
 			parts[#parts + 1] = seg.Text
 		end
@@ -105,12 +89,14 @@ function CoreBuilder:Build()
 end
 
 function CoreBuilder:Print()
-	RawPrint(self:Build())
+	print(self:Build())
 end
 
 for i, color in ipairs(PRESETS) do
+	local ansi = RgbToANSI(color[1], color[2], color[3])
 	CoreBuilder["C" .. i] = function(self, text)
-		return self:Colour(text, color[1], color[2], color[3])
+		self._segs[#self._segs + 1] = { Text = tostring(text), Ansi = ansi }
+		return self
 	end
 end
 
@@ -118,15 +104,18 @@ end
 local Palette = {
 	Colours = PRESETS,
 	Names   = {
-		"Red", "Orange", "Yellow", "Green", "Blue", "Violet", "White", "Silver", "Black", "Magenta",
-		"Blush", "Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green",
-		"Neon Unseelie Violet", "Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet",
+		"Red", "Orange", "Yellow", "Green", "Blue", "Violet", "White", "Silver", "Black", "Magenta", "Blush",
+		"Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green", "Neon Unseelie Violet",
+		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac"
 	},
 }
 
-function STAVDebug(...)
-	if not (STAV_DebugEnabled or Config.Get("Debug")) then return end
-	STAVPrint():C16(string.format("[%s STAV] ", Machine)):Raw(Format(...)):Print()
+local function noop(self) return self end
+local NullBuilder = setmetatable({}, { __index = function() return noop end })
+
+function STAVDebug()
+	if not Config.Get("Debug") then return NullBuilder end
+	return STAVPrint():C16(string.format("[STAV - %s] ", Machine))
 end
 
 return { Palette = Palette }

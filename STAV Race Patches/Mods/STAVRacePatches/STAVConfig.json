@@ -1,0 +1,93 @@
+{
+    "Entries": {
+        "Elves_Female_Drow_Kiaransalee_Player": {
+            "charvis": [
+                "155aedf1-8ebd-e400-4180-c351fba967ab"
+            ],
+            "material": "cd69fa48-def6-c323-ce85-07321817f10f",
+            "type": "override"
+        },
+        "Elves_Female_Drow_Kiaransalee_Player_Strong": {
+            "charvis": [
+                "f2cae16f-3a9a-866f-07d0-a36eb2889e04"
+            ],
+            "material": "3c6fb944-8b68-a4e1-9b4b-60dfebffdb90",
+            "type": "override"
+        },
+        "Elves_Male_Drow_Kiaransalee_Player": {
+            "charvis": [
+                "7bdb5e33-9be6-7657-1c67-67430bd0f624"
+            ],
+            "material": "c0759310-a004-7e3c-a4b8-8c25da11c770",
+            "type": "override"
+        },
+        "Elves_Male_Drow_Kiaransalee_Player_Strong": {
+            "charvis": [
+                "d7fe5acf-fe82-b285-e82a-c6108b757120"
+            ],
+            "material": "663ff294-20df-8dd2-e409-e60b8044f997",
+            "type": "override"
+        },
+        "Elves_Female_Winter_Player": {
+            "charvis": [
+                "195c27b8-cc4a-0bb6-6408-52d9587fcb91"
+            ],
+            "material": "d1d50fe6-0fb2-533c-d8f6-7ab074df2913",
+            "type": "override"
+        },
+        "Elves_Female_Winter_Player_Strong": {
+            "charvis": [
+                "6840c36d-5147-9321-5df7-e58f615626fe"
+            ],
+            "material": "16ffd4b3-3b00-f623-3686-703c2b828fdc",
+            "type": "override"
+        },
+        "Elves_Male_Winter_Player": {
+            "charvis": [
+                "fa8ae072-a9a4-3a6e-519a-7b14ddfefd1e"
+            ],
+            "material": "4c58d01d-b005-f1b9-7084-6f1193de67f6",
+            "type": "override"
+        },
+        "Elves_Male_Winter_Player_Strong": {
+            "charvis": [
+                "dafb0fea-739c-8c54-fa8d-8db1685393a9"
+            ],
+            "material": "d232a086-0ded-c1ad-2c22-53336c2590b2",
+            "type": "override"
+        },
+        "HalfElves_Female_Winter_Player": {
+            "charvis": [
+                "8401620a-0fa8-f03c-2df4-84423f457451"
+            ],
+            "material": "e9cdaf51-7e6f-4c8e-33f6-2c780f1166b0",
+            "type": "override"
+        },
+        "HalfElves_Female_Winter_Player_Strong": {
+            "charvis": [
+                "3581c8f1-af2e-401a-9f6b-74db65263768"
+            ],
+            "material": "c30c53d5-d0b5-4b41-a958-6bf5a4696d25",
+            "type": "override"
+        },
+        "HalfElves_Male_Winter_Player": {
+            "charvis": [
+                "a1fef868-9ce3-b214-c9e2-41332018ffed"
+            ],
+            "material": "c05cc830-d12f-4eee-8cac-cd7b40d2550d",
+            "type": "override"
+        },
+        "HalfElves_Male_Winter_Player_Strong": {
+            "charvis": [
+                "b8565e46-fb07-4033-41c4-d25de5e86b3b"
+            ],
+            "material": "f455e079-c0d2-fe8c-9954-8fde6b76be36",
+            "type": "override"
+        }
+    },
+    "Races": [
+        "d1df9a74-b123-404c-b74a-819b4ade672c",
+        "9ef9026c-5757-45b4-a050-cae80ebff46c",
+        "f34a941b-8d4a-4334-9609-60273a6bbf1b"
+    ]
+}

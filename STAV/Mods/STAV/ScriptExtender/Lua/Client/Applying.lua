@@ -53,7 +53,7 @@ local function getRenderEntities()
 			end
 		end
 	end
-	STAVDebug("getRenderEntities found %d target(s)", #result)
+	STAVDebug():Raw("getRenderEntities found "):C3(#result):Raw(" target(s)"):Print()
 	return result
 end
 

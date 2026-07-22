@@ -1,5 +1,7 @@
 local U = {}
 
+U.Version = table.concat(Ext.Mod.GetMod(ModuleUUID).Info.ModVersion, ".")
+
 function U.IsGuid(value)
 	if type(value) ~= "string" then
 		return false

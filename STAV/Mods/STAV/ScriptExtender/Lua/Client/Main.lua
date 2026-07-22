@@ -647,7 +647,7 @@ local function applyTimelineLook(e)
 		end
 	end
 	if not look then return end
-	STAVDebug("TL %s: applying (%s)", e.TLPreviewDummy.Name, owner and "owner" or "self")
+	STAVDebug():Raw("TL "):C21(e.TLPreviewDummy.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")"):Print()
 	Applying.ApplyLookToEntity(e, look)
 end
 
@@ -675,12 +675,12 @@ NetDefs.NET_AVATAR_PING:SetHandler(function()
 	local uuid = char.Uuid.EntityUuid
 	local look = Vars.GetLook(char)
 	if look then
-		STAVDebug("Avatar ping: seeded from persisted look for %s", uuid)
+		STAVDebug():Raw("Avatar ping: seeded from persisted look for "):C21(uuid):Print()
 		seedState(look)
 	elseif UI.Changed then
-		STAVDebug("Avatar ping: resending unsynced look for %s", uuid)
+		STAVDebug():Raw("Avatar ping: resending unsynced look for "):C21(uuid):Print()
 		sendLook(uuid)
 	else
-		STAVDebug("Avatar ping: no-op for %s", uuid)
+		STAVDebug():Raw("Avatar ping: no-op for "):C21(uuid):Print()
 	end
 end)
