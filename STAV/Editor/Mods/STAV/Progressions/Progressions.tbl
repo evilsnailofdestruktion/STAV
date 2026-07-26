@@ -111,16 +111,5 @@
         <field name="PassivesAdded" type="StringTableFieldDefinition" value="ST_DraconicScales" />
       </fields>
     </stat_object>
-    <stat_object is_substat="false">
-      <fields>
-        <field name="Name" type="NameTableFieldDefinition" value="New_Stat_44" />
-        <field name="UUID" type="IdTableFieldDefinition" value="ccd1b2a2-4de9-4d0c-b6b4-fb1cd9c94b5b" />
-        <field name="TableUUID" type="GuidTableFieldDefinition" value="35aa255d-3eb7-4e93-8092-7545ced25b09" />
-        <field name="FSName" type="StringTableFieldDefinition" value="DraconicBloodline" />
-        <field name="Level" type="ByteTableFieldDefinition" value="1" />
-        <field name="ProgressionType" type="ByteTableFieldDefinition" value="1" />
-        <field name="PassivesRemoved" type="StringTableFieldDefinition" value="ST_DraconicScales" />
-      </fields>
-    </stat_object>
   </stat_objects>
 </stats>
