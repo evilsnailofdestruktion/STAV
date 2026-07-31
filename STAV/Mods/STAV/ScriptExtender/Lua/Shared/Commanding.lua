@@ -1,4 +1,5 @@
 local U = Ext.Require("Shared/Utility.lua")
+local P = Ext.Require("Shared/Printing.lua")
 
 if Ext.IsClient() then
 	Ext.RegisterConsoleCommand("stav", function(_)
@@ -7,16 +8,16 @@ if Ext.IsClient() then
 
 	Ext.RegisterConsoleCommand("stav_race", function(_, sub, kind, uuid)
 		if sub ~= "gen" or (kind ~= "override" and kind ~= "upsert") or not uuid then
-			STAVPrint():C16("[STAV] "):C7("Usage: !stav_race gen <override|upsert> <mod uuid>"):Print()
+			P.Log():C16("[STAV] "):C7("Usage: !stav_race gen <override|upsert> <mod uuid>"):Print()
 			return
 		end
 		if not U.IsGuid(uuid) then
-			STAVPrint():C16("[STAV] "):C7("Invalid mod UUID"):Print()
+			P.Log():C16("[STAV] "):C7("Invalid mod UUID"):Print()
 			return
 		end
 		local mod = Ext.Mod.GetMod(uuid)
 		if not mod then
-			STAVPrint():C16("[STAV] "):C7("Mod not found or not loaded"):Print()
+			P.Log():C16("[STAV] "):C7("Mod not found or not loaded"):Print()
 			return
 		end
 
@@ -56,7 +57,7 @@ if Ext.IsClient() then
 		end
 
 		if count == 0 then
-			STAVPrint():C16("[STAV] "):C7(string.format("No race charvis found for %s", mod.Info.Name)):Print()
+			P.Log():C16("[STAV] "):C7(string.format("No race charvis found for %s", mod.Info.Name)):Print()
 			return
 		end
 
@@ -65,6 +66,6 @@ if Ext.IsClient() then
 		table.sort(raceList)
 
 		Ext.IO.SaveFile("STAVConfig.json", Ext.Json.Stringify({ Entries = entries, Races = raceList }))
-		STAVPrint():C16(string.format("[STAV] Exported %d %s charvis and %d races for %s to Script Extender/STAVConfig.json", count, kind, #raceList, mod.Info.Name)):Print()
+		P.Log():C16(string.format("[STAV] Exported %d %s charvis and %d races for %s to Script Extender/STAVConfig.json", count, kind, #raceList, mod.Info.Name)):Print()
 	end)
 end

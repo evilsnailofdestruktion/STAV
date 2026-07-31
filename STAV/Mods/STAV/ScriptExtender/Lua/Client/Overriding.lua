@@ -2,6 +2,7 @@ local E           = Ext.Require("Shared/Events.lua")
 local Params		= Ext.Require("Shared/Params.lua")
 local Vis         = Ext.Require("Shared/Visualising.lua")
 local U           = Ext.Require("Shared/Utility.lua")
+local P           = Ext.Require("Shared/Printing.lua")
 
 local STAV_HEAD_MAT = "489d7f2c-9839-e1d0-67c5-260294337785"
 local CONFIG_FILE   = "STAVConfig.json"
@@ -33,7 +34,7 @@ local function objectsOf(visual)
 	if not visual or visual == "" then return nil end
 	local vr = Ext.Resource.Get(visual, "Visual")
 	if not vr then
-		STAVDebug():Raw("Visual "):C5(visual):Raw(" did not resolve"):Print()
+		P.Debug():Raw("Visual "):C5(visual):Raw(" did not resolve"):Print()
 		return nil
 	end
 	return vr.Objects
@@ -81,14 +82,14 @@ local function applyScar(mat, entry)
 	end
 end
 
--- Pass 1 (gather) accumulates per-charvis writes; pass 2 commits each VisualSet field once.
+-- Pass 1 (gather) accumulates per-charvis writes, pass 2 commits each VisualSet field once.
 local function planFor(plan, charvis)
 	if not charvis or charvis == "" then return nil end
 	local p = plan[charvis]
 	if p then return p end
 	local cv = Ext.Resource.Get(charvis, "CharacterVisual")
 	if not cv then
-		STAVDebug():Raw("Charvis "):C5(charvis):Raw(" did not resolve"):Print()
+		P.Debug():Raw("Charvis "):C5(charvis):Raw(" did not resolve"):Print()
 		return nil
 	end
 	p = { cv = cv }
@@ -179,7 +180,7 @@ local function commit(plan)
 end
 
 local function warnConfig(mod, msg)
-	STAVPrint():C1(string.format("[STAV] %s (%s): %s", CONFIG_FILE, mod.Info.Name, msg)):Print()
+	P.Log():C1(string.format("[STAV] %s (%s): %s", CONFIG_FILE, mod.Info.Name, msg)):Print()
 end
 
 local function readConfig(mod)
@@ -202,13 +203,13 @@ local function readConfig(mod)
 end
 
 local function entryError(entry)
-	if type(entry) ~= "table" then return "must be an object" end
-	if entry.type ~= "override" and entry.type ~= "upsert" then return "'type' must be 'override' or 'upsert'" end
-	if type(entry.charvis) ~= "table" or #entry.charvis == 0 then return "'charvis' must be a non-empty array" end
+	if type(entry) ~= "table" then return "Must be an object" end
+	if entry.type ~= "override" and entry.type ~= "upsert" then return "'Type' must be 'override' or 'upsert'" end
+	if type(entry.charvis) ~= "table" or #entry.charvis == 0 then return "'Charvis' must be a non-empty array" end
 	for i, cv in ipairs(entry.charvis) do
-		if not U.IsGuid(cv) then return string.format("charvis[%d] is not a valid UUID", i) end
+		if not U.IsGuid(cv) then return string.format("Charvis[%d] is not a valid UUID", i) end
 	end
-	if entry.type == "override" and not U.IsGuid(entry.material) then return "'material' must be a valid UUID (required for override)" end
+	if entry.type == "override" and not U.IsGuid(entry.material) then return "'Material' must be a valid UUID (required for override)" end
 end
 
 local function collectEntries(mod, external, races)
@@ -249,24 +250,9 @@ local function discover()
 end
 
 local function applyScalesPassives(races)
-	local tables = {}
-	local count = 0
-	for race in pairs(races) do
-		local r = Ext.StaticData.Get(race, "Race")
-		if r and r.ProgressionTableUUID then
-			tables[r.ProgressionTableUUID] = true
-			count = count + 1
-		end
-	end
-	if not next(tables) then return count end
-	for _, uuid in pairs(Ext.StaticData.GetAll("Progression")) do
-		local prog = Ext.StaticData.Get(uuid, "Progression")
-		if tables[prog.TableUUID] and prog.Level == 1 then
-			local added = prog.PassivesAdded or ""
-			if not added:find(Params.ScalesPassive, 1, true) then
-				prog.PassivesAdded = added == "" and Params.ScalesPassive or added .. ";" .. Params.ScalesPassive
-			end
-		end
+	local tables, count = U.ProgressionTables(races, "Race")
+	if next(tables) then
+		U.PatchProgressions(tables, "PassivesAdded", Params.ScalesPassive, 1)
 	end
 	return count
 end
@@ -299,10 +285,10 @@ local function applyAll()
 
 	commit(plan)
 	local raceCount = applyScalesPassives(races)
-	STAVDebug():Raw("Materials and "):C21(raceCount):Raw(" races patched in "):C3(Ext.Timer.MonotonicTime() - start):Raw(" ms"):Print()
+	P.Debug():Raw("Materials and "):C21(raceCount):Raw(" races patched in "):C3(Ext.Timer.MonotonicTime() - start):Raw(" ms"):Print()
 end
 
 E.StatsLoaded.Subscribe(function()
-	STAVPrint():GradC(16, 21):G("[STAV] Snailzx Tattoos And VTs "):C17("v" .. U.Version):G(" loaded"):Print()
+	P.Log():GradC(16, 21):G("[STAV] Snailzx Tattoos And VTs "):C17("v" .. U.Version):G(" loaded"):Print()
 	applyAll()
 end)

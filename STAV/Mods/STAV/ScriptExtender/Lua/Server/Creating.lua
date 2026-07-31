@@ -1,4 +1,5 @@
 local E       = Ext.Require("Shared/Events.lua")
+local P       = Ext.Require("Shared/Printing.lua")
 local U       = Ext.Require("Shared/Utility.lua")
 local NetDefs = Ext.Require("Shared/NetDefs.lua")
 local Vars    = Ext.Require("Shared/Vars.lua")
@@ -19,7 +20,7 @@ local function claimSlot(charUUID)
 		if not usedSlots[i] then
 			usedSlots[i]      = charUUID
 			slotMap[charUUID] = i
-			STAVDebug():Raw("Claimed slot "):C3(i):Raw(" for "):C21(charUUID):Print()
+			P.Debug():Raw("Claimed slot "):C3(i):Raw(" for "):Name(charUUID):Print()
 			return i
 		end
 	end
@@ -69,7 +70,7 @@ local function stripFromReal(charUUID)
 	if removed then
 		cca.Elements = els
 		entity:Replicate("CharacterCreationAppearance")
-		STAVDebug():Raw("Stripped STAV elements from "):C21(charUUID):Print()
+		P.Debug():Raw("Stripped STAV elements from "):Name(charUUID):Print()
 	end
 end
 
@@ -82,7 +83,7 @@ local function applyToCharacter(charUUID)
 
 	local slotIdx = claimSlot(charUUID)
 	if not slotIdx then
-		STAVDebug():Raw("No free STAV slot for "):C21(charUUID):Print()
+		P.Debug():Raw("No free STAV slot for "):Name(charUUID):Print()
 		return
 	end
 	local slot = Params.Slots[slotIdx]
@@ -94,7 +95,7 @@ local function applyToCharacter(charUUID)
 			preset        = slot.preset,
 			state         = look,
 		})
-		STAVDebug():Raw("Applied look to "):C21(charUUID):Raw(" (slot "):C3(slotIdx):Raw(")"):Print()
+		P.Debug():Raw("Applied look to "):Name(charUUID):Raw(" (slot "):C3(slotIdx):Raw(")"):Print()
 	end
 end
 C.ApplyToCharacter = applyToCharacter

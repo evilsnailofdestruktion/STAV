@@ -15,10 +15,6 @@ function U.Guid(uuid)
 	return uuid:sub(-36)
 end
 
-function U.GetEntity(raw)
-	return Ext.Entity.Get(raw:sub(-36))
-end
-
 function U.GetObject(entity)
 	if entity.ServerCharacter then return entity.ServerCharacter end
 	if entity.ServerItem then return entity.ServerItem.Item end
@@ -42,29 +38,44 @@ function U.TryParseJson(raw)
 	return ok and type(data) == "table" and data or nil
 end
 
-function U.ScanInventory(entity, visit)
-	if not entity.InventoryOwner then return end
-	for _, entry in pairs(entity.InventoryOwner.PrimaryInventory.InventoryContainer.Items) do
-		visit(entry.Item)
-		if entry.Item.InventoryOwner then U.ScanInventory(entry.Item, visit) end
-	end
-end
-
 function U.GetDisplayName(uuid, fallback)
-	local entity = U.GetEntity(uuid)
+	local entity = Ext.Entity.Get(uuid)
 	if not entity then return fallback or uuid end
 	if entity.CustomName then return entity.CustomName.Name end
 	if entity.DisplayName then return entity.DisplayName.Name:Get() or fallback or uuid end
 	return fallback or uuid
 end
 
-function U.GetStatusDuration(target, statusId)
-	local entity = Ext.Entity.Get(target)
-	if not entity or not entity.ServerCharacter then return nil end
-	for _, s in pairs(entity.ServerCharacter.StatusManager.Statuses) do
-		if s.StatusId == statusId then return math.floor(s.CurrentLifeTime) end
+function U.AddIfMissing(current, entry)
+	current = current or ""
+	for existing in current:gmatch("[^;]+") do
+		if existing:match("^%s*(.-)%s*$") == entry then return current end
 	end
-	return nil
+	return current == "" and entry or current .. ";" .. entry
+end
+
+function U.ProgressionTables(uuids, dataType)
+	local tables, count = {}, 0
+	for uuid in pairs(uuids) do
+		local entry = Ext.StaticData.Get(uuid, dataType)
+		if entry and entry.ProgressionTableUUID then
+			tables[entry.ProgressionTableUUID] = true
+			count = count + 1
+		end
+	end
+	return tables, count
+end
+
+function U.PatchProgressions(tableUUIDs, field, entry, level)
+	local patched = 0
+	for _, uuid in pairs(Ext.StaticData.GetAll("Progression")) do
+		local prog = Ext.StaticData.Get(uuid, "Progression")
+		if tableUUIDs[prog.TableUUID] and (not level or prog.Level == level) then
+			prog[field] = U.AddIfMissing(prog[field], entry)
+			patched = patched + 1
+		end
+	end
+	return patched
 end
 
 function U.Timer(n, callback)

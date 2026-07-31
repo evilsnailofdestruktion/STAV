@@ -1,17 +1,17 @@
-local Vars          = Ext.Require("Shared/Vars.lua")
-local L             = Ext.Require("Shared/Localization.lua")
-local NetDefs       = Ext.Require("Shared/NetDefs.lua")
-local Applying      = Ext.Require("Client/Applying.lua")
-local Config        = Ext.Require("Shared/Config.lua")
-local Presets       = Ext.Require("Client/Presets.lua")
-local Printing      = Ext.Require("Shared/Printing.lua")
+local Applying       = Ext.Require("Client/Applying.lua")
+local Config         = Ext.Require("Shared/Config.lua")
+local NetDefs        = Ext.Require("Shared/NetDefs.lua")
+local Presets        = Ext.Require("Client/Presets.lua")
+local Vars           = Ext.Require("Shared/Vars.lua")
+local L              = Ext.Require("Shared/Localization.lua")
+local P              = Ext.Require("Shared/Printing.lua")
 
-local BODY_MAX      = 96
-local HEAD_MAX      = 93
-local INTENSITY_MAX = 5
+local BODY_MAX       = 96
+local HEAD_MAX       = 93
+local INTENSITY_MAX  = 5
 local SLIDER_RESERVE = 286
 
-local UI = {}
+local UI             = {}
 
 UI.State = {
 	scar          = false,
@@ -86,21 +86,21 @@ local function step(key, min, max, delta)
 end
 
 local function addSlider(parent, label, max, key)
-	local s           = parent:AddSliderInt("##" .. key, UI.State[key], 1, max)
-	s.IDContext       = "STAV_" .. key
-	s.ItemWidth       = -SLIDER_RESERVE
-	UI.Widgets[key]   = s
-	s.OnChange        = function(w) onChange(key, w.Value[1]) end
+	local s            = parent:AddSliderInt("##" .. key, UI.State[key], 1, max)
+	s.IDContext        = "STAV_" .. key
+	s.ItemWidth        = -SLIDER_RESERVE
+	UI.Widgets[key]    = s
+	s.OnChange         = function(w) onChange(key, w.Value[1]) end
 
-	local prevBtn     = parent:AddButton("<")
-	prevBtn.IDContext = "STAV_" .. key .. "_prev"
-	prevBtn.SameLine  = true
-	prevBtn.OnClick   = function() step(key, 1, max, -1) end
+	local prevBtn      = parent:AddButton("<")
+	prevBtn.IDContext  = "STAV_" .. key .. "_prev"
+	prevBtn.SameLine   = true
+	prevBtn.OnClick    = function() step(key, 1, max, -1) end
 
-	local nextBtn     = parent:AddButton(">")
-	nextBtn.IDContext = "STAV_" .. key .. "_next"
-	nextBtn.SameLine  = true
-	nextBtn.OnClick   = function() step(key, 1, max, 1) end
+	local nextBtn      = parent:AddButton(">")
+	nextBtn.IDContext  = "STAV_" .. key .. "_next"
+	nextBtn.SameLine   = true
+	nextBtn.OnClick    = function() step(key, 1, max, 1) end
 
 	local labelText    = parent:AddText(string.format("%s (1-%d)", label, max))
 	labelText.SameLine = true
@@ -191,22 +191,22 @@ local THEMES = {
 }
 
 local DEFAULT = {
-	{ "Text",           { 0.90, 0.90, 0.88, 1.00 } },
-	{ "WindowBg",       { 0.07, 0.07, 0.07, 0.95 } },
-	{ "FrameBg",        { 0.20, 0.20, 0.22, 1.00 } },
-	{ "FrameBgHovered", { 0.26, 0.26, 0.29, 1.00 } },
-	{ "FrameBgActive",  { 0.30, 0.30, 0.33, 1.00 } },
-	{ "Button",         { 0.22, 0.22, 0.25, 1.00 } },
-	{ "ButtonHovered",  { 0.28, 0.28, 0.32, 1.00 } },
-	{ "ButtonActive",   { 0.33, 0.33, 0.37, 1.00 } },
-	{ "PopupBg",        { 0.12, 0.12, 0.14, 0.98 } },
+	{ "Text",                 { 0.90, 0.90, 0.88, 1.00 } },
+	{ "WindowBg",             { 0.07, 0.07, 0.07, 0.95 } },
+	{ "FrameBg",              { 0.20, 0.20, 0.22, 1.00 } },
+	{ "FrameBgHovered",       { 0.26, 0.26, 0.29, 1.00 } },
+	{ "FrameBgActive",        { 0.30, 0.30, 0.33, 1.00 } },
+	{ "Button",               { 0.22, 0.22, 0.25, 1.00 } },
+	{ "ButtonHovered",        { 0.28, 0.28, 0.32, 1.00 } },
+	{ "ButtonActive",         { 0.33, 0.33, 0.37, 1.00 } },
+	{ "PopupBg",              { 0.12, 0.12, 0.14, 0.98 } },
 	{ "ScrollbarBg",          { 0.12, 0.12, 0.14, 1.00 } },
 	{ "ScrollbarGrab",        { 0.30, 0.30, 0.33, 1.00 } },
 	{ "ScrollbarGrabHovered", { 0.36, 0.36, 0.40, 1.00 } },
 	{ "ScrollbarGrabActive",  { 0.42, 0.42, 0.47, 1.00 } },
 }
 
--- engine defaults for the colours Daniela overrides but Chromed/CCEE leave alone;
+-- Engine defaults for the colours Daniela overrides but Chromed/CCEE leave alone;
 -- re-applied on the non-Daniela path so a Daniela → other switch fully reverts
 local DEFAULT_EXTRAS = {
 	{ "TextDisabled",              { 0.86, 0.79, 0.68, 0.28 } },
@@ -225,7 +225,7 @@ do
 	local base   = { 0.32, 0.00, 0.00, 1.00 }
 	local hover  = { 0.37, 0.00, 0.00, 1.00 }
 	local active = { 0.28, 0.00, 0.00, 1.00 }
-	DANIELA = {
+	DANIELA      = {
 		{ "Text",                      { 0.90, 0.90, 0.90, 1.00 } },
 		{ "TextDisabled",              { 0.55, 0.55, 0.55, 1.00 } },
 		{ "WindowBg",                  { 0.15, 0.00, 0.00, 1.00 } },
@@ -274,7 +274,7 @@ local function applyTheme(style, accentIdx)
 		end
 		return
 	end
-	local rgb    = Printing.Palette.Colours[accentIdx] or Printing.Palette.Colours[18]
+	local rgb    = P.Palette.Colours[accentIdx] or P.Palette.Colours[18]
 	local accent = { rgb[1] / 255, rgb[2] / 255, rgb[3] / 255 }
 	local glow   = lighten(accent, 0.45)
 	for _, c in ipairs(DEFAULT) do
@@ -310,9 +310,9 @@ end
 
 applyTheme(Config.Get("ThemeStyle"), Config.Get("ThemeAccent"))
 
-UI.Window    = win
+UI.Window     = win
 
-local bar    = win:AddTabBar("STAV_Tabs")
+local bar     = win:AddTabBar("STAV_Tabs")
 local mainTab = bar:AddTabItem(L.T("Main"))
 
 mainTab:AddDummy(0, 4)
@@ -467,7 +467,7 @@ cceeCb.OnChange = function() setStyle("ccee") end
 danielaCb.OnChange = function() setStyle("daniela") end
 
 local accentNames = {}
-for i, name in ipairs(Printing.Palette.Names) do
+for i, name in ipairs(P.Palette.Names) do
 	accentNames[i] = L.T(name)
 end
 
@@ -647,7 +647,7 @@ local function applyTimelineLook(e)
 		end
 	end
 	if not look then return end
-	STAVDebug():Raw("TL "):C21(e.TLPreviewDummy.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")"):Print()
+	P.Debug():Raw("TL "):C21(e.TLPreviewDummy.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")"):Print()
 	Applying.ApplyLookToEntity(e, look)
 end
 
@@ -675,12 +675,12 @@ NetDefs.NET_AVATAR_PING:SetHandler(function()
 	local uuid = char.Uuid.EntityUuid
 	local look = Vars.GetLook(char)
 	if look then
-		STAVDebug():Raw("Avatar ping: seeded from persisted look for "):C21(uuid):Print()
+		P.Debug():Raw("Avatar ping: seeded from persisted look for "):Name(uuid):Print()
 		seedState(look)
 	elseif UI.Changed then
-		STAVDebug():Raw("Avatar ping: resending unsynced look for "):C21(uuid):Print()
+		P.Debug():Raw("Avatar ping: resending unsynced look for "):Name(uuid):Print()
 		sendLook(uuid)
 	else
-		STAVDebug():Raw("Avatar ping: no-op for "):C21(uuid):Print()
+		P.Debug():Raw("Avatar ping: no-op for "):Name(uuid):Print()
 	end
 end)

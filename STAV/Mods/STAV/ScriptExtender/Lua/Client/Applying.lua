@@ -1,4 +1,5 @@
 local Params = Ext.Require("Shared/Params.lua")
+local P      = Ext.Require("Shared/Printing.lua")
 
 local A = {}
 
@@ -35,12 +36,22 @@ local function walkMaterials(entity, fn)
 	end
 end
 
+local lastKey = nil
+
 local function getRenderEntities()
 	local result = {}
+	local dummies, keys = {}, {}
+	local debugging = P.IsDebug()
+
 	for _, d in pairs(Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")) do
 		local dummy = d.ClientCCDummyDefinition.Dummy
 		if dummy then
-			result[#result + 1] = Ext.Entity.Get(dummy)
+			local e = Ext.Entity.Get(dummy)
+			result[#result + 1] = e
+			if debugging then
+				dummies[#dummies + 1] = { tag = "CC", entity = e }
+				keys[#keys + 1] = tostring(e)
+			end
 		end
 	end
 	local target = _C()
@@ -50,10 +61,31 @@ local function getRenderEntities()
 			local dummy = char.HasDummy and char.HasDummy.Entity
 			if dummy then
 				result[#result + 1] = dummy
+				if debugging then
+					dummies[#dummies + 1] = { tag = "Photo", entity = dummy }
+					keys[#keys + 1] = tostring(dummy)
+				end
 			end
 		end
 	end
-	STAVDebug():Raw("getRenderEntities found "):C3(#result):Raw(" target(s)"):Print()
+
+	if debugging then
+		local key = table.concat(keys, ",")
+		if key ~= lastKey then
+			lastKey = key
+			local b = P.Debug():Raw("getRenderEntities: ")
+			if #dummies == 0 then
+				b:Raw("none")
+			else
+				for i, d in ipairs(dummies) do
+					if i > 1 then b:Raw(" | ") end
+					b:Raw(d.tag .. ": "):C3(tostring(d.entity))
+				end
+			end
+			b:Print()
+		end
+	end
+
 	return result
 end
 

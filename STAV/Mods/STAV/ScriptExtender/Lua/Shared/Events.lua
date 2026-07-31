@@ -90,7 +90,7 @@ local function ExtEvent(seEvent)
 end
 
 local function charParams(char)
-	local e = U.GetEntity(char)
+	local e = Ext.Entity.Get(char)
 	return {
 		CharacterRaw  = char,
 		CharacterGuid = U.Guid(char),

@@ -1,5 +1,8 @@
 -- Credits to Focus
 local Config = Ext.Require("Shared/Config.lua")
+local U      = Ext.Require("Shared/Utility.lua")
+
+local P = {}
 
 local PRESETS = {
 	{ 255, 0,   0 },		-- C1  #ff0000 Red
@@ -22,7 +25,15 @@ local PRESETS = {
 	{ 109, 114, 203 },	-- C18 #6c72cb Twilight Veil | Faeblue | Witchlight
 	{ 114, 108, 208 },	-- C19 #726cd0 Gloaming Wisp
 	{ 120, 101, 213 },	-- C20 #7865d5 Dusk Violet | Duskbloom | Nightshade
-	{ 211, 152, 255 }		-- C21 #D398FF Fae Lilac
+	{ 211, 152, 255 },	-- C21 #D398FF Fae Lilac
+	{ 173, 72,  255 },	-- C22 #ad48ff Umbral Bloom
+	{ 229, 196, 255 },	-- C23 #e5c4ff Orchid Mist
+	{ 18, 58, 122 },		-- C24 #123a7a Arcane Azure
+	{ 169, 216, 255 },	-- C25 #a9d8ff Mystra's Light
+	{ 22, 50, 92 },		-- C26 #16325c Netherese Shroud
+	{ 199, 233, 255 },	-- C27 #c7e9ff Glacial Gleam
+	{ 173, 235, 179 },	-- C28 #adebb3 Mint Green
+	{ 239, 197, 118 } 	-- C28 #efc576
 }
 
 -- Internals
@@ -41,7 +52,7 @@ end
 local CoreBuilder = {}
 CoreBuilder.__index = CoreBuilder
 
-function STAVPrint()
+function P.Log()
 	return setmetatable({ _segs = {} }, CoreBuilder)
 end
 
@@ -61,6 +72,17 @@ end
 function CoreBuilder:Raw(text)
 	self._segs[#self._segs + 1] = { Text = tostring(text) }
 	return self
+end
+
+function CoreBuilder:Name(uuid)
+	if type(uuid) ~= "string" or uuid == "" then
+		return self:C3("nil")
+	end
+	local name = U.GetDisplayName(uuid)
+	if name and name ~= uuid then
+		return self:C5(name):C3(" [" .. uuid .. "]")
+	end
+	return self:C3(uuid)
 end
 
 function CoreBuilder:Build()
@@ -101,21 +123,26 @@ for i, color in ipairs(PRESETS) do
 end
 
 -- Public
-local Palette = {
+P.Palette = {
 	Colours = PRESETS,
 	Names   = {
 		"Red", "Orange", "Yellow", "Green", "Blue", "Violet", "White", "Silver", "Black", "Magenta", "Blush",
 		"Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green", "Neon Unseelie Violet",
-		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac"
+		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac", "Umbral Bloom", "Orchid Mist",
+		"Arcane Azure", "Mystra's Light", "Netherese Shroud", "Glacial Gleam", "Mint Green"
 	},
 }
 
 local function noop(self) return self end
 local NullBuilder = setmetatable({}, { __index = function() return noop end })
 
-function STAVDebug()
-	if not Config.Get("Debug") then return NullBuilder end
-	return STAVPrint():C16(string.format("[STAV - %s] ", Machine))
+function P.IsDebug()
+	return Config.Get("Debug")
 end
 
-return { Palette = Palette }
+function P.Debug()
+	if not P.IsDebug() then return NullBuilder end
+	return P.Log():C16(string.format("[STAV - %s] ", Machine))
+end
+
+return P
