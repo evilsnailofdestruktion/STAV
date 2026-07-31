@@ -1,4 +1,5 @@
-local U = Ext.Require("Shared/Utility.lua")
+local U    = Ext.Require("Shared/Utility.lua")
+local Vars = Ext.Require("Shared/Vars.lua")
 
 local M = {}
 
@@ -73,6 +74,17 @@ function M.Import(name)
 	if not name or not M.Load(name) then return nil end
 	register(name)
 	return name
+end
+
+-- TODO: Delete everything below in a couple updates
+function M.MigrateAll()
+	for _, name in ipairs(M.List()) do
+		local look = M.Load(name)
+		if look then
+			local migrated, changed = Vars.MigrateLook(look)
+			if changed then M.Export(name, migrated) end
+		end
+	end
 end
 
 return M

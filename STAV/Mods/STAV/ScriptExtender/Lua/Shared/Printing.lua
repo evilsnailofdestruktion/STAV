@@ -33,7 +33,7 @@ local PRESETS = {
 	{ 22, 50, 92 },		-- C26 #16325c Netherese Shroud
 	{ 199, 233, 255 },	-- C27 #c7e9ff Glacial Gleam
 	{ 173, 235, 179 },	-- C28 #adebb3 Mint Green
-	{ 239, 197, 118 } 	-- C28 #efc576
+	{ 239, 197, 118 } 	-- C29 #efc576 Lathander's Dawn
 }
 
 -- Internals
@@ -80,7 +80,7 @@ function CoreBuilder:Name(uuid)
 	end
 	local name = U.GetDisplayName(uuid)
 	if name and name ~= uuid then
-		return self:C5(name):C3(" [" .. uuid .. "]")
+		return self:C5(name):Raw(" ["):C3(uuid):Raw("]")
 	end
 	return self:C3(uuid)
 end
@@ -122,14 +122,13 @@ for i, color in ipairs(PRESETS) do
 	end
 end
 
--- Public
 P.Palette = {
 	Colours = PRESETS,
 	Names   = {
 		"Red", "Orange", "Yellow", "Green", "Blue", "Violet", "White", "Silver", "Black", "Magenta", "Blush",
 		"Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green", "Neon Unseelie Violet",
 		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac", "Umbral Bloom", "Orchid Mist",
-		"Arcane Azure", "Mystra's Light", "Netherese Shroud", "Glacial Gleam", "Mint Green"
+		"Arcane Azure", "Mystra's Light", "Netherese Shroud", "Glacial Gleam", "Mint Green", "Lathander's Dawn"
 	},
 }
 

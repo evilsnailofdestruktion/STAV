@@ -10,6 +10,8 @@ local BODY_MAX       = 96
 local HEAD_MAX       = 93
 local INTENSITY_MAX  = 5
 local SLIDER_RESERVE = 286
+local VAMPIRISM_MAX  = 0.5
+local METALNESS_MAX  = 1
 
 local UI             = {}
 
@@ -20,11 +22,13 @@ UI.State = {
 	bodyGlow      = 1,
 	headAlt       = 1,
 	headGlow      = 1,
-	altColor      = { 1, 1, 1, 1 },
-	glowColor     = { 1, 1, 1, 1 },
+	altColour      = { 1, 1, 1, 1 },
+	glowColour     = { 1, 1, 1, 1 },
 	glowIntensity = 1,
-	swirl         = false,
-	vampirism     = false
+	tatMetalness  = 0,
+	vampirism     = 0,
+	glowPulse     = false,
+	swirl         = false
 }
 
 local function copyState(src)
@@ -141,7 +145,7 @@ win.NoFocusOnAppearing = true
 win.Scaling            = 'Scaled'
 win.AlwaysAutoResize   = false
 win:SetPos({ vp[1] / 6, vp[2] / 10 })
-win:SetSize({ 597, 809 })
+win:SetSize({ 597, 879 })
 
 local function tint(base, alpha)
 	return { base[1], base[2], base[3], alpha }
@@ -333,11 +337,13 @@ mainTab:AddSeparator()
 
 local shared = mainTab:AddCollapsingHeader(L.T("Shared"))
 shared.DefaultOpen = true
-addPicker(shared, L.T("Alt Tattoo Colour"), "altColor")
-addPicker(shared, L.T("Glow Colour"), "glowColor")
+addPicker(shared, L.T("Alt Tattoo Colour"), "altColour")
+addPicker(shared, L.T("Glow Colour"), "glowColour")
 addFloatSlider(shared, L.T("Glow Intensity"), INTENSITY_MAX, "glowIntensity")
+addFloatSlider(shared, L.T("Tattoo Metalness"), METALNESS_MAX, "tatMetalness")
+addFloatSlider(shared, L.T("Vampirism"), VAMPIRISM_MAX, "vampirism")
+addCheckbox(shared, L.T("Glow Pulse"), "glowPulse")
 addCheckbox(shared, L.T("Swirlies"), "swirl")
-addCheckbox(shared, L.T("Vampirism"), "vampirism")
 mainTab:AddSeparator()
 
 mainTab:AddDummy(0, 6)
@@ -439,6 +445,7 @@ presetStatus = presetTab:AddInputText("##STAV_PresetStatus", "")
 presetStatus.ReadOnly = true
 presetStatus:SetColor("FrameBg", { 0, 0, 0, 0 })
 
+Presets.MigrateAll()		-- TODO: Delete in a couple updates
 refreshPresets()
 
 local themeTab = bar:AddTabItem(L.T("Themes"))
@@ -515,6 +522,7 @@ function UI.RefreshWidgets()
 end
 
 local function seedState(look)
+	look = Vars.MigrateLook(look)		-- TODO: Delete in a couple updates
 	for k, v in pairs(look) do
 		if UI.State[k] ~= nil then
 			UI.State[k] = v
@@ -647,6 +655,7 @@ local function applyTimelineLook(e)
 		end
 	end
 	if not look then return end
+	look = Vars.MigrateLook(look)		-- TODO: Delete in a couple updates
 	P.Debug():Raw("TL "):C21(e.TLPreviewDummy.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")"):Print()
 	Applying.ApplyLookToEntity(e, look)
 end
@@ -680,7 +689,5 @@ NetDefs.NET_AVATAR_PING:SetHandler(function()
 	elseif UI.Changed then
 		P.Debug():Raw("Avatar ping: resending unsynced look for "):Name(uuid):Print()
 		sendLook(uuid)
-	else
-		P.Debug():Raw("Avatar ping: no-op for "):Name(uuid):Print()
 	end
 end)

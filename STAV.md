@@ -1,4 +1,4 @@
-## FACE:
+## HEAD:
 AltTattooIndex
 GlowTattooIndex
 
@@ -9,7 +9,7 @@ BodyGlowyIndex
 BodyScar - this is a float, if set to 1 it allows users to use a scar on the body
 BodyScarMap - This is the actual texture, its a new material parameter but should match the texture name of the race/bodytype (ie f gnomes is ST_GNO_F_BodyScar.DDS)
 
-## BOTH:
+## SHARED:
 BodyTattooColor - used for alt tat
 TatGlowColor
 Swirlies - changeling skin

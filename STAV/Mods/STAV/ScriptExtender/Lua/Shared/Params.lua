@@ -17,7 +17,8 @@ end
 
 M.CompHeadParams = {
 	Scalars = {
-		{ name = "GlowIntensity",   value = 1 },
+		{ name = "GlowIntensity",   value = 0 },
+		{ name = "GlowyPulse",	    value = 0 },
 		{ name = "GlowTattooIndex", value = 31 },
 		{ name = "Vampirism",       value = 0 },
 		{ name = "AltTattooIndex",  value = 31 },
@@ -41,6 +42,7 @@ M.CompBodyParams = {
 	Scalars = {
 		{ name = "BodyGlowyIndex",      value = 0 },
 		{ name = "GlowIntensity",       value = 0 },
+		{ name = "GlowyPulse",	        value = 0 },
 		{ name = "BodyScar",            value = 0 },
 		{ name = "ScarColor",           value = 0 },
 		{ name = "BM_Adjust_Weight",    value = 0 },
@@ -73,10 +75,12 @@ M.Map = {
 	headGlow      = { name = "GlowTattooIndex",  kind = "scalar", map = function(v) return headIndex(v) end },
 	scar          = { name = "BodyScar",         kind = "scalar", map = function(v) return v and 1 or 0 end },
 	swirl         = { name = "Swirlies",         kind = "scalar", map = function(v) return v and 1 or 0 end },
-	vampirism     = { name = "Vampirism",			kind = "scalar", map = function(v) return v and 1 or 0 end },
+	glowPulse	  = { name = "GlowyPulse",    	kind = "scalar", map = function(v) return v and 1 or 0 end },
 	glowIntensity = { name = "GlowIntensity",    kind = "scalar" },
-	glowColor     = { name = "TatGlowColor",     kind = "vec3"   },
-	altColor      = { name = "BodyTattooColor",  kind = "vec3"   },
+	tatMetalness  = { name = "TattooMetalness",  kind = "scalar" },
+	vampirism     = { name = "Vampirism",			kind = "scalar" },
+	glowColour    = { name = "TatGlowColor",     kind = "vec3"   },
+	altColour     = { name = "BodyTattooColor",  kind = "vec3"   }
 }
 
 -- CCAM slots — one claimed per character (CCAM uuid → preset uuid)
@@ -108,8 +112,12 @@ M.Slots = {
 }
 
 M.Toggles = {
-	swirl     = "2a2f351a-6603-45bd-a87f-b567c74fa9d1",
-	vampirism = "56ea96b0-d436-4efd-b200-dfdd93e83671",
+	swirl     = "2a2f351a-6603-45bd-a87f-b567c74fa9d1"
+}
+
+-- TODO: delete in a couple updates
+M.LegacyCcams = {
+	"56ea96b0-d436-4efd-b200-dfdd93e83671"
 }
 
 M.ScalesPassive = "ST_DraconicScales"

@@ -44,7 +44,7 @@ local function getRenderEntities()
 	local debugging = P.IsDebug()
 
 	for _, d in pairs(Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")) do
-		local dummy = d.ClientCCDummyDefinition.Dummy
+		local dummy = (d.CCCharacterDefinition or d.CCChangeAppearanceDefinition) and d.ClientCCDummyDefinition.Dummy
 		if dummy then
 			local e = Ext.Entity.Get(dummy)
 			result[#result + 1] = e

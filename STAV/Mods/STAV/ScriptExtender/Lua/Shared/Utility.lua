@@ -9,27 +9,8 @@ function U.IsGuid(value)
 	return value:match("^%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x$") ~= nil
 end
 
-U.NULL_UUID = "00000000-0000-0000-0000-000000000000"
-
 function U.Guid(uuid)
 	return uuid:sub(-36)
-end
-
-function U.GetObject(entity)
-	if entity.ServerCharacter then return entity.ServerCharacter end
-	if entity.ServerItem then return entity.ServerItem.Item end
-end
-
-function U.GetPartyMembers()
-	local members = {}
-	for _, row in pairs(Osi.DB_Players:Get(nil)) do
-		local guid   = U.Guid(row[1])
-		local entity = Ext.Entity.Get(guid)
-		if entity then
-			members[#members + 1] = { Guid = guid, Entity = entity }
-		end
-	end
-	return members
 end
 
 function U.TryParseJson(raw)
@@ -76,21 +57,6 @@ function U.PatchProgressions(tableUUIDs, field, entry, level)
 		end
 	end
 	return patched
-end
-
-function U.Timer(n, callback)
-	n = (n or 13) * 1000
-	local startTime = Ext.Timer.MonotonicTime()
-	local eventId
-	eventId = Ext.Events.Tick:Subscribe(function()
-		if Ext.Timer.MonotonicTime() - startTime >= n then
-			if callback then callback() end
-			Ext.Events.Tick:Unsubscribe(eventId)
-		end
-	end)
-	return eventId, function()
-		return Ext.Timer.MonotonicTime()
-	end
 end
 
 return U
