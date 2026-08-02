@@ -16,8 +16,10 @@ local translationTable = {
 	["Alt Tattoo Colour"]                 = "h813692a2g6214g4768ga749gf8a2d35b1f7b",
 	["Glow Colour"]                       = "h24b4b838g7e1fg442dgb7d8g1f64831c0d14",
 	["Glow Intensity"]                    = "he5e05ed1g7eb8g4df0g8030gcff90b9da34c",
-	["Swirlies"]                          = "hbd829e71g8edcg468fg9b63gdbb79b1fd31f",
+	["Tattoo Metalness"]                  = "h5078d12eg49d1g4650gbc20g4fc392f3b04e",
 	["Vampirism"]                         = "h1cba0ec1gfcb1g48cbg9b82gac8aff69c550",
+	["Glow Pulse"]                        = "h2c47b146g87e9g4413g97d4g770c835c79b8",
+	["Swirlies"]                          = "hbd829e71g8edcg468fg9b63gdbb79b1fd31f",
 	["Reset"]                             = "h9ceb4c21ga27cg4ea3gbf1bgf02d336152e2",
 
 	-- Presets
@@ -59,6 +61,15 @@ local translationTable = {
 	["Twilight Veil"]                     = "h3a73e52fgfb29g4294ga68egb895e4477226",
 	["Gloaming Wisp"]                     = "h9b8d8926gc00bg4144ga14dg0847887c22ac",
 	["Dusk Violet"]                       = "hf383c4e9g0ca8g41ceg9403g0789ba6d7b0c",
+	["Fae Lilac"]                         = "h49a0bc53g9c20g4fbdg97d3gdc504eb4e644",
+	["Umbral Bloom"]                      = "h1b0600cfg7cd9g4e77g9a5dg29533ce0e304",
+	["Orchid Mist"]                       = "h4f80b91ag3ec7g4a1ag9306g0c1d6b6d448a",
+	["Arcane Azure"]                      = "h53ef1686ga852g4d5bg9e61g8073c34ea8fb",
+	["Mystra's Light"]                    = "h6c8f7f40gdfd9g4a40g89e9g6fee8ed9724f",
+	["Netherese Shroud"]                  = "hd33bf362g040dg4516gb6b5gd5e488b7c3d0",
+	["Glacial Gleam"]                     = "ha639f6f3gfd98g4e19gb7d9g042c1e14b06a",
+	["Mint Green"]                        = "h619a2de4g15adg4059g90bagf668a4b7aa5c",
+	["Lathander's Dawn"]                  = "h4c20f1f9ga881g46cag8743ga1b3d3d5bd51",
 
 	-- Advanced
 	["Advanced"]                          = "h5e138bc4gf04dg4f65g977fg94d21267cf05",
