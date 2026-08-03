@@ -44,6 +44,7 @@ local function getRenderEntities()
 	local debugging = P.IsDebug()
 
 	for _, d in pairs(Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")) do
+		-- Prevents the panel elements from affecting the guardian in first CC
 		local dummy = (d.CCCharacterDefinition or d.CCChangeAppearanceDefinition) and d.ClientCCDummyDefinition.Dummy
 		if dummy then
 			local e = Ext.Entity.Get(dummy)
@@ -66,6 +67,14 @@ local function getRenderEntities()
 					keys[#keys + 1] = tostring(dummy)
 				end
 			end
+		end
+	end
+
+	if target and target.Level.LevelName ~= "SYS_CC_I" then
+		result[#result + 1] = target
+		if debugging then
+			dummies[#dummies + 1] = { tag = "Live", entity = target }
+			keys[#keys + 1] = tostring(target)
 		end
 	end
 
