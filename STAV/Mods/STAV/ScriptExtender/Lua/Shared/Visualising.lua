@@ -349,7 +349,7 @@ local COMPANIONS_VIS = {
 		scarMapNM = "249959cb-89b9-2ea2-1402-649a88b6b8e1",
 		overrides = {
 			head = {
-				Scalars = { TattooIndex = 56 },
+				Scalars = { TattooIndex = 32 },
 				Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
 			}
 		},

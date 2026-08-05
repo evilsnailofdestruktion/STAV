@@ -285,7 +285,12 @@ local function applyAll()
 
 	commit(plan)
 	local raceCount = applyScalesPassives(races)
-	P.Debug():Raw("Materials and "):C21(raceCount):Raw(" races patched in "):C3(Ext.Timer.MonotonicTime() - start):Raw(" ms"):Print()
+	local elapsed = Ext.Timer.MonotonicTime() - start
+	if raceCount > 0 then
+		P.Debug():Raw("Materials and "):C21(raceCount):Raw(" races patched in "):C3(elapsed):Raw(" ms"):Print()
+	else
+		P.Debug():Raw("Materials patched in "):C3(elapsed):Raw(" ms"):Print()
+	end
 end
 
 E.StatsLoaded.Subscribe(function()

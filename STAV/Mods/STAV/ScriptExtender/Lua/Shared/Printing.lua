@@ -141,7 +141,7 @@ end
 
 function P.Debug()
 	if not P.IsDebug() then return NullBuilder end
-	return P.Log():C16(string.format("[STAV - %s] ", Machine))
+	return P.Log():C16(string.format("[STAV - %s]", Machine)):C21("[" .. Ext.Timer.MonotonicTime() .. "] ")
 end
 
 return P

@@ -148,6 +148,7 @@ function A.ApplyLocalPreset(presetUUID, characterUUID, look)
 	local entity = characterUUID and Ext.Entity.Get(characterUUID)
 	if entity then
 		Ext.System.ClientVisual.ReloadVisuals[entity] = true
+		P.Debug():Raw("Reload requested for "):Name(characterUUID):Print()
 	end
 end
 
