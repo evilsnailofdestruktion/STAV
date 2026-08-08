@@ -89,6 +89,27 @@ local function ExtEvent(seEvent)
 	end
 end
 
+local function EcsSystemEvent(system)
+	return function(f)
+		local id = Ext.Entity.OnSystemUpdate(system, f)
+		return function() Ext.Entity.Unsubscribe(id) end
+	end
+end
+
+local function EcsCreateEvent(component)
+	return function(f)
+		local id = Ext.Entity.OnCreateDeferred(component, f)
+		return function() Ext.Entity.Unsubscribe(id) end
+	end
+end
+
+local function EcsDestroyEvent(component)
+	return function(f)
+		local id = Ext.Entity.OnDestroyDeferred(component, f)
+		return function() Ext.Entity.Unsubscribe(id) end
+	end
+end
+
 local function charParams(char)
 	local e = Ext.Entity.Get(char)
 	return {
@@ -115,6 +136,16 @@ if Ext.IsServer() then
 	E.StartChangeAppearance     = Event(OsirisEvent("StartChangeAppearance", 1, "after"), charParams)
 	E.ChangeAppearanceCompleted = Event(OsirisEvent("ChangeAppearanceCompleted", 1, "after"), charParams)
 	E.ChangeAppearanceCancelled = Event(OsirisEvent("ChangeAppearanceCancelled", 1, "after"), charParams)
+end
+
+if Ext.IsClient() then
+	E.EquipmentVisualsUpdate   = Event(EcsSystemEvent("ClientEquipmentVisuals"))
+	E.CCDummyCreated           = Event(EcsCreateEvent("ClientCCDummyDefinition"))
+	E.CCDummyDestroyed         = Event(EcsDestroyEvent("ClientCCDummyDefinition"))
+	E.ClientControlCreated     = Event(EcsCreateEvent("ClientControl"))
+	E.PhotoModeDummyCreated    = Event(EcsCreateEvent("PhotoModeDummy"))
+	E.PhotoModeDummyDestroyed  = Event(EcsDestroyEvent("PhotoModeDummy"))
+	E.TLPreviewDummyCreated    = Event(EcsCreateEvent("TLPreviewDummy"))
 end
 
 E.SessionLoaded  = Event(ExtEvent(Ext.Events.SessionLoaded))

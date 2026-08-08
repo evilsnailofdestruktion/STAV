@@ -3,6 +3,7 @@ local Config         = Ext.Require("Shared/Config.lua")
 local NetDefs        = Ext.Require("Shared/NetDefs.lua")
 local Presets        = Ext.Require("Client/Presets.lua")
 local Vars           = Ext.Require("Shared/Vars.lua")
+local E              = Ext.Require("Shared/Events.lua")
 local L              = Ext.Require("Shared/Localization.lua")
 local P              = Ext.Require("Shared/Printing.lua")
 
@@ -581,7 +582,7 @@ local rebuildTimer = nil
 
 local function registerRebuildHook()
 	if rebuildHook then return end
-	rebuildHook = Ext.Entity.OnSystemUpdate("ClientEquipmentVisuals", function()
+	rebuildHook = E.EquipmentVisualsUpdate.Subscribe(function()
 		local sys = Ext.System.ClientEquipmentVisuals
 		if (hasAny(sys.DestroyVisuals) or hasAny(sys.InitVisualLevel)) and not rebuildTimer then
 			rebuildTimer = Ext.Timer.WaitFor(100, function()
@@ -594,7 +595,7 @@ end
 
 local function unregisterRebuildHook()
 	if rebuildHook then
-		Ext.Entity.Unsubscribe(rebuildHook)
+		E.EquipmentVisualsUpdate.Unsubscribe(rebuildHook)
 		rebuildHook = nil
 	end
 end
@@ -604,11 +605,11 @@ local function onDummyCreated()
 	registerRebuildHook()
 end
 
-Ext.Entity.OnCreateDeferred("ClientCCDummyDefinition", function()
+E.CCDummyCreated.Subscribe(function()
 	onDummyCreated()
 end)
 
-Ext.Entity.OnDestroyDeferred("ClientCCDummyDefinition", function()
+E.CCDummyDestroyed.Subscribe(function()
 	if ccDummyCount() == 0 then
 		UI.Close()
 		unregisterRebuildHook()
@@ -619,15 +620,15 @@ if ccDummyCount() > 0 then
 	onDummyCreated()
 end
 
-Ext.Entity.OnCreateDeferred("ClientControl", function(e)
+E.ClientControlCreated.Subscribe(function(e)
 	if UI.Window.Open then UI.PopulateFromEntity(e) end
 end)
 
-Ext.Entity.OnCreateDeferred("PhotoModeDummy", function()
+E.PhotoModeDummyCreated.Subscribe(function()
 	if Config.Get("AutoOpenPhotoMode") then UI.Open() end
 end)
 
-Ext.Entity.OnDestroyDeferred("PhotoModeDummy", function()
+E.PhotoModeDummyDestroyed.Subscribe(function()
 	if Config.Get("AutoOpenPhotoMode") and #Ext.Entity.GetAllEntitiesWithComponent("PhotoModeDummy") == 0 then
 		UI.Close()
 	end
@@ -660,8 +661,7 @@ local function applyTimelineLook(e)
 	Applying.ApplyLookToEntity(e, look)
 end
 
-Ext.Entity.OnCreateDeferred("TLPreviewDummy", function(e)
-	if e.TLPreviewDummy.OriginalCharacterTemplate == "" then return end
+local function applyWhenReady(e)
 	local tries = 0
 	local function attempt()
 		tries = tries + 1
@@ -672,6 +672,18 @@ Ext.Entity.OnCreateDeferred("TLPreviewDummy", function(e)
 		end
 	end
 	Ext.Timer.WaitFor(TL_RETRY_MS, attempt)
+end
+
+local function applyToTimelineDummies()
+	for _, e in pairs(Ext.Entity.GetAllEntitiesWithComponent("TLPreviewDummy")) do
+		local tl = e.TLPreviewDummy
+		if tl and tl.OriginalCharacterTemplate ~= "" then applyWhenReady(e) end
+	end
+end
+
+E.TLPreviewDummyCreated.Subscribe(function(e)
+	if e.TLPreviewDummy.OriginalCharacterTemplate == "" then return end
+	applyWhenReady(e)
 end)
 
 NetDefs.NET_APPLY_SYNC:SetHandler(function(data)
@@ -690,4 +702,5 @@ NetDefs.NET_AVATAR_PING:SetHandler(function()
 		P.Debug():Raw("Avatar ping: resending unsynced look for "):Name(uuid):Print()
 		sendLook(uuid)
 	end
+	if look or UI.Changed then applyToTimelineDummies() end
 end)
