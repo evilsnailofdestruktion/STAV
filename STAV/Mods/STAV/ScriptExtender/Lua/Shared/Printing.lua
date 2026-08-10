@@ -26,14 +26,16 @@ local PRESETS = {
 	{ 114, 108, 208 },	-- C19 #726cd0 Gloaming Wisp
 	{ 120, 101, 213 },	-- C20 #7865d5 Dusk Violet | Duskbloom | Nightshade
 	{ 211, 152, 255 },	-- C21 #D398FF Fae Lilac
-	{ 173, 72,  255 },	-- C22 #ad48ff Umbral Bloom
-	{ 229, 196, 255 },	-- C23 #e5c4ff Orchid Mist
-	{ 18, 58, 122 },		-- C24 #123a7a Arcane Azure
-	{ 169, 216, 255 },	-- C25 #a9d8ff Mystra's Light
-	{ 22, 50, 92 },		-- C26 #16325c Netherese Shroud
-	{ 199, 233, 255 },	-- C27 #c7e9ff Glacial Gleam
-	{ 173, 235, 179 },	-- C28 #adebb3 Mint Green
-	{ 239, 197, 118 } 	-- C29 #efc576 Lathander's Dawn
+	{ 120, 100, 180 },	-- C22 #7864b4 Nightshade
+	{ 215, 205, 255 },	-- C23 #d7cdff Moonshade
+	{ 173, 72,  255 },	-- C24 #ad48ff Umbral Bloom
+	{ 229, 196, 255 },	-- C25 #e5c4ff Orchid Mist
+	{ 18, 58, 122 },		-- C26 #123a7a Arcane Azure
+	{ 169, 216, 255 },	-- C27 #a9d8ff Mystra's Light
+	{ 22, 50, 92 },		-- C28 #16325c Netherese Shroud
+	{ 199, 233, 255 },	-- C29 #c7e9ff Glacial Gleam
+	{ 173, 235, 179 },	-- C30 #adebb3 Mint Green
+	{ 239, 197, 118 } 	-- C31 #efc576 Lathander's Dawn
 }
 
 -- Internals
@@ -127,8 +129,9 @@ P.Palette = {
 	Names   = {
 		"Red", "Orange", "Yellow", "Green", "Blue", "Violet", "White", "Silver", "Black", "Magenta", "Blush",
 		"Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green", "Neon Unseelie Violet",
-		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac", "Umbral Bloom", "Orchid Mist",
-		"Arcane Azure", "Mystra's Light", "Netherese Shroud", "Glacial Gleam", "Mint Green", "Lathander's Dawn"
+		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac", "Nightshade", "Moonshade",
+		"Umbral Bloom", "Orchid Mist", "Arcane Azure", "Mystra's Light", "Netherese Shroud", "Glacial Gleam",
+		"Mint Green", "Lathander's Dawn"
 	},
 }
 

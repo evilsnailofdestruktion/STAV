@@ -1,14 +1,5 @@
 local COMPAT = {
 	["8cc519bd-cfd3-4041-9468-518cc3e31b28"] = { all = true },		-- Unique Companion Assets
-	["2396f116-b622-4940-96bf-083b120e2a30"] = {							-- A Candle In The Dark
-		Jason = {
-			charvis   = {
-				""
-			},
-			scarMap   = "",
-			scarMapNM = ""
-		}
-	}
 }
 
 local PLAYER_VIS = {
@@ -349,8 +340,8 @@ local COMPANIONS_VIS = {
 		scarMapNM = "249959cb-89b9-2ea2-1402-649a88b6b8e1",
 		overrides = {
 			head = {
-				Scalars = { TattooIndex = 32 },
-				Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+				Scalars = { TattooIndex = 31 },
+				Vec4    = { TattooIntensity = { 0.88235295, 0, 0, 0 } }
 			}
 		},
 	},
