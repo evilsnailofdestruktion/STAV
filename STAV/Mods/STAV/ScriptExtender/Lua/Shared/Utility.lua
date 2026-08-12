@@ -29,6 +29,7 @@ end
 
 function U.AddIfMissing(current, entry)
 	current = current or ""
+	entry = entry:match("^%s*(.-)%s*$")
 	for existing in current:gmatch("[^;]+") do
 		if existing:match("^%s*(.-)%s*$") == entry then return current end
 	end
