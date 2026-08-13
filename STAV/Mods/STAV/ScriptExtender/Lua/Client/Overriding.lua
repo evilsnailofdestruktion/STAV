@@ -30,7 +30,7 @@ local function stavHeadSourceFile()
 	return headSource
 end
 
-local function objectsOf(visual)
+local function visualObjects(visual)
 	if not visual or visual == "" then return nil end
 	local vr = Ext.Resource.Get(visual, "Visual")
 	if not vr then
@@ -43,7 +43,7 @@ end
 local function headObjects(cv)
 	for _, s in ipairs(cv.VisualSet.Slots) do
 		if s.Slot == "Head" then
-			return objectsOf(s.VisualResource)
+			return visualObjects(s.VisualResource)
 		end
 	end
 	return nil
@@ -82,10 +82,10 @@ local function applyScar(mat, entry)
 	end
 end
 
--- Pass 1 (gather) accumulates per-charvis writes, pass 2 commits each VisualSet field once.
-local function planFor(plan, charvis)
+-- Pass 1 builds the per-charvis writes, pass 2 commits each VisualSet field once.
+local function getCharvis(writes, charvis)
 	if not charvis or charvis == "" then return nil end
-	local p = plan[charvis]
+	local p = writes[charvis]
 	if p then return p end
 	local cv = Ext.Resource.Get(charvis, "CharacterVisual")
 	if not cv then
@@ -93,33 +93,38 @@ local function planFor(plan, charvis)
 		return nil
 	end
 	p = { cv = cv }
-	plan[charvis] = p
+	writes[charvis] = p
 	return p
 end
 
 local function addMats(p, matIds, overrides)
-	local scalars, vecs = {}, {}
+	local scalars, vecs, vec3s = {}, {}, {}
 	for name, v in pairs(overrides.Scalars or {}) do
 		scalars[#scalars + 1] = { Parameter = name, Value = v, Enabled = true, Color = false, Custom = false }
 	end
 	for name, v in pairs(overrides.Vec4 or {}) do
 		vecs[#vecs + 1] = { Parameter = name, Value = v, Enabled = true, Color = true, Custom = false }
 	end
+	for name, v in pairs(overrides.Vec3 or {}) do
+		vec3s[#vec3s + 1] = { Parameter = name, Value = v, Enabled = true, Color = true, Custom = false }
+	end
 	p.mats = p.mats or {}
 	for matId in pairs(matIds) do
-		p.mats[matId] = { MaterialResource = matId, ScalarParameters = scalars, VectorParameters = vecs, MaterialPresets = {} }
+		p.mats[matId] = { MaterialResource = matId, ScalarParameters = scalars, VectorParameters = vecs, Vector3Parameters = vec3s, MaterialPresets = {} }
 	end
 end
 
-local function gatherDefaultBody(entry, p)
-	local objects = objectsOf(p.cv.VisualSet.BodySetVisual)
+local function getDefaultBody(entry, p)
+	local objects = visualObjects(p.cv.VisualSet.BodySetVisual)
 	if not objects then return end
 	p.rmo = p.rmo or {}
 	for _, o in ipairs(objects) do p.rmo[o.ObjectID] = entry.material end
+	local body = entry.overrides and entry.overrides.body
+	if body then addMats(p, { [entry.material] = true }, body) end
 end
 
-local function gatherCompatBody(entry, p, source)
-	local objects = objectsOf(p.cv.VisualSet.BodySetVisual)
+local function getCompatBody(entry, p, source)
+	local objects = visualObjects(p.cv.VisualSet.BodySetVisual)
 	if not objects then return end
 	local matIds = {}
 	for _, o in ipairs(objects) do
@@ -135,7 +140,7 @@ local function gatherCompatBody(entry, p, source)
 	if body and next(matIds) then addMats(p, matIds, body) end
 end
 
-local function gatherHead(entry, p)
+local function getHead(entry, p)
 	local objects = headObjects(p.cv)
 	if not objects then return end
 	local matIds = {}
@@ -153,18 +158,31 @@ local function gatherHead(entry, p)
 	if head and next(matIds) then addMats(p, matIds, head) end
 end
 
-local function applyEntry(plan, entry, useCompat, source, withHead)
+local function applyEntry(writes, entry, useCompat, source, withHead)
 	for _, charvis in ipairs(entry.charvis) do
-		local p = planFor(plan, charvis)
+		local p = getCharvis(writes, charvis)
 		if p then
-			if useCompat then gatherCompatBody(entry, p, source) else gatherDefaultBody(entry, p) end
-			if withHead then gatherHead(entry, p) end
+			if useCompat then getCompatBody(entry, p, source) else getDefaultBody(entry, p) end
+			if withHead then getHead(entry, p) end
 		end
 	end
 end
 
-local function commit(plan)
-	for _, p in pairs(plan) do
+local function mergeParams(existing, additions)
+	local list, index = {}, {}
+	for _, param in pairs(existing) do
+		list[#list + 1] = param
+		index[param.Parameter] = #list
+	end
+	for _, param in ipairs(additions) do
+		local at = index[param.Parameter]
+		if at then list[at] = param else list[#list + 1] = param end
+	end
+	return list
+end
+
+local function commit(writes)
+	for _, p in pairs(writes) do
 		if p.rmo then
 			local rmo = {}
 			for k, v in pairs(p.cv.VisualSet.RealMaterialOverrides) do rmo[k] = v end
@@ -173,7 +191,15 @@ local function commit(plan)
 		end
 		if p.mats then
 			for matId, entry in pairs(p.mats) do
-				p.cv.VisualSet.Materials[matId] = entry
+				local current = p.cv.VisualSet.Materials[matId]
+				if current then
+					current.ScalarParameters  = mergeParams(current.ScalarParameters, entry.ScalarParameters)
+					current.VectorParameters  = mergeParams(current.VectorParameters, entry.VectorParameters)
+					current.Vector3Parameters = mergeParams(current.Vector3Parameters, entry.Vector3Parameters)
+					p.cv.VisualSet.Materials[matId] = current
+				else
+					p.cv.VisualSet.Materials[matId] = entry
+				end
 			end
 		end
 	end
@@ -236,7 +262,7 @@ local function collectEntries(mod, external, races)
 	end
 end
 
-local function discover()
+local function scanLO()
 	local base, targeted, external, races = false, {}, {}, {}
 	for _, modId in ipairs(Ext.Mod.GetLoadOrder()) do
 		local spec = Vis.Compat[modId]
@@ -259,31 +285,31 @@ end
 
 local function applyAll()
 	local start = Ext.Timer.MonotonicTime()
-	local base, targeted, external, races = discover()
-	local plan = {}
+	local base, targeted, external, races = scanLO()
+	local writes = {}
 
 	for _, entry in pairs(Vis.Companions) do
 		local source = base and (entry.shader and Ext.Resource.Get(entry.material, "Material").SourceFile or stavSourceFile())
-		applyEntry(plan, entry, base, source, true)
+		applyEntry(writes, entry, base, source, true)
 	end
 
 	for _, entry in pairs(Vis.Player) do
-		applyEntry(plan, entry, false, nil, false)
+		applyEntry(writes, entry, false, nil, false)
 	end
 
 	for _, spec in ipairs(targeted) do
 		for _, entry in pairs(spec) do
 			local source = entry.shader and Ext.Resource.Get(entry.material, "Material").SourceFile or stavSourceFile()
-			applyEntry(plan, entry, true, source, true)
+			applyEntry(writes, entry, true, source, true)
 		end
 	end
 
 	for _, entry in ipairs(external) do
 		local compat = entry.type ~= "override"
-		applyEntry(plan, entry, compat, compat and stavSourceFile() or nil, false)
+		applyEntry(writes, entry, compat, compat and stavSourceFile() or nil, false)
 	end
 
-	commit(plan)
+	commit(writes)
 	local raceCount = applyScalesPassives(races)
 	local elapsed = Ext.Timer.MonotonicTime() - start
 	if raceCount > 0 then

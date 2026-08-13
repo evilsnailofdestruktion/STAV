@@ -454,7 +454,12 @@ local COMPANIONS_VIS = {
 		},
 		material  = "31ea4499-1f05-e225-1e1a-d3928fe3cd98",
 		scarMap   = "f0804a81-6622-f7e0-efe0-c665626980b1",
-		scarMapNM = "b6987be1-aae4-1bea-d9fe-63291810053b"
+		scarMapNM = "b6987be1-aae4-1bea-d9fe-63291810053b",
+		overrides = {
+			body = {
+				Vec3    = { NonSkinColor = { 0, 0, 0 } }
+			}
+		},
 	},
 	Wyll = {
 		charvis   = {
