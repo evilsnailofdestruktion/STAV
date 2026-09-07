@@ -415,6 +415,7 @@ local COMPANIONS_VIS = {
 		overrides = {
 			head = {
 				Scalars = { TattooIndex = 58 },
+				Vec3    = { TattooColorG = { 0.043290038, 0.0111670075, 0.053869784 } },
 				Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
 			}
 		},

@@ -71,7 +71,7 @@ local function stripFromReal(charUUID)
 	if removed then
 		cca.Elements = els
 		entity:Replicate("CharacterCreationAppearance")
-		P.Debug():Raw("Stripped STAV elements from "):Name(charUUID):Print()
+		P.Debug():Raw("Removed STAV elements from "):Name(charUUID):Print()
 	end
 end
 
