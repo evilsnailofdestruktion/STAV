@@ -7,7 +7,7 @@ BodyTattooIndex
 BodyAltTatIndex
 BodyGlowyIndex
 BodyScar - this is a float, if set to 1 it allows users to use a scar on the body
-BodyScarMap - This is the actual texture, its a new material parameter but should match the texture name of the race/bodytype (ie f gnomes is ST_GNO_F_BodyScar.DDS)
+BodyScarMap - This is the actual texture, it's a new material parameter but should match the texture name of the race/bodytype (ie f gnomes is ST_GNO_F_BodyScar.DDS)
 
 ## SHARED:
 BodyTattooColor - used for alt tat
@@ -15,6 +15,19 @@ TatGlowColor
 Swirlies - changeling skin
 Vampirism
 GlowIntensity
+
+## Atlases:
+ST_Body_Tattoos.DDS         824e2e14-ea37-6734-624b-b19f11500c8e
+ST_DraconicScales.DDS       09a88614-5b0e-4f6c-e641-f76a6eb949ec
+ST_DraconicScalesNM.DDS     e627e69c-7799-c5ce-554d-b152a958b143
+ST_Genital_Tattoos.DDS      8f86332e-712b-7dd7-033e-c4fd84fad6d1
+ST_Head_Tattoos.DDS         3e2b453f-83d5-cf51-6b81-9d109e69b318
+ST_Makeup.DDS               be1e3d5e-5f9e-9e20-e9ee-80c5fce076ed
+ST_Scars.DDS                7c280a87-0a5d-58f3-809a-3709ec6f157e
+
+## Swirlies:
+ST_BodyWarp.DDS    6380c4b4-3517-9d97-c8fa-a7aed30b6bd2
+ST_HeadWarp.DDS    e081db36-b103-47a9-25ca-edf481c00e22
 
 ## Special Cases:
 Gith F
@@ -210,6 +223,19 @@ ST_Shadowheart_BodyScar          f0804a81-6622-f7e0-efe0-c665626980b1
 ST_Shadowheart_BodyScarNM        b6987be1-aae4-1bea-d9fe-63291810053b
 ST_Wyll_BodyScar                 c641d02d-e466-ac9b-3e7e-bf534d485417
 ST_Wyll_BodyScarNM               d9662fd1-f7f6-c482-b473-e1b60ecbd9b9
+
+## Atlases:
+ST_Body_Tattoos.DDS         824e2e14-ea37-6734-624b-b19f11500c8e
+ST_DraconicScales.DDS       09a88614-5b0e-4f6c-e641-f76a6eb949ec
+ST_DraconicScalesNM.DDS     e627e69c-7799-c5ce-554d-b152a958b143
+ST_Genital_Tattoos.DDS      8f86332e-712b-7dd7-033e-c4fd84fad6d1
+ST_Head_Tattoos.DDS         3e2b453f-83d5-cf51-6b81-9d109e69b318
+ST_Makeup.DDS               be1e3d5e-5f9e-9e20-e9ee-80c5fce076ed
+ST_Scars.DDS                7c280a87-0a5d-58f3-809a-3709ec6f157e
+
+## Warps:
+ST_BodyWarp.DDS    6380c4b4-3517-9d97-c8fa-a7aed30b6bd2
+ST_HeadWarp.DDS    e081db36-b103-47a9-25ca-edf481c00e22
 
 ## Companion Char Vis:
 ORIGIN_Astarion_PortraitVisual <14c23242-b819-0d30-f5ba-5e6c9b4b6088>
