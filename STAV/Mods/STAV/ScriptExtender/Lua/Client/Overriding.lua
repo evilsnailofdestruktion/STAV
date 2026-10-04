@@ -209,6 +209,33 @@ local function warnConfig(mod, msg)
 	P.Log():C1(string.format("[STAV] %s (%s): %s", CONFIG_FILE, mod.Info.Name, msg)):Print()
 end
 
+local function isDenseArray(value)
+	if type(value) ~= "table" then return false end
+	local count = 0
+	for _ in pairs(value) do count = count + 1 end
+	for i = 1, count do
+		if value[i] == nil then return false end
+	end
+	return true
+end
+
+local function parameterMapError(label, value, width)
+	if value == nil then return nil end
+	if type(value) ~= "table" then return string.format("'%s' must be an object", label) end
+	for name, param in pairs(value) do
+		if type(name) ~= "string" then return string.format("'%s' must use parameter names", label) end
+		if not width then
+			if type(param) ~= "number" then return string.format("'%s.%s' must be a number", label, name) end
+		else
+			local expected = string.format("'%s.%s' must be a %d-number array", label, name, width)
+			if not isDenseArray(param) or #param ~= width then return expected end
+			for _, component in ipairs(param) do
+				if type(component) ~= "number" then return expected end
+			end
+		end
+	end
+end
+
 local function readConfig(mod)
 	local raw = Ext.IO.LoadFile("Mods/" .. mod.Info.Directory .. "/" .. CONFIG_FILE, "data")
 	if not raw or raw == "" then return nil end
@@ -229,13 +256,24 @@ local function readConfig(mod)
 end
 
 local function entryError(entry)
-	if type(entry) ~= "table" then return "Must be an object" end
-	if entry.type ~= "override" and entry.type ~= "upsert" then return "'Type' must be 'override' or 'upsert'" end
-	if type(entry.charvis) ~= "table" or #entry.charvis == 0 then return "'Charvis' must be a non-empty array" end
+	if type(entry) ~= "table" then return "must be an object" end
+	if entry.type ~= "override" and entry.type ~= "upsert" then return "'type' must be 'override' or 'upsert'" end
+	if not isDenseArray(entry.charvis) or #entry.charvis == 0 then return "'charvis' must be a non-empty array" end
 	for i, cv in ipairs(entry.charvis) do
-		if not U.IsGuid(cv) then return string.format("Charvis[%d] is not a valid UUID", i) end
+		if not U.IsGuid(cv) then return string.format("'charvis[%d]' is not a valid UUID", i) end
 	end
-	if entry.type == "override" and not U.IsGuid(entry.material) then return "'Material' must be a valid UUID (required for override)" end
+	if entry.type == "override" and not U.IsGuid(entry.material) then return "'material' must be a valid UUID (required for override)" end
+	if entry.overrides ~= nil then
+		if type(entry.overrides) ~= "table" then return "'overrides' must be an object" end
+		local body = entry.overrides.body
+		if body ~= nil then
+			if type(body) ~= "table" then return "'overrides.body' must be an object" end
+			local err = parameterMapError("overrides.body.Scalars", body.Scalars)
+				or parameterMapError("overrides.body.Vec3", body.Vec3, 3)
+				or parameterMapError("overrides.body.Vec4", body.Vec4, 4)
+			if err then return err end
+		end
+	end
 end
 
 local function collectEntries(mod, external, races)
@@ -249,7 +287,7 @@ local function collectEntries(mod, external, races)
 			external[#external + 1] = entry
 		end
 	end
-	if type(data.Races) == "table" then
+	if isDenseArray(data.Races) then
 		for _, race in ipairs(data.Races) do
 			if U.IsGuid(race) then
 				races[race] = true

@@ -1,20 +1,5 @@
 local M = {}
 
--- UI slider index → shader true-index
-local headCache    = { 31 }
-local headNextTrue = 0
-
-local function headIndex(uiIdx)
-	while #headCache < uiIdx do
-		while headNextTrue == 15 or headNextTrue == 47 or headNextTrue == 79 do
-			headNextTrue = headNextTrue + 1
-		end
-		headCache[#headCache + 1] = headNextTrue
-		headNextTrue = headNextTrue + 1
-	end
-	return headCache[uiIdx]
-end
-
 M.CompHeadParams = {
 	Scalars = {
 		{ name = "GlowIntensity",   value = 0 },
@@ -64,23 +49,6 @@ M.CompBodyParams = {
 	Tex2D = {
 		{ name = "BodyWarp", id = "6380c4b4-3517-9d97-c8fa-a7aed30b6bd2" },
 	},
-}
-
--- UI.State key → material/preset param
-M.Map = {
-	bodyMain      = { name = "BodyTattooIndex",  kind = "scalar", map = function(v) return v - 1 end },
-	bodyAlt       = { name = "BodyAltTatIndex",  kind = "scalar", map = function(v) return v - 1 end },
-	bodyGlow      = { name = "BodyGlowyIndex",   kind = "scalar", map = function(v) return v - 1 end },
-	headAlt       = { name = "AltTattooIndex",   kind = "scalar", map = function(v) return headIndex(v) end },
-	headGlow      = { name = "GlowTattooIndex",  kind = "scalar", map = function(v) return headIndex(v) end },
-	scar          = { name = "BodyScar",         kind = "scalar", map = function(v) return v and 1 or 0 end },
-	swirl         = { name = "Swirlies",         kind = "scalar", map = function(v) return v and 1 or 0 end },
-	glowPulse	  = { name = "GlowyPulse",    	kind = "scalar", map = function(v) return v and 1 or 0 end },
-	glowIntensity = { name = "GlowIntensity",    kind = "scalar" },
-	tatMetalness  = { name = "TattooMetalness",  kind = "scalar" },
-	vampirism     = { name = "Vampirism",			kind = "scalar" },
-	glowColour    = { name = "TatGlowColor",     kind = "vec3"   },
-	altColour     = { name = "BodyTattooColor",  kind = "vec3"   }
 }
 
 -- CCAM slots — one claimed per character (CCAM uuid → preset uuid)

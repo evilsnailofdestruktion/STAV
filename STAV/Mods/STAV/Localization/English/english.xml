@@ -195,6 +195,7 @@
   <content contentuid="h33f9abd8g3261g47f8gb1fegdde1ed9df892" version="1">Import From</content>
   <content contentuid="h97907478g8e62g4590gb08dg26a0511c9971" version="1">Filename...</content>
   <content contentuid="h4028d3c8gd1c5g4276gab27g095e3d1ac284" version="1">Import</content>
+  <content contentuid="h8f1d7345g0288g4bf0g84a2g7897c49ee6fb" version="1">Preset file could not be written.</content>
   <content contentuid="h6f6d69d1g25b3g4703ga525g5bdded8c8f12" version="1">Preset file not found or invalid.</content>
   <content contentuid="h52e55529gd500g4a5fg8ceage6252b0a1ceb" version="1">Imported</content>
   <content contentuid="h0f99ff3fg4643g454bg9873g6b011998cb2f" version="1">Toggle UI Panel</content>
@@ -222,12 +223,16 @@
   <content contentuid="h9b8d8926gc00bg4144ga14dg0847887c22ac" version="1">Gloaming Wisp</content>
   <content contentuid="hf383c4e9g0ca8g41ceg9403g0789ba6d7b0c" version="1">Dusk Violet</content>
   <content contentuid="h49a0bc53g9c20g4fbdg97d3gdc504eb4e644" version="1">Fae Lilac</content>
+  <content contentuid="h10a9665fgb73fg41f0gb53fg0d2fb1272d6c" version="1">Nightshade</content>
+  <content contentuid="h9bdd295fg256fg42a1g8b29gcef1710a4865" version="1">Moonshade</content>
   <content contentuid="h1b0600cfg7cd9g4e77g9a5dg29533ce0e304" version="1">Umbral Bloom</content>
   <content contentuid="h4f80b91ag3ec7g4a1ag9306g0c1d6b6d448a" version="1">Orchid Mist</content>
   <content contentuid="h53ef1686ga852g4d5bg9e61g8073c34ea8fb" version="1">Arcane Azure</content>
   <content contentuid="h6c8f7f40gdfd9g4a40g89e9g6fee8ed9724f" version="1">Mystra's Light</content>
   <content contentuid="hd33bf362g040dg4516gb6b5gd5e488b7c3d0" version="1">Netherese Shroud</content>
   <content contentuid="ha639f6f3gfd98g4e19gb7d9g042c1e14b06a" version="1">Glacial Gleam</content>
+  <content contentuid="h4ff2fb4agc742g40cag8832g0f9c4f2738fe" version="1">Midnight Weave</content>
+  <content contentuid="hb7687eccg487cg41c3ga579g2a3f5582f213" version="1">Arcane Radiance</content>
   <content contentuid="h619a2de4g15adg4059g90bagf668a4b7aa5c" version="1">Mint Green</content>
   <content contentuid="h4c20f1f9ga881g46cag8743ga1b3d3d5bd51" version="1">Lathander's Dawn</content>
   <content contentuid="h5e138bc4gf04dg4f65g977fg94d21267cf05" version="1">Advanced</content>

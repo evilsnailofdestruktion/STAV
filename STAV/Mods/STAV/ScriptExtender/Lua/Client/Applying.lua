@@ -1,4 +1,5 @@
 local Params = Ext.Require("Shared/Params.lua")
+local Map    = Ext.Require("Client/UIMap.lua")
 local P      = Ext.Require("Shared/Printing.lua")
 
 local A = {}
@@ -6,7 +7,7 @@ local A = {}
 local function applyParam(am, param, value)
 	local params = am.Material and am.Material.Parameters
 	if not params then return end
-	local isScalar = param.kind == "scalar"
+	local isScalar = param.type ~= "colour"
 	local list = isScalar and params.ScalarParameters or params.Vector3Parameters
 	for _, e in pairs(list) do
 		if e.ParameterName == param.name then
@@ -99,7 +100,7 @@ local function getRenderEntities()
 end
 
 function A.Apply(key, value)
-	local param = Params.Map[key]
+	local param = Map[key]
 	if not param then return end
 	for _, entity in ipairs(getRenderEntities()) do
 		walkMaterials(entity, function(am)
@@ -110,7 +111,7 @@ end
 
 function A.ApplyLookToEntity(entity, look)
 	walkMaterials(entity, function(am)
-		for key, param in pairs(Params.Map) do
+		for key, param in pairs(Map) do
 			local value = look[key]
 			if value ~= nil then applyParam(am, param, value) end
 		end
@@ -126,12 +127,12 @@ end
 function A.ApplyLocalPreset(presetUUID, characterUUID, look)
 	local preset = presetUUID and Ext.Resource.Get(presetUUID, "MaterialPreset")
 	if preset and look then
-		for key, p in pairs(Params.Map) do
+		for key, p in pairs(Map) do
 			local v = look[key]
 			if v ~= nil and not Params.Toggles[key] then
 				local mapped = v
 				if p.map then mapped = p.map(v) end
-				if p.kind == "scalar" then
+				if p.type ~= "colour" then
 					for _, entry in pairs(preset.Presets.ScalarParameters) do
 						if entry.Parameter == p.name then entry.Value = mapped end
 					end

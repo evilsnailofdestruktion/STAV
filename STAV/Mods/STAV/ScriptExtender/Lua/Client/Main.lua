@@ -6,31 +6,11 @@ local Vars           = Ext.Require("Shared/Vars.lua")
 local E              = Ext.Require("Shared/Events.lua")
 local L              = Ext.Require("Shared/Localization.lua")
 local P              = Ext.Require("Shared/Printing.lua")
+local Map            = Ext.Require("Client/UIMap.lua")
 
-local BODY_MAX       = 96
-local HEAD_MAX       = 93
-local INTENSITY_MAX  = 5
 local SLIDER_RESERVE = 286
-local VAMPIRISM_MAX  = 0.5
-local METALNESS_MAX  = 1
 
 local UI             = {}
-
-UI.State = {
-	scar          = false,
-	bodyMain      = 1,
-	bodyAlt       = 1,
-	bodyGlow      = 1,
-	headAlt       = 1,
-	headGlow      = 1,
-	altColour      = { 1, 1, 1, 1 },
-	glowColour     = { 1, 1, 1, 1 },
-	glowIntensity = 1,
-	tatMetalness  = 0,
-	vampirism     = 0,
-	glowPulse     = false,
-	swirl         = false
-}
 
 local function copyState(src)
 	local out = {}
@@ -40,7 +20,10 @@ local function copyState(src)
 	return out
 end
 
-local DEFAULTS = copyState(UI.State)
+local DEFAULTS = {}
+for key, spec in pairs(Map) do DEFAULTS[key] = spec.default end
+
+UI.State = copyState(DEFAULTS)
 
 UI.Widgets = {}
 
@@ -90,7 +73,8 @@ local function step(key, min, max, delta)
 	onChange(key, new)
 end
 
-local function addSlider(parent, label, max, key)
+local function addSlider(parent, label, key)
+	local max          = Map[key].max
 	local s            = parent:AddSliderInt("##" .. key, UI.State[key], 1, max)
 	s.IDContext        = "STAV_" .. key
 	s.ItemWidth        = -SLIDER_RESERVE
@@ -112,8 +96,8 @@ local function addSlider(parent, label, max, key)
 	return s
 end
 
-local function addFloatSlider(parent, label, max, key)
-	local s         = parent:AddSlider(label, UI.State[key], 0, max)
+local function addFloatSlider(parent, label, key)
+	local s         = parent:AddSlider(label, UI.State[key], 0, Map[key].max)
 	s.IDContext     = "STAV_" .. key
 	UI.Widgets[key] = s
 	s.OnChange      = function(w) onChange(key, w.Value[1]) end
@@ -325,24 +309,24 @@ mainTab:AddDummy(0, 4)
 local body = mainTab:AddCollapsingHeader(L.T("Body"))
 body.DefaultOpen = true
 addCheckbox(body, L.T("Body Scar"), "scar")
-addSlider(body, L.T("Main Tattoo"), BODY_MAX, "bodyMain")
-addSlider(body, L.T("Alt Tattoo"), BODY_MAX, "bodyAlt")
-addSlider(body, L.T("Glow Tattoo"), BODY_MAX, "bodyGlow")
+addSlider(body, L.T("Main Tattoo"), "bodyMain")
+addSlider(body, L.T("Alt Tattoo"), "bodyAlt")
+addSlider(body, L.T("Glow Tattoo"), "bodyGlow")
 mainTab:AddSeparator()
 
 local head = mainTab:AddCollapsingHeader(L.T("Head"))
 head.DefaultOpen = true
-addSlider(head, L.T("Alt Tattoo"), HEAD_MAX, "headAlt")
-addSlider(head, L.T("Glow Tattoo"), HEAD_MAX, "headGlow")
+addSlider(head, L.T("Alt Tattoo"), "headAlt")
+addSlider(head, L.T("Glow Tattoo"), "headGlow")
 mainTab:AddSeparator()
 
 local shared = mainTab:AddCollapsingHeader(L.T("Shared"))
 shared.DefaultOpen = true
 addPicker(shared, L.T("Alt Tattoo Colour"), "altColour")
 addPicker(shared, L.T("Glow Colour"), "glowColour")
-addFloatSlider(shared, L.T("Glow Intensity"), INTENSITY_MAX, "glowIntensity")
-addFloatSlider(shared, L.T("Tattoo Metalness"), METALNESS_MAX, "tatMetalness")
-addFloatSlider(shared, L.T("Vampirism"), VAMPIRISM_MAX, "vampirism")
+addFloatSlider(shared, L.T("Glow Intensity"), "glowIntensity")
+addFloatSlider(shared, L.T("Tattoo Metalness"), "tatMetalness")
+addFloatSlider(shared, L.T("Vampirism"), "vampirism")
 addCheckbox(shared, L.T("Glow Pulse"), "glowPulse")
 addCheckbox(shared, L.T("Swirlies"), "swirl")
 mainTab:AddSeparator()
@@ -373,11 +357,6 @@ end
 
 local charPresets = {}
 
-local function applyPreset(name)
-	local values = Presets.Load(name)
-	if values then UI.ApplyLook(values) end
-end
-
 local function recordActive(name)
 	UI.ActivePresetName = name or ""
 	local char = resolveCharacter()
@@ -388,11 +367,13 @@ presetCombo.OnChange = function(c)
 	local name = c.Options[c.SelectedIndex + 1]
 	if type(name) ~= "string" or name == "" then return end
 	recordActive(name)
-	applyPreset(name)
+	local look = Presets.Load(name)
+	if look then UI.ApplyLook(look) end
 end
 
 presetTab:AddSeparator()
 
+local presetStatus
 local presetName = presetTab:AddInputText("##STAV_PresetName", "")
 presetName.IDContext = "STAV_PresetName"
 presetName.Hint = L.T("New Preset Name")
@@ -402,10 +383,14 @@ savePresetBtn.IDContext = "STAV_PresetSave"
 savePresetBtn.OnClick = function()
 	local name = Presets.Normalize(presetName.Text)
 	if not name then return end
-	Presets.Save(name, copyState(UI.State))
+	if not Presets.Save(name, copyState(UI.State)) then
+		presetStatus.Text = L.T("Preset file could not be written.")
+		return
+	end
 	presetName.Text = ""
 	recordActive(name)
 	refreshPresets()
+	presetStatus.Text = ""
 end
 
 local deletePresetBtn = presetTab:AddButton(L.T("Delete"))
@@ -413,20 +398,26 @@ deletePresetBtn.SameLine = true
 deletePresetBtn.IDContext = "STAV_PresetDelete"
 deletePresetBtn.OnClick = function()
 	if not UI.ActivePresetName or UI.ActivePresetName == "" then return end
-	Presets.Delete(UI.ActivePresetName)
+	if not Presets.Delete(UI.ActivePresetName) then
+		presetStatus.Text = L.T("Preset file could not be written.")
+		return
+	end
 	recordActive("")
 	refreshPresets()
+	presetStatus.Text = ""
 end
 
 presetTab:AddSeparator()
-local presetStatus
 
 local exportInput = presetTab:AddInputText(L.T("Export As") .. "##STAV_ExportAs", "MyPreset")
 local exportBtn = presetTab:AddButton(L.T("Export") .. "##STAV_Export")
 exportBtn.OnClick = function()
 	local name = Presets.Normalize(exportInput.Text)
 	if not name then presetStatus.Text = L.T("Invalid export filename.") return end
-	Presets.Export(name, (UI.ActivePresetName and Presets.Load(UI.ActivePresetName)) or copyState(UI.State))
+	if not Presets.Export(name, (UI.ActivePresetName and Presets.Load(UI.ActivePresetName)) or copyState(UI.State)) then
+		presetStatus.Text = L.T("Preset file could not be written.")
+		return
+	end
 	presetStatus.Text = string.format("%s %s", L.T("Exported"), name)
 end
 
@@ -434,10 +425,13 @@ local importInput = presetTab:AddInputText(L.T("Import From") .. "##STAV_ImportF
 importInput.Hint = L.T("Filename...")
 local importBtn = presetTab:AddButton(L.T("Import") .. "##STAV_Import")
 importBtn.OnClick = function()
-	local name = Presets.Import(importInput.Text)
-	if not name then presetStatus.Text = L.T("Preset file not found or invalid.") return end
+	local name, look = Presets.Import(importInput.Text)
+	if not name then
+		presetStatus.Text = L.T(look == "write" and "Preset file could not be written." or "Preset file not found or invalid.")
+		return
+	end
 	recordActive(name)
-	applyPreset(name)
+	UI.ApplyLook(look)
 	refreshPresets()
 	presetStatus.Text = string.format("%s %s", L.T("Imported"), name)
 end

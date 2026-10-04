@@ -25,7 +25,7 @@ local PRESETS = {
 	{ 109, 114, 203 },	-- C18 #6c72cb Twilight Veil | Faeblue | Witchlight
 	{ 114, 108, 208 },	-- C19 #726cd0 Gloaming Wisp
 	{ 120, 101, 213 },	-- C20 #7865d5 Dusk Violet | Duskbloom | Nightshade
-	{ 211, 152, 255 },	-- C21 #D398FF Fae Lilac
+	{ 211, 152, 255 },	-- C21 #d398ff Fae Lilac
 	{ 120, 100, 180 },	-- C22 #7864b4 Nightshade
 	{ 215, 205, 255 },	-- C23 #d7cdff Moonshade
 	{ 173, 72,  255 },	-- C24 #ad48ff Umbral Bloom
@@ -34,8 +34,10 @@ local PRESETS = {
 	{ 169, 216, 255 },	-- C27 #a9d8ff Mystra's Light
 	{ 22, 50, 92 },		-- C28 #16325c Netherese Shroud
 	{ 199, 233, 255 },	-- C29 #c7e9ff Glacial Gleam
-	{ 173, 235, 179 },	-- C30 #adebb3 Mint Green
-	{ 239, 197, 118 } 	-- C31 #efc576 Lathander's Dawn
+	{ 11, 45, 91 },		-- C30 #0b2d5b Midnight Weave
+	{ 155, 215, 255 },	-- C31 #9bd7ff Arcane Radiance
+	{ 173, 235, 179 },	-- C32 #adebb3 Mint Green
+	{ 239, 197, 118 } 	-- C33 #efc576 Lathander's Dawn
 }
 
 -- Internals
@@ -131,7 +133,7 @@ P.Palette = {
 		"Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green", "Neon Unseelie Violet",
 		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac", "Nightshade", "Moonshade",
 		"Umbral Bloom", "Orchid Mist", "Arcane Azure", "Mystra's Light", "Netherese Shroud", "Glacial Gleam",
-		"Mint Green", "Lathander's Dawn"
+		"Midnight Weave", "Arcane Radiance", "Mint Green", "Lathander's Dawn"
 	},
 }
 
