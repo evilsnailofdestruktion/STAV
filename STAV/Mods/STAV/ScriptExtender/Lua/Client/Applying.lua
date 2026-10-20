@@ -48,11 +48,10 @@ local function getRenderEntities()
 		-- Prevents the panel elements from affecting the guardian in first CC
 		local dummy = (d.CCCharacterDefinition or d.CCChangeAppearanceDefinition) and d.ClientCCDummyDefinition.Dummy
 		if dummy then
-			local e = Ext.Entity.Get(dummy)
-			result[#result + 1] = e
+			result[#result + 1] = dummy
 			if debugging then
-				dummies[#dummies + 1] = { tag = "CC", entity = e }
-				keys[#keys + 1] = tostring(e)
+				dummies[#dummies + 1] = { tag = "CC", entity = dummy }
+				keys[#keys + 1] = tostring(dummy)
 			end
 		end
 	end

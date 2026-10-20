@@ -9,7 +9,7 @@ local DEFAULT = {
 	AutoOpenPhotoMode = true,
 	Debug             = false,
 	ThemeStyle        = "chromed",
-	ThemeAccent       = 16,
+	ThemeAccent       = 16
 }
 
 local data = {}

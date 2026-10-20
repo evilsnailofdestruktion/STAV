@@ -31,7 +31,7 @@ local function stavHeadSourceFile()
 end
 
 local function visualObjects(visual)
-	if not visual or visual == "" then return nil end
+	if visual == "" then return nil end
 	local vr = Ext.Resource.Get(visual, "Visual")
 	if not vr then
 		P.Debug():Raw("Visual "):C5(visual):Raw(" did not resolve"):Print()
@@ -84,7 +84,6 @@ end
 
 -- Pass 1 builds the per-charvis writes, pass 2 commits each VisualSet field once.
 local function getCharvis(writes, charvis)
-	if not charvis or charvis == "" then return nil end
 	local p = writes[charvis]
 	if p then return p end
 	local cv = Ext.Resource.Get(charvis, "CharacterVisual")
@@ -282,7 +281,7 @@ local function collectEntries(mod, external, races)
 	for label, entry in pairs(data.Entries) do
 		local err = entryError(entry)
 		if err then
-			warnConfig(mod, string.format("Entry '%s' %s", tostring(label), err))
+			warnConfig(mod, string.format("Entry '%s' %s", label, err))
 		else
 			external[#external + 1] = entry
 		end
@@ -292,7 +291,7 @@ local function collectEntries(mod, external, races)
 			if U.IsGuid(race) then
 				races[race] = true
 			else
-				warnConfig(mod, string.format("Race '%s' is not a valid UUID", tostring(race)))
+				warnConfig(mod, string.format("Race '%s' is not a valid UUID", race))
 			end
 		end
 	elseif data.Races ~= nil then
@@ -307,8 +306,7 @@ local function scanLO()
 		if spec then
 			if spec.all then base = true else targeted[#targeted + 1] = spec end
 		end
-		local mod = Ext.Mod.GetMod(modId)
-		if mod then collectEntries(mod, external, races) end
+		collectEntries(Ext.Mod.GetMod(modId), external, races)
 	end
 	return base, targeted, external, races
 end

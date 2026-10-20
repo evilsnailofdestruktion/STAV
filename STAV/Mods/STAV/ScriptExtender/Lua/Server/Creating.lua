@@ -34,7 +34,7 @@ local function applyElements(entity, tattooCcam, look)
 	local els        = {}
 	local haveTattoo = false
 	for _, el in ipairs(cca.Elements) do
-		local m = tostring(el.Material)
+		local m = el.Material
 		if m == tattooCcam then
 			haveTattoo = true
 			els[#els + 1] = el
@@ -55,14 +55,14 @@ local function applyElements(entity, tattooCcam, look)
 end
 
 local function stripFromReal(charUUID)
-	local entity = charUUID and Ext.Entity.Get(charUUID)
+	local entity = Ext.Entity.Get(charUUID)
 	if not entity then return end
 	local cca = entity.CharacterCreationAppearance
 	if not cca then return end
 	local els = {}
 	local removed = false
 	for _, el in ipairs(cca.Elements) do
-		if stavCcams[tostring(el.Material)] then
+		if stavCcams[el.Material] then
 			removed = true
 		else
 			els[#els + 1] = el
@@ -77,7 +77,6 @@ end
 
 -- Runs on every path because the two mirror callers and the level sweep read the stored var, which may still be legacy
 local function applyToCharacter(charUUID)
-	if not charUUID then return end
 	local entity = Ext.Entity.Get(charUUID)
 	if not entity then return end
 	local look = Vars.GetLook(entity)
@@ -130,11 +129,8 @@ E.LevelGameplayStarted.Subscribe(function()
 		NetDefs.NET_AVATAR_PING:Broadcast({})
 		if didInitialApply then return end
 		didInitialApply = true
-		local players = Osi.DB_Players:Get(nil)
-		if players then
-			for _, row in ipairs(players) do
-				applyToCharacter(U.Guid(row[1]))
-			end
+		for _, row in ipairs(Osi.DB_Players:Get(nil)) do
+			applyToCharacter(U.Guid(row[1]))
 		end
 	end)
 end)

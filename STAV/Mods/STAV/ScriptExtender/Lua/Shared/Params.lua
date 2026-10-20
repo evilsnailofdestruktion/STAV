@@ -9,17 +9,17 @@ M.CompHeadParams = {
 		{ name = "AltTattooIndex",  value = 31 },
 		{ name = "Swirlies",        value = 0 },
 		{ name = "Tiling_Noise",    value = 1.5 },
-		{ name = "Speed",           value = 0.25 },
+		{ name = "Speed",           value = 0.25 }
 	},
 	Vec3 = {
 		{ name = "TatGlowColor",    value = { 0, 0, 0 } },
 		{ name = "BodyTattooColor", value = { 0, 0, 0 } },
-		{ name = "NonSkinTipColor", value = { 0.075, 0.217, 0.298 } },
+		{ name = "NonSkinTipColor", value = { 0.075, 0.217, 0.298 } }
 	},
 	Tex2D = {
 		{ name = "TattooAtlas", id = "3e2b453f-83d5-cf51-6b81-9d109e69b318", enabled = false },
 		{ name = "MakeUpAtlas", id = "be1e3d5e-5f9e-9e20-e9ee-80c5fce076ed", enabled = false },
-		{ name = "HeadWarp",    id = "e081db36-b103-47a9-25ca-edf481c00e22", enabled = false },
+		{ name = "HeadWarp",    id = "e081db36-b103-47a9-25ca-edf481c00e22", enabled = false }
 	},
 }
 
@@ -37,21 +37,21 @@ M.CompBodyParams = {
 		{ name = "Swirlies",            value = 0 },
 		{ name = "Tiling_Noise",        value = 1.5 },
 		{ name = "Speed",               value = 0.25 },
-		{ name = "BM_Adjust_Metalness", value = 0 },
+		{ name = "BM_Adjust_Metalness", value = 0 }
 	},
 	Vec3 = {
 		{ name = "TatGlowColor",    value = { 0.01144391, 0.7513394, 1.0 } },
 		{ name = "CustomColor",     value = { 0.027, 0.027, 0.027 } },
 		{ name = "BM_Adjust_Color", value = { 1.0, 0.546, 0.0 } },
 		{ name = "TattooColor",     value = { 0.0, 0.0, 0.0 } },
-		{ name = "NonSkinTipColor", value = { 0.07456587, 0.2169727, 0.2980006 } },
+		{ name = "NonSkinTipColor", value = { 0.07456587, 0.2169727, 0.2980006 } }
 	},
 	Tex2D = {
-		{ name = "BodyWarp", id = "6380c4b4-3517-9d97-c8fa-a7aed30b6bd2" },
+		{ name = "BodyWarp", id = "6380c4b4-3517-9d97-c8fa-a7aed30b6bd2" }
 	},
 }
 
--- CCAM slots — one claimed per character (CCAM uuid → preset uuid)
+-- CCAM slots, one claimed per character (CCAM uuid → preset uuid)
 M.Slots = {
 	{ ccam = "fffa139e-2b12-4175-83ab-a15eb18d486c", preset = "f3a16e69-b757-4676-af7b-e922ef30b042" },
 	{ ccam = "33346ac5-5dc6-497e-8fd5-77e26515c693", preset = "148e52a9-abac-4173-d752-f81cafd4a27e" },
@@ -76,7 +76,7 @@ M.Slots = {
 	{ ccam = "cb67e389-429d-49b0-8413-43a937fb360c", preset = "4bf6ab3a-b402-a196-d6f3-22ccf007e262" },
 	{ ccam = "2525b01c-fcb4-4ae2-9c6f-111789963ec0", preset = "fe66e378-fd29-d44d-e906-503096afee81" },
 	{ ccam = "6e3aee33-1239-4d25-9912-e985e65494e3", preset = "a6e202e4-e0ff-71ec-a251-01a77a1faba6" },
-	{ ccam = "8f87881e-6d89-4ce6-b784-3fc7976fa72e", preset = "0bed6d08-aae1-0a2f-9448-4c44cf5add95" },
+	{ ccam = "8f87881e-6d89-4ce6-b784-3fc7976fa72e", preset = "0bed6d08-aae1-0a2f-9448-4c44cf5add95" }
 }
 
 M.Toggles = {

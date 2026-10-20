@@ -358,7 +358,7 @@ end
 local charPresets = {}
 
 local function recordActive(name)
-	UI.ActivePresetName = name or ""
+	UI.ActivePresetName = name
 	local char = resolveCharacter()
 	if char then charPresets[char.Uuid.EntityUuid] = (name ~= "" and name) or nil end
 end

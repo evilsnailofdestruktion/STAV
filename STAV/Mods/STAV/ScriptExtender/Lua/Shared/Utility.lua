@@ -9,6 +9,8 @@ function U.IsGuid(value)
 	return value:match("^%x%x%x%x%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%-%x%x%x%x%x%x%x%x%x%x%x%x$") ~= nil
 end
 
+U.NULL_UUID = "00000000-0000-0000-0000-000000000000"
+
 function U.Guid(uuid)
 	return uuid:sub(-36)
 end
@@ -28,7 +30,6 @@ function U.GetDisplayName(uuid, fallback)
 end
 
 function U.AddIfMissing(current, entry)
-	current = current or ""
 	entry = entry:match("^%s*(.-)%s*$")
 	for existing in current:gmatch("[^;]+") do
 		if existing:match("^%s*(.-)%s*$") == entry then return current end
@@ -40,7 +41,7 @@ function U.ProgressionTables(uuids, dataType)
 	local tables, count = {}, 0
 	for uuid in pairs(uuids) do
 		local entry = Ext.StaticData.Get(uuid, dataType)
-		if entry and entry.ProgressionTableUUID then
+		if entry then
 			tables[entry.ProgressionTableUUID] = true
 			count = count + 1
 		end

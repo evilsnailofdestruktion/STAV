@@ -83,7 +83,7 @@ function CoreBuilder:Name(uuid)
 		return self:C3("nil")
 	end
 	local name = U.GetDisplayName(uuid)
-	if name and name ~= uuid then
+	if name ~= uuid then
 		return self:C5(name):Raw(" ["):C3(uuid):Raw("]")
 	end
 	return self:C3(uuid)

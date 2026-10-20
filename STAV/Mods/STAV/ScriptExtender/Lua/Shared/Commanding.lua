@@ -28,8 +28,8 @@ if Ext.IsClient() then
 			if t.TemplateType == "character" and t.FileName:find(seg, 1, true) then
 				local ct = t --[[@as CharacterTemplate]]
 				local cv = ct.CharacterVisualResourceID
-				if cv and cv ~= "" then found[cv] = ct.Name end
-				if ct.Race and ct.Race ~= "" then races[ct.Race] = true end
+				if cv ~= "" then found[cv] = ct.Name end
+				if ct.Race ~= U.NULL_UUID then races[ct.Race] = true end
 			end
 		end
 
