@@ -95,12 +95,12 @@ local function presetParams(list, values, drop, isColour)
 	return out
 end
 
-local function patchSkinMatPreset(spec)
-	local presets = (Ext.Resource.Get(spec.id, "MaterialPreset") --[[@as ResourceMaterialPresetResource]]).Presets
+---@param data ResourcePresetData
+local function patchPresetData(data, spec)
 	local vec4 = spec.Vec4 or {}
-	presets.ScalarParameters  = presetParams(presets.ScalarParameters, spec.Scalars or {}, vec4, false)
-	presets.Vector3Parameters = presetParams(presets.Vector3Parameters, spec.Vec3 or {}, {}, true)
-	presets.VectorParameters  = presetParams(presets.VectorParameters, vec4, {}, false)
+	data.ScalarParameters  = presetParams(data.ScalarParameters, spec.Scalars or {}, vec4, false)
+	data.Vector3Parameters = presetParams(data.Vector3Parameters, spec.Vec3 or {}, {}, true)
+	data.VectorParameters  = presetParams(data.VectorParameters, vec4, {}, false)
 end
 
 -- Pass 1 builds the per-charvis writes, pass 2 commits each VisualSet field once.
@@ -365,7 +365,8 @@ local function applyAll()
 	for _, entry in pairs(Vis.Companions) do
 		local source = base and (entry.shader and Ext.Resource.Get(entry.material, "Material").SourceFile or stavSourceFile())
 		applyEntry(writes, entry, base, source, true)
-		if entry.skinMatPreset then patchSkinMatPreset(entry.skinMatPreset) end
+		if entry.skinMatPreset then patchPresetData((Ext.Resource.Get(entry.skinMatPreset.id, "MaterialPreset") --[[@as ResourceMaterialPresetResource]]).Presets, entry.skinMatPreset) end
+		if entry.ccOverrides then patchPresetData((Ext.Resource.Get(entry.ccOverrides.id, "CharacterVisual") --[[@as ResourceCharacterVisualResource]]).VisualSet.MaterialOverrides, entry.ccOverrides) end
 	end
 
 	for _, entry in pairs(Vis.Player) do

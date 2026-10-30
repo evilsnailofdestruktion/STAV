@@ -11,6 +11,7 @@
 ---@field shader? boolean
 ---@field overrides? { head?: STAVOverrides, body?: STAVOverrides }
 ---@field skinMatPreset? { id: Guid, Scalars?: table<string, number>, Vec3?: table<string, number[]>, Vec4?: table<string, number[]> }
+---@field ccOverrides? { id: Guid, Scalars?: table<string, number>, Vec3?: table<string, number[]>, Vec4?: table<string, number[]> }
 
 ---@type table<Guid, { all: true }|table<string, STAVVisEntry>>
 local COMPAT = {
@@ -441,6 +442,12 @@ local COMPANIONS_VIS = {
 				Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
 			}
 		},
+		skinMatPreset = {
+			id      = "07761a0b-4ce5-3121-fd10-9a865a4ad627",
+			Scalars = { TattooIndex = 58 },
+			Vec3    = { TattooColorG = { 0.043290038, 0.0111670075, 0.053869784 } },
+			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+		}
 	},
 	Minthara = {
 		charvis   = {
@@ -462,6 +469,12 @@ local COMPANIONS_VIS = {
 				Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
 			}
 		},
+		ccOverrides = {
+			id      = "d1bc342f-c995-bad7-4622-4e3f09f3e5ed",
+			Scalars = { TattooIndex = 55 },
+			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+		}
+
 	},
 	Shadowheart = {
 		charvis   = {
