@@ -474,7 +474,6 @@ local COMPANIONS_VIS = {
 			Scalars = { TattooIndex = 55 },
 			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
 		}
-
 	},
 	Shadowheart = {
 		charvis   = {
@@ -495,11 +494,7 @@ local COMPANIONS_VIS = {
 			body = {
 				Vec3    = { NonSkinColor = { 0, 0, 0 } }
 			}
-		},
-		--[[skinMatPreset = {
-			id   = "f9f7b895-93c7-c701-a3fc-a12ed1838d12",
-			Vec3 = { NonSkinColor = { 0, 0, 0 } }
-		}]]
+		}
 	},
 	Wyll = {
 		charvis   = {

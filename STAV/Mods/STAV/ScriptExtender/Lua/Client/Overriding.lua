@@ -6,6 +6,7 @@ local P      = Ext.Require("Shared/Printing.lua")
 
 local STAV_HEAD_MAT = "489d7f2c-9839-e1d0-67c5-260294337785"
 local CONFIG_FILE   = "STAVConfig.json"
+local EMPORIUM      = "91994363-833a-4956-a552-acf0341c2e2e"
 
 local sourceFile, headSource = nil, nil
 local patched = {}
@@ -27,6 +28,10 @@ local function stavHeadSourceFile()
 	local mat = Ext.Resource.Get(STAV_HEAD_MAT, "Material")
 	if mat then headSource = mat.SourceFile end
 	return headSource
+end
+
+local function entrySourceFile(entry)
+	return entry.shader and Ext.Resource.Get(entry.material, "Material").SourceFile or stavSourceFile()
 end
 
 local function visualObjects(visual)
@@ -59,7 +64,6 @@ local function applyParam(list, param)
 end
 
 -- Credit to Volitio for most of this
----@param params STAVMaterialParams
 local function patchMaterial(mat, params, source)
 	if source then mat.SourceFile = source end
 	for _, s in ipairs(params.Scalars) do
@@ -82,6 +86,14 @@ local function applyScar(mat, entry)
 	end
 end
 
+local function newParams(values, isColour)
+	local out = {}
+	for name, value in pairs(values or {}) do
+		out[#out + 1] = { Parameter = name, Value = value, Enabled = true, Color = isColour, Custom = false }
+	end
+	return out
+end
+
 local function presetParams(list, values, drop, isColour)
 	local out = {}
 	for _, p in pairs(list) do
@@ -89,13 +101,10 @@ local function presetParams(list, values, drop, isColour)
 			out[#out + 1] = { Parameter = p.Parameter, Value = p.Value, Enabled = p.Enabled, Color = p.Color, Custom = p.Custom }
 		end
 	end
-	for name, value in pairs(values) do
-		out[#out + 1] = { Parameter = name, Value = value, Enabled = true, Color = isColour, Custom = false }
-	end
+	for _, p in ipairs(newParams(values, isColour)) do out[#out + 1] = p end
 	return out
 end
 
----@param data ResourcePresetData
 local function patchPresetData(data, spec)
 	local vec4 = spec.Vec4 or {}
 	data.ScalarParameters  = presetParams(data.ScalarParameters, spec.Scalars or {}, vec4, false)
@@ -122,27 +131,14 @@ local function getCharvis(writes, charvis)
 	return p
 end
 
----@param p STAVCharvisWrite
----@param overrides STAVOverrides
 local function addMats(p, matIds, overrides)
-	local scalars, vecs, vec3s = {}, {}, {}
-	for name, v in pairs(overrides.Scalars or {}) do
-		scalars[#scalars + 1] = { Parameter = name, Value = v, Enabled = true, Color = false, Custom = false }
-	end
-	for name, v in pairs(overrides.Vec4 or {}) do
-		vecs[#vecs + 1] = { Parameter = name, Value = v, Enabled = true, Color = true, Custom = false }
-	end
-	for name, v in pairs(overrides.Vec3 or {}) do
-		vec3s[#vec3s + 1] = { Parameter = name, Value = v, Enabled = true, Color = true, Custom = false }
-	end
+	local scalars, vecs, vec3s = newParams(overrides.Scalars, false), newParams(overrides.Vec4, true), newParams(overrides.Vec3, true)
 	p.mats = p.mats or {}
 	for matId in pairs(matIds) do
 		p.mats[matId] = { MaterialResource = matId, ScalarParameters = scalars, VectorParameters = vecs, Vector3Parameters = vec3s, MaterialPresets = {} }
 	end
 end
 
----@param entry STAVVisEntry
----@param p STAVCharvisWrite
 local function getDefaultBody(entry, p)
 	local objects = visualObjects(p.cv.VisualSet.BodySetVisual)
 	if not objects then return end
@@ -152,8 +148,6 @@ local function getDefaultBody(entry, p)
 	if body then addMats(p, { [entry.material] = true }, body) end
 end
 
----@param entry STAVVisEntry
----@param p STAVCharvisWrite
 local function getCompatBody(entry, p, source)
 	local objects = visualObjects(p.cv.VisualSet.BodySetVisual)
 	if not objects then return end
@@ -161,7 +155,7 @@ local function getCompatBody(entry, p, source)
 	for _, o in ipairs(objects) do
 		if not patched[o.MaterialID] then
 			patched[o.MaterialID] = true
-			local mat = Ext.Resource.Get(o.MaterialID, "Material") --[[@as ResourceMaterialResource]]
+			local mat = Ext.Resource.Get(o.MaterialID, "Material")
 			patchMaterial(mat, Params.CompBodyParams, source)
 			applyScar(mat, entry)
 		end
@@ -171,15 +165,13 @@ local function getCompatBody(entry, p, source)
 	if body and next(matIds) then addMats(p, matIds, body) end
 end
 
----@param entry STAVVisEntry
----@param p STAVCharvisWrite
 local function getHead(entry, p)
 	local objects = headObjects(p.cv)
 	if not objects then return end
 	local matIds = {}
 	for _, o in ipairs(objects) do
 		if not patched[o.MaterialID] then
-			local mat = Ext.Resource.Get(o.MaterialID, "Material") --[[@as ResourceMaterialResource]]
+			local mat = Ext.Resource.Get(o.MaterialID, "Material")
 			if mat.SourceFile:find("CHAR_Skin_Head_v3", 1, true) then
 				patched[o.MaterialID] = true
 				patchMaterial(mat, Params.CompHeadParams, stavHeadSourceFile())
@@ -191,7 +183,6 @@ local function getHead(entry, p)
 	if head and next(matIds) then addMats(p, matIds, head) end
 end
 
----@param entry STAVVisEntry
 local function applyEntry(writes, entry, useCompat, source, withHead)
 	for _, charvis in ipairs(entry.charvis) do
 		local p = getCharvis(writes, charvis)
@@ -230,7 +221,6 @@ local function commit(writes)
 					current.ScalarParameters  = mergeParams(current.ScalarParameters, entry.ScalarParameters)
 					current.VectorParameters  = mergeParams(current.VectorParameters, entry.VectorParameters)
 					current.Vector3Parameters = mergeParams(current.Vector3Parameters, entry.Vector3Parameters)
-					p.cv.VisualSet.Materials[matId] = current
 				else
 					p.cv.VisualSet.Materials[matId] = entry
 				end
@@ -357,17 +347,27 @@ local function applyScalesPassives(races)
 	return count
 end
 
+-- Need to patch after Baldur's Emporium for the tattoos etc to be correct.
+local function applyCCOverrides()
+	for _, entry in pairs(Vis.Companions) do
+		if entry.ccOverrides then
+			patchPresetData(Ext.Resource.Get(entry.ccOverrides.id, "CharacterVisual").VisualSet.MaterialOverrides, entry.ccOverrides)
+		end
+	end
+end
+
 local function applyAll()
 	local start = Ext.Timer.MonotonicTime()
 	local base, targeted, external, races = scanLO()
 	local writes = {}
 
 	for _, entry in pairs(Vis.Companions) do
-		local source = base and (entry.shader and Ext.Resource.Get(entry.material, "Material").SourceFile or stavSourceFile())
-		applyEntry(writes, entry, base, source, true)
-		if entry.skinMatPreset then patchPresetData((Ext.Resource.Get(entry.skinMatPreset.id, "MaterialPreset") --[[@as ResourceMaterialPresetResource]]).Presets, entry.skinMatPreset) end
-		if entry.ccOverrides then patchPresetData((Ext.Resource.Get(entry.ccOverrides.id, "CharacterVisual") --[[@as ResourceCharacterVisualResource]]).VisualSet.MaterialOverrides, entry.ccOverrides) end
+		applyEntry(writes, entry, base, base and entrySourceFile(entry), true)
+		if entry.skinMatPreset then
+			patchPresetData(Ext.Resource.Get(entry.skinMatPreset.id, "MaterialPreset").Presets, entry.skinMatPreset)
+		end
 	end
+	if not Ext.Mod.IsModLoaded(EMPORIUM) then applyCCOverrides() end
 
 	for _, entry in pairs(Vis.Player) do
 		applyEntry(writes, entry, false, nil, false)
@@ -375,8 +375,7 @@ local function applyAll()
 
 	for _, spec in ipairs(targeted) do
 		for _, entry in pairs(spec) do
-			local source = entry.shader and Ext.Resource.Get(entry.material, "Material").SourceFile or stavSourceFile()
-			applyEntry(writes, entry, true, source, true)
+			applyEntry(writes, entry, true, entrySourceFile(entry), true)
 		end
 	end
 
@@ -399,3 +398,5 @@ E.StatsLoaded.Subscribe(function()
 	P.Log():GradC(16, 21):G("[STAV] Snailzx Tattoos And VTs "):C17("v" .. U.Version):G(" loaded"):Print()
 	applyAll()
 end)
+
+Ext.ModEvents.BaldursEmporium.CharvisPatched:Subscribe(applyCCOverrides)
