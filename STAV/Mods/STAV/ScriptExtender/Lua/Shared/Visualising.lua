@@ -421,7 +421,7 @@ local COMPANIONS_VIS = {
 		},
 		skinMatPreset = {
 			id      = "5dd2b99c-5c01-535d-68ab-2717ed93b54f",
-			Scalars = { TattooIndex = 22 },
+			Scalars = { TattooIndex = 54 },
 			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
 		}
 	},
