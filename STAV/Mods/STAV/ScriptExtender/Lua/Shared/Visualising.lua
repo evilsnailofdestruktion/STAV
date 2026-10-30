@@ -1,7 +1,23 @@
+---@class STAVOverrides
+---@field Scalars? table<string, number>
+---@field Vec3? table<string, number[]>
+---@field Vec4? table<string, number[]>
+
+---@class STAVVisEntry
+---@field charvis Guid[]
+---@field material? Guid
+---@field scarMap? Guid
+---@field scarMapNM? Guid
+---@field shader? boolean
+---@field overrides? { head?: STAVOverrides, body?: STAVOverrides }
+---@field skinMatPreset? { id: Guid, Scalars?: table<string, number>, Vec3?: table<string, number[]>, Vec4?: table<string, number[]> }
+
+---@type table<Guid, { all: true }|table<string, STAVVisEntry>>
 local COMPAT = {
 	["8cc519bd-cfd3-4041-9468-518cc3e31b28"] = { all = true },		-- Unique Companion Assets
 }
 
+---@type table<string, STAVVisEntry>
 local PLAYER_VIS = {
 	DROW_F = {
 		charvis   = {
@@ -266,6 +282,7 @@ local PLAYER_VIS = {
 	},
 }
 
+---@type table<string, STAVVisEntry>
 local COMPANIONS_VIS = {
 	Astarion = {
 		charvis   = {
@@ -402,6 +419,11 @@ local COMPANIONS_VIS = {
 				Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
 			}
 		},
+		skinMatPreset = {
+			id      = "5dd2b99c-5c01-535d-68ab-2717ed93b54f",
+			Scalars = { TattooIndex = 22 },
+			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+		}
 	},
 	Minsc = {
 		charvis   = {
@@ -461,6 +483,10 @@ local COMPANIONS_VIS = {
 				Vec3    = { NonSkinColor = { 0, 0, 0 } }
 			}
 		},
+		--[[skinMatPreset = {
+			id   = "f9f7b895-93c7-c701-a3fc-a12ed1838d12",
+			Vec3 = { NonSkinColor = { 0, 0, 0 } }
+		}]]
 	},
 	Wyll = {
 		charvis   = {
@@ -476,7 +502,14 @@ local COMPANIONS_VIS = {
 		},
 		material  = "ecfbf57a-704d-34df-7689-cda0b6c9ec99",
 		scarMap   = "c641d02d-e466-ac9b-3e7e-bf534d485417",
-		scarMapNM = "d9662fd1-f7f6-c482-b473-e1b60ecbd9b9"
+		scarMapNM = "d9662fd1-f7f6-c482-b473-e1b60ecbd9b9",
+		skinMatPreset = {
+			id   = "ce385c80-ec8d-a7ce-198a-c13a3bc4fb56",
+			Vec3 = {
+				NonSkinColor    = { 0.044398725, 0.01316299, 0.0006657844 },
+				NonSkinTipColor = { 0.16862746, 0.13725491, 0.11372549 }
+			}
+		}
 	}
 }
 

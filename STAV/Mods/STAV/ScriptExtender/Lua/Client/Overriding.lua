@@ -1,15 +1,14 @@
-local E           = Ext.Require("Shared/Events.lua")
-local Params		= Ext.Require("Shared/Params.lua")
-local Vis         = Ext.Require("Shared/Visualising.lua")
-local U           = Ext.Require("Shared/Utility.lua")
-local P           = Ext.Require("Shared/Printing.lua")
+local E      = Ext.Require("Shared/Events.lua")
+local Params = Ext.Require("Shared/Params.lua")
+local Vis    = Ext.Require("Shared/Visualising.lua")
+local U      = Ext.Require("Shared/Utility.lua")
+local P      = Ext.Require("Shared/Printing.lua")
 
 local STAV_HEAD_MAT = "489d7f2c-9839-e1d0-67c5-260294337785"
 local CONFIG_FILE   = "STAVConfig.json"
 
-local sourceFile
-local headSource
-local patched     = {}
+local sourceFile, headSource = nil, nil
+local patched = {}
 
 local function stavSourceFile()
 	if sourceFile then return sourceFile end
@@ -60,6 +59,7 @@ local function applyParam(list, param)
 end
 
 -- Credit to Volitio for most of this
+---@param params STAVMaterialParams
 local function patchMaterial(mat, params, source)
 	if source then mat.SourceFile = source end
 	for _, s in ipairs(params.Scalars) do
@@ -82,7 +82,33 @@ local function applyScar(mat, entry)
 	end
 end
 
+local function presetParams(list, values, drop, isColour)
+	local out = {}
+	for _, p in pairs(list) do
+		if values[p.Parameter] == nil and drop[p.Parameter] == nil then
+			out[#out + 1] = { Parameter = p.Parameter, Value = p.Value, Enabled = p.Enabled, Color = p.Color, Custom = p.Custom }
+		end
+	end
+	for name, value in pairs(values) do
+		out[#out + 1] = { Parameter = name, Value = value, Enabled = true, Color = isColour, Custom = false }
+	end
+	return out
+end
+
+local function patchSkinMatPreset(spec)
+	local presets = (Ext.Resource.Get(spec.id, "MaterialPreset") --[[@as ResourceMaterialPresetResource]]).Presets
+	local vec4 = spec.Vec4 or {}
+	presets.ScalarParameters  = presetParams(presets.ScalarParameters, spec.Scalars or {}, vec4, false)
+	presets.Vector3Parameters = presetParams(presets.Vector3Parameters, spec.Vec3 or {}, {}, true)
+	presets.VectorParameters  = presetParams(presets.VectorParameters, vec4, {}, false)
+end
+
 -- Pass 1 builds the per-charvis writes, pass 2 commits each VisualSet field once.
+---@class STAVCharvisWrite
+---@field cv ResourceCharacterVisualResource
+---@field rmo? table<string, Guid>
+---@field mats? table<Guid, table>
+---@return STAVCharvisWrite?
 local function getCharvis(writes, charvis)
 	local p = writes[charvis]
 	if p then return p end
@@ -96,6 +122,8 @@ local function getCharvis(writes, charvis)
 	return p
 end
 
+---@param p STAVCharvisWrite
+---@param overrides STAVOverrides
 local function addMats(p, matIds, overrides)
 	local scalars, vecs, vec3s = {}, {}, {}
 	for name, v in pairs(overrides.Scalars or {}) do
@@ -113,6 +141,8 @@ local function addMats(p, matIds, overrides)
 	end
 end
 
+---@param entry STAVVisEntry
+---@param p STAVCharvisWrite
 local function getDefaultBody(entry, p)
 	local objects = visualObjects(p.cv.VisualSet.BodySetVisual)
 	if not objects then return end
@@ -122,6 +152,8 @@ local function getDefaultBody(entry, p)
 	if body then addMats(p, { [entry.material] = true }, body) end
 end
 
+---@param entry STAVVisEntry
+---@param p STAVCharvisWrite
 local function getCompatBody(entry, p, source)
 	local objects = visualObjects(p.cv.VisualSet.BodySetVisual)
 	if not objects then return end
@@ -139,6 +171,8 @@ local function getCompatBody(entry, p, source)
 	if body and next(matIds) then addMats(p, matIds, body) end
 end
 
+---@param entry STAVVisEntry
+---@param p STAVCharvisWrite
 local function getHead(entry, p)
 	local objects = headObjects(p.cv)
 	if not objects then return end
@@ -157,6 +191,7 @@ local function getHead(entry, p)
 	if head and next(matIds) then addMats(p, matIds, head) end
 end
 
+---@param entry STAVVisEntry
 local function applyEntry(writes, entry, useCompat, source, withHead)
 	for _, charvis in ipairs(entry.charvis) do
 		local p = getCharvis(writes, charvis)
@@ -275,6 +310,9 @@ local function entryError(entry)
 	end
 end
 
+---@class STAVConfigEntry: STAVVisEntry
+---@field type "override"|"upsert"
+---@param external STAVConfigEntry[]
 local function collectEntries(mod, external, races)
 	local data = readConfig(mod)
 	if not data then return end
@@ -327,6 +365,7 @@ local function applyAll()
 	for _, entry in pairs(Vis.Companions) do
 		local source = base and (entry.shader and Ext.Resource.Get(entry.material, "Material").SourceFile or stavSourceFile())
 		applyEntry(writes, entry, base, source, true)
+		if entry.skinMatPreset then patchSkinMatPreset(entry.skinMatPreset) end
 	end
 
 	for _, entry in pairs(Vis.Player) do

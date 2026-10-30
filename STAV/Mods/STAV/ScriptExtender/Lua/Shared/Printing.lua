@@ -37,7 +37,9 @@ local PRESETS = {
 	{ 11, 45, 91 },		-- C30 #0b2d5b Midnight Weave
 	{ 155, 215, 255 },	-- C31 #9bd7ff Arcane Radiance
 	{ 173, 235, 179 },	-- C32 #adebb3 Mint Green
-	{ 239, 197, 118 } 	-- C33 #efc576 Lathander's Dawn
+	{ 239, 197, 118 },	-- C33 #efc576 Lathander's Dawn
+	{ 127, 0,   255 },	-- C34 #7f00ff Arcane Violet
+	{ 255, 180, 255 }		-- C35 #ffb4ff Pale Lilac
 }
 
 -- Internals
@@ -133,8 +135,8 @@ P.Palette = {
 		"Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green", "Neon Unseelie Violet",
 		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac", "Nightshade", "Moonshade",
 		"Umbral Bloom", "Orchid Mist", "Arcane Azure", "Mystra's Light", "Netherese Shroud", "Glacial Gleam",
-		"Midnight Weave", "Arcane Radiance", "Mint Green", "Lathander's Dawn"
-	},
+		"Midnight Weave", "Arcane Radiance", "Mint Green", "Lathander's Dawn", "Arcane Violet", "Pale Lilac"
+	}
 }
 
 local function noop(self) return self end
