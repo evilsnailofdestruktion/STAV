@@ -1,34 +1,30 @@
-local E      = Ext.Require("Shared/Events.lua")
-local Params = Ext.Require("Shared/Params.lua")
-local Vis    = Ext.Require("Shared/Visualising.lua")
-local U      = Ext.Require("Shared/Utility.lua")
-local P      = Ext.Require("Shared/Printing.lua")
+local E             = Ext.Require("Shared/Events.lua")
+local Params        = Ext.Require("Shared/Params.lua")
+local P             = Ext.Require("Shared/Printing.lua")
+local U             = Ext.Require("Shared/Utility.lua")
+local Vis           = Ext.Require("Shared/Visualising.lua")
 
-local STAV_HEAD_MAT = "489d7f2c-9839-e1d0-67c5-260294337785"
 local CONFIG_FILE   = "STAVConfig.json"
 local EMPORIUM      = "91994363-833a-4956-a552-acf0341c2e2e"
 local ENGINE_BLACK  = "8f1f209a-dd37-4531-b1ee-5e81c1d169cc"
+local STAV_BODY_MAT = "cd69fa48-def6-c323-ce85-07321817f10f" -- DRO_F_NKD_Body_A_000
 
-local sourceFile, headSource = nil, nil
-local patched = {}
+---@type table<Guid, { ref: Guid, headParams?: boolean }>
+local HEAD_SHADERS  = {
+	["4d2f62a6-fa3e-34bf-0c30-5f5c5162f2a1"] = { ref = "8be29c42-9d39-85c0-fe1d-f475be72bfcf", headParams = true },
+	["8eb32fc4-bc52-0a77-972e-f51b668e2d4c"] = { ref = "788419de-0a61-d61e-bf4f-ce8f7098d6f7", headParams = true },
+	["81a56635-2d78-920d-79b9-cd64934a0844"] = { ref = "6054be7e-5084-b747-abd0-4c7e19768ba9", headParams = true },
+	["7d56755e-eacf-b236-c1b9-876b424b12ee"] = { ref = "fc6c66c5-c857-4d65-1076-b8f236a7ac13" }
+}
+
+local sourceFile    = nil
+---@type table<string, { source: string, headParams?: boolean }>
+local headShaders   = {}
+local patched       = {}
 
 local function stavSourceFile()
-	if sourceFile then return sourceFile end
-	for _, entry in pairs(Vis.Player) do
-		local mat = Ext.Resource.Get(entry.material, "Material")
-		if mat then
-			sourceFile = mat.SourceFile
-			break
-		end
-	end
+	sourceFile = sourceFile or Ext.Resource.Get(STAV_BODY_MAT, "Material").SourceFile
 	return sourceFile
-end
-
-local function stavHeadSourceFile()
-	if headSource then return headSource end
-	local mat = Ext.Resource.Get(STAV_HEAD_MAT, "Material")
-	if mat then headSource = mat.SourceFile end
-	return headSource
 end
 
 local function entrySourceFile(entry)
@@ -73,7 +69,7 @@ local function patchMaterial(mat, params, source)
 	for _, s in ipairs(params.Vec3 or {}) do
 		applyParam(mat.Vector3Parameters, { Enabled = false, ParameterName = s.name, IsColor = true, Value = s.value, BaseValue = s.value })
 	end
-	for _, s in ipairs(params.Tex2D) do
+	for _, s in ipairs(params.Tex2D or {}) do
 		applyParam(mat.Texture2DParameters, { Enabled = s.enabled ~= false, ParameterName = s.name, ID = s.id })
 	end
 end
@@ -99,7 +95,7 @@ local function presetParams(list, values, drop, isColour)
 	local out = {}
 	for _, p in pairs(list) do
 		if values[p.Parameter] == nil and drop[p.Parameter] == nil then
-			out[#out + 1] = { Parameter = p.Parameter, Value = p.Value, Enabled = p.Enabled, Color = p.Color, Custom = p.Custom }
+			out[#out + 1] = { Parameter = p.Parameter, Value = p.Value, Enabled = p.Enabled, Color = p.Color, Custom = p .Custom }
 		end
 	end
 	for _, p in ipairs(newParams(values, isColour)) do out[#out + 1] = p end
@@ -107,7 +103,7 @@ local function presetParams(list, values, drop, isColour)
 end
 
 local function patchPresetData(data, spec)
-	local vec4 = spec.Vec4 or {}
+	local vec4             = spec.Vec4 or {}
 	data.ScalarParameters  = presetParams(data.ScalarParameters, spec.Scalars or {}, vec4, false)
 	data.Vector3Parameters = presetParams(data.Vector3Parameters, spec.Vec3 or {}, {}, true)
 	data.VectorParameters  = presetParams(data.VectorParameters, vec4, {}, false)
@@ -133,7 +129,7 @@ local function getCharvis(writes, charvis)
 end
 
 local function addMats(p, matIds, overrides)
-	local scalars, vecs, vec3s = newParams(overrides.Scalars, false), newParams(overrides.Vec4, false), newParams(overrides.Vec3, true)
+	local scalars, vecs, vec3s = newParams(overrides.Scalars, false), newParams(overrides.Vec4, false),  newParams(overrides.Vec3, true)
 	p.mats = p.mats or {}
 	for matId in pairs(matIds) do
 		p.mats[matId] = { MaterialResource = matId, ScalarParameters = scalars, VectorParameters = vecs, Vector3Parameters = vec3s, MaterialPresets = {} }
@@ -166,7 +162,13 @@ local function getCompatBody(entry, p, source)
 	if body and next(matIds) then addMats(p, matIds, body) end
 end
 
--- Heuristics to ensure we patch head mats only.
+local function mapHeadShaders()
+	for vanilla, shader in pairs(HEAD_SHADERS) do
+		headShaders[Ext.Resource.Get(vanilla, "Material").SourceFile] = { source = Ext.Resource.Get(shader.ref, "Material").SourceFile, headParams = shader.headParams }
+	end
+end
+
+-- Heuristics to ensure we patch head mats only (Wyll's Horns mostly).
 local function blanksAtlases(mat)
 	for _, p in pairs(mat.Texture2DParameters) do
 		if (p.ParameterName == "TattooAtlas" or p.ParameterName == "MakeUpAtlas") and p.Enabled and p.ID == ENGINE_BLACK then return true end
@@ -175,7 +177,7 @@ local function blanksAtlases(mat)
 end
 
 local function isHeadMat(mat)
-	return mat.MaterialType == "Flesh" and mat.SourceFile:find("CHAR_Skin_Head_v3", 1, true) and not blanksAtlases(mat)
+	return mat.MaterialType == "Flesh" and headShaders[mat.SourceFile] and not blanksAtlases(mat)
 end
 
 local function patchHeadMats(objects)
@@ -184,8 +186,9 @@ local function patchHeadMats(objects)
 		if not patched[o.MaterialID] then
 			local mat = Ext.Resource.Get(o.MaterialID, "Material")
 			if isHeadMat(mat) then
+				local shader = headShaders[mat.SourceFile]
 				patched[o.MaterialID] = true
-				patchMaterial(mat, Params.CompHeadParams, stavHeadSourceFile())
+				patchMaterial(mat, shader.headParams and Params.CompHeadParams or {}, shader.source)
 			end
 		end
 		if patched[o.MaterialID] then heads[#heads + 1] = o end
@@ -324,15 +327,16 @@ local function entryError(entry)
 	for i, cv in ipairs(entry.charvis) do
 		if not U.IsGuid(cv) then return string.format("'charvis[%d]' is not a valid UUID", i) end
 	end
-	if entry.type == "override" and not U.IsGuid(entry.material) then return "'material' must be a valid UUID (required for override)" end
+	if entry.type == "override" and not U.IsGuid(entry.material) then return
+		"'material' must be a valid UUID (required for override)" end
 	if entry.overrides ~= nil then
 		if type(entry.overrides) ~= "table" then return "'overrides' must be an object" end
 		local body = entry.overrides.body
 		if body ~= nil then
 			if type(body) ~= "table" then return "'overrides.body' must be an object" end
 			local err = parameterMapError("overrides.body.Scalars", body.Scalars)
-				or parameterMapError("overrides.body.Vec3", body.Vec3, 3)
-				or parameterMapError("overrides.body.Vec4", body.Vec4, 4)
+				 or parameterMapError("overrides.body.Vec3", body.Vec3, 3)
+				 or parameterMapError("overrides.body.Vec4", body.Vec4, 4)
 			if err then return err end
 		end
 	end
@@ -399,6 +403,7 @@ local function applyAll()
 	local base, targeted, external, races = scanLO()
 	local writes = {}
 
+	mapHeadShaders()
 	patchCCHeads()
 	for _, entry in pairs(Vis.Companions) do
 		applyEntry(writes, entry, base, base and entrySourceFile(entry), true)

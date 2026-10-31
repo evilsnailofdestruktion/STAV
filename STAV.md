@@ -26,8 +26,8 @@ ST_Makeup.DDS               be1e3d5e-5f9e-9e20-e9ee-80c5fce076ed
 ST_Scars.DDS                7c280a87-0a5d-58f3-809a-3709ec6f157e
 
 ## Swirlies:
-ST_BodyWarp.DDS    6380c4b4-3517-9d97-c8fa-a7aed30b6bd2
-ST_HeadWarp.DDS    e081db36-b103-47a9-25ca-edf481c00e22
+ST_BodyWarp.DDS            6380c4b4-3517-9d97-c8fa-a7aed30b6bd2
+ST_HeadWarp.DDS            e081db36-b103-47a9-25ca-edf481c00e22
 
 ## Special Cases:
 Gith F
@@ -41,6 +41,12 @@ Halsin TattooIndex = 56
 Laezel TattooIndex = 54
 Minsc TattooIndex = 58
 Minthara TattooIndex = 55
+
+## Head Naterials:
+Snail_Test_Head               8be29c42-9d39-85c0-fe1d-f475be72bfcf
+Snail_Test_Head_LOD1          788419de-0a61-d61e-bf4f-ce8f7098d6f7
+Snail_Test_Head_LOD2          6054be7e-5084-b747-abd0-4c7e19768ba9
+Snail_Test_Head_LOD4          fc6c66c5-c857-4d65-1076-b8f236a7ac13
 
 ## Player Bodies:
 DRO_F       cd69fa48-def6-c323-ce85-07321817f10f
@@ -594,7 +600,6 @@ ST_Vampirism_Off     54c7f039-9a4d-9600-0be8-83121c3122aa
 0f8a19b8-3861-6523-db60-09973f40549a,a74e13fb-3192-5624-ba53-12eb86fafbe9
 1076079a-e142-285f-8909-b9167564df00,8b2b974d-3329-375f-8a51-5ce082e317b8
 1412ca02-ea0a-6593-fc09-e47cc9ce9fc6,14d2707e-c83f-3348-282f-4e3680ffb46f
-163526a2-742c-cef4-c1cb-e5c212acb1d6,1baa5bef-dffa-39fa-cf09-c7659ff050d8
 163526a2-742c-cef4-c1cb-e5c212acb1d6,bc0ff325-a024-7087-9b0f-c5729078c41c
 17ea1a8e-ae71-d928-a37c-529eb6e8cdc2,7cbc0929-fbcb-a7f3-bf28-2e5603f0c287
 18fc83e1-aca6-1ecb-ba5e-0e1ae7030add,eb1e7e3c-3606-4d26-67e1-cc38b17a659f
@@ -710,7 +715,6 @@ bca8a35e-1f7a-592f-1435-bd78dbb68406,cc260104-8d2b-291d-807a-49c32dc4db85
 c322f2aa-f0f0-f3eb-4ce3-89496000a08f,d74eadbc-2d98-8977-7074-760d4f497f6d
 c5c25b8b-c8a1-fcb5-2b10-31d7405a68af,eae5c2c3-b1ee-86cf-c52b-7865024a72ee
 c7d58531-302b-0f5c-1111-ea16813106a1,da1323a3-2fa5-a33a-3036-9c90edfc8672
-c7d58531-302b-0f5c-1111-ea16813106a1,40aa0aa0-21f2-725e-52d8-ca007be4b5dc
 c9d76957-61ee-86fd-b12d-38b7c59f4a9d,3fa9fa66-bb29-453b-471e-6eb669a9603b
 ca90df09-a517-fa81-d248-8b111d352c5a,fc604993-f615-883c-548a-71da10f70389
 cae9995c-9f07-2bd5-f694-ad48416f661c,53e1e84a-5bb8-ce06-c0cf-7209b635dede

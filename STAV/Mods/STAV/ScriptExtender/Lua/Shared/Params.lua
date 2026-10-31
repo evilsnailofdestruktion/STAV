@@ -3,7 +3,7 @@ local M = {}
 ---@class STAVMaterialParams
 ---@field Scalars? { name: string, value: number }[]
 ---@field Vec3? { name: string, value: number[] }[]
----@field Tex2D { name: string, id: Guid, enabled?: boolean }[]
+---@field Tex2D? { name: string, id: Guid, enabled?: boolean }[]
 
 ---@type STAVMaterialParams
 M.CompHeadParams = {
