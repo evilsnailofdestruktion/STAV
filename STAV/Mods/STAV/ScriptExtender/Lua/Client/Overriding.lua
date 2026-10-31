@@ -133,7 +133,7 @@ local function getCharvis(writes, charvis)
 end
 
 local function addMats(p, matIds, overrides)
-	local scalars, vecs, vec3s = newParams(overrides.Scalars, false), newParams(overrides.Vec4, true), newParams(overrides.Vec3, true)
+	local scalars, vecs, vec3s = newParams(overrides.Scalars, false), newParams(overrides.Vec4, false), newParams(overrides.Vec3, true)
 	p.mats = p.mats or {}
 	for matId in pairs(matIds) do
 		p.mats[matId] = { MaterialResource = matId, ScalarParameters = scalars, VectorParameters = vecs, Vector3Parameters = vec3s, MaterialPresets = {} }
@@ -166,7 +166,7 @@ local function getCompatBody(entry, p, source)
 	if body and next(matIds) then addMats(p, matIds, body) end
 end
 
--- Heuristics to ensure we patch head mats only (Wyll's Horns mostly).
+-- Heuristics to ensure we patch head mats only.
 local function blanksAtlases(mat)
 	for _, p in pairs(mat.Texture2DParameters) do
 		if (p.ParameterName == "TattooAtlas" or p.ParameterName == "MakeUpAtlas") and p.Enabled and p.ID == ENGINE_BLACK then return true end
@@ -174,22 +174,51 @@ local function blanksAtlases(mat)
 	return false
 end
 
-local function getHead(entry, p)
-	local objects = headObjects(p.cv)
-	if not objects then return end
-	local matIds = {}
-	for _, o in ipairs(objects) do
+local function isHeadMat(mat)
+	return mat.MaterialType == "Flesh" and mat.SourceFile:find("CHAR_Skin_Head_v3", 1, true) and not blanksAtlases(mat)
+end
+
+local function patchHeadMats(objects)
+	local heads = {}
+	for _, o in ipairs(objects or {}) do
 		if not patched[o.MaterialID] then
 			local mat = Ext.Resource.Get(o.MaterialID, "Material")
-			if mat.MaterialType == "Flesh" and mat.SourceFile:find("CHAR_Skin_Head_v3", 1, true) and not blanksAtlases(mat) then
+			if isHeadMat(mat) then
 				patched[o.MaterialID] = true
 				patchMaterial(mat, Params.CompHeadParams, stavHeadSourceFile())
 			end
 		end
-		if patched[o.MaterialID] then matIds[o.MaterialID] = true end
+		if patched[o.MaterialID] then heads[#heads + 1] = o end
 	end
+	return heads
+end
+
+local function patchCCHeads()
+	local seen = {}
+	for _, id in ipairs(Ext.StaticData.GetAll("CharacterCreationAppearanceVisual")) do
+		local cc = Ext.StaticData.Get(id, "CharacterCreationAppearanceVisual")
+		if cc.SlotName == "Head" and cc.VisualResource ~= U.NULL_UUID and not seen[cc.VisualResource] then
+			seen[cc.VisualResource] = true
+			patchHeadMats(visualObjects(cc.VisualResource))
+		end
+	end
+end
+
+local function getHead(entry, p)
+	local matIds = {}
+	for _, o in ipairs(patchHeadMats(headObjects(p.cv))) do matIds[o.MaterialID] = true end
 	local head = entry.overrides and entry.overrides.head
 	if head and next(matIds) then addMats(p, matIds, head) end
+end
+
+local function getNPCHeads(writes)
+	for charvis, material in pairs(Vis.NPCHeads) do
+		local p = getCharvis(writes, charvis)
+		if p then
+			p.rmo = p.rmo or {}
+			for _, o in ipairs(patchHeadMats(headObjects(p.cv))) do p.rmo[o.ObjectID] = material end
+		end
+	end
 end
 
 local function applyEntry(writes, entry, useCompat, source, withHead)
@@ -370,6 +399,7 @@ local function applyAll()
 	local base, targeted, external, races = scanLO()
 	local writes = {}
 
+	patchCCHeads()
 	for _, entry in pairs(Vis.Companions) do
 		applyEntry(writes, entry, base, base and entrySourceFile(entry), true)
 		if entry.skinMatPreset then
@@ -377,6 +407,7 @@ local function applyAll()
 		end
 	end
 	if not Ext.Mod.IsModLoaded(EMPORIUM) then applyCCOverrides() end
+	getNPCHeads(writes)
 
 	for _, entry in pairs(Vis.Player) do
 		applyEntry(writes, entry, false, nil, false)
@@ -406,6 +437,11 @@ end
 E.StatsLoaded.Subscribe(function()
 	P.Log():GradC(16, 21):G("[STAV] Snailzx Tattoos And VTs "):C17("v" .. U.Version):G(" loaded"):Print()
 	applyAll()
+end)
+
+-- Retry in case StatsLoaded didn't patch them.
+E.GameStateChanged.Subscribe(function(e)
+	if e.FromState == "LoadModule" then patchCCHeads() end
 end)
 
 Ext.ModEvents.BaldursEmporium.CharvisPatched:Subscribe(applyCCOverrides)

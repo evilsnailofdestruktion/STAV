@@ -561,7 +561,11 @@ if type(MCM) == "table" then
 end
 
 local function ccDummyCount()
-	return #Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")
+	local n = 0
+	for _, h in pairs(Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")) do
+		if h.CCCharacterDefinition or h.CCChangeAppearanceDefinition then n = n + 1 end
+	end
+	return n
 end
 
 local function hasAny(set)
@@ -597,8 +601,8 @@ local function onDummyCreated()
 	registerRebuildHook()
 end
 
-E.CCDummyCreated.Subscribe(function()
-	onDummyCreated()
+E.CCDummyCreated.Subscribe(function(p)
+	if p.Carrier.CCCharacterDefinition or p.Carrier.CCChangeAppearanceDefinition then onDummyCreated() end
 end)
 
 E.CCDummyDestroyed.Subscribe(function()
@@ -612,8 +616,8 @@ if ccDummyCount() > 0 then
 	onDummyCreated()
 end
 
-E.ClientControlCreated.Subscribe(function(e)
-	if UI.Window.Open then UI.PopulateFromEntity(e) end
+E.ClientControlCreated.Subscribe(function(p)
+	if UI.Window.Open then UI.PopulateFromEntity(p.Entity) end
 end)
 
 E.PhotoModeDummyCreated.Subscribe(function()
@@ -672,9 +676,9 @@ local function applyToTimelineDummies()
 	end
 end
 
-E.TLPreviewDummyCreated.Subscribe(function(e)
-	if e.TLPreviewDummy.OriginalCharacterTemplate == "" then return end
-	applyWhenReady(e)
+E.TLPreviewDummyCreated.Subscribe(function(p)
+	if p.Entity.TLPreviewDummy.OriginalCharacterTemplate == "" then return end
+	applyWhenReady(p.Entity)
 end)
 
 NetDefs.NET_APPLY_SYNC:SetHandler(function(data)

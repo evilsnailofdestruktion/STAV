@@ -100,15 +100,15 @@ end
 C.ApplyToCharacter = applyToCharacter
 
 E.StartChangeAppearance.Subscribe(function(p)
-	stripFromReal(p.CharacterGuid)
+	stripFromReal(p.Character.Guid)
 end)
 
 E.ChangeAppearanceCompleted.Subscribe(function(p)
-	applyToCharacter(p.CharacterGuid)
+	applyToCharacter(p.Character.Guid)
 end)
 
 E.ChangeAppearanceCancelled.Subscribe(function(p)
-	applyToCharacter(p.CharacterGuid)
+	applyToCharacter(p.Character.Guid)
 end)
 
 -- On level load: ping clients (first-CC clients resend their in-memory look once their
