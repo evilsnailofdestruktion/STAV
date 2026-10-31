@@ -1,6 +1,5 @@
-local U    = Ext.Require("Shared/Utility.lua")
-local Vars = Ext.Require("Shared/Vars.lua")
-local Map  = Ext.Require("Client/UIMap.lua")
+local U   = Ext.Require("Shared/Utility.lua")
+local Map = Ext.Require("Client/UIMap.lua")
 
 local M = {}
 
@@ -65,8 +64,7 @@ function M.Load(name)
 	if not name then return nil end
 	local data = U.TryParseJson(Ext.IO.LoadFile(presetPath(name)))
 	if not data then return nil end
-	local look, migrated = Vars.MigrateLook(data)
-	return validateLook(look), migrated
+	return validateLook(data)
 end
 
 function M.Save(name, values)
@@ -99,14 +97,6 @@ function M.Import(name)
 	if not look then return nil, "invalid" end
 	if not register(name) then return nil, "write" end
 	return name, look
-end
-
--- TODO: Delete everything below in a couple updates
-function M.MigrateAll()
-	for _, name in ipairs(M.List()) do
-		local look, migrated = M.Load(name)
-		if look and migrated then M.Export(name, look) end
-	end
 end
 
 return M

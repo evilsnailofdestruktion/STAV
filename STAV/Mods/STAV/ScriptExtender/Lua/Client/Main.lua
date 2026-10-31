@@ -440,7 +440,6 @@ presetStatus = presetTab:AddInputText("##STAV_PresetStatus", "")
 presetStatus.ReadOnly = true
 presetStatus:SetColor("FrameBg", { 0, 0, 0, 0 })
 
-Presets.MigrateAll()		-- TODO: Delete in a couple updates
 refreshPresets()
 
 local themeTab = bar:AddTabItem(L.T("Themes"))
@@ -517,7 +516,6 @@ function UI.RefreshWidgets()
 end
 
 local function seedState(look)
-	look = Vars.MigrateLook(look)		-- TODO: Delete in a couple updates
 	for k, v in pairs(look) do
 		if UI.State[k] ~= nil then
 			UI.State[k] = v
@@ -650,7 +648,6 @@ local function applyTimelineLook(e)
 		end
 	end
 	if not look then return end
-	look = Vars.MigrateLook(look)		-- TODO: Delete in a couple updates
 	P.Debug():Raw("TL "):C21(e.TLPreviewDummy.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")"):Print()
 	Applying.ApplyLookToEntity(e, look)
 end

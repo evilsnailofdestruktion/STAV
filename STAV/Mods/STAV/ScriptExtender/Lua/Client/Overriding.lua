@@ -7,6 +7,7 @@ local P      = Ext.Require("Shared/Printing.lua")
 local STAV_HEAD_MAT = "489d7f2c-9839-e1d0-67c5-260294337785"
 local CONFIG_FILE   = "STAVConfig.json"
 local EMPORIUM      = "91994363-833a-4956-a552-acf0341c2e2e"
+local ENGINE_BLACK  = "8f1f209a-dd37-4531-b1ee-5e81c1d169cc"
 
 local sourceFile, headSource = nil, nil
 local patched = {}
@@ -66,10 +67,10 @@ end
 -- Credit to Volitio for most of this
 local function patchMaterial(mat, params, source)
 	if source then mat.SourceFile = source end
-	for _, s in ipairs(params.Scalars) do
+	for _, s in ipairs(params.Scalars or {}) do
 		applyParam(mat.ScalarParameters, { Enabled = false, ParameterName = s.name, Value = s.value, BaseValue = s.value })
 	end
-	for _, s in ipairs(params.Vec3) do
+	for _, s in ipairs(params.Vec3 or {}) do
 		applyParam(mat.Vector3Parameters, { Enabled = false, ParameterName = s.name, IsColor = true, Value = s.value, BaseValue = s.value })
 	end
 	for _, s in ipairs(params.Tex2D) do
@@ -165,6 +166,14 @@ local function getCompatBody(entry, p, source)
 	if body and next(matIds) then addMats(p, matIds, body) end
 end
 
+-- Heuristics to ensure we patch head mats only (Wyll's Horns mostly).
+local function blanksAtlases(mat)
+	for _, p in pairs(mat.Texture2DParameters) do
+		if (p.ParameterName == "TattooAtlas" or p.ParameterName == "MakeUpAtlas") and p.Enabled and p.ID == ENGINE_BLACK then return true end
+	end
+	return false
+end
+
 local function getHead(entry, p)
 	local objects = headObjects(p.cv)
 	if not objects then return end
@@ -172,7 +181,7 @@ local function getHead(entry, p)
 	for _, o in ipairs(objects) do
 		if not patched[o.MaterialID] then
 			local mat = Ext.Resource.Get(o.MaterialID, "Material")
-			if mat.SourceFile:find("CHAR_Skin_Head_v3", 1, true) then
+			if mat.MaterialType == "Flesh" and mat.SourceFile:find("CHAR_Skin_Head_v3", 1, true) and not blanksAtlases(mat) then
 				patched[o.MaterialID] = true
 				patchMaterial(mat, Params.CompHeadParams, stavHeadSourceFile())
 			end

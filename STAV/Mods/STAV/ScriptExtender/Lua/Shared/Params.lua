@@ -1,57 +1,31 @@
 local M = {}
 
 ---@class STAVMaterialParams
----@field Scalars { name: string, value: number }[]
----@field Vec3 { name: string, value: number[] }[]
+---@field Scalars? { name: string, value: number }[]
+---@field Vec3? { name: string, value: number[] }[]
 ---@field Tex2D { name: string, id: Guid, enabled?: boolean }[]
 
 ---@type STAVMaterialParams
 M.CompHeadParams = {
-	Scalars = {
-		{ name = "GlowIntensity",   value = 0 },
-		{ name = "GlowyPulse",	    value = 0 },
-		{ name = "GlowTattooIndex", value = 31 },
-		{ name = "Vampirism",       value = 0 },
-		{ name = "AltTattooIndex",  value = 31 },
-		{ name = "Swirlies",        value = 0 },
-		{ name = "Tiling_Noise",    value = 1.5 },
-		{ name = "Speed",           value = 0.25 }
-	},
-	Vec3 = {
-		{ name = "TatGlowColor",    value = { 0, 0, 0 } },
-		{ name = "BodyTattooColor", value = { 0, 0, 0 } },
-		{ name = "NonSkinTipColor", value = { 0.075, 0.217, 0.298 } }
-	},
 	Tex2D = {
-		{ name = "TattooAtlas", id = "3e2b453f-83d5-cf51-6b81-9d109e69b318", enabled = false },
-		{ name = "MakeUpAtlas", id = "be1e3d5e-5f9e-9e20-e9ee-80c5fce076ed", enabled = false },
-		{ name = "HeadWarp",    id = "e081db36-b103-47a9-25ca-edf481c00e22", enabled = false }
-	},
+		{ name = "TattooAtlas", id = "3e2b453f-83d5-cf51-6b81-9d109e69b318", enabled = true },
+		{ name = "MakeUpAtlas", id = "be1e3d5e-5f9e-9e20-e9ee-80c5fce076ed", enabled = true },
+		{ name = "HeadWarp",    id = "e081db36-b103-47a9-25ca-edf481c00e22", enabled = true }
+	}
 }
 
 ---@type STAVMaterialParams
 M.CompBodyParams = {
 	Scalars = {
-		{ name = "BodyGlowyIndex",      value = 0 },
-		{ name = "GlowIntensity",       value = 0 },
-		{ name = "GlowyPulse",	        value = 0 },
-		{ name = "BodyScar",            value = 0 },
 		{ name = "ScarColor",           value = 0 },
 		{ name = "BM_Adjust_Weight",    value = 0 },
-		{ name = "Vampirism",           value = 0 },
 		{ name = "SecretTatIndex",      value = 22 },
-		{ name = "BodyAltTatIndex",     value = 0 },
-		{ name = "Swirlies",            value = 0 },
-		{ name = "Tiling_Noise",        value = 1.5 },
-		{ name = "Speed",               value = 0.25 },
 		{ name = "BM_Adjust_Metalness", value = 0 }
 	},
 	Vec3 = {
-		{ name = "TatGlowColor",    value = { 0.01144391, 0.7513394, 1.0 } },
 		{ name = "CustomColor",     value = { 0.027, 0.027, 0.027 } },
 		{ name = "BM_Adjust_Color", value = { 1.0, 0.546, 0.0 } },
-		{ name = "TattooColor",     value = { 0.0, 0.0, 0.0 } },
-		{ name = "NonSkinTipColor", value = { 0.07456587, 0.2169727, 0.2980006 } }
+		{ name = "TattooColor",     value = { 0.0, 0.0, 0.0 } }
 	},
 	Tex2D = {
 		{ name = "BodyWarp", id = "6380c4b4-3517-9d97-c8fa-a7aed30b6bd2" }
@@ -88,11 +62,6 @@ M.Slots = {
 
 M.Toggles = {
 	swirl     = "2a2f351a-6603-45bd-a87f-b567c74fa9d1"
-}
-
--- TODO: delete in a couple updates
-M.LegacyCcams = {
-	"56ea96b0-d436-4efd-b200-dfdd93e83671"
 }
 
 M.ScalesPassive = "ST_DraconicScales"

@@ -13,7 +13,6 @@ local usedSlots = {}
 local stavCcams = {}
 for _, slot in ipairs(Params.Slots) do stavCcams[slot.ccam] = true end
 for _, ccam in pairs(Params.Toggles) do stavCcams[ccam] = true end
-for _, ccam in ipairs(Params.LegacyCcams) do stavCcams[ccam] = true end		-- TODO: delete in a couple updates
 
 local function claimSlot(charUUID)
 	if slotMap[charUUID] then return slotMap[charUUID] end
@@ -75,19 +74,11 @@ local function stripFromReal(charUUID)
 	end
 end
 
--- Runs on every path because the two mirror callers and the level sweep read the stored var, which may still be legacy
 local function applyToCharacter(charUUID)
 	local entity = Ext.Entity.Get(charUUID)
 	if not entity then return end
 	local look = Vars.GetLook(entity)
 	if not look then return end
-
-	-- TODO: Delete the block below in a couple updates
-	local migrated, changed = Vars.MigrateLook(look)
-	if changed then
-		look = migrated
-		Vars.SetLook(entity, look)
-	end
 
 	local slotIdx = claimSlot(charUUID)
 	if not slotIdx then

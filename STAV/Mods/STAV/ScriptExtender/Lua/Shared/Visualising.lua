@@ -458,7 +458,8 @@ local COMPANIONS_VIS = {
 			"ee1200f2-51a4-7b28-f046-1d29de15a651",
 			"a261b2a4-a3ba-9baf-0ec1-f6557e2ce22a",
 			"39350e36-2c69-bc20-c2b8-981dfa5b263b",
-			"5a78cb10-4528-5b3c-4029-1dff2d302dbc"
+			"5a78cb10-4528-5b3c-4029-1dff2d302dbc",
+			"f58335c5-e0b5-5310-0adc-b9ec985f7ff2"
 		},
 		material  = "e35a200e-2fff-a8d3-d1c8-66d0cff91c2c",
 		scarMap   = "ef953551-4cc3-643e-5250-bc4edbb5ea52",
@@ -511,11 +512,9 @@ local COMPANIONS_VIS = {
 		material  = "ecfbf57a-704d-34df-7689-cda0b6c9ec99",
 		scarMap   = "c641d02d-e466-ac9b-3e7e-bf534d485417",
 		scarMapNM = "d9662fd1-f7f6-c482-b473-e1b60ecbd9b9",
-		skinMatPreset = {
-			id   = "ce385c80-ec8d-a7ce-198a-c13a3bc4fb56",
-			Vec3 = {
-				NonSkinColor    = { 0.044398725, 0.01316299, 0.0006657844 },
-				NonSkinTipColor = { 0.16862746, 0.13725491, 0.11372549 }
+		overrides = {
+			body = {
+				Vec3    = { NonSkinColor = { 0.044398725, 0.01316299, 0.0006657844 } }
 			}
 		}
 	}
