@@ -329,6 +329,11 @@ local COMPANIONS_VIS = {
 				Scalars = { SecretTatIndex = 5 }
 			},
 		},
+		ccOverrides = {
+			id      = "62d788a1-f777-4608-8ee1-55325ccf3360",
+			Scalars = { TattooIndex = 57 },
+			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+		}
 	},
 	GaleNoTats = {
 		charvis   = {
