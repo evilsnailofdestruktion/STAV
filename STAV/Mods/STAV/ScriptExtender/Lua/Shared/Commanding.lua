@@ -14,15 +14,16 @@ Ext.RegisterConsoleCommand("stav_head_check", function(_)
 			if not Ext.Resource.Get(o.MaterialID, "Material") then
 				if not listed then
 					local mod = owner[id] and Ext.Mod.GetMod(owner[id])
-					P.Log():C16("[STAV] "):C5(mod and mod.Info.Name or "Unknown mod"):Raw(" "):C7(cc.DisplayName:Get() or id):C3(" [" .. cc.VisualResource .. "]."):Print()
+					-- Ext.Mod.GetMod(owner[id]) should normally never be nil but just in case.
+					P.Log():C16("[STAV] "):C5(mod and mod.Info.Name or owner[id] or "Created at runtime"):Raw(": ", cc.DisplayName:Get() or id):C3(" [", cc.VisualResource, "]."):Print()
 					listed = true
 				end
 				broken = broken + 1
-				P.Log():Raw("    "):C7(o.ObjectID):Raw(" "):C1((o.MaterialID == "" and "has no material" or "uses missing material " .. o.MaterialID) .. "."):Print()
+				P.Log():Raw("    "):C3(o.ObjectID):C1(" ", o.MaterialID == "" and "has no material" or "uses missing material " .. o.MaterialID, "."):Print()
 			end
 		end
 	end
-	P.Log():C16("[STAV] "):C7(string.format("%d head objects with a missing material.", broken)):Print()
+	P.Log():C16("[STAV] "):C3(broken):Raw(" head objects with a missing material."):Print()
 end)
 
 if Ext.IsClient() then
@@ -81,7 +82,7 @@ if Ext.IsClient() then
 		end
 
 		if count == 0 then
-			P.Log():C16("[STAV] "):C7(string.format("No race charvis found for %s.", mod.Info.Name)):Print()
+			P.Log():C16("[STAV] "):C7("No race charvis found for ", mod.Info.Name, "."):Print()
 			return
 		end
 
@@ -90,6 +91,6 @@ if Ext.IsClient() then
 		table.sort(raceList)
 
 		Ext.IO.SaveFile("STAVConfig.json", Ext.Json.Stringify({ Entries = entries, Races = raceList }))
-		P.Log():C16(string.format("[STAV] Exported %d %s charvis and %d races for %s to Script Extender/STAVConfig.json.", count, kind, #raceList, mod.Info.Name)):Print()
+		P.Log():C16("[STAV] Exported ", count, " ", kind, " charvis and ", #raceList, " races for ", mod.Info.Name, " to Script Extender/STAVConfig.json."):Print()
 	end)
 end

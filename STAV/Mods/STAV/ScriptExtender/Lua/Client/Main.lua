@@ -91,7 +91,7 @@ local function addSlider(parent, label, key)
 	nextBtn.SameLine   = true
 	nextBtn.OnClick    = function() step(key, 1, max, 1) end
 
-	local labelText    = parent:AddText(string.format("%s (1-%d)", label, max))
+	local labelText    = parent:AddText(label .. " (1-" .. max .. ")")
 	labelText.SameLine = true
 	return s
 end
@@ -418,7 +418,7 @@ exportBtn.OnClick = function()
 		presetStatus.Text = L.T("Preset file could not be written.")
 		return
 	end
-	presetStatus.Text = string.format("%s %s", L.T("Exported"), name)
+	presetStatus.Text = L.T("Exported") .. " " .. name
 end
 
 local importInput = presetTab:AddInputText(L.T("Import From") .. "##STAV_ImportFrom", "")
@@ -433,7 +433,7 @@ importBtn.OnClick = function()
 	recordActive(name)
 	UI.ApplyLook(look)
 	refreshPresets()
-	presetStatus.Text = string.format("%s %s", L.T("Imported"), name)
+	presetStatus.Text = L.T("Imported") .. " " .. name
 end
 
 presetStatus = presetTab:AddInputText("##STAV_PresetStatus", "")
@@ -652,7 +652,7 @@ local function applyTimelineLook(e)
 		end
 	end
 	if not look then return end
-	P.Debug():Raw("TL "):C21(e.TLPreviewDummy.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")"):Print()
+	P.Debug():Raw("TL "):C21(e.TLPreviewDummy.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")."):Print()
 	Applying.ApplyLookToEntity(e, look)
 end
 

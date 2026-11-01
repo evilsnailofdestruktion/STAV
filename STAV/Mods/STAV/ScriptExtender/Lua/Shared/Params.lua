@@ -8,27 +8,32 @@ local M = {}
 ---@type STAVMaterialParams
 M.CompHeadParams = {
 	Tex2D = {
-		{ name = "TattooAtlas", id = "3e2b453f-83d5-cf51-6b81-9d109e69b318", enabled = true },
-		{ name = "MakeUpAtlas", id = "be1e3d5e-5f9e-9e20-e9ee-80c5fce076ed", enabled = true },
-		{ name = "HeadWarp",    id = "e081db36-b103-47a9-25ca-edf481c00e22", enabled = true }
+		{ name = "ST_DraconicScales",   	 id = "09a88614-5b0e-4f6c-e641-f76a6eb949ec", enabled = true },
+		{ name = "ST_DraconicScalesNM",   id = "e627e69c-7799-c5ce-554d-b152a958b143", enabled = true },
+		{ name = "HeadWarp",					 id = "e081db36-b103-47a9-25ca-edf481c00e22", enabled = true },
+		{ name = "MakeUpAtlas",				 id = "be1e3d5e-5f9e-9e20-e9ee-80c5fce076ed", enabled = true },
+		{ name = "ST_Scars",					 id = "7c280a87-0a5d-58f3-809a-3709ec6f157e", enabled = true },
+		{ name = "TattooAtlas",				 id = "3e2b453f-83d5-cf51-6b81-9d109e69b318", enabled = true }
 	}
 }
 
 ---@type STAVMaterialParams
 M.CompBodyParams = {
 	Scalars = {
-		{ name = "ScarColor",           value = 0 },
 		{ name = "BM_Adjust_Weight",    value = 0 },
-		{ name = "SecretTatIndex",      value = 22 },
-		{ name = "BM_Adjust_Metalness", value = 0 }
+		{ name = "BM_Adjust_Metalness", value = 0 },
+		{ name = "BodyScar",				  value = 0 },
+		{ name = "SecretTatIndex",      value = 22 }
 	},
 	Vec3 = {
-		{ name = "CustomColor",     value = { 0.027, 0.027, 0.027 } },
-		{ name = "BM_Adjust_Color", value = { 1.0, 0.546, 0.0 } },
-		{ name = "TattooColor",     value = { 0.0, 0.0, 0.0 } }
+		{ name = "BM_Adjust_Color", 	  value = { 1.0, 0.546, 0.0 } },
+		{ name = "CustomColor",			  value = { 0.027, 0.027, 0.027 } },
+		{ name = "TattooColor",			  value = { 0.0, 0.0, 0.0 } }
 	},
 	Tex2D = {
-		{ name = "BodyWarp", id = "6380c4b4-3517-9d97-c8fa-a7aed30b6bd2" }
+		{ name = "ST_Body_Tattoos",	  id = "824e2e14-ea37-6734-624b-b19f11500c8e", enabled = true },
+		{ name = "BodyWarp",				  id = "6380c4b4-3517-9d97-c8fa-a7aed30b6bd2", enabled = true },
+		{ name = "ST_Genital_Tattoos",  id = "8f86332e-712b-7dd7-033e-c4fd84fad6d1", enabled = true }
 	},
 }
 

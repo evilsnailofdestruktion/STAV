@@ -54,6 +54,14 @@ local function RgbToANSI(r, g, b)
 	return string.format("\x1b[1;38;2;%d;%d;%dm", r, g, b)
 end
 
+local function join(...)
+	local n = select("#", ...)
+	if n <= 1 then return tostring((...)) end
+	local parts = {}
+	for i = 1, n do parts[i] = tostring((select(i, ...))) end
+	return table.concat(parts)
+end
+
 -- CoreBuilder
 local CoreBuilder = {}
 CoreBuilder.__index = CoreBuilder
@@ -70,13 +78,13 @@ function CoreBuilder:GradC(startPreset, endPreset)
 	return self
 end
 
-function CoreBuilder:G(text)
-	self._segs[#self._segs + 1] = { Text = tostring(text), Grad = true }
+function CoreBuilder:G(...)
+	self._segs[#self._segs + 1] = { Text = join(...), Grad = true }
 	return self
 end
 
-function CoreBuilder:Raw(text)
-	self._segs[#self._segs + 1] = { Text = tostring(text) }
+function CoreBuilder:Raw(...)
+	self._segs[#self._segs + 1] = { Text = join(...) }
 	return self
 end
 
@@ -122,8 +130,8 @@ end
 
 for i, color in ipairs(PRESETS) do
 	local ansi = RgbToANSI(color[1], color[2], color[3])
-	CoreBuilder["C" .. i] = function(self, text)
-		self._segs[#self._segs + 1] = { Text = tostring(text), Ansi = ansi }
+	CoreBuilder["C" .. i] = function(self, ...)
+		self._segs[#self._segs + 1] = { Text = join(...), Ansi = ansi }
 		return self
 	end
 end
@@ -148,7 +156,7 @@ end
 
 function P.Debug()
 	if not P.IsDebug() then return NullBuilder end
-	return P.Log():C16(string.format("[STAV - %s]", Machine)):C21("[" .. Ext.Timer.MonotonicTime() .. "] ")
+	return P.Log():C16("[STAV - ", Machine, "]"):C21("[", Ext.Timer.MonotonicTime(), "] ")
 end
 
 return P

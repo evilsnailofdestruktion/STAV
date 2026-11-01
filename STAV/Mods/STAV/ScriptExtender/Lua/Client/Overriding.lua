@@ -35,7 +35,7 @@ local function visualObjects(visual)
 	if visual == "" then return nil end
 	local vr = Ext.Resource.Get(visual, "Visual")
 	if not vr then
-		P.Debug():Raw("Visual "):C5(visual):Raw(" did not resolve"):Print()
+		P.Debug():Raw("Visual "):C5(visual):Raw(" did not resolve."):Print()
 		return nil
 	end
 	return vr.Objects
@@ -120,7 +120,7 @@ local function getCharvis(writes, charvis)
 	if p then return p end
 	local cv = Ext.Resource.Get(charvis, "CharacterVisual")
 	if not cv then
-		P.Debug():Raw("Charvis "):C5(charvis):Raw(" did not resolve"):Print()
+		P.Debug():Raw("Charvis "):C5(charvis):Raw(" did not resolve."):Print()
 		return nil
 	end
 	p = { cv = cv }
@@ -270,8 +270,8 @@ local function commit(writes)
 	end
 end
 
-local function warnConfig(mod, msg)
-	P.Log():C1(string.format("[STAV] %s (%s): %s", CONFIG_FILE, mod.Info.Name, msg)):Print()
+local function warnConfig(mod, ...)
+	P.Log():C1("[STAV] ", CONFIG_FILE, " (", mod.Info.Name, "): ", ...):Print()
 end
 
 local function isDenseArray(value)
@@ -286,13 +286,13 @@ end
 
 local function parameterMapError(label, value, width)
 	if value == nil then return nil end
-	if type(value) ~= "table" then return string.format("'%s' must be an object", label) end
+	if type(value) ~= "table" then return "'" .. label .. "' must be an object." end
 	for name, param in pairs(value) do
-		if type(name) ~= "string" then return string.format("'%s' must use parameter names", label) end
+		if type(name) ~= "string" then return "'" .. label .. "' must use parameter names." end
 		if not width then
-			if type(param) ~= "number" then return string.format("'%s.%s' must be a number", label, name) end
+			if type(param) ~= "number" then return "'" .. label .. "." .. name .. "' must be a number." end
 		else
-			local expected = string.format("'%s.%s' must be a %d-number array", label, name, width)
+			local expected = "'" .. label .. "." .. name .. "' must be a " .. width .. "-number array."
 			if not isDenseArray(param) or #param ~= width then return expected end
 			for _, component in ipairs(param) do
 				if type(component) ~= "number" then return expected end
@@ -306,15 +306,15 @@ local function readConfig(mod)
 	if not raw or raw == "" then return nil end
 	local ok, data = pcall(Ext.Json.Parse, raw)
 	if not ok then
-		warnConfig(mod, "Invalid JSON format, check for missing commas, brackets or invalid uuids")
+		warnConfig(mod, "Invalid JSON format, check for missing commas, brackets or invalid uuids.")
 		return nil
 	end
 	if type(data) ~= "table" then
-		warnConfig(mod, "Top level must be a JSON object")
+		warnConfig(mod, "Top level must be a JSON object.")
 		return nil
 	end
 	if type(data.Entries) ~= "table" then
-		warnConfig(mod, "Missing 'Entries' object")
+		warnConfig(mod, "Missing 'Entries' object.")
 		return nil
 	end
 	return data
@@ -322,18 +322,18 @@ end
 
 local function entryError(entry)
 	if type(entry) ~= "table" then return "must be an object" end
-	if entry.type ~= "override" and entry.type ~= "upsert" then return "'type' must be 'override' or 'upsert'" end
-	if not isDenseArray(entry.charvis) or #entry.charvis == 0 then return "'charvis' must be a non-empty array" end
+	if entry.type ~= "override" and entry.type ~= "upsert" then return "'type' must be 'override' or 'upsert'." end
+	if not isDenseArray(entry.charvis) or #entry.charvis == 0 then return "'charvis' must be a non-empty array." end
 	for i, cv in ipairs(entry.charvis) do
-		if not U.IsGuid(cv) then return string.format("'charvis[%d]' is not a valid UUID", i) end
+		if not U.IsGuid(cv) then return "'charvis[" .. i .. "]' is not a valid UUID." end
 	end
 	if entry.type == "override" and not U.IsGuid(entry.material) then return
 		"'material' must be a valid UUID (required for override)" end
 	if entry.overrides ~= nil then
-		if type(entry.overrides) ~= "table" then return "'overrides' must be an object" end
+		if type(entry.overrides) ~= "table" then return "'overrides' must be an object." end
 		local body = entry.overrides.body
 		if body ~= nil then
-			if type(body) ~= "table" then return "'overrides.body' must be an object" end
+			if type(body) ~= "table" then return "'overrides.body' must be an object." end
 			local err = parameterMapError("overrides.body.Scalars", body.Scalars)
 				 or parameterMapError("overrides.body.Vec3", body.Vec3, 3)
 				 or parameterMapError("overrides.body.Vec4", body.Vec4, 4)
@@ -351,7 +351,7 @@ local function collectEntries(mod, external, races)
 	for label, entry in pairs(data.Entries) do
 		local err = entryError(entry)
 		if err then
-			warnConfig(mod, string.format("Entry '%s' %s", label, err))
+			warnConfig(mod, "Entry '", label, "' ", err)
 		else
 			external[#external + 1] = entry
 		end
@@ -361,11 +361,11 @@ local function collectEntries(mod, external, races)
 			if U.IsGuid(race) then
 				races[race] = true
 			else
-				warnConfig(mod, string.format("Race '%s' is not a valid UUID", race))
+				warnConfig(mod, "Race '", race, "' is not a valid UUID.")
 			end
 		end
 	elseif data.Races ~= nil then
-		warnConfig(mod, "'Races' must be an array of UUIDs")
+		warnConfig(mod, "'Races' must be an array of UUIDs.")
 	end
 end
 
@@ -433,14 +433,14 @@ local function applyAll()
 	local raceCount = applyScalesPassives(races)
 	local elapsed = Ext.Timer.MonotonicTime() - start
 	if raceCount > 0 then
-		P.Debug():Raw("Materials and "):C21(raceCount):Raw(" races patched in "):C3(elapsed):Raw(" ms"):Print()
+		P.Debug():Raw("Materials and "):C21(raceCount):Raw(" races patched in "):C3(elapsed):Raw(" ms."):Print()
 	else
-		P.Debug():Raw("Materials patched in "):C3(elapsed):Raw(" ms"):Print()
+		P.Debug():Raw("Materials patched in "):C3(elapsed):Raw(" ms."):Print()
 	end
 end
 
 E.StatsLoaded.Subscribe(function()
-	P.Log():GradC(16, 21):G("[STAV] Snailzx Tattoos And VTs "):C17("v" .. U.Version):G(" loaded"):Print()
+	P.Log():GradC(16, 21):G("[STAV] Snailzx Tattoos And VTs "):C17("v", U.Version):G(" loaded."):Print()
 	applyAll()
 end)
 

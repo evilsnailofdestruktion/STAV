@@ -45,7 +45,7 @@ local function getRenderEntities()
 	local debugging = P.IsDebug()
 
 	for _, d in pairs(Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")) do
-		-- Prevents the panel elements from affecting the guardian in first CC
+		-- Prevents the panel elements from affecting the guardian in first CC.
 		local dummy = (d.CCCharacterDefinition or d.CCChangeAppearanceDefinition) and d.ClientCCDummyDefinition.Dummy
 		if dummy then
 			result[#result + 1] = dummy
@@ -88,7 +88,7 @@ local function getRenderEntities()
 			else
 				for i, d in ipairs(dummies) do
 					if i > 1 then b:Raw(" | ") end
-					b:Raw(d.tag .. ": "):C3(tostring(d.entity))
+					b:Raw(d.tag, ": "):C3(d.entity)
 				end
 			end
 			b:Print()
