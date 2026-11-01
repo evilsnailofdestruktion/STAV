@@ -185,7 +185,7 @@ local function patchHeadMats(objects)
 	for _, o in ipairs(objects or {}) do
 		if not patched[o.MaterialID] then
 			local mat = Ext.Resource.Get(o.MaterialID, "Material")
-			if isHeadMat(mat) then
+			if mat and isHeadMat(mat) then
 				local shader = headShaders[mat.SourceFile]
 				patched[o.MaterialID] = true
 				patchMaterial(mat, shader.headParams and Params.CompHeadParams or {}, shader.source)
