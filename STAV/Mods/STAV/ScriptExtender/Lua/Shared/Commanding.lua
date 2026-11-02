@@ -33,16 +33,16 @@ if Ext.IsClient() then
 
 	Ext.RegisterConsoleCommand("stav_race", function(_, sub, kind, uuid)
 		if sub ~= "gen" or (kind ~= "override" and kind ~= "upsert") or not uuid then
-			P.Log():C16("[STAV] "):C7("Usage: !stav_race gen <override|upsert> <mod uuid>"):Print()
+			P.Log():C16("[STAV] "):Raw("Usage: !stav_race gen <override|upsert> <mod uuid>"):Print()
 			return
 		end
 		if not U.IsGuid(uuid) then
-			P.Log():C16("[STAV] "):C7("Invalid mod UUID."):Print()
+			P.Log():C16("[STAV] "):Raw("Invalid mod UUID."):Print()
 			return
 		end
 		local mod = Ext.Mod.GetMod(uuid)
 		if not mod then
-			P.Log():C16("[STAV] "):C7("Mod not found or not loaded."):Print()
+			P.Log():C16("[STAV] "):Raw("Mod not found or not loaded."):Print()
 			return
 		end
 
@@ -82,7 +82,7 @@ if Ext.IsClient() then
 		end
 
 		if count == 0 then
-			P.Log():C16("[STAV] "):C7("No race charvis found for ", mod.Info.Name, "."):Print()
+			P.Log():C16("[STAV] "):Raw("No race charvis found for ", mod.Info.Name, "."):Print()
 			return
 		end
 

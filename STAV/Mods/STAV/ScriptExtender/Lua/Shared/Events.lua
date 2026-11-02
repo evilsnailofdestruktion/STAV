@@ -191,25 +191,25 @@ local function ccDummyParams(entity)
 end
 
 if Ext.IsServer() then
+	-- Appearance
+	E.ChangeAppearanceCancelled   = Event(OsirisEvent("ChangeAppearanceCancelled", 1, "after"), charParams)
+	E.ChangeAppearanceCompleted   = Event(OsirisEvent("ChangeAppearanceCompleted", 1, "after"), charParams)
+	E.StartChangeAppearance       = Event(OsirisEvent("StartChangeAppearance", 1, "after"), charParams)
 	-- Session
 	E.LevelGameplayStarted        = Event(OsirisEvent("LevelGameplayStarted", 2, "after"), levelParams)
-	-- Appearance
-	E.StartChangeAppearance       = Event(OsirisEvent("StartChangeAppearance", 1, "after"), charParams)
-	E.ChangeAppearanceCompleted   = Event(OsirisEvent("ChangeAppearanceCompleted", 1, "after"), charParams)
-	E.ChangeAppearanceCancelled   = Event(OsirisEvent("ChangeAppearanceCancelled", 1, "after"), charParams)
 end
 
 if Ext.IsClient() then
-	E.EquipmentVisualsUpdate  = Event(EcsSystemEvent("ClientEquipmentVisuals"))
-	E.ClientControlCreated    = Event(EcsCreateDeferredEvent("ClientControl"), entityParams)
 	E.CCDummyCreated          = Event(EcsCreateDeferredEvent("ClientCCDummyDefinition"), ccDummyParams)
 	E.CCDummyDestroyed        = Event(EcsDestroyDeferredEvent("ClientCCDummyDefinition"), entityParams)
+	E.ClientControlCreated    = Event(EcsCreateDeferredEvent("ClientControl"), entityParams)
+	E.EquipmentVisualsUpdate  = Event(EcsSystemEvent("ClientEquipmentVisuals"))
 	E.PhotoModeDummyCreated   = Event(EcsCreateDeferredEvent("PhotoModeDummy"), photoDummyParams)
 	E.PhotoModeDummyDestroyed = Event(EcsDestroyDeferredEvent("PhotoModeDummy"), entityParams)
 	E.TLPreviewDummyCreated   = Event(EcsCreateDeferredEvent("TLPreviewDummy"), entityParams)
 end
 
-E.StatsLoaded      = Event(ExtEvent(Ext.Events.StatsLoaded))
-E.GameStateChanged = Event(ExtEvent(Ext.Events.GameStateChanged))
+E.StatsLoaded			= Event(ExtEvent(Ext.Events.StatsLoaded))
+E.GameStateChanged	= Event(ExtEvent(Ext.Events.GameStateChanged))
 
 return E
