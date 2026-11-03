@@ -61,4 +61,19 @@ function U.PatchProgressions(tableUUIDs, field, entry, level)
 	return patched
 end
 
+function U.CountElements(tbl)
+	if not tbl then return 0 end
+	local count = 0
+	for _ in pairs(tbl) do count = count + 1 end
+	return count
+end
+
+function U.IsDenseArray(value)
+	if type(value) ~= "table" then return false end
+	for i = 1, U.CountElements(value) do
+		if value[i] == nil then return false end
+	end
+	return true
+end
+
 return U

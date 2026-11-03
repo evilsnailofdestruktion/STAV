@@ -9,16 +9,19 @@ local EMPORIUM      = "91994363-833a-4956-a552-acf0341c2e2e"
 local ENGINE_BLACK  = "8f1f209a-dd37-4531-b1ee-5e81c1d169cc"
 local STAV_BODY_MAT = "cd69fa48-def6-c323-ce85-07321817f10f" -- DRO_F_NKD_Body_A_000
 
----@type table<Guid, { ref: Guid, headParams?: boolean }>
+---@type table<string, { vanilla: Guid, ref: Guid, headParams?: boolean }>
 local HEAD_SHADERS  = {
-	["4d2f62a6-fa3e-34bf-0c30-5f5c5162f2a1"] = { ref = "8be29c42-9d39-85c0-fe1d-f475be72bfcf", headParams = true },
-	["8eb32fc4-bc52-0a77-972e-f51b668e2d4c"] = { ref = "788419de-0a61-d61e-bf4f-ce8f7098d6f7", headParams = true },
-	["81a56635-2d78-920d-79b9-cd64934a0844"] = { ref = "6054be7e-5084-b747-abd0-4c7e19768ba9", headParams = true },
-	["7d56755e-eacf-b236-c1b9-876b424b12ee"] = { ref = "fc6c66c5-c857-4d65-1076-b8f236a7ac13" }
+	["0"] = { vanilla = "4d2f62a6-fa3e-34bf-0c30-5f5c5162f2a1", ref = "8be29c42-9d39-85c0-fe1d-f475be72bfcf", headParams = true },
+	["1"] = { vanilla = "8eb32fc4-bc52-0a77-972e-f51b668e2d4c", ref = "788419de-0a61-d61e-bf4f-ce8f7098d6f7", headParams = true },
+	["2"] = { vanilla = "81a56635-2d78-920d-79b9-cd64934a0844", ref = "6054be7e-5084-b747-abd0-4c7e19768ba9", headParams = true },
+	["4"] = { vanilla = "7d56755e-eacf-b236-c1b9-876b424b12ee", ref = "fc6c66c5-c857-4d65-1076-b8f236a7ac13" }
 }
+local PARAM_LISTS   = { "ScalarParameters", "Vector2Parameters", "Vector3Parameters", "VectorParameters", "Texture2DParameters", "VirtualTextureParameters" }
+-- Some modded head shaders lack these.
+local OPTIONAL_HEAD_PARAMS = { "Texture2DParameters:WrinkleMapMSK", "Texture2DParameters:WrinkleMapNormal" }
 
 local sourceFile    = nil
----@type table<string, { source: string, headParams?: boolean }>
+---@type table<string, { names: table<string, boolean>, source: string, headParams?: boolean }>
 local headShaders   = {}
 local patched       = {}
 
@@ -62,7 +65,7 @@ end
 
 -- Credit to Volitio for most of this
 local function patchMaterial(mat, params, source)
-	if source then mat.SourceFile = source end
+	mat.SourceFile = source
 	for _, s in ipairs(params.Scalars or {}) do
 		applyParam(mat.ScalarParameters, { Enabled = false, ParameterName = s.name, Value = s.value, BaseValue = s.value })
 	end
@@ -95,7 +98,7 @@ local function presetParams(list, values, drop, isColour)
 	local out = {}
 	for _, p in pairs(list) do
 		if values[p.Parameter] == nil and drop[p.Parameter] == nil then
-			out[#out + 1] = { Parameter = p.Parameter, Value = p.Value, Enabled = p.Enabled, Color = p.Color, Custom = p .Custom }
+			out[#out + 1] = { Parameter = p.Parameter, Value = p.Value, Enabled = p.Enabled, Color = p.Color, Custom = p.Custom }
 		end
 	end
 	for _, p in ipairs(newParams(values, isColour)) do out[#out + 1] = p end
@@ -129,14 +132,14 @@ local function getCharvis(writes, charvis)
 end
 
 local function addMats(p, matIds, overrides)
-	local scalars, vecs, vec3s = newParams(overrides.Scalars, false), newParams(overrides.Vec4, false),  newParams(overrides.Vec3, true)
+	local scalars, vecs, vec3s = newParams(overrides.Scalars, false), newParams(overrides.Vec4, false), newParams(overrides.Vec3, true)
 	p.mats = p.mats or {}
 	for matId in pairs(matIds) do
 		p.mats[matId] = { MaterialResource = matId, ScalarParameters = scalars, VectorParameters = vecs, Vector3Parameters = vec3s, MaterialPresets = {} }
 	end
 end
 
-local function getDefaultBody(entry, p)
+local function queueOverrides(entry, p)
 	local objects = visualObjects(p.cv.VisualSet.BodySetVisual)
 	if not objects then return end
 	p.rmo = p.rmo or {}
@@ -145,7 +148,7 @@ local function getDefaultBody(entry, p)
 	if body then addMats(p, { [entry.material] = true }, body) end
 end
 
-local function getCompatBody(entry, p, source)
+local function patchBody(entry, p, source)
 	local objects = visualObjects(p.cv.VisualSet.BodySetVisual)
 	if not objects then return end
 	local matIds = {}
@@ -153,8 +156,10 @@ local function getCompatBody(entry, p, source)
 		if not patched[o.MaterialID] then
 			patched[o.MaterialID] = true
 			local mat = Ext.Resource.Get(o.MaterialID, "Material")
-			patchMaterial(mat, Params.CompBodyParams, source)
-			applyScar(mat, entry)
+			if mat then
+				patchMaterial(mat, Params.CompBodyParams, source)
+				applyScar(mat, entry)
+			end
 		end
 		matIds[o.MaterialID] = true
 	end
@@ -162,9 +167,26 @@ local function getCompatBody(entry, p, source)
 	if body and next(matIds) then addMats(p, matIds, body) end
 end
 
+local function paramNames(mat)
+	local names = {}
+	for _, list in ipairs(PARAM_LISTS) do
+		for _, p in pairs(mat[list]) do names[list .. ":" .. p.ParameterName] = true end
+	end
+	return names
+end
+
+local function hasParams(names, set)
+	for name in pairs(set) do
+		if not names[name] then return false end
+	end
+	return true
+end
+
 local function mapHeadShaders()
-	for vanilla, shader in pairs(HEAD_SHADERS) do
-		headShaders[Ext.Resource.Get(vanilla, "Material").SourceFile] = { source = Ext.Resource.Get(shader.ref, "Material").SourceFile, headParams = shader.headParams }
+	for lod, shader in pairs(HEAD_SHADERS) do
+		local names = paramNames(Ext.Resource.Get(shader.vanilla, "Material"))
+		for _, name in ipairs(OPTIONAL_HEAD_PARAMS) do names[name] = nil end
+		headShaders[lod] = { names = names, source = Ext.Resource.Get(shader.ref, "Material").SourceFile, headParams = shader.headParams }
 	end
 end
 
@@ -176,8 +198,16 @@ local function blanksAtlases(mat)
 	return false
 end
 
-local function isHeadMat(mat)
-	return mat.MaterialType == "Flesh" and headShaders[mat.SourceFile] and not blanksAtlases(mat)
+local function findHeadShader(mat)
+	if mat.MaterialType ~= "Flesh" or blanksAtlases(mat) then return nil end
+	local names = paramNames(mat)
+	for _, shader in pairs(headShaders) do
+		if hasParams(names, shader.names) then
+			local lod = mat.SourceFile:lower():match("lod(%d)[^/]*$") or "0"
+			return headShaders[lod == "3" and "2" or lod]
+		end
+	end
+	return nil
 end
 
 local function patchHeadMats(objects)
@@ -185,8 +215,8 @@ local function patchHeadMats(objects)
 	for _, o in ipairs(objects or {}) do
 		if not patched[o.MaterialID] then
 			local mat = Ext.Resource.Get(o.MaterialID, "Material")
-			if mat and isHeadMat(mat) then
-				local shader = headShaders[mat.SourceFile]
+			local shader = mat and findHeadShader(mat)
+			if shader then
 				patched[o.MaterialID] = true
 				patchMaterial(mat, shader.headParams and Params.CompHeadParams or {}, shader.source)
 			end
@@ -196,25 +226,14 @@ local function patchHeadMats(objects)
 	return heads
 end
 
-local function patchCCHeads()
-	local seen = {}
-	for _, id in ipairs(Ext.StaticData.GetAll("CharacterCreationAppearanceVisual")) do
-		local cc = Ext.StaticData.Get(id, "CharacterCreationAppearanceVisual")
-		if cc.SlotName == "Head" and cc.VisualResource ~= U.NULL_UUID and not seen[cc.VisualResource] then
-			seen[cc.VisualResource] = true
-			patchHeadMats(visualObjects(cc.VisualResource))
-		end
-	end
-end
-
-local function getHead(entry, p)
+local function patchHead(entry, p)
 	local matIds = {}
 	for _, o in ipairs(patchHeadMats(headObjects(p.cv))) do matIds[o.MaterialID] = true end
 	local head = entry.overrides and entry.overrides.head
 	if head and next(matIds) then addMats(p, matIds, head) end
 end
 
-local function getNPCHeads(writes)
+local function patchNPCHeads(writes)
 	for charvis, material in pairs(Vis.NPCHeads) do
 		local p = getCharvis(writes, charvis)
 		if p then
@@ -224,12 +243,12 @@ local function getNPCHeads(writes)
 	end
 end
 
-local function applyEntry(writes, entry, useCompat, source, withHead)
+local function applyEntry(writes, entry, source, withHead)
 	for _, charvis in ipairs(entry.charvis) do
 		local p = getCharvis(writes, charvis)
 		if p then
-			if useCompat then getCompatBody(entry, p, source) else getDefaultBody(entry, p) end
-			if withHead then getHead(entry, p) end
+			if source then patchBody(entry, p, source) else queueOverrides(entry, p) end
+			if withHead then patchHead(entry, p) end
 		end
 	end
 end
@@ -274,16 +293,6 @@ local function warnConfig(mod, ...)
 	P.Log():C1("[STAV] ", CONFIG_FILE, " (", mod.Info.Name, "): ", ...):Print()
 end
 
-local function isDenseArray(value)
-	if type(value) ~= "table" then return false end
-	local count = 0
-	for _ in pairs(value) do count = count + 1 end
-	for i = 1, count do
-		if value[i] == nil then return false end
-	end
-	return true
-end
-
 local function parameterMapError(label, value, width)
 	if value == nil then return nil end
 	if type(value) ~= "table" then return "'" .. label .. "' must be an object." end
@@ -293,7 +302,7 @@ local function parameterMapError(label, value, width)
 			if type(param) ~= "number" then return "'" .. label .. "." .. name .. "' must be a number." end
 		else
 			local expected = "'" .. label .. "." .. name .. "' must be a " .. width .. "-number array."
-			if not isDenseArray(param) or #param ~= width then return expected end
+			if not U.IsDenseArray(param) or #param ~= width then return expected end
 			for _, component in ipairs(param) do
 				if type(component) ~= "number" then return expected end
 			end
@@ -321,14 +330,13 @@ local function readConfig(mod)
 end
 
 local function entryError(entry)
-	if type(entry) ~= "table" then return "must be an object" end
+	if type(entry) ~= "table" then return "must be an object." end
 	if entry.type ~= "override" and entry.type ~= "upsert" then return "'type' must be 'override' or 'upsert'." end
-	if not isDenseArray(entry.charvis) or #entry.charvis == 0 then return "'charvis' must be a non-empty array." end
+	if not U.IsDenseArray(entry.charvis) or #entry.charvis == 0 then return "'charvis' must be a non-empty array." end
 	for i, cv in ipairs(entry.charvis) do
 		if not U.IsGuid(cv) then return "'charvis[" .. i .. "]' is not a valid UUID." end
 	end
-	if entry.type == "override" and not U.IsGuid(entry.material) then return
-		"'material' must be a valid UUID (required for override)" end
+	if entry.type == "override" and not U.IsGuid(entry.material) then return "'material' must be a valid UUID (required for override)." end
 	if entry.overrides ~= nil then
 		if type(entry.overrides) ~= "table" then return "'overrides' must be an object." end
 		local body = entry.overrides.body
@@ -356,7 +364,7 @@ local function collectEntries(mod, external, races)
 			external[#external + 1] = entry
 		end
 	end
-	if isDenseArray(data.Races) then
+	if U.IsDenseArray(data.Races) then
 		for _, race in ipairs(data.Races) do
 			if U.IsGuid(race) then
 				races[race] = true
@@ -389,8 +397,19 @@ local function applyScalesPassives(races)
 	return count
 end
 
+local function PatchCCHeads()
+	local seen = {}
+	for _, id in ipairs(Ext.StaticData.GetAll("CharacterCreationAppearanceVisual")) do
+		local cc = Ext.StaticData.Get(id, "CharacterCreationAppearanceVisual")
+		if cc.SlotName == "Head" and cc.VisualResource ~= U.NULL_UUID and not seen[cc.VisualResource] then
+			seen[cc.VisualResource] = true
+			patchHeadMats(visualObjects(cc.VisualResource))
+		end
+	end
+end
+
 -- Need to patch after Baldur's Emporium for the tattoos etc to be correct.
-local function applyCCOverrides()
+local function ApplyCCOverrides()
 	for _, entry in pairs(Vis.Companions) do
 		if entry.ccOverrides then
 			patchPresetData(Ext.Resource.Get(entry.ccOverrides.id, "CharacterVisual").VisualSet.MaterialOverrides, entry.ccOverrides)
@@ -398,35 +417,34 @@ local function applyCCOverrides()
 	end
 end
 
-local function applyAll()
+local function ApplyAll()
 	local start = Ext.Timer.MonotonicTime()
 	local base, targeted, external, races = scanLO()
 	local writes = {}
 
 	mapHeadShaders()
-	patchCCHeads()
+	PatchCCHeads()
 	for _, entry in pairs(Vis.Companions) do
-		applyEntry(writes, entry, base, base and entrySourceFile(entry), true)
+		applyEntry(writes, entry, base and entrySourceFile(entry), true)
 		if entry.skinMatPreset then
 			patchPresetData(Ext.Resource.Get(entry.skinMatPreset.id, "MaterialPreset").Presets, entry.skinMatPreset)
 		end
 	end
-	if not Ext.Mod.IsModLoaded(EMPORIUM) then applyCCOverrides() end
-	getNPCHeads(writes)
+	if not Ext.Mod.IsModLoaded(EMPORIUM) then ApplyCCOverrides() end
+	patchNPCHeads(writes)
 
 	for _, entry in pairs(Vis.Player) do
-		applyEntry(writes, entry, false, nil, false)
+		applyEntry(writes, entry, nil, false)
 	end
 
 	for _, spec in ipairs(targeted) do
 		for _, entry in pairs(spec) do
-			applyEntry(writes, entry, true, entrySourceFile(entry), true)
+			applyEntry(writes, entry, entrySourceFile(entry), true)
 		end
 	end
 
 	for _, entry in ipairs(external) do
-		local compat = entry.type ~= "override"
-		applyEntry(writes, entry, compat, compat and stavSourceFile() or nil, false)
+		applyEntry(writes, entry, entry.type ~= "override" and stavSourceFile(), false)
 	end
 
 	commit(writes)
@@ -441,12 +459,19 @@ end
 
 E.StatsLoaded.Subscribe(function()
 	P.Log():GradC(16, 21):G("[STAV] Snailzx Tattoos And VTs "):C17("v", U.Version):G(" loaded."):Print()
-	applyAll()
+	ApplyAll()
 end)
 
 -- Retry in case StatsLoaded didn't patch them.
 E.GameStateChanged.Subscribe(function(e)
-	if e.FromState == "LoadModule" then patchCCHeads() end
+	if e.FromState == "LoadModule" then PatchCCHeads() end
 end)
 
-Ext.ModEvents.BaldursEmporium.CharvisPatched:Subscribe(applyCCOverrides)
+Ext.ModEvents.BaldursEmporium.CharvisPatched:Subscribe(ApplyCCOverrides)
+
+return {
+	HEAD_SHADERS         = HEAD_SHADERS,
+	OPTIONAL_HEAD_PARAMS = OPTIONAL_HEAD_PARAMS,
+	paramNames           = paramNames,
+	blanksAtlases        = blanksAtlases
+}

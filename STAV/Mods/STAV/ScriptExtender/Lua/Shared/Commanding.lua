@@ -1,34 +1,264 @@
 local U = Ext.Require("Shared/Utility.lua")
 local P = Ext.Require("Shared/Printing.lua")
 
-Ext.RegisterConsoleCommand("stav_head_check", function(_)
-	local owner, broken = {}, 0
-	for mod, ids in pairs(Ext.StaticData.GetSources("CharacterCreationAppearanceVisual")) do
-		for _, id in pairs(ids) do owner[id] = mod end
-	end
-	for _, id in ipairs(Ext.StaticData.GetAll("CharacterCreationAppearanceVisual")) do
-		local cc = Ext.StaticData.Get(id, "CharacterCreationAppearanceVisual")
-		local visual = cc.SlotName == "Head" and Ext.Resource.Get(cc.VisualResource, "Visual")
-		local listed = false
-		for _, o in ipairs(visual and visual.Objects or {}) do
-			if not Ext.Resource.Get(o.MaterialID, "Material") then
-				if not listed then
-					local mod = owner[id] and Ext.Mod.GetMod(owner[id])
-					-- Ext.Mod.GetMod(owner[id]) should normally never be nil but just in case.
-					P.Log():C16("[STAV] "):C5(mod and mod.Info.Name or owner[id] or "Created at runtime"):Raw(": ", cc.DisplayName:Get() or id):C3(" [", cc.VisualResource, "]."):Print()
-					listed = true
-				end
-				broken = broken + 1
-				P.Log():Raw("    "):C3(o.ObjectID):C1(" ", o.MaterialID == "" and "has no material" or "uses missing material " .. o.MaterialID, "."):Print()
-			end
-		end
-	end
-	P.Log():C16("[STAV] "):C3(broken):Raw(" head objects with a missing material."):Print()
-end)
-
 if Ext.IsClient() then
+	local O = Ext.Require("Client/Overriding.lua")
+
 	Ext.RegisterConsoleCommand("stav", function(_)
 		STAVToggleUI()
+	end)
+
+	local BUILT_IN = { Shared = true, SharedDev = true, STAV = true }
+	local RUNTIME  = { Info = { Name = "Created at runtime", ModuleUUID = U.NULL_UUID } }
+
+	local function publicDir(path)
+		return path:match("[Pp]ublic/([^/]+)/[Aa]ssets/")
+	end
+
+	local function shaderLOD(path)
+		local lod = path:lower():match("lod(%d)[^/]*$") or "0"
+		return lod == "3" and "2" or lod
+	end
+
+	local function meshName(objectId)
+		return objectId:match("^[^.]+%.(.+)%.%d+$") or objectId
+	end
+
+	local function writeParams(log, names)
+		if #names > 10 then return log:C4(#names):C7(" params") end
+		for i, name in ipairs(names) do
+			log:C7(i > 1 and ", " or ""):C4(name:match(":(.+)$") or name)
+		end
+		return log
+	end
+
+	local function compareHead(names, refs, optional)
+		local isHead, best = false, nil
+		for lod, ref in pairs(refs) do
+			local missing, extra, required = {}, {}, 0
+			for name in pairs(ref) do
+				if not names[name] then
+					missing[#missing + 1] = name
+					if not optional[name] then required = required + 1 end
+				end
+			end
+			for name in pairs(names) do
+				if not ref[name] then extra[#extra + 1] = name end
+			end
+			isHead = isHead or required == 0
+			if not best or #missing + #extra < #best.missing + #best.extra then
+				best = { lod = lod, missing = missing, extra = extra }
+			end
+		end
+		table.sort(best.missing)
+		table.sort(best.extra)
+		return isHead, best
+	end
+
+	local function addIssue(head, issue)
+		head.issues[#head.issues + 1] = issue
+		head.has[issue.kind] = true
+	end
+
+	local function collectHeads(modId)
+		local refs, optional, owner = {}, {}, {}
+		for lod, shader in pairs(O.HEAD_SHADERS) do
+			refs[lod] = O.paramNames(Ext.Resource.Get(shader.vanilla, "Material"))
+		end
+		for _, name in ipairs(O.OPTIONAL_HEAD_PARAMS) do optional[name] = true end
+		for mod, ids in pairs(Ext.StaticData.GetSources("CharacterCreationAppearanceVisual")) do
+			for _, id in pairs(ids) do owner[id] = mod end
+		end
+
+		local heads, seen, users, flawed = {}, {}, {}, {}
+		for _, id in ipairs(Ext.StaticData.GetAll("CharacterCreationAppearanceVisual")) do
+			local cc = Ext.StaticData.Get(id, "CharacterCreationAppearanceVisual")
+			local visualId = cc.VisualResource
+			if cc.SlotName == "Head" and visualId ~= U.NULL_UUID and not seen[visualId] then
+				seen[visualId] = true
+				-- Ext.Mod.GetMod(owner[id]) should normally never be nil but just in case.
+				local mod = owner[id] and Ext.Mod.GetMod(owner[id]) or RUNTIME
+				if not modId or mod.Info.ModuleUUID == modId then
+					local visual = Ext.Resource.Get(visualId, "Visual")
+					local head = {
+						mod = mod,
+						id = visualId,
+						display = cc.DisplayName:Get() or id,
+						name = visual and visual.SourceFile:match("([^/]+)%.%w+$") or "missing visual",
+						issues = {},
+						has = {}
+					}
+					heads[#heads + 1] = head
+					if not visual then addIssue(head, { kind = "missingVisual" }) end
+
+					local patchable, builtIn, skipped = false, true, {}
+					for _, o in ipairs(visual and visual.Objects or {}) do
+						local mesh, mat = meshName(o.ObjectID), Ext.Resource.Get(o.MaterialID, "Material")
+						if not mat then
+							addIssue(head, { kind = "missingMaterial", mesh = mesh, id = o.MaterialID })
+						else
+							local dir, shader = publicDir(mat.SourceFile), mat.SourceFile:match("[^/]+$")
+							builtIn = builtIn and BUILT_IN[dir] ~= nil
+							local isHead, best = compareHead(O.paramNames(mat), refs, optional)
+							if isHead and mat.MaterialType == "Flesh" and not O.blanksAtlases(mat) then
+								patchable = true
+								users[o.MaterialID] = users[o.MaterialID] or {}
+								users[o.MaterialID][head] = mesh
+
+								local lod, before = shaderLOD(mat.SourceFile), #head.issues
+								if dir ~= "STAV" then addIssue(head, { kind = "unpatched", mesh = mesh, shader = shader, matched = true }) end
+								if #best.missing > 0 then addIssue(head, { kind = "lacksParams", mesh = mesh, params = best.missing }) end
+								if #best.extra > 0 then addIssue(head, { kind = "extraParams", mesh = mesh, params = best.extra }) end
+								if best.lod ~= lod then addIssue(head, { kind = "wrongLOD", mesh = mesh, from = best.lod, to = lod }) end
+								if #head.issues > before then flawed[o.MaterialID] = true end
+							else
+								skipped[#skipped + 1] = {
+									kind = "unpatched",
+									mesh = mesh,
+									shader = shader,
+									materialType = mat.MaterialType ~= "Flesh" and tostring(mat.MaterialType) or nil,
+									blanks = O.blanksAtlases(mat),
+									params = best.missing
+								}
+							end
+						end
+					end
+					if visual and not patchable and not builtIn then
+						for _, issue in ipairs(skipped) do addIssue(head, issue) end
+					end
+				end
+			end
+		end
+
+		local shaders, scanned, copied = {}, {}, {}
+		for _, head in ipairs(heads) do
+			local dir = head.mod.Info.Directory
+			if dir and not BUILT_IN[dir] and not scanned[dir] then
+				scanned[dir] = true
+				local root = "Public/" .. dir .. "/Content"
+				for _, file in ipairs(Ext.IO.FindFiles(root, "*.lsf", "data", true)) do
+					local raw = Ext.IO.LoadFile(root .. "/" .. file, "data") or ""
+					for matId, using in pairs(users) do
+						local at = not copied[matId] and raw:find(matId, 1, true)
+						local shader = at and raw:match("([%w_%-%./]+%.lsf)", at + #matId)
+						if shader and not BUILT_IN[publicDir(shader)] then
+							copied[matId] = true
+							shaders[shader] = true
+							flawed[matId] = true
+							for user, mesh in pairs(using) do
+								addIssue(user, { kind = "ownShader", mesh = mesh, shader = shader:match("[^/]+$") })
+							end
+						end
+					end
+				end
+			end
+		end
+
+		return heads, flawed, users, shaders
+	end
+
+	local function printIssue(issue)
+		local log = P.Log():C7("      ")
+		if issue.kind == "missingVisual" then
+			log:C7("Visual does not resolve."):Print()
+			return
+		end
+
+		log:C5(issue.mesh)
+		if issue.kind == "missingMaterial" then
+			if issue.id == "" then
+				log:C7(" has no material.")
+			else
+				log:C7(" uses missing material ["):C3(issue.id):C7("].")
+			end
+		elseif issue.kind == "ownShader" then
+			log:C7(" uses its own copy of the head shader ["):C17(issue.shader):C7("].")
+		elseif issue.kind == "lacksParams" then
+			writeParams(log:C7(" lacks "), issue.params):C7(".")
+		elseif issue.kind == "extraParams" then
+			writeParams(log:C7(" adds "), issue.params):C7(".")
+		elseif issue.kind == "wrongLOD" then
+			log:C7(" carries LOD", issue.from, " params on a LOD", issue.to, " shader.")
+		elseif issue.matched then
+			log:C7(" matches a head shader but is not patched ["):C17(issue.shader):C7("].")
+		else
+			log:C7(" ["):C17(issue.shader):C7("] ")
+			if issue.materialType then
+				log:C7("is a ", issue.materialType, " material.")
+			elseif issue.blanks then
+				log:C7("blanks its atlases.")
+			else
+				writeParams(log:C7("lacks "), issue.params):C7(".")
+			end
+		end
+		log:Print()
+	end
+
+	local function countHeads(heads, issue)
+		local count = 0
+		for _, head in ipairs(heads) do
+			if head.has[issue] then count = count + 1 end
+		end
+		return count
+	end
+
+	local function printSection(title, heads, issue)
+		local counts, mods = {}, {}
+		for _, head in ipairs(heads) do
+			if head.has[issue] then
+				if not counts[head.mod] then
+					counts[head.mod] = 0
+					mods[#mods + 1] = head.mod
+				end
+				counts[head.mod] = counts[head.mod] + 1
+			end
+		end
+		if #mods == 0 then return end
+
+		P.Log():C7(title):Print()
+		for _, mod in ipairs(mods) do
+			P.Log():C2("   " .. mod.Info.Name):C7(" ["):C21(mod.Info.ModuleUUID):C7("]: "):C1(counts[mod]):C7(" heads."):Print()
+		end
+	end
+
+	-- Someone deliver me from this lunacy that is visual modding.
+	Ext.RegisterConsoleCommand("stav_heads_check", function(_, modId)
+		if modId then
+			local mod = U.IsGuid(modId) and Ext.Mod.GetMod(modId)
+			if not mod then
+				P.Log():C16("[STAV] "):C7("Mod not found or not loaded."):Print()
+				return
+			end
+			local heads = collectHeads(modId)
+			for _, head in ipairs(heads) do
+				if #head.issues > 0 then
+					P.Log():C7("=== "):C21(head.display):C23(" - "):C23(head.name):C7(" ["):C2(head.id):C7("]"):Print()
+					for _, issue in ipairs(head.issues) do printIssue(issue) end
+				end
+			end
+			P.Log():C16("[STAV] "):C3(#heads):C7(" heads checked for "):C2(mod.Info.Name):C7("."):Print()
+			return
+		end
+
+		local heads, flawed, users, shaders = collectHeads()
+		local flawedHeads = {}
+		for matId in pairs(flawed) do
+			for user in pairs(users[matId]) do flawedHeads[user] = true end
+		end
+
+		printSection("=== Mods with head visuals that do not resolve:", heads, "missingVisual")
+		printSection("=== Mods with heads using missing materials:", heads, "missingMaterial")
+		printSection("=== Mods using their own copy of the head shader:", heads, "ownShader")
+		printSection("=== Modded head materials missing params:", heads, "lacksParams")
+		printSection("=== Modded head materials with additional params:", heads, "extraParams")
+		printSection("=== Modded head materials carrying another LOD's params:", heads, "wrongLOD")
+
+		P.Log():C16("[STAV] "):C3(#heads):C7(" heads checked: ")
+			:C3(countHeads(heads, "missingVisual")):C7(" missing visuals, ")
+			:C3(countHeads(heads, "missingMaterial")):C7(" missing materials, ")
+			:C3(countHeads(heads, "unpatched")):C7(" heads not patched, ")
+			:C3(U.CountElements(flawed)):C7(" head materials with issues across "):C3(U.CountElements(flawedHeads)):C7(" heads, ")
+			:C3(U.CountElements(shaders)):C7(" custom head shaders."):Print()
 	end)
 
 	Ext.RegisterConsoleCommand("stav_race", function(_, sub, kind, uuid)
