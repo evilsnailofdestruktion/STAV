@@ -7,10 +7,13 @@ local E              = Ext.Require("Shared/Events.lua")
 local L              = Ext.Require("Shared/Localization.lua")
 local P              = Ext.Require("Shared/Printing.lua")
 local Map            = Ext.Require("Client/UIMap.lua")
+local Timelining     = Ext.Require("Client/Timelining.lua")
 
 local SLIDER_RESERVE = 286
 
 local UI             = {}
+
+Timelining.SetUI(UI)
 
 local function copyState(src)
 	local out = {}
@@ -27,13 +30,6 @@ UI.State = copyState(DEFAULTS)
 
 UI.Widgets = {}
 
-local function resolveCharacter()
-	local char = _C()
-	if not char then return nil end
-	if char.Level.LevelName == "SYS_CC_I" then return nil end
-	return char
-end
-
 local function sendLook(characterUUID)
 	NetDefs.NET_APPLY:SendToServer({
 		characterUUID = characterUUID,
@@ -47,7 +43,7 @@ local function syncToServer()
 	if sendTimer then return end
 	sendTimer = Ext.Timer.WaitFor(300, function()
 		sendTimer = nil
-		local char = resolveCharacter()
+		local char = Applying.resolveCharacter()
 		if char then sendLook(char.Uuid.EntityUuid) end
 	end)
 end
@@ -359,7 +355,7 @@ local charPresets = {}
 
 local function recordActive(name)
 	UI.ActivePresetName = name
-	local char = resolveCharacter()
+	local char = Applying.resolveCharacter()
 	if char then charPresets[char.Uuid.EntityUuid] = (name ~= "" and name) or nil end
 end
 
@@ -630,63 +626,12 @@ E.PhotoModeDummyDestroyed.Subscribe(function()
 	end
 end)
 
-local TL_RETRY_MS  = 333
-local TL_MAX_TRIES = 3
-
-local function findTimelineOwner(actor)
-	for _, e in pairs(Ext.Entity.GetAllEntitiesWithComponent("Origin")) do
-		if e.TimelineActorData and e.TimelineActorData.Actor == actor then return e end
-	end
-end
-
-local function applyTimelineLook(e)
-	local tac = e.ClientTimelineActorControl
-	if not tac then return end
-	local owner = findTimelineOwner(tac.Actor)
-	local look = owner and Vars.GetLook(owner)
-	if not look then
-		local own = resolveCharacter()
-		if own and e.TLPreviewDummy.OriginalCharacterTemplate == own.GameObjectVisual.RootTemplateId then
-			look = Vars.GetLook(own)
-			if not look and UI.Changed then look = UI.State end
-		end
-	end
-	if not look then return end
-	P.Debug():Raw("TL "):C21(e.TLPreviewDummy.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")."):Print()
-	Applying.ApplyLookToEntity(e, look)
-end
-
-local function applyWhenReady(e)
-	local tries = 0
-	local function attempt()
-		tries = tries + 1
-		if e.Visual and e.Visual.Visual then
-			applyTimelineLook(e)
-		elseif tries < TL_MAX_TRIES then
-			Ext.Timer.WaitFor(TL_RETRY_MS, attempt)
-		end
-	end
-	Ext.Timer.WaitFor(TL_RETRY_MS, attempt)
-end
-
-local function applyToTimelineDummies()
-	for _, e in pairs(Ext.Entity.GetAllEntitiesWithComponent("TLPreviewDummy")) do
-		local tl = e.TLPreviewDummy
-		if tl and tl.OriginalCharacterTemplate ~= "" then applyWhenReady(e) end
-	end
-end
-
-E.TLPreviewDummyCreated.Subscribe(function(p)
-	if p.Entity.TLPreviewDummy.OriginalCharacterTemplate == "" then return end
-	applyWhenReady(p.Entity)
-end)
-
 NetDefs.NET_APPLY_SYNC:SetHandler(function(data)
 	Applying.ApplyLocalPreset(data.preset, data.characterUUID, data.state)
 end)
 
 NetDefs.NET_AVATAR_PING:SetHandler(function()
-	local char = resolveCharacter()
+	local char = Applying.resolveCharacter()
 	if not char then return end
 	local uuid = char.Uuid.EntityUuid
 	local look = Vars.GetLook(char)
@@ -697,5 +642,5 @@ NetDefs.NET_AVATAR_PING:SetHandler(function()
 		P.Debug():Raw("Avatar ping: resending unsynced look for "):Name(uuid):Print()
 		sendLook(uuid)
 	end
-	if look or UI.Changed then applyToTimelineDummies() end
+	if look or UI.Changed then Timelining.ApplyToTimelineDummies() end
 end)

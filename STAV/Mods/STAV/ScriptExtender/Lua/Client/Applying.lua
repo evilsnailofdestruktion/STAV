@@ -37,6 +37,13 @@ local function walkMaterials(entity, fn)
 	end
 end
 
+function A.resolveCharacter()
+	local char = _C()
+	if not char then return nil end
+	if char.Level.LevelName == "SYS_CC_I" then return nil end
+	return char
+end
+
 local lastKey = nil
 
 local function getRenderEntities()
@@ -55,7 +62,7 @@ local function getRenderEntities()
 			end
 		end
 	end
-	local target = _C()
+	local target = A.resolveCharacter()
 	for _, pm in pairs(Ext.Entity.GetAllEntitiesWithComponent("PhotoModeDummy")) do
 		local char = pm.PhotoModeDummy.Entity
 		if char and target and char.Uuid.EntityUuid == target.Uuid.EntityUuid then
@@ -70,7 +77,7 @@ local function getRenderEntities()
 		end
 	end
 
-	if target and target.Level.LevelName ~= "SYS_CC_I" then
+	if target then
 		result[#result + 1] = target
 		if debugging then
 			dummies[#dummies + 1] = { tag = "Live", entity = target }

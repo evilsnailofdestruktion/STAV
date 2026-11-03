@@ -4,13 +4,15 @@ local P             = Ext.Require("Shared/Printing.lua")
 local U             = Ext.Require("Shared/Utility.lua")
 local Vis           = Ext.Require("Shared/Visualising.lua")
 
+local O = {}
+
 local CONFIG_FILE   = "STAVConfig.json"
 local EMPORIUM      = "91994363-833a-4956-a552-acf0341c2e2e"
 local ENGINE_BLACK  = "8f1f209a-dd37-4531-b1ee-5e81c1d169cc"
 local STAV_BODY_MAT = "cd69fa48-def6-c323-ce85-07321817f10f" -- DRO_F_NKD_Body_A_000
 
 ---@type table<string, { vanilla: Guid, ref: Guid, headParams?: boolean }>
-local HEAD_SHADERS  = {
+O.HEAD_SHADERS      = {
 	["0"] = { vanilla = "4d2f62a6-fa3e-34bf-0c30-5f5c5162f2a1", ref = "8be29c42-9d39-85c0-fe1d-f475be72bfcf", headParams = true },
 	["1"] = { vanilla = "8eb32fc4-bc52-0a77-972e-f51b668e2d4c", ref = "788419de-0a61-d61e-bf4f-ce8f7098d6f7", headParams = true },
 	["2"] = { vanilla = "81a56635-2d78-920d-79b9-cd64934a0844", ref = "6054be7e-5084-b747-abd0-4c7e19768ba9", headParams = true },
@@ -18,7 +20,7 @@ local HEAD_SHADERS  = {
 }
 local PARAM_LISTS   = { "ScalarParameters", "Vector2Parameters", "Vector3Parameters", "VectorParameters", "Texture2DParameters", "VirtualTextureParameters" }
 -- Some modded head shaders lack these.
-local OPTIONAL_HEAD_PARAMS = { "Texture2DParameters:WrinkleMapMSK", "Texture2DParameters:WrinkleMapNormal" }
+O.OPTIONAL_HEAD_PARAMS = { "Texture2DParameters:WrinkleMapMSK", "Texture2DParameters:WrinkleMapNormal" }
 
 local sourceFile    = nil
 ---@type table<string, { names: table<string, boolean>, source: string, headParams?: boolean }>
@@ -167,7 +169,7 @@ local function patchBody(entry, p, source)
 	if body and next(matIds) then addMats(p, matIds, body) end
 end
 
-local function paramNames(mat)
+function O.paramNames(mat)
 	local names = {}
 	for _, list in ipairs(PARAM_LISTS) do
 		for _, p in pairs(mat[list]) do names[list .. ":" .. p.ParameterName] = true end
@@ -183,15 +185,15 @@ local function hasParams(names, set)
 end
 
 local function mapHeadShaders()
-	for lod, shader in pairs(HEAD_SHADERS) do
-		local names = paramNames(Ext.Resource.Get(shader.vanilla, "Material"))
-		for _, name in ipairs(OPTIONAL_HEAD_PARAMS) do names[name] = nil end
+	for lod, shader in pairs(O.HEAD_SHADERS) do
+		local names = O.paramNames(Ext.Resource.Get(shader.vanilla, "Material"))
+		for _, name in ipairs(O.OPTIONAL_HEAD_PARAMS) do names[name] = nil end
 		headShaders[lod] = { names = names, source = Ext.Resource.Get(shader.ref, "Material").SourceFile, headParams = shader.headParams }
 	end
 end
 
 -- Heuristics to ensure we patch head mats only (Wyll's Horns mostly).
-local function blanksAtlases(mat)
+function O.blanksAtlases(mat)
 	for _, p in pairs(mat.Texture2DParameters) do
 		if (p.ParameterName == "TattooAtlas" or p.ParameterName == "MakeUpAtlas") and p.Enabled and p.ID == ENGINE_BLACK then return true end
 	end
@@ -199,8 +201,8 @@ local function blanksAtlases(mat)
 end
 
 local function findHeadShader(mat)
-	if mat.MaterialType ~= "Flesh" or blanksAtlases(mat) then return nil end
-	local names = paramNames(mat)
+	if mat.MaterialType ~= "Flesh" or O.blanksAtlases(mat) then return nil end
+	local names = O.paramNames(mat)
 	for _, shader in pairs(headShaders) do
 		if hasParams(names, shader.names) then
 			local lod = mat.SourceFile:lower():match("lod(%d)[^/]*$") or "0"
@@ -469,9 +471,4 @@ end)
 
 Ext.ModEvents.BaldursEmporium.CharvisPatched:Subscribe(ApplyCCOverrides)
 
-return {
-	HEAD_SHADERS         = HEAD_SHADERS,
-	OPTIONAL_HEAD_PARAMS = OPTIONAL_HEAD_PARAMS,
-	paramNames           = paramNames,
-	blanksAtlases        = blanksAtlases
-}
+return O
