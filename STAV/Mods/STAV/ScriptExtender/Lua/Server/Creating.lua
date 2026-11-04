@@ -89,11 +89,13 @@ local function applyToCharacter(charUUID)
 
 	if applyElements(entity, slot.ccam, look) then
 		entity:Replicate("CharacterCreationAppearance")
-		NetDefs.NET_APPLY_SYNC:Broadcast({
-			characterUUID = charUUID,
-			preset        = slot.preset,
-			state         = look,
-		})
+		Ext.Timer.WaitFor(333, function()
+			NetDefs.NET_APPLY_SYNC:Broadcast({
+				characterUUID = charUUID,
+				preset        = slot.preset,
+				state         = look
+			})
+		end)
 		P.Debug():Raw("Applied look to "):Name(charUUID):Raw(" (slot "):C3(slotIdx):Raw(")"):Print()
 	end
 end
@@ -112,7 +114,7 @@ E.ChangeAppearanceCancelled.Subscribe(function(p)
 end)
 
 -- On level load: ping clients (first-CC clients resend their in-memory look once their
--- avatar resolves) and re-apply any persisted look per avatar (reload case).
+-- avatar resolves) and re-apply any persisted look per team member (reload case).
 local didInitialApply = false
 
 E.LevelGameplayStarted.Subscribe(function()
@@ -120,7 +122,7 @@ E.LevelGameplayStarted.Subscribe(function()
 		NetDefs.NET_AVATAR_PING:Broadcast({})
 		if didInitialApply then return end
 		didInitialApply = true
-		for _, row in ipairs(Osi.DB_Players:Get(nil)) do
+		for _, row in ipairs(Osi.DB_PartOfTheTeam:Get(nil)) do
 			applyToCharacter(U.Guid(row[1]))
 		end
 	end)

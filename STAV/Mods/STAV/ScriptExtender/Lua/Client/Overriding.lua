@@ -107,6 +107,18 @@ local function presetParams(list, values, drop, isColour)
 	return out
 end
 
+local function replaceParams(data, spec)
+	for field, values in pairs({ ScalarParameters = spec.Scalars, VectorParameters = spec.Vec4, Vector3Parameters = spec.Vec3 }) do
+		local out, replaced = {}, false
+		for _, p in pairs(data[field]) do
+			local value = values[p.Parameter]
+			if value ~= nil then replaced = true else value = p.Value end
+			out[#out + 1] = { Parameter = p.Parameter, Value = value, Enabled = p.Enabled, Color = p.Color, Custom = p.Custom }
+		end
+		if replaced then data[field] = out end
+	end
+end
+
 local function patchPresetData(data, spec)
 	local vec4             = spec.Vec4 or {}
 	data.ScalarParameters  = presetParams(data.ScalarParameters, spec.Scalars or {}, vec4, false)
@@ -119,6 +131,7 @@ end
 ---@field cv ResourceCharacterVisualResource
 ---@field rmo? table<string, Guid>
 ---@field mats? table<Guid, table>
+---@field head? STAVOverrides
 ---@return STAVCharvisWrite?
 local function getCharvis(writes, charvis)
 	local p = writes[charvis]
@@ -232,7 +245,10 @@ local function patchHead(entry, p)
 	local matIds = {}
 	for _, o in ipairs(patchHeadMats(headObjects(p.cv))) do matIds[o.MaterialID] = true end
 	local head = entry.overrides and entry.overrides.head
-	if head and next(matIds) then addMats(p, matIds, head) end
+	if head and next(matIds) then
+		addMats(p, matIds, head)
+		p.head = head
+	end
 end
 
 local function patchNPCHeads(writes)
@@ -288,6 +304,7 @@ local function commit(writes)
 				end
 			end
 		end
+		if p.head then replaceParams(p.cv.VisualSet.MaterialOverrides, p.head) end
 	end
 end
 
@@ -453,9 +470,9 @@ local function ApplyAll()
 	local raceCount = applyScalesPassives(races)
 	local elapsed = Ext.Timer.MonotonicTime() - start
 	if raceCount > 0 then
-		P.Debug():Raw("Materials and "):C21(raceCount):Raw(" races patched in "):C3(elapsed):Raw(" ms."):Print()
+		P.Debug():Raw("Heads, materials and "):C21(raceCount):Raw(" races patched in "):C3(elapsed):Raw(" ms."):Print()
 	else
-		P.Debug():Raw("Materials patched in "):C3(elapsed):Raw(" ms."):Print()
+		P.Debug():Raw("Heads and materials patched in "):C3(elapsed):Raw(" ms."):Print()
 	end
 end
 

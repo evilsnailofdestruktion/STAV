@@ -210,6 +210,7 @@ if Ext.IsClient() then
 end
 
 E.StatsLoaded			= Event(ExtEvent(Ext.Events.StatsLoaded))
+E.SessionLoaded		= Event(ExtEvent(Ext.Events.SessionLoaded))
 E.GameStateChanged	= Event(ExtEvent(Ext.Events.GameStateChanged))
 E.Tick					= Event(ExtEvent(Ext.Events.Tick))
 

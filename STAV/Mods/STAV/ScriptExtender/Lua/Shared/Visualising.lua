@@ -4,6 +4,7 @@
 ---@field Vec4? table<string, number[]>
 
 ---@class STAVVisEntry
+---@field uuid? Guid
 ---@field charvis Guid[]
 ---@field material? Guid
 ---@field scarMap? Guid
@@ -286,6 +287,7 @@ local PLAYER_VIS = {
 ---@type table<string, STAVVisEntry>
 local COMPANIONS_VIS = {
 	Astarion = {
+		uuid = "c7c13742-bacd-460a-8f65-f864fe41f255",
 		charvis   = {
 			"14c23242-b819-0d30-f5ba-5e6c9b4b6088",
 			"6788a271-9ad5-074f-8a5f-12b7dcb29174",
@@ -308,6 +310,7 @@ local COMPANIONS_VIS = {
 		scarMapNM = "5ef09d5a-b114-e5b4-8ba0-1d6e67170242"
 	},
 	Gale = {
+		uuid = "ad9af97d-75da-406a-ae13-7071c563f604",
 		charvis   = {
 			"04262cdf-e58d-606d-af9f-a29d72643644",
 			"1a4faa8c-7fca-1f62-e499-87d362d90512",
@@ -336,6 +339,7 @@ local COMPANIONS_VIS = {
 		}
 	},
 	GaleNoTats = {
+		uuid = "ad9af97d-75da-406a-ae13-7071c563f604",
 		charvis   = {
 			"9be0bb8c-8ee2-4edb-86e9-1bf024acba67"
 		},
@@ -353,6 +357,7 @@ local COMPANIONS_VIS = {
 		},
 	},
 	Halsin = {
+		uuid = "7628bc0e-52b8-42a7-856a-13a6fd413323",
 		charvis   = {
 			"b7830265-b4d4-3419-bd41-1fe1099ccf16",
 			"881301f4-4ccb-29ae-4336-3abf9cfba9f0",
@@ -369,6 +374,7 @@ local COMPANIONS_VIS = {
 		},
 	},
 	Jaheira = {
+		uuid = "91b6b200-7d00-4d62-8dc9-99e8339dfa1a",
 		charvis   = {
 			"b90c6552-4529-e6ef-1084-34c56eca1521",
 			"f09fbd8b-ee7d-4142-5a69-2be414c8852c",
@@ -379,6 +385,7 @@ local COMPANIONS_VIS = {
 		scarMapNM = "df8d649a-a7ff-246a-74f7-6e0c5894508d"
 	},
 	Karlach = {
+		uuid = "2c76687d-93a2-477b-8b18-8a14b549304c",
 		charvis   = {
 			"2dd12288-c71c-7db2-925c-2f884c1727bc",
 			"7abb8ab4-2f85-8785-2762-ff11afc6f372",
@@ -396,6 +403,7 @@ local COMPANIONS_VIS = {
 		},
 	},
 	KarlachNoGlow = {
+		uuid = "2c76687d-93a2-477b-8b18-8a14b549304c",
 		charvis   = {
 			"5757770a-12aa-a3f6-35dd-39beeaf5489d"
 		},
@@ -409,6 +417,7 @@ local COMPANIONS_VIS = {
 		},
 	},
 	Laezel = {
+		uuid = "58a69333-40bf-8358-1d17-fff240d7fb12",
 		charvis   = {
 			"685e521d-a4a8-0199-1064-05840a43d28e",
 			"3a42ea31-54d2-6d3e-cf39-79b064972f5f",
@@ -432,6 +441,7 @@ local COMPANIONS_VIS = {
 		}
 	},
 	Minsc = {
+		uuid = "0de603c5-42e2-4811-9dad-f652de080eba",
 		charvis   = {
 			"6acff363-4407-0b10-0a7c-c1e27fe03c58",
 			"9404e0a4-fafd-47ec-ad6d-52d63cb116ff",
@@ -455,6 +465,7 @@ local COMPANIONS_VIS = {
 		}
 	},
 	Minthara = {
+		uuid = "25721313-0c15-4935-8176-9f134385451b",
 		charvis   = {
 			"63dcb01e-630a-b575-ef5c-10ff738b7d51",
 			"383236f9-c7ab-7163-4638-d2e2702ec513",
@@ -482,6 +493,7 @@ local COMPANIONS_VIS = {
 		}
 	},
 	Shadowheart = {
+		uuid = "3ed74f06-3c60-42dc-83f6-f034cb47c679",
 		charvis   = {
 			"a4cb151d-de86-1cd2-3cbe-327fc71eec82",
 			"a48523ae-0f47-ec7d-e3a0-2e7ce657a9f2",
@@ -503,6 +515,7 @@ local COMPANIONS_VIS = {
 		}
 	},
 	Wyll = {
+		uuid = "c774d764-4a17-48dc-b470-32ace9ce447d",
 		charvis   = {
 			"252f4a0d-d502-0985-52f2-973c38377faa",
 			"38721e3d-c3b5-a0eb-3048-128846b3cc0e",

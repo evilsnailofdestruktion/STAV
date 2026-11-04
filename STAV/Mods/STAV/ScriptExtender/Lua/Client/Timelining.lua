@@ -1,7 +1,9 @@
 local Applying        = Ext.Require("Client/Applying.lua")
-local Vars            = Ext.Require("Shared/Vars.lua")
 local E               = Ext.Require("Shared/Events.lua")
+local Map             = Ext.Require("Client/UIMap.lua")
 local P               = Ext.Require("Shared/Printing.lua")
+local Vars            = Ext.Require("Shared/Vars.lua")
+local Vis             = Ext.Require("Shared/Visualising.lua")
 
 local T               = {}
 
@@ -17,6 +19,8 @@ local KARLACH_ACTORS  = {
 	["26b59002-38c0-2867-3511-20d1d8184db6"] = "Karlach_InParty",
 	["f212ec52-f798-4c35-b700-1a9b52f11bb7"] = "Karlach_InPartyEND"
 }
+local CHARVIS_HANDLE  = "STAV_CharvisDefaults"
+local FIELDS          = { "ScalarParameters", "Vector3Parameters" }
 
 ---@type table
 local ui              = nil
@@ -26,12 +30,8 @@ local watched         = nil
 local scene           = nil
 local matched         = false
 local tick            = nil
-
-local function findTimelineOwner(actor)
-	for _, e in pairs(Ext.Entity.GetAllEntitiesWithComponent("Origin")) do
-		if e.TimelineActorData and e.TimelineActorData.Actor == actor then return e end
-	end
-end
+---@type table<Guid, table<string, table[]>>
+local defaults        = nil
 
 local function hasParam(list, name)
 	for _, p in pairs(list) do
@@ -63,6 +63,56 @@ local function copyBlackColour(from, to)
 	end
 	local weight = from:GetScalar("Colour_BlackBody")
 	if weight ~= to:GetScalar("Colour_BlackBody") then to:SetScalar("Colour_BlackBody", weight) end
+end
+
+local function findTimelineOwner(actor)
+	for _, e in pairs(Ext.Entity.GetAllEntitiesWithComponent("Origin")) do
+		if e.TimelineActorData and e.TimelineActorData.Actor == actor then return e end
+	end
+end
+
+local function copyOverrides(overrides)
+	local copy = {}
+	for _, field in ipairs(FIELDS) do
+		local rows = {}
+		for _, r in ipairs(overrides[field]) do
+			rows[#rows + 1] = { Parameter = r.Parameter, Value = r.Value, Enabled = r.Enabled, Color = r.Color, Custom = r.Custom }
+		end
+		copy[field] = rows
+	end
+	return copy
+end
+
+local function getDefaults()
+	local charvis = {}
+	for _, entry in pairs(Vis.Companions) do
+		for _, id in ipairs(entry.charvis) do
+			local cv = Ext.Resource.Get(id, "CharacterVisual")
+			if cv then charvis[id] = copyOverrides(cv.VisualSet.MaterialOverrides) end
+		end
+	end
+	return charvis
+end
+
+local function writeLook(overrides, look)
+	local rows = copyOverrides(overrides)
+	for key, param in pairs(Map) do
+		local value = look[key]
+		if value ~= nil then
+			if param.map then value = param.map(value) end
+			local isColour = param.type == "colour"
+			local list = rows[isColour and "Vector3Parameters" or "ScalarParameters"]
+			local index = #list + 1
+			for i, r in ipairs(list) do
+				if r.Parameter == param.name then
+					index = i
+					break
+				end
+			end
+			list[index] = { Parameter = param.name, Value = isColour and { value[1], value[2], value[3] } or value, Enabled = true, Color = isColour, Custom = true }
+		end
+	end
+	for _, field in ipairs(FIELDS) do overrides[field] = rows[field] end
 end
 
 local function UpdateKarlach()
@@ -128,6 +178,11 @@ local function ApplyWhenReady(e)
 	Ext.Timer.WaitFor(TL_RETRY_MS, attempt)
 end
 
+local function RestoreCharvis(id, saved)
+	local overrides = Ext.Resource.Get(id, "CharacterVisual").VisualSet.MaterialOverrides
+	for _, field in ipairs(FIELDS) do overrides[field] = saved[field] end
+end
+
 function T.ApplyToTimelineDummies()
 	for _, e in pairs(Ext.Entity.GetAllEntitiesWithComponent("TLPreviewDummy")) do
 		local tl = e.TLPreviewDummy
@@ -135,9 +190,30 @@ function T.ApplyToTimelineDummies()
 	end
 end
 
+function T.PatchCharvis(characterUUID, look)
+	for _, entry in pairs(Vis.Companions) do
+		if entry.uuid == characterUUID then
+			for _, id in ipairs(entry.charvis) do
+				if defaults[id] then writeLook(Ext.Resource.Get(id, "CharacterVisual").VisualSet.MaterialOverrides, look) end
+			end
+		end
+	end
+end
+
 function T.SetUI(panel)
 	ui = panel
 end
+
+E.SessionLoaded.Subscribe(function()
+	local text = Ext.Loca.GetTranslatedString(CHARVIS_HANDLE, "")
+	if text == "" then
+		defaults = getDefaults()
+		Ext.Loca.UpdateTranslatedString(CHARVIS_HANDLE, Ext.Json.Stringify(defaults))
+	else
+		defaults = Ext.Json.Parse(text)
+		for id, saved in pairs(defaults) do RestoreCharvis(id, saved) end
+	end
+end)
 
 E.TLPreviewDummyCreated.Subscribe(function(p)
 	if p.Entity.TLPreviewDummy.OriginalCharacterTemplate == "" then return end

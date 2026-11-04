@@ -30,14 +30,16 @@ UI.State = copyState(DEFAULTS)
 
 UI.Widgets = {}
 
+local lastSent = nil
+local sendTimer = nil
+
 local function sendLook(characterUUID)
+	lastSent = characterUUID
 	NetDefs.NET_APPLY:SendToServer({
 		characterUUID = characterUUID,
-		state         = UI.State,
+		state         = UI.State
 	})
 end
-
-local sendTimer = nil
 
 local function syncToServer()
 	if sendTimer then return end
@@ -628,6 +630,8 @@ end)
 
 NetDefs.NET_APPLY_SYNC:SetHandler(function(data)
 	Applying.ApplyLocalPreset(data.preset, data.characterUUID, data.state)
+	Timelining.PatchCharvis(data.characterUUID, data.state)
+	if data.characterUUID == lastSent then UI.Changed = false end
 end)
 
 NetDefs.NET_AVATAR_PING:SetHandler(function()
