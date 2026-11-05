@@ -4,7 +4,7 @@ local P = Ext.Require("Shared/Printing.lua")
 if Ext.IsClient() then
 	local O = Ext.Require("Client/Overriding.lua")
 
-	Ext.RegisterConsoleCommand("stav", function(_)
+	Ext.RegisterConsoleCommand("stav", function()
 		STAVToggleUI()
 	end)
 
@@ -20,6 +20,11 @@ if Ext.IsClient() then
 		return lod == "3" and "2" or lod
 	end
 
+	local function isHeadShader(file)
+		local name = file:lower()
+		return name:find("^char_skin_head_v3") and not name:find("_gm", 1, true)
+	end
+
 	local function meshName(objectId)
 		return objectId:match("^[^.]+%.(.+)%.%d+$") or objectId
 	end
@@ -32,14 +37,14 @@ if Ext.IsClient() then
 		return log
 	end
 
-	local function compareHead(names, refs, optional)
+	local function compareHead(names, run)
 		local isHead, best = false, nil
-		for lod, ref in pairs(refs) do
+		for lod, ref in pairs(run.refs) do
 			local missing, extra, required = {}, {}, 0
 			for name in pairs(ref) do
 				if not names[name] then
 					missing[#missing + 1] = name
-					if not optional[name] then required = required + 1 end
+					if not run.optional[name] then required = required + 1 end
 				end
 			end
 			for name in pairs(names) do
@@ -55,22 +60,103 @@ if Ext.IsClient() then
 		return isHead, best
 	end
 
+	local function closestIssues(issues)
+		local fewest, closest = math.huge, {}
+		for _, issue in ipairs(issues) do fewest = math.min(fewest, #issue.params) end
+		for _, issue in ipairs(issues) do
+			if #issue.params == fewest then closest[#closest + 1] = issue end
+		end
+		return closest
+	end
+
 	local function addIssue(head, issue)
 		head.issues[#head.issues + 1] = issue
 		head.has[issue.kind] = true
 	end
 
-	local function collectHeads(modId)
-		local refs, optional, owner = {}, {}, {}
-		for lod, shader in pairs(O.HEAD_SHADERS) do
-			refs[lod] = O.paramNames(Ext.Resource.Get(shader.vanilla, "Material"))
+	local function checkMaterials(head, visual, run)
+		local patchable, failed, foreign = false, {}, {}
+		for _, o in ipairs(visual.Objects) do
+			local mesh, mat = meshName(o.ObjectID), Ext.Resource.Get(o.MaterialID, "Material")
+			if not mat then
+				addIssue(head, { kind = "missingMaterial", mesh = mesh, id = o.MaterialID })
+			else
+				local dir, shader = publicDir(mat.SourceFile), mat.SourceFile:match("[^/]+$")
+				local isHead, best = compareHead(O.paramNames(mat), run)
+				local flesh, blanks = mat.MaterialType == "Flesh", O.blanksAtlases(mat)
+				if isHead and flesh and not blanks then
+					patchable = true
+					run.users[o.MaterialID] = run.users[o.MaterialID] or {}
+					run.users[o.MaterialID][head] = mesh
+
+					local lod, before = shaderLOD(mat.SourceFile), #head.issues
+					if dir ~= "STAV" then addIssue(head, { kind = "unpatched", mesh = mesh, shader = shader, matched = true }) end
+					if #best.missing > 0 then addIssue(head, { kind = "lacksParams", mesh = mesh, params = best.missing }) end
+					if #best.extra > 0 then addIssue(head, { kind = "extraParams", mesh = mesh, params = best.extra }) end
+					if best.lod ~= lod then addIssue(head, { kind = "wrongLOD", mesh = mesh, from = best.lod, to = lod }) end
+					if #head.issues > before then
+						run.problMats[o.MaterialID] = true
+						head.has.matIssue = true
+					end
+				else
+					local list = isHeadShader(shader) and failed or not BUILT_IN[dir] and foreign
+					if list then
+						list[#list + 1] = {
+							kind = "unpatched",
+							mesh = mesh,
+							shader = shader,
+							materialType = not flesh and tostring(mat.MaterialType),
+							blanks = blanks,
+							params = best.missing
+						}
+					end
+				end
+			end
 		end
-		for _, name in ipairs(O.OPTIONAL_HEAD_PARAMS) do optional[name] = true end
+		if not patchable then
+			for _, issue in ipairs(#failed > 0 and failed or closestIssues(foreign)) do addIssue(head, issue) end
+		end
+	end
+
+	local function findOwnShaders(heads, run)
+		local shaders, scanned, copied = {}, {}, {}
+		for _, head in ipairs(heads) do
+			local dir = head.mod.Info.Directory
+			if dir and not BUILT_IN[dir] and not scanned[dir] then
+				scanned[dir] = true
+				local root = "Public/" .. dir .. "/Content"
+				for _, file in ipairs(Ext.IO.FindFiles(root, "*.lsf", "data", true)) do
+					local raw = Ext.IO.LoadFile(root .. "/" .. file, "data") or ""
+					for matId, using in pairs(run.users) do
+						local at = not copied[matId] and raw:find(matId, 1, true)
+						local shader = at and raw:match("([%w_%-%./]+%.lsf)", at + #matId)
+						if shader and not BUILT_IN[publicDir(shader)] then
+							copied[matId] = true
+							shaders[shader] = true
+							run.problMats[matId] = true
+							for user, mesh in pairs(using) do
+								addIssue(user, { kind = "ownShader", mesh = mesh, shader = shader:match("[^/]+$") })
+								user.has.matIssue = true
+							end
+						end
+					end
+				end
+			end
+		end
+		return shaders
+	end
+
+	local function collectHeads(modId)
+		local run, owner = { refs = {}, optional = {}, users = {}, problMats = {} }, {}
+		for lod, shader in pairs(O.HEAD_SHADERS) do
+			run.refs[lod] = O.paramNames(Ext.Resource.Get(shader.vanilla, "Material"))
+		end
+		for _, name in ipairs(O.OPTIONAL_HEAD_PARAMS) do run.optional[name] = true end
 		for mod, ids in pairs(Ext.StaticData.GetSources("CharacterCreationAppearanceVisual")) do
 			for _, id in pairs(ids) do owner[id] = mod end
 		end
 
-		local heads, seen, users, flawed = {}, {}, {}, {}
+		local heads, seen = {}, {}
 		for _, id in ipairs(Ext.StaticData.GetAll("CharacterCreationAppearanceVisual")) do
 			local cc = Ext.StaticData.Get(id, "CharacterCreationAppearanceVisual")
 			local visualId = cc.VisualResource
@@ -89,72 +175,12 @@ if Ext.IsClient() then
 						has = {}
 					}
 					heads[#heads + 1] = head
-					if not visual then addIssue(head, { kind = "missingVisual" }) end
-
-					local patchable, builtIn, skipped = false, true, {}
-					for _, o in ipairs(visual and visual.Objects or {}) do
-						local mesh, mat = meshName(o.ObjectID), Ext.Resource.Get(o.MaterialID, "Material")
-						if not mat then
-							addIssue(head, { kind = "missingMaterial", mesh = mesh, id = o.MaterialID })
-						else
-							local dir, shader = publicDir(mat.SourceFile), mat.SourceFile:match("[^/]+$")
-							builtIn = builtIn and BUILT_IN[dir] ~= nil
-							local isHead, best = compareHead(O.paramNames(mat), refs, optional)
-							if isHead and mat.MaterialType == "Flesh" and not O.blanksAtlases(mat) then
-								patchable = true
-								users[o.MaterialID] = users[o.MaterialID] or {}
-								users[o.MaterialID][head] = mesh
-
-								local lod, before = shaderLOD(mat.SourceFile), #head.issues
-								if dir ~= "STAV" then addIssue(head, { kind = "unpatched", mesh = mesh, shader = shader, matched = true }) end
-								if #best.missing > 0 then addIssue(head, { kind = "lacksParams", mesh = mesh, params = best.missing }) end
-								if #best.extra > 0 then addIssue(head, { kind = "extraParams", mesh = mesh, params = best.extra }) end
-								if best.lod ~= lod then addIssue(head, { kind = "wrongLOD", mesh = mesh, from = best.lod, to = lod }) end
-								if #head.issues > before then flawed[o.MaterialID] = true end
-							else
-								skipped[#skipped + 1] = {
-									kind = "unpatched",
-									mesh = mesh,
-									shader = shader,
-									materialType = mat.MaterialType ~= "Flesh" and tostring(mat.MaterialType) or nil,
-									blanks = O.blanksAtlases(mat),
-									params = best.missing
-								}
-							end
-						end
-					end
-					if visual and not patchable and not builtIn then
-						for _, issue in ipairs(skipped) do addIssue(head, issue) end
-					end
+					if visual then checkMaterials(head, visual, run) else addIssue(head, { kind = "missingVisual" }) end
 				end
 			end
 		end
 
-		local shaders, scanned, copied = {}, {}, {}
-		for _, head in ipairs(heads) do
-			local dir = head.mod.Info.Directory
-			if dir and not BUILT_IN[dir] and not scanned[dir] then
-				scanned[dir] = true
-				local root = "Public/" .. dir .. "/Content"
-				for _, file in ipairs(Ext.IO.FindFiles(root, "*.lsf", "data", true)) do
-					local raw = Ext.IO.LoadFile(root .. "/" .. file, "data") or ""
-					for matId, using in pairs(users) do
-						local at = not copied[matId] and raw:find(matId, 1, true)
-						local shader = at and raw:match("([%w_%-%./]+%.lsf)", at + #matId)
-						if shader and not BUILT_IN[publicDir(shader)] then
-							copied[matId] = true
-							shaders[shader] = true
-							flawed[matId] = true
-							for user, mesh in pairs(using) do
-								addIssue(user, { kind = "ownShader", mesh = mesh, shader = shader:match("[^/]+$") })
-							end
-						end
-					end
-				end
-			end
-		end
-
-		return heads, flawed, users, shaders
+		return heads, run.problMats, findOwnShaders(heads, run)
 	end
 
 	local function printIssue(issue)
@@ -240,12 +266,9 @@ if Ext.IsClient() then
 			return
 		end
 
-		local heads, flawed, users, shaders = collectHeads()
-		local flawedHeads = {}
-		for matId in pairs(flawed) do
-			for user in pairs(users[matId]) do flawedHeads[user] = true end
-		end
+		local heads, problMats, shaders = collectHeads()
 
+		printSection("=== Mods with heads not patched:", heads, "unpatched")
 		printSection("=== Mods with head visuals that do not resolve:", heads, "missingVisual")
 		printSection("=== Mods with heads using missing materials:", heads, "missingMaterial")
 		printSection("=== Mods using their own copy of the head shader:", heads, "ownShader")
@@ -257,7 +280,7 @@ if Ext.IsClient() then
 			:C3(countHeads(heads, "missingVisual")):C7(" missing visuals, ")
 			:C3(countHeads(heads, "missingMaterial")):C7(" missing materials, ")
 			:C3(countHeads(heads, "unpatched")):C7(" heads not patched, ")
-			:C3(U.CountElements(flawed)):C7(" head materials with issues across "):C3(U.CountElements(flawedHeads)):C7(" heads, ")
+			:C3(U.CountElements(problMats)):C7(" head materials with issues across "):C3(countHeads(heads, "matIssue")):C7(" heads, ")
 			:C3(U.CountElements(shaders)):C7(" custom head shaders."):Print()
 	end)
 

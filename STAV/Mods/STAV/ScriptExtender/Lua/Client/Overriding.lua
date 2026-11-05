@@ -18,9 +18,23 @@ O.HEAD_SHADERS      = {
 	["2"] = { vanilla = "81a56635-2d78-920d-79b9-cd64934a0844", ref = "6054be7e-5084-b747-abd0-4c7e19768ba9", headParams = true },
 	["4"] = { vanilla = "7d56755e-eacf-b236-c1b9-876b424b12ee", ref = "fc6c66c5-c857-4d65-1076-b8f236a7ac13" }
 }
-local PARAM_LISTS   = { "ScalarParameters", "Vector2Parameters", "Vector3Parameters", "VectorParameters", "Texture2DParameters", "VirtualTextureParameters" }
--- Some modded head shaders lack these.
-O.OPTIONAL_HEAD_PARAMS = { "Texture2DParameters:WrinkleMapMSK", "Texture2DParameters:WrinkleMapNormal" }
+
+local PARAM_LISTS   = {
+	"ScalarParameters",
+	"Texture2DParameters",
+	"VectorParameters",
+	"Vector2Parameters",
+	"Vector3Parameters",
+	"VirtualTextureParameters"
+}
+
+-- Some modded head shaders/materials lack these.
+O.OPTIONAL_HEAD_PARAMS = {
+	"Texture2DParameters:BaseColor_NonSkin",
+	"Texture2DParameters:CancelMSK",
+	"Texture2DParameters:WrinkleMapMSK",
+	"Texture2DParameters:WrinkleMapNormal"
+}
 
 local sourceFile    = nil
 ---@type table<string, { names: table<string, boolean>, source: string, headParams?: boolean }>
