@@ -21,6 +21,11 @@ function U.TryParseJson(raw)
 	return ok and type(data) == "table" and data or nil
 end
 
+function U.GetLiveCharacter()
+	local char = _C()
+	if char and char.Level.LevelName ~= "SYS_CC_I" then return char end
+end
+
 function U.GetDisplayName(uuid, fallback)
 	local entity = Ext.Entity.Get(uuid)
 	if not entity then return fallback or uuid end

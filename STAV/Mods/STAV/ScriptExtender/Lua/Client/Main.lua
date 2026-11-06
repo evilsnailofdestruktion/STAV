@@ -8,8 +8,12 @@ local L              = Ext.Require("Shared/Localization.lua")
 local P              = Ext.Require("Shared/Printing.lua")
 local Map            = Ext.Require("Client/UIMap.lua")
 local Timelining     = Ext.Require("Client/Timelining.lua")
+local U              = Ext.Require("Shared/Utility.lua")
 
-local SLIDER_RESERVE = 286
+local SELECTOR_WIDTH = 28
+local LABEL_WIDTH    = 240
+
+local DEFAULT_SPOTS_COLOUR = { 0.027, 0.027, 0.027 }
 
 local UI             = {}
 
@@ -30,6 +34,7 @@ UI.State = copyState(DEFAULTS)
 
 UI.Widgets = {}
 
+local swatches = {}
 local lastSent = nil
 local sendTimer = nil
 
@@ -45,7 +50,7 @@ local function syncToServer()
 	if sendTimer then return end
 	sendTimer = Ext.Timer.WaitFor(300, function()
 		sendTimer = nil
-		local char = Applying.resolveCharacter()
+		local char = U.GetLiveCharacter()
 		if char then sendLook(char.Uuid.EntityUuid) end
 	end)
 end
@@ -54,6 +59,10 @@ local function onChange(key, value)
 	UI.State[key] = value
 	UI.Changed = true
 	Applying.Apply(key, value)
+	if key == "spots" and value > 0 and UI.Widgets.spotsIntensity.Value[1] == 0 then
+		UI.Widgets.spotsIntensity.Value = { 1, 0, 0, 0 }
+		onChange("spotsIntensity", 1)
+	end
 	syncToServer()
 end
 
@@ -66,51 +75,93 @@ local function addCheckbox(parent, label, key)
 end
 
 local function step(key, min, max, delta)
-	local new = math.max(min, math.min(max, UI.State[key] + delta))
+	local new = math.max(min, math.min(max, UI.Widgets[key].Value[1] + delta))
 	UI.Widgets[key].Value = { new, 0, 0, 0 }
 	onChange(key, new)
 end
 
+local function addRow(parent, id, cells, selectors)
+	local t = parent:AddTable("##STAV_" .. id .. "_row", cells + (selectors and 3 or 1))
+	for _ = 1, cells do t:AddColumn("", "WidthStretch", 1) end
+	if selectors then
+		t:AddColumn("", "WidthFixed", SELECTOR_WIDTH)
+		t:AddColumn("", "WidthFixed", SELECTOR_WIDTH)
+	end
+	t:AddColumn("", "WidthFixed", LABEL_WIDTH)
+	return t:AddRow()
+end
+
 local function addSlider(parent, label, key)
-	local max          = Map[key].max
-	local s            = parent:AddSliderInt("##" .. key, UI.State[key], 1, max)
-	s.IDContext        = "STAV_" .. key
-	s.ItemWidth        = -SLIDER_RESERVE
-	UI.Widgets[key]    = s
-	s.OnChange         = function(w) onChange(key, w.Value[1]) end
+	local min         = Map[key].min or 1
+	local max         = Map[key].max
+	local row         = addRow(parent, key, 1, true)
+	local s           = row:AddCell():AddSliderInt("##" .. key, UI.State[key], min, max)
+	s.IDContext       = "STAV_" .. key
+	s.ItemWidth       = -1
+	UI.Widgets[key]   = s
+	s.OnChange        = function(w) onChange(key, w.Value[1]) end
 
-	local prevBtn      = parent:AddButton("<")
-	prevBtn.IDContext  = "STAV_" .. key .. "_prev"
-	prevBtn.SameLine   = true
-	prevBtn.OnClick    = function() step(key, 1, max, -1) end
+	local prevBtn     = row:AddCell():AddButton("<")
+	prevBtn.IDContext = "STAV_" .. key .. "_prev"
+	prevBtn.Size      = { -1, 0 }
+	prevBtn.OnClick   = function() step(key, min, max, -1) end
 
-	local nextBtn      = parent:AddButton(">")
-	nextBtn.IDContext  = "STAV_" .. key .. "_next"
-	nextBtn.SameLine   = true
-	nextBtn.OnClick    = function() step(key, 1, max, 1) end
+	local nextBtn     = row:AddCell():AddButton(">")
+	nextBtn.IDContext = "STAV_" .. key .. "_next"
+	nextBtn.Size      = { -1, 0 }
+	nextBtn.OnClick   = function() step(key, min, max, 1) end
 
-	local labelText    = parent:AddText(label .. " (1-" .. max .. ")")
-	labelText.SameLine = true
+	row:AddCell():AddText(key == "spots" and label or label .. " [" .. min .. "-" .. max .. "]")
 	return s
 end
 
 local function addFloatSlider(parent, label, key)
-	local s         = parent:AddSlider(label, UI.State[key], 0, Map[key].max)
+	local row       = addRow(parent, key, 1, false)
+	local s         = row:AddCell():AddSlider("##" .. key, UI.State[key], 0, Map[key].max)
 	s.IDContext     = "STAV_" .. key
+	s.ItemWidth     = -1
 	UI.Widgets[key] = s
 	s.OnChange      = function(w) onChange(key, w.Value[1]) end
+	row:AddCell():AddText(label)
 	return s
 end
 
-local function addPicker(parent, label, key)
-	local p         = parent:AddColorEdit(label)
-	p.IDContext     = "STAV_" .. key
-	p.Float         = true
-	p.NoAlpha       = false
-	p.Color         = UI.State[key]
+local function paintSwatch(button, colour)
+	for _, name in ipairs({ "Button", "ButtonHovered", "ButtonActive" }) do
+		button:SetColor(name, colour)
+	end
+end
+
+local function addSwatch(parent, row, key)
+	local b         = row:AddCell():AddButton("##" .. key)
+	b.IDContext     = "STAV_" .. key
+	b.Size          = { -1, 0 }
+	swatches[key]   = b
+
+	local popup     = parent:AddPopup("##STAV_" .. key .. "_popup")
+	local p         = popup:AddColorPicker("##" .. key)
+	p.IDContext     = "STAV_" .. key .. "_picker"
+	p.NoAlpha       = true
+	p.NoLabel       = true
+	p.DisplayHSV    = true
+	p.DisplayHex    = true
 	UI.Widgets[key] = p
-	p.OnChange      = function(w) onChange(key, w.Color) end
-	return p
+	p.OnChange      = function(w)
+		paintSwatch(b, w.Color)
+		onChange(key, w.Color)
+	end
+	b.OnClick       = function() popup:Open() end
+
+	if UI.State[key] then
+		p.Color = UI.State[key]
+		paintSwatch(b, UI.State[key])
+	end
+end
+
+local function addPicker(parent, label, keys)
+	local row = addRow(parent, keys[1], #keys, false)
+	for _, key in ipairs(keys) do addSwatch(parent, row, key) end
+	row:AddCell():AddText(label)
 end
 
 local function addConfigCheckbox(parent, label, key)
@@ -118,6 +169,35 @@ local function addConfigCheckbox(parent, label, key)
 	c.IDContext = "STAV_cfg_" .. key
 	c.OnChange  = function(w) Config.Set(key, w.Checked) end
 	return c
+end
+
+local function getTemplateId(char)
+	for _, h in pairs(Ext.Entity.GetAllEntitiesWithComponent("ClientCCDummyDefinition")) do
+		if h.CCCharacterDefinition then return h.CCCharacterDefinition.Definition.Definition.RootTemplate end
+	end
+	return char and char.GameObjectVisual.RootTemplateId
+end
+
+local function getSpotDefaults(char)
+	local templateId = getTemplateId(char or _C())
+	local template = templateId and Ext.Template.GetRootTemplate(templateId) --[[@as CharacterTemplate]]
+	local charvis = template and Ext.Resource.Get(template.CharacterVisualResourceID, "CharacterVisual")
+	local rows = {}
+	if charvis then
+		local overrides = charvis.VisualSet.MaterialOverrides
+		for _, list in ipairs({ overrides.ScalarParameters, overrides.Vector3Parameters }) do
+			for _, r in pairs(list) do
+				if r.Enabled then rows[r.Parameter] = r.Value end
+			end
+		end
+	end
+	local intensity = rows[Map.spotsIntensity.name] or 0
+	local colour = rows[Map.spotsColour.name] or DEFAULT_SPOTS_COLOUR
+	return {
+		spots          = intensity > 0 and math.floor(rows[Map.spots.name] or 0) + 1 or 0,
+		spotsIntensity = intensity,
+		spotsColour    = { colour[1], colour[2], colour[3], 1 }
+	}
 end
 
 local vp               = Ext.IMGUI.GetViewportSize()
@@ -128,7 +208,7 @@ win.NoFocusOnAppearing = true
 win.Scaling            = 'Scaled'
 win.AlwaysAutoResize   = false
 win:SetPos({ vp[1] / 6, vp[2] / 10 })
-win:SetSize({ 597, 879 })
+win:SetSize({ 661, 947 })
 
 local function tint(base, alpha)
 	return { base[1], base[2], base[3], alpha }
@@ -304,29 +384,36 @@ local mainTab = bar:AddTabItem(L.T("Main"))
 
 mainTab:AddDummy(0, 4)
 
-local body = mainTab:AddCollapsingHeader(L.T("Body"))
-body.DefaultOpen = true
-addCheckbox(body, L.T("Body Scar"), "scar")
-addSlider(body, L.T("Main Tattoo"), "bodyMain")
-addSlider(body, L.T("Alt Tattoo"), "bodyAlt")
-addSlider(body, L.T("Glow Tattoo"), "bodyGlow")
+local tattoos = mainTab:AddCollapsingHeader(L.T("Tattoos"))
+tattoos.DefaultOpen = true
+addSlider(tattoos, L.T("Head Alt"), "headAlt")
+addPicker(tattoos, L.T("Alt Colour"), { "altColour" })
+addSlider(tattoos, L.T("Body Main"), "bodyMain")
+addSlider(tattoos, L.T("Body Alt"), "bodyAlt")
+addFloatSlider(tattoos, L.T("Metalness"), "tatMetalness")
 mainTab:AddSeparator()
 
-local head = mainTab:AddCollapsingHeader(L.T("Head"))
-head.DefaultOpen = true
-addSlider(head, L.T("Alt Tattoo"), "headAlt")
-addSlider(head, L.T("Glow Tattoo"), "headGlow")
+local glowing = mainTab:AddCollapsingHeader(L.T("Glowing Tattoos"))
+glowing.DefaultOpen = true
+addSlider(glowing, L.T("Head"), "headGlow")
+addSlider(glowing, L.T("Body"), "bodyGlow")
+addPicker(glowing, L.T("Glow Colours"), { "glowColour", "glowColour2", "glowColour3" })
+addFloatSlider(glowing, L.T("Glow Intensity"), "glowIntensity")
 mainTab:AddSeparator()
 
-local shared = mainTab:AddCollapsingHeader(L.T("Shared"))
-shared.DefaultOpen = true
-addPicker(shared, L.T("Alt Tattoo Colour"), "altColour")
-addPicker(shared, L.T("Glow Colour"), "glowColour")
-addFloatSlider(shared, L.T("Glow Intensity"), "glowIntensity")
-addFloatSlider(shared, L.T("Tattoo Metalness"), "tatMetalness")
-addFloatSlider(shared, L.T("Vampirism"), "vampirism")
-addCheckbox(shared, L.T("Glow Pulse"), "glowPulse")
-addCheckbox(shared, L.T("Swirlies"), "swirl")
+local additional = mainTab:AddCollapsingHeader(L.T("Additional Choices"))
+additional.DefaultOpen = true
+addSlider(additional, L.T("Head Spots"), "spots")
+addPicker(additional, L.T("Spots Colour"), { "spotsColour" })
+addFloatSlider(additional, L.T("Spots Intensity"), "spotsIntensity")
+addFloatSlider(additional, L.T("Vampirism"), "vampirism")
+addCheckbox(additional, L.T("Body Scars"), "scar")
+local pulseCb = addCheckbox(additional, L.T("Glow Pulse"), "glowPulse")
+pulseCb.SameLine = true
+pulseCb:SetStyle("ItemSpacing", 24, 6)
+local swirlCb = addCheckbox(additional, L.T("Swirlies"), "swirl")
+swirlCb.SameLine = true
+swirlCb:SetStyle("ItemSpacing", 24, 6)
 mainTab:AddSeparator()
 
 mainTab:AddDummy(0, 6)
@@ -357,7 +444,7 @@ local charPresets = {}
 
 local function recordActive(name)
 	UI.ActivePresetName = name
-	local char = Applying.resolveCharacter()
+	local char = U.GetLiveCharacter()
 	if char then charPresets[char.Uuid.EntityUuid] = (name ~= "" and name) or nil end
 end
 
@@ -500,47 +587,61 @@ function UI.Close()
 	UI.Window.Open = false
 end
 
-function UI.RefreshWidgets()
+function UI.RefreshWidgets(char)
+	local spotDefaults = getSpotDefaults(char)
 	for key, widget in pairs(UI.Widgets) do
 		local v = UI.State[key]
+		if v == nil then v = spotDefaults[key] end
 		if type(v) == "boolean" then
 			widget.Checked = v
 		elseif type(v) == "table" then
 			widget.Color = v
+			paintSwatch(swatches[key], v)
 		else
 			widget.Value = { v, 0, 0, 0 }
 		end
 	end
 end
 
-local function seedState(look)
-	for k, v in pairs(look) do
-		if UI.State[k] ~= nil then
-			UI.State[k] = v
-		end
+local function seedState(look, char)
+	for k, spec in pairs(Map) do
+		if spec.default == nil then UI.State[k] = nil end
 	end
-	UI.RefreshWidgets()
+	for k, v in pairs(look) do
+		if Map[k] then UI.State[k] = v end
+	end
+	UI.RefreshWidgets(char)
+end
+
+local function restoreSpots(previous)
+	for key, value in pairs(getSpotDefaults()) do
+		if previous[key] ~= nil and UI.State[key] == nil then Applying.Apply(key, value) end
+	end
 end
 
 function UI.PopulateFromEntity(char)
 	char = char or _C()
 	if not char then return end
-	seedState(Vars.GetLook(char) or copyState(DEFAULTS))
+	seedState(Vars.GetLook(char) or copyState(DEFAULTS), char)
 	Applying.ApplyAll(UI.State)
 	UI.ActivePresetName = charPresets[char.Uuid.EntityUuid] or ""
 	refreshPresets()
 end
 
 function UI.ApplyLook(look)
+	local previous = copyState(UI.State)
 	seedState(look)
+	restoreSpots(previous)
 	UI.Changed = true
 	Applying.ApplyAll(UI.State)
 	syncToServer()
 end
 
 function UI.Reset()
+	local previous = UI.State
 	UI.State = copyState(DEFAULTS)
 	UI.RefreshWidgets()
+	restoreSpots(previous)
 	Applying.ApplyAll(UI.State)
 	syncToServer()
 end
@@ -581,7 +682,10 @@ local function registerRebuildHook()
 		if (hasAny(sys.DestroyVisuals) or hasAny(sys.InitVisualLevel)) and not rebuildTimer then
 			rebuildTimer = Ext.Timer.WaitFor(100, function()
 				rebuildTimer = nil
-				if ccDummyCount() > 0 then Applying.ApplyAll(UI.State) end
+				if ccDummyCount() > 0 then
+					UI.RefreshWidgets()
+					Applying.ApplyAll(UI.State)
+				end
 			end)
 		end
 	end)
@@ -631,17 +735,20 @@ end)
 NetDefs.NET_APPLY_SYNC:SetHandler(function(data)
 	Applying.ApplyLocalPreset(data.preset, data.characterUUID, data.state)
 	Timelining.PatchCharvis(data.characterUUID, data.state)
-	if data.characterUUID == lastSent then UI.Changed = false end
+	if data.characterUUID == lastSent then
+		UI.Changed = false
+		UI.RefreshWidgets()
+	end
 end)
 
 NetDefs.NET_AVATAR_PING:SetHandler(function()
-	local char = Applying.resolveCharacter()
+	local char = U.GetLiveCharacter()
 	if not char then return end
 	local uuid = char.Uuid.EntityUuid
 	local look = Vars.GetLook(char)
 	if look then
 		P.Debug():Raw("Avatar ping: seeded from persisted look for "):Name(uuid):Print()
-		seedState(look)
+		seedState(look, char)
 	elseif UI.Changed then
 		P.Debug():Raw("Avatar ping: resending unsynced look for "):Name(uuid):Print()
 		sendLook(uuid)

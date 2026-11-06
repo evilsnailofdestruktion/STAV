@@ -4,6 +4,7 @@ local Map             = Ext.Require("Client/UIMap.lua")
 local P               = Ext.Require("Shared/Printing.lua")
 local Vars            = Ext.Require("Shared/Vars.lua")
 local Vis             = Ext.Require("Shared/Visualising.lua")
+local U               = Ext.Require("Shared/Utility.lua")
 
 local T               = {}
 
@@ -94,22 +95,26 @@ local function getDefaults()
 	return charvis
 end
 
-local function writeLook(overrides, look)
+local function findRow(list, name)
+	for i, r in ipairs(list) do
+		if r.Parameter == name then return i end
+	end
+end
+
+local function writeLook(overrides, look, saved)
 	local rows = copyOverrides(overrides)
 	for key, param in pairs(Map) do
 		local value = look[key]
+		local isColour = param.type == "colour"
+		local field = isColour and "Vector3Parameters" or "ScalarParameters"
+		local list = rows[field]
+		local index = findRow(list, param.name)
 		if value ~= nil then
 			if param.map then value = param.map(value) end
-			local isColour = param.type == "colour"
-			local list = rows[isColour and "Vector3Parameters" or "ScalarParameters"]
-			local index = #list + 1
-			for i, r in ipairs(list) do
-				if r.Parameter == param.name then
-					index = i
-					break
-				end
-			end
-			list[index] = { Parameter = param.name, Value = isColour and { value[1], value[2], value[3] } or value, Enabled = true, Color = isColour, Custom = true }
+			list[index or #list + 1] = { Parameter = param.name, Value = isColour and { value[1], value[2], value[3] } or value, Enabled = true, Color = isColour, Custom = true }
+		elseif param.default == nil and index then
+			local savedIndex = findRow(saved[field], param.name)
+			if savedIndex then list[index] = saved[field][savedIndex] else table.remove(list, index) end
 		end
 	end
 	for _, field in ipairs(FIELDS) do overrides[field] = rows[field] end
@@ -153,7 +158,7 @@ local function ApplyTimelineLook(e)
 	local owner = findTimelineOwner(tac.Actor)
 	local look = owner and Vars.GetLook(owner)
 	if not look then
-		local own = Applying.resolveCharacter()
+		local own = U.GetLiveCharacter()
 		if own and e.TLPreviewDummy.OriginalCharacterTemplate == own.GameObjectVisual.RootTemplateId then
 			look = Vars.GetLook(own)
 			if not look and ui.Changed then look = ui.State end
@@ -194,7 +199,7 @@ function T.PatchCharvis(characterUUID, look)
 	for _, entry in pairs(Vis.Companions) do
 		if entry.uuid == characterUUID then
 			for _, id in ipairs(entry.charvis) do
-				if defaults[id] then writeLook(Ext.Resource.Get(id, "CharacterVisual").VisualSet.MaterialOverrides, look) end
+				if defaults[id] then writeLook(Ext.Resource.Get(id, "CharacterVisual").VisualSet.MaterialOverrides, look, defaults[id]) end
 			end
 		end
 	end

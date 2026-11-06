@@ -169,18 +169,23 @@
   <content contentuid="h823ca267g6023g6185g6cd7g7598e0acbc04" version="1">ST_Tattoos</content>
   <content contentuid="hf1a10cd7gb5a4g4defg6563g5a139930d7ff" version="1">ST_Tattoos</content>
   <content contentuid="hbe107a60gc779g405bga284gdfba68f82969" version="1">Main</content>
-  <content contentuid="had728168g63d5g481cg9038gd5f07350958d" version="1">Body</content>
+  <content contentuid="h274b36b0gcbcbgd49fg580age1d856c42a9a" version="1">Tattoos</content>
+  <content contentuid="h8771d9cbg0c02g1524g748ag9d1c16624a52" version="1">Head Alt</content>
+  <content contentuid="h9647b6b7gd745gc60eg475ag6dd1a3267316" version="1">Alt Colour</content>
+  <content contentuid="h7c81b77bg6af3g035fg616cgaab3cf45b7e1" version="1">Body Main</content>
+  <content contentuid="h1ebbb3f1g2cc2g950ag8219ga3aa40279d4e" version="1">Body Alt</content>
+  <content contentuid="h60aded62gf892g6cb0gbff2g701ba393dbbb" version="1">Metalness</content>
+  <content contentuid="hd5d0404fg77b1g659eg6d3fg4be1aaab6318" version="1">Glowing Tattoos</content>
   <content contentuid="hb75263dagfeb4g48e1g8de6g5c74d687cb57" version="1">Head</content>
-  <content contentuid="h2b46fe7dg4dbfg4f5agb3cdg8ddba4a1aeb2" version="1">Shared</content>
-  <content contentuid="h02214271g2763g4fd4g8df9g78ddfd25a5de" version="1">Body Scar</content>
-  <content contentuid="h4c156923g1df2g4fc0g8d85g1108dfae9019" version="1">Main Tattoo</content>
-  <content contentuid="hf61918adgf88eg4d03g9aacg98e7c3f6fd3a" version="1">Alt Tattoo</content>
-  <content contentuid="hb69427e0g557ag432fgbf6dgc2b62bd0aaca" version="1">Glow Tattoo</content>
-  <content contentuid="h813692a2g6214g4768ga749gf8a2d35b1f7b" version="1">Alt Tattoo Colour</content>
-  <content contentuid="h24b4b838g7e1fg442dgb7d8g1f64831c0d14" version="1">Glow Colour</content>
+  <content contentuid="had728168g63d5g481cg9038gd5f07350958d" version="1">Body</content>
+  <content contentuid="h1e4b081ag44fcg237cgd784g366610f67b3d" version="1">Glow Colours</content>
   <content contentuid="he5e05ed1g7eb8g4df0g8030gcff90b9da34c" version="1">Glow Intensity</content>
-  <content contentuid="h5078d12eg49d1g4650gbc20g4fc392f3b04e" version="1">Tattoo Metalness</content>
+  <content contentuid="hee9bfab7gac0agf445g532bgd2f32e732cef" version="1">Additional Choices</content>
+  <content contentuid="hbd190f73gbb1agaccege2f2g27e14b631d64" version="1">Head Spots</content>
+  <content contentuid="hc23b4bd0gb1b1g659bg3c8dg49dcd809e3c2" version="1">Spots Colour</content>
+  <content contentuid="h3b5d7db9g33e3g3f22gfc6dg2b9a2cb9a3f5" version="1">Spots Intensity</content>
   <content contentuid="h1cba0ec1gfcb1g48cbg9b82gac8aff69c550" version="1">Vampirism</content>
+  <content contentuid="hc3960c45g7025g4a14g226fg4b0a30ce06d6" version="1">Body Scars</content>
   <content contentuid="h2c47b146g87e9g4413g97d4g770c835c79b8" version="1">Glow Pulse</content>
   <content contentuid="hbd829e71g8edcg468fg9b63gdbb79b1fd31f" version="1">Swirlies</content>
   <content contentuid="h9ceb4c21ga27cg4ea3gbf1bgf02d336152e2" version="1">Reset</content>
@@ -235,6 +240,8 @@
   <content contentuid="hb7687eccg487cg41c3ga579g2a3f5582f213" version="1">Arcane Radiance</content>
   <content contentuid="h619a2de4g15adg4059g90bagf668a4b7aa5c" version="1">Mint Green</content>
   <content contentuid="h4c20f1f9ga881g46cag8743ga1b3d3d5bd51" version="1">Lathander's Dawn</content>
+  <content contentuid="hcf453850gd356g4141gb02egd9e7430eac98" version="1">Arcane Violet</content>
+  <content contentuid="hd4114bbcg4602g4063g824ag81925099f527" version="1">Pale Lilac</content>
   <content contentuid="h5e138bc4gf04dg4f65g977fg94d21267cf05" version="1">Advanced</content>
   <content contentuid="hd58efd5agda7fg4fbdgb5b5gdf0d4a88b2b7" version="1">Auto-open in Character Creation</content>
   <content contentuid="h72af5f23gd8d5g4decg8cefg038b93dbfab4" version="1">Auto-open in Photo Mode</content>

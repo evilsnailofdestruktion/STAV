@@ -12,7 +12,7 @@ local function validateLook(look)
 		if kind == "boolean" then
 			if type(value) ~= "boolean" then return nil end
 		elseif kind == "index" then
-			if type(value) ~= "number" or value % 1 ~= 0 or value < 1 or value > spec.max then return nil end
+			if type(value) ~= "number" or value % 1 ~= 0 or value < (spec.min or 1) or value > spec.max then return nil end
 		elseif kind == "number" then
 			if type(value) ~= "number" or value < 0 or value > spec.max then return nil end
 		elseif kind == "colour" then

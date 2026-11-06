@@ -1,6 +1,7 @@
 local Params = Ext.Require("Shared/Params.lua")
 local Map    = Ext.Require("Client/UIMap.lua")
 local P      = Ext.Require("Shared/Printing.lua")
+local U      = Ext.Require("Shared/Utility.lua")
 
 local A = {}
 
@@ -37,13 +38,6 @@ local function walkMaterials(entity, fn)
 	end
 end
 
-function A.resolveCharacter()
-	local char = _C()
-	if not char then return nil end
-	if char.Level.LevelName == "SYS_CC_I" then return nil end
-	return char
-end
-
 local lastKey = nil
 
 local function getRenderEntities()
@@ -62,7 +56,7 @@ local function getRenderEntities()
 			end
 		end
 	end
-	local target = A.resolveCharacter()
+	local target = U.GetLiveCharacter()
 	for _, pm in pairs(Ext.Entity.GetAllEntitiesWithComponent("PhotoModeDummy")) do
 		local char = pm.PhotoModeDummy.Entity
 		if char and target and char.Uuid.EntityUuid == target.Uuid.EntityUuid then
@@ -105,6 +99,17 @@ local function getRenderEntities()
 	return result
 end
 
+local function applyPresetParam(list, param, value)
+	for _, entry in pairs(list) do
+		if entry.Parameter == param.name then
+			if param.default == nil then entry.Enabled = value ~= nil end
+			if value ~= nil then
+				entry.Value = param.type == "colour" and { value[1], value[2], value[3] } or value
+			end
+		end
+	end
+end
+
 function A.Apply(key, value)
 	local param = Map[key]
 	if not param then return end
@@ -134,21 +139,11 @@ function A.ApplyLocalPreset(presetUUID, characterUUID, look)
 	local preset = presetUUID and Ext.Resource.Get(presetUUID, "MaterialPreset")
 	if preset and look then
 		for key, p in pairs(Map) do
-			local v = look[key]
-			if v ~= nil and not Params.Toggles[key] then
-				local mapped = v
-				if p.map then mapped = p.map(v) end
-				if p.type ~= "colour" then
-					for _, entry in pairs(preset.Presets.ScalarParameters) do
-						if entry.Parameter == p.name then entry.Value = mapped end
-					end
-				else
-					for _, entry in pairs(preset.Presets.Vector3Parameters) do
-						if entry.Parameter == p.name then
-							entry.Value = { mapped[1], mapped[2], mapped[3] }
-						end
-					end
-				end
+			if not Params.Toggles[key] then
+				local v = look[key]
+				if v ~= nil and p.map then v = p.map(v) end
+				local list = p.type == "colour" and preset.Presets.Vector3Parameters or preset.Presets.ScalarParameters
+				applyPresetParam(list, p, v)
 			end
 		end
 	end

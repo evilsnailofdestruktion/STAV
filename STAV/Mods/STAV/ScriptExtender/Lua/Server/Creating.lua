@@ -7,8 +7,9 @@ local Params  = Ext.Require("Shared/Params.lua")
 
 local C = {}
 
-local slotMap   = {}
-local usedSlots = {}
+local slotMap     = {}
+local usedSlots   = {}
+local mirrorLooks = {}
 
 local stavCcams = {}
 for _, slot in ipairs(Params.Slots) do stavCcams[slot.ccam] = true end
@@ -25,6 +26,14 @@ local function claimSlot(charUUID)
 		end
 	end
 	return nil
+end
+
+local function sameElements(els, current)
+	if #els ~= #current then return false end
+	for i, el in ipairs(els) do
+		if el.Material ~= current[i].Material then return false end
+	end
+	return true
 end
 
 local function applyElements(entity, tattooCcam, look)
@@ -49,7 +58,10 @@ local function applyElements(entity, tattooCcam, look)
 			els[#els + 1] = { Material = ccam }
 		end
 	end
-	cca.Elements = els
+	if not sameElements(els, cca.Elements) then
+		cca.Elements = els
+		entity:Replicate("CharacterCreationAppearance")
+	end
 	return true
 end
 
@@ -88,7 +100,6 @@ local function applyToCharacter(charUUID)
 	local slot = Params.Slots[slotIdx]
 
 	if applyElements(entity, slot.ccam, look) then
-		entity:Replicate("CharacterCreationAppearance")
 		Ext.Timer.WaitFor(333, function()
 			NetDefs.NET_APPLY_SYNC:Broadcast({
 				characterUUID = charUUID,
@@ -102,6 +113,7 @@ end
 C.ApplyToCharacter = applyToCharacter
 
 E.StartChangeAppearance.Subscribe(function(p)
+	mirrorLooks[p.Character.Guid] = Vars.GetLook(p.Character.Entity)
 	stripFromReal(p.Character.Guid)
 end)
 
@@ -110,11 +122,13 @@ E.ChangeAppearanceCompleted.Subscribe(function(p)
 end)
 
 E.ChangeAppearanceCancelled.Subscribe(function(p)
-	applyToCharacter(p.Character.Guid)
+	local look = mirrorLooks[p.Character.Guid]
+	Vars.SetLook(p.Character.Entity, look)
+	if look then applyToCharacter(p.Character.Guid) else stripFromReal(p.Character.Guid) end
 end)
 
 -- On level load: ping clients (first-CC clients resend their in-memory look once their
--- avatar resolves) and re-apply any persisted look per team member (reload case).
+-- avatar resolves) and re-apply any persisted look per party member (reload case).
 local didInitialApply = false
 
 E.LevelGameplayStarted.Subscribe(function()

@@ -6,19 +6,24 @@ local L = {}
 local translationTable = {
 	-- Main
 	["Main"]                              = "hbe107a60gc779g405bga284gdfba68f82969",
-	["Body"]                              = "had728168g63d5g481cg9038gd5f07350958d",
+	["Tattoos"]                           = "h274b36b0gcbcbgd49fg580age1d856c42a9a",
+	["Head Alt"]                          = "h8771d9cbg0c02g1524g748ag9d1c16624a52",
+	["Alt Colour"]                        = "h9647b6b7gd745gc60eg475ag6dd1a3267316",
+	["Body Main"]                         = "h7c81b77bg6af3g035fg616cgaab3cf45b7e1",
+	["Body Alt"]                          = "h1ebbb3f1g2cc2g950ag8219ga3aa40279d4e",
+	["Metalness"]                         = "h60aded62gf892g6cb0gbff2g701ba393dbbb",
+	["Glowing Tattoos"]                   = "hd5d0404fg77b1g659eg6d3fg4be1aaab6318",
 	["Head"]                              = "hb75263dagfeb4g48e1g8de6g5c74d687cb57",
-	["Shared"]                            = "h2b46fe7dg4dbfg4f5agb3cdg8ddba4a1aeb2",
-	["Body Scar"]                         = "h02214271g2763g4fd4g8df9g78ddfd25a5de",
-	["Main Tattoo"]                       = "h4c156923g1df2g4fc0g8d85g1108dfae9019",
-	["Alt Tattoo"]                        = "hf61918adgf88eg4d03g9aacg98e7c3f6fd3a",
-	["Glow Tattoo"]                       = "hb69427e0g557ag432fgbf6dgc2b62bd0aaca",
-	["Alt Tattoo Colour"]                 = "h813692a2g6214g4768ga749gf8a2d35b1f7b",
-	["Glow Colour"]                       = "h24b4b838g7e1fg442dgb7d8g1f64831c0d14",
+	["Body"]                              = "had728168g63d5g481cg9038gd5f07350958d",
+	["Glow Colours"]                      = "h1e4b081ag44fcg237cgd784g366610f67b3d",
 	["Glow Intensity"]                    = "he5e05ed1g7eb8g4df0g8030gcff90b9da34c",
-	["Tattoo Metalness"]                  = "h5078d12eg49d1g4650gbc20g4fc392f3b04e",
+	["Additional Choices"]                = "hee9bfab7gac0agf445g532bgd2f32e732cef",
+	["Head Spots"]                        = "hbd190f73gbb1agaccege2f2g27e14b631d64",
+	["Spots Colour"]                      = "hc23b4bd0gb1b1g659bg3c8dg49dcd809e3c2",
+	["Spots Intensity"]                   = "h3b5d7db9g33e3g3f22gfc6dg2b9a2cb9a3f5",
 	["Vampirism"]                         = "h1cba0ec1gfcb1g48cbg9b82gac8aff69c550",
-	["Glow Pulse"]                        = "h2c47b146g87e9g4413g97d4g770c835c79b8",
+	["Body Scars"]                        = "hc3960c45g7025g4a14g226fg4b0a30ce06d6",
+	["Glow Pulse"]                       = "h2c47b146g87e9g4413g97d4g770c835c79b8",
 	["Swirlies"]                          = "hbd829e71g8edcg468fg9b63gdbb79b1fd31f",
 	["Reset"]                             = "h9ceb4c21ga27cg4ea3gbf1bgf02d336152e2",
 
@@ -75,12 +80,14 @@ local translationTable = {
 	["Arcane Radiance"]                   = "hb7687eccg487cg41c3ga579g2a3f5582f213",
 	["Mint Green"]                        = "h619a2de4g15adg4059g90bagf668a4b7aa5c",
 	["Lathander's Dawn"]                  = "h4c20f1f9ga881g46cag8743ga1b3d3d5bd51",
+	["Arcane Violet"]                     = "hcf453850gd356g4141gb02egd9e7430eac98",
+	["Pale Lilac"]                        = "hd4114bbcg4602g4063g824ag81925099f527",
 
 	-- Advanced
 	["Advanced"]                          = "h5e138bc4gf04dg4f65g977fg94d21267cf05",
 	["Auto-open in Character Creation"]   = "hd58efd5agda7fg4fbdgb5b5gdf0d4a88b2b7",
 	["Auto-open in Photo Mode"]           = "h72af5f23gd8d5g4decg8cefg038b93dbfab4",
-	["Debug Logging"]                     = "h8be41d65g1606g40f3gb4a3gc3c5bdc588a8",
+	["Debug Logging"]                     = "h8be41d65g1606g40f3gb4a3gc3c5bdc588a8"
 }
 
 function L.T(key)
