@@ -146,11 +146,25 @@ local function addSwatch(parent, row, key)
 	p.DisplayHSV    = true
 	p.DisplayHex    = true
 	UI.Widgets[key] = p
-	p.OnChange      = function(w)
-		paintSwatch(b, w.Color)
-		onChange(key, w.Color)
+
+	local function setColour(colour)
+		p.Color = colour
+		paintSwatch(b, colour)
+		onChange(key, colour)
 	end
+	p.OnChange      = function(w) setColour(w.Color) end
 	b.OnClick       = function() popup:Open() end
+
+	b.UserData      = key
+	b.CanDrag       = true
+	b.DragDropType  = "STAV_Colour"
+	b.OnDragStart   = function(_, preview)
+		local s    = preview:AddColorEdit("##" .. key .. "_drag")
+		s.Color    = p.Color
+		s.NoInputs = true
+		s.NoAlpha  = true
+	end
+	b.OnDragDrop    = function(_, source) setColour(UI.Widgets[source.UserData].Color) end
 
 	if UI.State[key] then
 		p.Color = UI.State[key]
