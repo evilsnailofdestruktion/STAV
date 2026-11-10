@@ -8,6 +8,14 @@
                 <node id="Dependencies">
                     <children>
                         <node id="ModuleShortDesc">
+                            <attribute id="Folder" type="LSString" value="STAVT"/>
+                            <attribute id="MD5" type="LSString" value=""/>
+                            <attribute id="Name" type="LSString" value="STAV [VT]"/>
+                            <attribute id="PublishHandle" type="uint64" value="0"/>
+                            <attribute id="UUID" type="guid" value="fc77b87d-2714-4545-99f4-db8042760e8d"/>
+                            <attribute id="Version64" type="int64" value="36028797018963968"/>
+                        </node>
+                        <node id="ModuleShortDesc">
                             <attribute id="Folder" type="LSString" value="GustavX"/>
                             <attribute id="MD5" type="LSString" value="ef3fcba3f3684b3088ad1f9874d4957c"/>
                             <attribute id="Name" type="LSString" value="GustavX"/>
@@ -21,10 +29,10 @@
                     <attribute id="Author" type="LSString" value="EvilSnail0fDestruktion - Nzx"/>
                     <attribute id="CharacterCreationLevelName" type="FixedString" value=""/>
                     <attribute id="Description" type="LSString" value="A shader mod adding tattoos and other functionality!"/>
-                    <attribute id="FileSize" type="uint64" value="1186602483"/>
+                    <attribute id="FileSize" type="uint64" value="82384250"/>
                     <attribute id="Folder" type="LSString" value="STAV"/>
                     <attribute id="LobbyLevelName" type="FixedString" value=""/>
-                    <attribute id="MD5" type="LSString" value="c0a8f3412870277331306e0719fc6f77"/>
+                    <attribute id="MD5" type="LSString" value="0fa83ca638cd4814bae091832d2f198b"/>
                     <attribute id="MenuLevelName" type="FixedString" value=""/>
                     <attribute id="Name" type="LSString" value="STAV"/>
                     <attribute id="NumPlayers" type="uint8" value="4"/>
@@ -32,10 +40,10 @@
                     <attribute id="PublishHandle" type="uint64" value="0"/>
                     <attribute id="StartupLevelName" type="FixedString" value=""/>
                     <attribute id="UUID" type="FixedString" value="2b9e05c8-d15a-3ac2-7237-6aa263f1dceb"/>
-                    <attribute id="Version64" type="int64" value="422214612549640"/>
+                    <attribute id="Version64" type="int64" value="36591746972385280"/>
                     <children>
                         <node id="PublishVersion">
-                            <attribute id="Version64" type="int64" value="422212465065984"/>
+                            <attribute id="Version64" type="int64" value="36451015926480896"/>
                         </node>
                         <node id="Scripts">
                             <children>

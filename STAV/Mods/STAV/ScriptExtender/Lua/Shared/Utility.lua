@@ -1,5 +1,7 @@
 local U = {}
 
+U.Version = table.concat(Ext.Mod.GetMod(ModuleUUID).Info.ModVersion, ".")
+
 function U.IsGuid(value)
 	if type(value) ~= "string" then
 		return false
@@ -13,67 +15,71 @@ function U.Guid(uuid)
 	return uuid:sub(-36)
 end
 
-function U.GetEntity(raw)
-	return Ext.Entity.Get(raw:sub(-36))
+function U.TryParseJson(raw)
+	if type(raw) ~= "string" or raw == "" then return nil end
+	local ok, data = pcall(Ext.Json.Parse, raw)
+	return ok and type(data) == "table" and data or nil
 end
 
-function U.GetObject(entity)
-	if entity.ServerCharacter then return entity.ServerCharacter end
-	if entity.ServerItem then return entity.ServerItem.Item end
-end
-
-function U.GetPartyMembers()
-	local members = {}
-	for _, row in pairs(Osi.DB_Players:Get(nil)) do
-		local guid   = U.Guid(row[1])
-		local entity = Ext.Entity.Get(guid)
-		if entity then
-			members[#members + 1] = { Guid = guid, Entity = entity }
-		end
-	end
-	return members
-end
-
-function U.ScanInventory(entity, visit)
-	if not entity.InventoryOwner then return end
-	for _, entry in pairs(entity.InventoryOwner.PrimaryInventory.InventoryContainer.Items) do
-		visit(entry.Item)
-		if entry.Item.InventoryOwner then U.ScanInventory(entry.Item, visit) end
-	end
-end
-
-function U.ResolveDisplayName(handle, fallback)
-	local translated = Ext.Loca.GetTranslatedString(handle, fallback)
-	return (translated ~= "" and translated ~= handle) and translated or fallback
+function U.GetLiveCharacter()
+	local char = _C()
+	if char and char.Level.LevelName ~= "SYS_CC_I" then return char end
 end
 
 function U.GetDisplayName(uuid, fallback)
-	local handle = Osi.GetDisplayName(uuid)
-	return U.ResolveDisplayName(handle, fallback or uuid)
+	local entity = Ext.Entity.Get(uuid)
+	if not entity then return fallback or uuid end
+	if entity.CustomName then return entity.CustomName.Name end
+	if entity.DisplayName then return entity.DisplayName.Name:Get() or fallback or uuid end
+	return fallback or uuid
 end
 
-function U.GetStatusDuration(target, statusId)
-	local entity = Ext.Entity.Get(target)
-	if not entity or not entity.ServerCharacter then return nil end
-	for _, s in pairs(entity.ServerCharacter.StatusManager.Statuses) do
-		if s.StatusId == statusId then return math.floor(s.CurrentLifeTime) end
+function U.AddIfMissing(current, entry)
+	entry = entry:match("^%s*(.-)%s*$")
+	for existing in current:gmatch("[^;]+") do
+		if existing:match("^%s*(.-)%s*$") == entry then return current end
 	end
-	return nil
+	return current == "" and entry or current .. ";" .. entry
 end
 
-function U.Timer(n, callback)
-	n = (n or 13) * 1000
-	local startTime = Ext.Timer.MonotonicTime()
-	local eventId
-	eventId = Ext.Events.Tick:Subscribe(function()
-		if Ext.Timer.MonotonicTime() - startTime >= n then
-			if callback then callback() end
-			Ext.Events.Tick:Unsubscribe(eventId)
+function U.ProgressionTables(uuids, dataType)
+	local tables, count = {}, 0
+	for uuid in pairs(uuids) do
+		local entry = Ext.StaticData.Get(uuid, dataType)
+		if entry then
+			tables[entry.ProgressionTableUUID] = true
+			count = count + 1
 		end
-	end)
-	return eventId, function()
-		return Ext.Timer.MonotonicTime()
 	end
+	return tables, count
+end
+
+function U.PatchProgressions(tableUUIDs, field, entry, level)
+	local patched = 0
+	for _, uuid in pairs(Ext.StaticData.GetAll("Progression")) do
+		local prog = Ext.StaticData.Get(uuid, "Progression")
+		if tableUUIDs[prog.TableUUID] and (not level or prog.Level == level) then
+			local value = U.AddIfMissing(prog[field], entry)
+			if value ~= prog[field] then prog[field] = value end
+			patched = patched + 1
+		end
+	end
+	return patched
+end
+
+function U.CountElements(tbl)
+	if not tbl then return 0 end
+	local count = 0
+	for _ in pairs(tbl) do count = count + 1 end
+	return count
+end
+
+function U.IsDenseArray(value)
+	if type(value) ~= "table" then return false end
+	for i = 1, U.CountElements(value) do
+		if value[i] == nil then return false end
+	end
+	return true
 end
 
 return U

@@ -1,13 +1,14 @@
 local E       = Ext.Require("Shared/Events.lua")
-local U       = Ext.Require("Shared/Utility.lua")
+local P       = Ext.Require("Shared/Printing.lua")
 local NetDefs = Ext.Require("Shared/NetDefs.lua")
 local Vars    = Ext.Require("Shared/Vars.lua")
 local Params  = Ext.Require("Shared/Params.lua")
 
 local C = {}
 
-local slotMap   = {}
-local usedSlots = {}
+local slotMap     = {}
+local usedSlots   = {}
+local mirrorLooks = {}
 
 local stavCcams = {}
 for _, slot in ipairs(Params.Slots) do stavCcams[slot.ccam] = true end
@@ -19,10 +20,19 @@ local function claimSlot(charUUID)
 		if not usedSlots[i] then
 			usedSlots[i]      = charUUID
 			slotMap[charUUID] = i
+			P.Debug():Raw("Claimed slot "):C3(i):Raw(" for "):Name(charUUID):Print()
 			return i
 		end
 	end
 	return nil
+end
+
+local function sameElements(els, current)
+	if #els ~= #current then return false end
+	for i, el in ipairs(els) do
+		if el.Material ~= current[i].Material then return false end
+	end
+	return true
 end
 
 local function applyElements(entity, tattooCcam, look)
@@ -31,7 +41,7 @@ local function applyElements(entity, tattooCcam, look)
 	local els        = {}
 	local haveTattoo = false
 	for _, el in ipairs(cca.Elements) do
-		local m = tostring(el.Material)
+		local m = el.Material
 		if m == tattooCcam then
 			haveTattoo = true
 			els[#els + 1] = el
@@ -47,19 +57,22 @@ local function applyElements(entity, tattooCcam, look)
 			els[#els + 1] = { Material = ccam }
 		end
 	end
-	cca.Elements = els
+	if not sameElements(els, cca.Elements) then
+		cca.Elements = els
+		entity:Replicate("CharacterCreationAppearance")
+	end
 	return true
 end
 
 local function stripFromReal(charUUID)
-	local entity = charUUID and Ext.Entity.Get(charUUID)
+	local entity = Ext.Entity.Get(charUUID)
 	if not entity then return end
 	local cca = entity.CharacterCreationAppearance
 	if not cca then return end
 	local els = {}
 	local removed = false
 	for _, el in ipairs(cca.Elements) do
-		if stavCcams[tostring(el.Material)] then
+		if stavCcams[el.Material] then
 			removed = true
 		else
 			els[#els + 1] = el
@@ -68,11 +81,11 @@ local function stripFromReal(charUUID)
 	if removed then
 		cca.Elements = els
 		entity:Replicate("CharacterCreationAppearance")
+		P.Debug():Raw("Removed STAV elements from "):Name(charUUID):Print()
 	end
 end
 
 local function applyToCharacter(charUUID)
-	if not charUUID then return end
 	local entity = Ext.Entity.Get(charUUID)
 	if not entity then return end
 	local look = Vars.GetLook(entity)
@@ -80,48 +93,50 @@ local function applyToCharacter(charUUID)
 
 	local slotIdx = claimSlot(charUUID)
 	if not slotIdx then
-		STAVDebug("No free STAV slot for %s", charUUID)
+		P.Debug():Raw("No free STAV slot for "):Name(charUUID):Print()
 		return
 	end
 	local slot = Params.Slots[slotIdx]
 
 	if applyElements(entity, slot.ccam, look) then
-		entity:Replicate("CharacterCreationAppearance")
-		NetDefs.NET_APPLY_SYNC:Broadcast({
-			characterUUID = charUUID,
-			preset        = slot.preset,
-			state         = look,
-		})
+		Ext.Timer.WaitFor(333, function()
+			NetDefs.NET_APPLY_SYNC:Broadcast({
+				characterUUID = charUUID,
+				preset        = slot.preset,
+				state         = look
+			})
+		end)
+		P.Debug():Raw("Applied look to "):Name(charUUID):Raw(" (slot "):C3(slotIdx):Raw(")"):Print()
 	end
 end
 C.ApplyToCharacter = applyToCharacter
 
 E.StartChangeAppearance.Subscribe(function(p)
-	stripFromReal(p.CharacterGuid)
+	mirrorLooks[p.Character.Guid] = Vars.GetLook(p.Character.Entity)
+	stripFromReal(p.Character.Guid)
 end)
 
 E.ChangeAppearanceCompleted.Subscribe(function(p)
-	applyToCharacter(p.CharacterGuid)
+	applyToCharacter(p.Character.Guid)
 end)
 
 E.ChangeAppearanceCancelled.Subscribe(function(p)
-	applyToCharacter(p.CharacterGuid)
+	local look = mirrorLooks[p.Character.Guid]
+	Vars.SetLook(p.Character.Entity, look)
+	if look then applyToCharacter(p.Character.Guid) else stripFromReal(p.Character.Guid) end
 end)
 
 -- On level load: ping clients (first-CC clients resend their in-memory look once their
--- avatar resolves) and re-apply any persisted look per avatar (reload case).
+-- avatar resolves) and re-apply any persisted look per character (reload case).
 local didInitialApply = false
 
 E.LevelGameplayStarted.Subscribe(function()
-	Ext.Timer.WaitFor(33, function()
+	Ext.Timer.WaitFor(133, function()
 		NetDefs.NET_AVATAR_PING:Broadcast({})
 		if didInitialApply then return end
 		didInitialApply = true
-		local players = Osi.DB_Players:Get(nil)
-		if players then
-			for _, row in ipairs(players) do
-				applyToCharacter(U.Guid(row[1]))
-			end
+		for _, uuid in ipairs(Ext.Vars.GetEntitiesWithVariable("STAV_Look")) do
+			applyToCharacter(uuid)
 		end
 	end)
 end)

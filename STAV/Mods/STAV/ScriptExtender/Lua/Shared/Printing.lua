@@ -1,9 +1,8 @@
 -- Credits to Focus
-
 local Config = Ext.Require("Shared/Config.lua")
+local U      = Ext.Require("Shared/Utility.lua")
 
--- Config
-STAV_DebugEnabled = false
+local P = {}
 
 local PRESETS = {
 	{ 255, 0,   0 },		-- C1  #ff0000 Red
@@ -25,16 +24,29 @@ local PRESETS = {
 	{ 0,   194, 203 },	-- C17 #00c2cb Neon Teal
 	{ 109, 114, 203 },	-- C18 #6c72cb Twilight Veil | Faeblue | Witchlight
 	{ 114, 108, 208 },	-- C19 #726cd0 Gloaming Wisp
-	{ 120, 101, 213 }		-- C20 #7865d5 Dusk Violet | Duskbloom | Nightshade
+	{ 120, 101, 213 },	-- C20 #7865d5 Dusk Violet | Duskbloom | Nightshade
+	{ 211, 152, 255 },	-- C21 #d398ff Fae Lilac
+	{ 120, 100, 180 },	-- C22 #7864b4 Nightshade
+	{ 215, 205, 255 },	-- C23 #d7cdff Moonshade
+	{ 173, 72,  255 },	-- C24 #ad48ff Umbral Bloom
+	{ 229, 196, 255 },	-- C25 #e5c4ff Orchid Mist
+	{ 18, 58, 122 },		-- C26 #123a7a Arcane Azure
+	{ 169, 216, 255 },	-- C27 #a9d8ff Mystra's Light
+	{ 22, 50, 92 },		-- C28 #16325c Netherese Shroud
+	{ 199, 233, 255 },	-- C29 #c7e9ff Glacial Gleam
+	{ 11, 45, 91 },		-- C30 #0b2d5b Midnight Weave
+	{ 155, 215, 255 },	-- C31 #9bd7ff Arcane Radiance
+	{ 173, 235, 179 },	-- C32 #adebb3 Mint Green
+	{ 239, 197, 118 },	-- C33 #efc576 Lathander's Dawn
+	{ 127, 0,   255 },	-- C34 #7f00ff Arcane Violet
+	{ 255, 180, 255 },	-- C35 #ffb4ff Pale Lilac
+	{ 191, 213, 255 },	-- C36 #bfd5ff Starlit Haze
+	{ 72, 68, 101 }		-- C37 #484465 Raven Ash
 }
 
 -- Internals
 local Machine = Ext.IsServer() and "S" or "C"
 local RESET   = "\x1b[0m"
-
-local function Format(...)
-	return #{ ... } <= 1 and tostring((...)) or string.format(...)
-end
 
 local function Lerp(a, b, t)
 	return math.floor(a + (b - a) * t + 0.5)
@@ -44,39 +56,49 @@ local function RgbToANSI(r, g, b)
 	return string.format("\x1b[1;38;2;%d;%d;%dm", r, g, b)
 end
 
-local function RawPrint(...)
-	print(Format(...))
+local function join(...)
+	local n = select("#", ...)
+	if n <= 1 then return tostring((...)) end
+	local parts = {}
+	for i = 1, n do parts[i] = tostring((select(i, ...))) end
+	return table.concat(parts)
 end
 
 -- CoreBuilder
 local CoreBuilder = {}
 CoreBuilder.__index = CoreBuilder
 
-function STAVPrint()
+function P.Log()
 	return setmetatable({ _segs = {} }, CoreBuilder)
 end
 
-function CoreBuilder:Colour(text, r, g, b)
-	self._segs[#self._segs + 1] = { Text = tostring(text), Color = { r, g, b } }
-	return self
-end
-
 -- Set the line-wide gradient endpoints (by preset). Text added with :G is
--- coloured across the whole line at Build time; fixed-colour inserts (C methods)
+-- coloured across the whole line at Build time, fixed-colour inserts (C methods)
 -- are lifted out and don't consume gradient positions.
 function CoreBuilder:GradC(startPreset, endPreset)
 	self._grad = { PRESETS[startPreset], PRESETS[endPreset] }
 	return self
 end
 
-function CoreBuilder:G(text)
-	self._segs[#self._segs + 1] = { Text = tostring(text), Grad = true }
+function CoreBuilder:G(...)
+	self._segs[#self._segs + 1] = { Text = join(...), Grad = true }
 	return self
 end
 
-function CoreBuilder:Raw(text)
-	self._segs[#self._segs + 1] = { Text = tostring(text) }
+function CoreBuilder:Raw(...)
+	self._segs[#self._segs + 1] = { Text = join(...) }
 	return self
+end
+
+function CoreBuilder:Name(uuid)
+	if type(uuid) ~= "string" or uuid == "" then
+		return self:C3("nil")
+	end
+	local name = U.GetDisplayName(uuid)
+	if name ~= uuid then
+		return self:C5(name):Raw(" ["):C3(uuid):Raw("]")
+	end
+	return self:C3(uuid)
 end
 
 function CoreBuilder:Build()
@@ -95,8 +117,8 @@ function CoreBuilder:Build()
 				seg.Text:sub(i, i) .. RESET
 				g = g + 1
 			end
-		elseif seg.Color then
-			parts[#parts + 1] = RgbToANSI(seg.Color[1], seg.Color[2], seg.Color[3]) .. seg.Text .. RESET
+		elseif seg.Ansi then
+			parts[#parts + 1] = seg.Ansi .. seg.Text .. RESET
 		else
 			parts[#parts + 1] = seg.Text
 		end
@@ -105,17 +127,39 @@ function CoreBuilder:Build()
 end
 
 function CoreBuilder:Print()
-	RawPrint(self:Build())
+	print(self:Build())
 end
 
 for i, color in ipairs(PRESETS) do
-	CoreBuilder["C" .. i] = function(self, text)
-		return self:Colour(text, color[1], color[2], color[3])
+	local ansi = RgbToANSI(color[1], color[2], color[3])
+	CoreBuilder["C" .. i] = function(self, ...)
+		self._segs[#self._segs + 1] = { Text = join(...), Ansi = ansi }
+		return self
 	end
 end
 
--- Public
-function STAVDebug(...)
-	if not (STAV_DebugEnabled or Config.Get("Debug")) then return end
-	STAVPrint():C10(string.format("[%s STAV] ", Machine)):Raw(Format(...)):Print()
+P.Palette = {
+	Colours = PRESETS,
+	Names   = {
+		"Red", "Orange", "Yellow", "Green", "Blue", "Violet", "White", "Silver", "Black", "Magenta", "Blush",
+		"Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green", "Neon Unseelie Violet",
+		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac", "Nightshade", "Moonshade",
+		"Umbral Bloom", "Orchid Mist", "Arcane Azure", "Mystra's Light", "Netherese Shroud", "Glacial Gleam",
+		"Midnight Weave", "Arcane Radiance", "Mint Green", "Lathander's Dawn", "Arcane Violet", "Pale Lilac",
+		"Starlit Haze", "Raven Ash"
+	}
+}
+
+local function noop(self) return self end
+local NullBuilder = setmetatable({}, { __index = function() return noop end })
+
+function P.IsDebug()
+	return Config.Get("Debug")
 end
+
+function P.Debug()
+	if not P.IsDebug() then return NullBuilder end
+	return P.Log():C36("[STAV - ", Machine, "]"):C33("[", Ext.Timer.MonotonicTime(), "] ")
+end
+
+return P

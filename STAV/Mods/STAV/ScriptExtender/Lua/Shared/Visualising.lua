@@ -1,0 +1,711 @@
+---@class STAVOverrides
+---@field Scalars? table<string, number>
+---@field Vec3? table<string, number[]>
+---@field Vec4? table<string, number[]>
+
+---@class STAVVisEntry
+---@field uuid? Guid
+---@field charvis Guid[]
+---@field material? Guid
+---@field scarMap? Guid
+---@field scarMapNM? Guid
+---@field shader? boolean
+---@field overrides? { head?: STAVOverrides, body?: STAVOverrides }
+---@field skinMatPreset? { id: Guid, Scalars?: table<string, number>, Vec3?: table<string, number[]>, Vec4?: table<string, number[]> }
+---@field ccOverrides? { id: Guid, Scalars?: table<string, number>, Vec3?: table<string, number[]>, Vec4?: table<string, number[]> }
+
+---@type table<Guid, { all: true }|table<string, STAVVisEntry>>
+local COMPAT = {
+	["8cc519bd-cfd3-4041-9468-518cc3e31b28"] = { all = true },		-- Unique Companion Assets
+}
+
+---@type table<string, STAVVisEntry>
+local PLAYER_VIS = {
+	DROW_F = {
+		charvis   = {
+			"2cc252c2-4eef-ce10-245b-de39bb45b39d",
+			"187188d8-929a-d800-d5c3-33453a8cc25a",
+			"27b58c9a-5efa-e736-d81e-98d124a6bb8a"
+		},
+		material  = "cd69fa48-def6-c323-ce85-07321817f10f"
+	},
+	DROW_M = {
+		charvis   = {
+			"477d8a7b-4025-eb61-b8ff-91c848a4c82e",
+			"f2f3f92a-d471-bee8-064e-0614e238b0d0",
+			"3b9ceab9-c731-db57-afc0-04d7eb424874",
+			"0f54ca06-abfa-2b82-5982-58edae2f68e2"
+		},
+		material  = "c0759310-a004-7e3c-a4b8-8c25da11c770"
+	},
+	DROW_FS = {
+		charvis   = {
+			"06bc048a-2d5a-9943-b202-9d9261e9cde2",
+			"fa98fc6b-a18d-7dd1-b9ed-709039e41e73",
+			"1357ce70-9407-2f0d-8aa8-b22c206b8950"
+		},
+		material  = "3c6fb944-8b68-a4e1-9b4b-60dfebffdb90"
+	},
+	DROW_MS = {
+		charvis   = {
+			"f6bdb7da-ceb8-fd9e-9c04-78c93d3f0806",
+			"dd25a73b-cdf6-7c41-e098-35828550112f",
+			"52a2168f-d199-69bb-ca2f-cbdf6e3a2c04"
+		},
+		material  = "663ff294-20df-8dd2-e409-e60b8044f997"
+	},
+	DWR_F = {
+		charvis   = {
+			"9598d919-8272-0377-d2a5-879c0012f3fd",
+			"252f9e78-9f65-a2e3-1236-84d1b8387306",
+			"0f089ef3-2587-0603-8479-3c9b0679f9b8",
+			"011d925e-12b8-9a6f-1d8e-06ad9bffd0fc",
+			"aee6c3ff-dad0-0fc2-57a1-3b0d5e4b95c2",
+			"44f07c8c-b28e-72ef-fa2e-7645fd410387"
+		},
+		material  = "f40c211c-5a5f-647c-e503-c4db338df300"
+	},
+	DWR_M = {
+		charvis   = {
+			"9dab2880-c88d-f2d8-98aa-358e962b8afa",
+			"c6d50cc6-0120-90cb-b776-4cda0d2bc7d3",
+			"8d6c967f-b24b-fce2-a54a-d9bbf0b79da9",
+			"7997cde4-12c2-354b-cc1e-ff51ca00032c",
+			"3fcf0675-a947-7d6e-5941-0d8d51ce7f95",
+			"2acd2062-1c34-6890-0494-72c1df17973f",
+			"664b1ba1-6f84-3446-7f83-03b7d82b3d99"
+		},
+		material  = "10432221-9250-adc3-c530-a717a5ec46c9"
+	},
+	ELF_F = {
+		charvis   = {
+			"e1254a4e-3d52-76c2-7b19-52e93941b6dd",
+			"fa671c8c-487a-297a-9d73-5fb7b769a3e7",
+			"d67bd924-3c1f-c33a-5298-feca5bbdc284",
+			"69c6d55e-2faa-16a0-f0bd-7e3dce4529cf"
+		},
+		material  = "d1d50fe6-0fb2-533c-d8f6-7ab074df2913"
+	},
+	ELF_M = {
+		charvis   = {
+			"f7af9f10-cd33-3b88-e96a-d52952e81f5b",
+			"015bd884-82d1-cc15-2a0f-0cb8524028f4",
+			"f0c009b2-7868-784e-f2fc-dde5ac934aba"
+		},
+		material  = "4c58d01d-b005-f1b9-7084-6f1193de67f6"
+	},
+	ELF_FS = {
+		charvis   = {
+			"8d3b10f3-7f7c-626d-0d13-4d6223de9f94",
+			"5064dd4e-d4ec-e30a-c784-a98596d7070f",
+			"eb370ddf-f7a4-4349-116e-f489556bab1d"
+		},
+		material  = "16ffd4b3-3b00-f623-3686-703c2b828fdc"
+	},
+	ELF_MS = {
+		charvis   = {
+			"76172a38-007d-6213-d75c-820a8b67004a",
+			"c457d519-ddf4-a023-667a-38d2565511e3",
+			"dbe45e58-e009-91ae-91f1-e5311cbef090"
+		},
+		material  = "d232a086-0ded-c1ad-2c22-53336c2590b2"
+	},
+	GNO_F = {
+		charvis   = {
+			"80232477-0852-54ea-532a-f216bdf4be61",
+			"4d66cbb8-05d8-807a-622c-55fbdf0719a9",
+			"2a1aaf1e-683f-9af2-c8d1-2354634bbc45",
+			"7556599d-28e9-14df-15a5-3e3c9d01bea4"
+		},
+		material  = "ba7b5e8f-27a1-035e-9109-44d4b6e6af10"
+	},
+	GNO_M = {
+		charvis   = {
+			"2190c1fe-8bf0-cf21-24f7-482defce3814",
+			"6bec6b31-b86b-2c6b-68e1-fea2a943fec5",
+			"eabe1080-a24e-5aed-1a26-7594172bfefd",
+			"00313806-830f-9427-8b09-f1505de92a50"
+		},
+		material  = "6a67f147-229c-e6b8-25d1-2b427bde7a0b"
+	},
+	GTY_F = {
+		charvis   = {
+			"00f931b5-7105-da0c-8992-26beeb53dbbc",
+			"40b40a77-9484-9cb2-f49a-1ae083815cf3"
+		},
+		material  = "73b1a66a-dc9a-9488-8adf-a1e4af9151af"
+	},
+	GTY_M = {
+		charvis   = {
+			"2c0ba7ad-66be-884e-b680-9b7e5a2203a0",
+			"538eb02f-9e1b-4740-7e4f-024573ce2de7",
+			"6a07e0d8-4110-54f7-c013-19ed2ff990ed"
+		},
+		material  = "6f701dcf-672b-966e-9136-62f4769bb72c"
+	},
+	HEL_F = {
+		charvis   = {
+			"a58738bb-b385-080c-11da-85a2787a9b3d",
+			"eb625697-be9f-2820-6e2e-39d0d4a30a45",
+			"1c36f857-0a5e-a0e2-66d9-9c5b24daf824",
+			"23dac105-2cac-772e-3f25-f6f6416f4957",
+			"d6b3078b-e4f1-ecfc-4801-b1a6da80e1be"
+		},
+		material  = "e9cdaf51-7e6f-4c8e-33f6-2c780f1166b0"
+	},
+	HEL_M = {
+		charvis   = {
+			"345d747b-fd96-f13c-cae5-a7f750e65040",
+			"a4453c57-324b-60de-7e9a-ba17e5c31ba3",
+			"d598ca76-ca77-2fb1-3010-ebff8dcaf3c5",
+			"0d8094d2-9d1e-6da2-b028-a1e376df46ce",
+			"0ccfb296-7f21-9281-08e0-1d75992072bb"
+		},
+		material  = "c05cc830-d12f-4eee-8cac-cd7b40d2550d"
+	},
+	HEL_FS = {
+		charvis   = {
+			"93acb59c-c9d9-f59d-41dc-b6d7e0e6fba6",
+			"9f6ddfe1-e89d-c5e5-e54d-c1e2a755324c",
+			"3a01c388-506f-3b91-721a-9c5692db3357",
+			"639f5904-682b-2413-fbfc-191af52808b6"
+		},
+		material  = "c30c53d5-d0b5-4b41-a958-6bf5a4696d25"
+	},
+	HEL_MS = {
+		charvis   = {
+			"a97ff4b7-f9d9-0c00-9c1b-65275ba4b704",
+			"e34dae3b-3dc7-3499-a68b-27288dbffd85",
+			"9f573c86-3162-1d53-884b-05d8a00511ab",
+			"a7739671-73cb-1005-8694-2ae556825885"
+		},
+		material  = "f455e079-c0d2-fe8c-9954-8fde6b76be36"
+	},
+	HFL_F = {
+		charvis   = {
+			"da852f7d-e4ed-610b-4d31-91fcc032e4fe",
+			"a871cdb8-4d0e-9de8-8221-1c1f8950b49d",
+			"752afaa1-8f92-a72d-3500-df162e899489",
+			"788c94fb-c9a1-fbc7-7fd4-03d8a031e66e"
+		},
+		material  = "d840a2bd-14ce-6e7f-8c1c-3562c9d26e73"
+	},
+	HFL_M = {
+		charvis   = {
+			"9badecc0-804e-94d8-135e-cd70bb9e00bc",
+			"ca90df09-a517-fa81-d248-8b111d352c5a",
+			"a05d6235-48f4-93be-d113-38c550815176",
+			"8e776d9d-344a-3265-50a3-6bd2bd6de5f8"
+		},
+		material  = "3cc12b3a-0c0a-2ecf-521f-82ed080de616"
+	},
+	HRC_F = {
+		charvis   = {
+			"1586dcb3-51ff-7489-bfa4-81263bf56686",
+			"6bcf04be-942d-2980-2e59-089a5a6ba36e"
+		},
+		material  = "a79321f5-f966-485c-20d7-ddd87dc0329c"
+	},
+	HRC_M = {
+		charvis   = {
+			"cd67df82-8a06-2005-740f-9c7762097834",
+			"355b3b3c-cdae-8805-04dd-d6299920876f"
+		},
+		material  = "b2dca29f-e14c-ce03-920b-32574161abcf"
+	},
+	HUM_F = {
+		charvis   = {
+			"51214aaf-d81d-60f3-b7a6-28002ade0a6f",
+			"65508880-7afc-74cf-97eb-8d85c80b79b4",
+			"fedf1050-a2b6-e913-1cd2-e3b9effd2b90",
+			"1a1e412a-37ca-9425-6cfd-67ee7429d616"
+		},
+		material  = "608a2e39-56cc-c57c-be07-30812f08b5c3"
+	},
+	HUM_M = {
+		charvis   = {
+			"71aaadda-22e0-f962-14ff-f57d57a2e726",
+			"40b6c0b8-693d-3726-6819-acbc8481f208",
+			"58106c8e-8b3b-0854-5720-61c543805888"
+		},
+		material  = "cfd6618f-adc0-c531-06e7-24283aa05da3"
+	},
+	HUM_FS = {
+		charvis   = {
+			"df8ba65b-48da-8f7c-a814-c2fcb65ae67a",
+			"3cea72b5-bbc3-a9d8-3bb9-edb85ef9738c"
+		},
+		material  = "3f3de6bd-56fa-63a5-7b72-5cd6a9deabc7"
+	},
+	HUM_MS = {
+		charvis   = {
+			"1d4e0fe8-969c-1050-8f3e-96f172a3d153",
+			"0a9d0823-9a79-7a0b-9d37-c0ae1976051f",
+			"783884de-ba13-3c69-1890-c59d2e4bcba8"
+		},
+		material  = "9f688deb-c24f-ca3d-524b-43dddda3b1a8"
+	},
+	TIF_F = {
+		charvis   = {
+			"41ac6638-8590-4c25-2789-44cdc8ef87d8",
+			"0a902841-1c5b-7acc-9620-91b284a65436",
+			"b2a2a57a-7690-681f-ad5c-61aa4c9754db",
+			"4d42fb67-449d-1c13-8661-09610d477183",
+			"d74056a1-922b-2e5b-54b9-e67de157d433"
+		},
+		material  = "cec04751-16eb-ddb2-2a55-7c0fa3f48a02"
+	},
+	TIF_M = {
+		charvis   = {
+			"35fa926e-18f4-2d3e-872a-04ab9e95b76c",
+			"a178a41d-05c3-3bc8-4879-15d2effe3300",
+			"127ae5d8-a7bd-0498-1d71-4e479d247922",
+			"96b61e9f-9901-4406-fa22-f29631339bb9"
+		},
+		material  = "d2d1745c-979d-b1be-4f41-64c6adcd6d9a"
+	},
+	TIF_FS = {
+		charvis   = {
+			"f1cdcf6d-7469-14ec-380f-3cb5df440340",
+			"fcff3667-ddc0-1b32-2b7f-1acedfa0cf50",
+			"b873fc5f-67fb-72ca-ec6c-38f225d03477",
+			"8bbe62dd-9fe5-f6e4-4700-884354f6a346"
+		},
+		material  = "cbbd294d-468c-bd37-ef2f-d2351ff2b45f"
+	},
+	TIF_MS = {
+		charvis   = {
+			"a9afff3b-121d-085e-12af-9e9fb07c788f",
+			"351d13d4-a4de-0dd0-24df-3a194285c7e6",
+			"ee113dde-55da-ce62-5d4e-a98ccf9606cd",
+			"ea87e65b-5d45-26c0-c5bf-54a974913b91"
+		},
+		material  = "f31189c6-50ce-a198-93bb-cfa54fb75079"
+	},
+}
+
+---@type table<string, STAVVisEntry>
+local COMPANIONS_VIS = {
+	Astarion = {
+		uuid = "c7c13742-bacd-460a-8f65-f864fe41f255",
+		charvis   = {
+			"14c23242-b819-0d30-f5ba-5e6c9b4b6088",
+			"6788a271-9ad5-074f-8a5f-12b7dcb29174",
+			"572763d2-d40a-1def-510b-f878b9cd8da8",
+			"a66864fa-0820-7ed4-d26a-8dc0d397a5e5",
+			"9ea09cc5-7842-d0d6-8961-93de27f16888",
+			"1bf04545-26b5-95b9-92b6-18495961ba32",
+			"28de6f26-806e-f02b-1e2b-8eb791406a89",
+			"be9fbfe1-cf9c-7864-55d3-bbd6d329150b",
+			"4c344a90-588a-59a9-5495-3fc33893b3b0",
+			"b2da9993-29a6-dc63-23dd-8b319047230c",
+			"255e4a19-65dc-27d5-bf7c-885ca92d6ea6",
+			"8b717bd5-cdc9-66b4-9ae0-908f9b9173a2",
+			"f0c1cd99-8f94-e5ba-86b3-bfc048af906e",
+			"96824355-8954-2b76-5a1d-9503b93f796b",
+			"7407f64a-af3f-1f9d-ae7d-8704227c5c27"
+		},
+		material  = "2e8da869-974a-209e-ea85-cecf69edcb64",
+		scarMap   = "a8019fca-9d39-fb6f-e79a-b7d7aff2fc88",
+		scarMapNM = "5ef09d5a-b114-e5b4-8ba0-1d6e67170242"
+	},
+	Gale = {
+		uuid = "ad9af97d-75da-406a-ae13-7071c563f604",
+		charvis   = {
+			"04262cdf-e58d-606d-af9f-a29d72643644",
+			"1a4faa8c-7fca-1f62-e499-87d362d90512",
+			"31548f9b-a200-9624-0817-61a71a50931a",
+			"62d788a1-f777-4608-8ee1-55325ccf3360",
+			"9f2b34c6-7914-efec-0f17-24a8a3abc758",
+			"d486eb45-1949-3226-c6cc-1c3df31a0449",
+			"871320c7-8b7a-8f2c-467a-1d727a025e76"
+		},
+		material  = "edd2cb50-b537-76ad-134e-c75c65d99705",
+		scarMap   = "996c16c9-9d96-2264-9fde-f39283d1f737",
+		scarMapNM = "69bc5c47-a2dd-d19b-5437-335ac3809a8e",
+		overrides = {
+			head = {
+				Scalars = { TattooIndex = 57 },
+				Vec4	  = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+			},
+			body = {
+				Scalars = { SecretTatIndex = 5 }
+			},
+		},
+		ccOverrides = {
+			id      = "62d788a1-f777-4608-8ee1-55325ccf3360",
+			Scalars = { TattooIndex = 57 },
+			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+		}
+	},
+	GaleNoTats = {
+		uuid = "ad9af97d-75da-406a-ae13-7071c563f604",
+		charvis   = {
+			"9be0bb8c-8ee2-4edb-86e9-1bf024acba67"
+		},
+		material  = "c7be9d7e-8883-03af-f7d4-44b8730a71f4",
+		scarMap   = "996c16c9-9d96-2264-9fde-f39283d1f737",
+		scarMapNM = "69bc5c47-a2dd-d19b-5437-335ac3809a8e",
+		overrides = {
+			head = {
+				Scalars = { TattooIndex = 57 },
+				Vec4	  = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+			},
+			body = {
+				Scalars = { SecretTatIndex = 5 }
+			},
+		},
+	},
+	Halsin = {
+		uuid = "7628bc0e-52b8-42a7-856a-13a6fd413323",
+		charvis   = {
+			"b7830265-b4d4-3419-bd41-1fe1099ccf16",
+			"881301f4-4ccb-29ae-4336-3abf9cfba9f0",
+			"a9af1b0f-f66a-b844-c22a-33151e1ed4fc"
+		},
+		material  = "cd3b1f46-fd4f-bfff-7e91-ee7cfbf3d574",
+		scarMap   = "b3b25a5a-c28d-1468-b759-e119f1ad475a",
+		scarMapNM = "249959cb-89b9-2ea2-1402-649a88b6b8e1",
+		overrides = {
+			head = {
+				Scalars = { TattooIndex = 31 },
+				Vec4    = { TattooIntensity = { 0.88235295, 0, 0, 0 } }
+			}
+		},
+	},
+	Jaheira = {
+		uuid = "91b6b200-7d00-4d62-8dc9-99e8339dfa1a",
+		charvis   = {
+			"b90c6552-4529-e6ef-1084-34c56eca1521",
+			"f09fbd8b-ee7d-4142-5a69-2be414c8852c",
+			"966e8a68-24a0-fd94-8323-74f7b091df7c"
+		},
+		material  = "cebf12f5-c510-7e4a-513c-c3421a2e94ba",
+		scarMap   = "872397ef-7d2d-139c-55c4-29a9ff58159c",
+		scarMapNM = "df8d649a-a7ff-246a-74f7-6e0c5894508d"
+	},
+	Karlach = {
+		uuid = "2c76687d-93a2-477b-8b18-8a14b549304c",
+		charvis   = {
+			"2dd12288-c71c-7db2-925c-2f884c1727bc",
+			"7abb8ab4-2f85-8785-2762-ff11afc6f372",
+			"39d59978-8a65-a8ec-6e8b-0d391f4035e3",
+			"ce24301b-f705-ab7d-4354-d51ab93c5ae3"
+		},
+		material  = "1ece701e-a4f7-a466-f3ad-b8418191e284",
+		scarMap   = "847f848a-53bf-87f8-105b-de75f01ff600",
+		scarMapNM = "38f1af8d-c9ab-c64d-13aa-143062de1349",
+		shader = true,
+		overrides = {
+			body = {
+				Scalars = { SecretTatIndex = 4 }
+			}
+		},
+	},
+	KarlachNoGlow = {
+		uuid = "2c76687d-93a2-477b-8b18-8a14b549304c",
+		charvis   = {
+			"5757770a-12aa-a3f6-35dd-39beeaf5489d"
+		},
+		material  = "9c097fef-2bff-a0b3-17f1-5fa6b99d5aa8",
+		scarMap   = "847f848a-53bf-87f8-105b-de75f01ff600",
+		scarMapNM = "38f1af8d-c9ab-c64d-13aa-143062de1349",
+		overrides = {
+			body = {
+				Scalars = { SecretTatIndex = 4 }
+			}
+		},
+	},
+	Laezel = {
+		uuid = "58a69333-40bf-8358-1d17-fff240d7fb12",
+		charvis   = {
+			"685e521d-a4a8-0199-1064-05840a43d28e",
+			"3a42ea31-54d2-6d3e-cf39-79b064972f5f",
+			"b707448b-a558-c3fc-55a2-87fd5c87407e",
+			"31227da2-963d-c611-11ad-52cf15e14580",
+			"1088f4ee-579b-b49e-72cc-7ecc5fc5be79"
+		},
+		material  = "b153fa26-d9a8-9337-5dee-ffddaad4b282",
+		scarMap   = "8b8585b6-1832-756b-14e8-ee9f9beb7cb9",
+		scarMapNM = "66533581-5c36-817e-b22f-0086eccf4b41",
+		overrides = {
+			head = {
+				Scalars = { TattooIndex = 54 },
+				Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+			}
+		},
+		skinMatPreset = {
+			id      = "5dd2b99c-5c01-535d-68ab-2717ed93b54f",
+			Scalars = { TattooIndex = 54 },
+			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+		}
+	},
+	Minsc = {
+		uuid = "0de603c5-42e2-4811-9dad-f652de080eba",
+		charvis   = {
+			"6acff363-4407-0b10-0a7c-c1e27fe03c58",
+			"9404e0a4-fafd-47ec-ad6d-52d63cb116ff",
+			"b933b9ae-e37a-95ff-0801-1dd31069ecfc"
+		},
+		material  = "b7bae40d-b2fd-4c10-6de4-9a492dc43e47",
+		scarMap   = "2432d1f5-b05b-98bd-7599-98b9f73beffe",
+		scarMapNM = "3dc4f7df-1933-548d-6b27-e061039c1db8",
+		overrides = {
+			head = {
+				Scalars = { TattooIndex = 58 },
+				Vec3    = { TattooColorG = { 0.043290038, 0.0111670075, 0.053869784 } },
+				Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+			}
+		},
+		skinMatPreset = {
+			id      = "07761a0b-4ce5-3121-fd10-9a865a4ad627",
+			Scalars = { TattooIndex = 58 },
+			Vec3    = { TattooColorG = { 0.043290038, 0.0111670075, 0.053869784 } },
+			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+		}
+	},
+	Minthara = {
+		uuid = "25721313-0c15-4935-8176-9f134385451b",
+		charvis   = {
+			"63dcb01e-630a-b575-ef5c-10ff738b7d51",
+			"383236f9-c7ab-7163-4638-d2e2702ec513",
+			"6248f8a8-839e-956f-6986-e10a55406c81",
+			"d1bc342f-c995-bad7-4622-4e3f09f3e5ed",
+			"ee1200f2-51a4-7b28-f046-1d29de15a651",
+			"a261b2a4-a3ba-9baf-0ec1-f6557e2ce22a",
+			"39350e36-2c69-bc20-c2b8-981dfa5b263b",
+			"5a78cb10-4528-5b3c-4029-1dff2d302dbc",
+			"f58335c5-e0b5-5310-0adc-b9ec985f7ff2"
+		},
+		material  = "e35a200e-2fff-a8d3-d1c8-66d0cff91c2c",
+		scarMap   = "ef953551-4cc3-643e-5250-bc4edbb5ea52",
+		scarMapNM = "8215e82c-8774-8234-afa3-cbdf7093a9bb",
+		overrides = {
+			head = {
+				Scalars = { TattooIndex = 55 },
+				Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+			}
+		},
+		ccOverrides = {
+			id      = "d1bc342f-c995-bad7-4622-4e3f09f3e5ed",
+			Scalars = { TattooIndex = 55 },
+			Vec4    = { TattooIntensity = { 0, 0.88235295, 0, 0 } }
+		}
+	},
+	Shadowheart = {
+		uuid = "3ed74f06-3c60-42dc-83f6-f034cb47c679",
+		charvis   = {
+			"a4cb151d-de86-1cd2-3cbe-327fc71eec82",
+			"a48523ae-0f47-ec7d-e3a0-2e7ce657a9f2",
+			"da027039-ae35-8012-c351-44a7e7c890a5",
+			"fa6a72dc-9ba4-eb5f-f442-40c4ab5d2418",
+			"5b3f87f9-2a3e-00ca-d173-0b608f870995",
+			"9ab62da4-a028-c237-b5b9-ca897f62b771",
+			"f9dad0cb-4b58-c911-7eea-7d4c9871b04e",
+			"0f6f29d0-e0c7-1a9f-e658-4a3f48f62d63",
+			"508d18b3-3988-4f5e-58ef-b668ae53e704"
+		},
+		material  = "31ea4499-1f05-e225-1e1a-d3928fe3cd98",
+		scarMap   = "f0804a81-6622-f7e0-efe0-c665626980b1",
+		scarMapNM = "b6987be1-aae4-1bea-d9fe-63291810053b",
+		overrides = {
+			body = {
+				Vec3    = { NonSkinColor = { 0, 0, 0 } }
+			}
+		}
+	},
+	Wyll = {
+		uuid = "c774d764-4a17-48dc-b470-32ace9ce447d",
+		charvis   = {
+			"252f4a0d-d502-0985-52f2-973c38377faa",
+			"38721e3d-c3b5-a0eb-3048-128846b3cc0e",
+			"dec1a8bc-f710-001d-9d0f-51e87aafde6c",
+			"e85e0c93-1dc9-c156-bd0e-45f5290b0f0f",
+			"ccd88084-87ef-fd3c-5720-ee8066d4f465",
+			"5261cf40-599a-4db7-ce6c-8cf71173c4fb",
+			"bdeebe6f-4e34-ae70-5f25-ea0eadb77a34",
+			"faf5255f-4dfa-d8bb-7e7a-5e4b7e11497c",
+			"f2b3631a-2641-49c9-6a10-45e4fbdcfa44"
+		},
+		material  = "ecfbf57a-704d-34df-7689-cda0b6c9ec99",
+		scarMap   = "c641d02d-e466-ac9b-3e7e-bf534d485417",
+		scarMapNM = "d9662fd1-f7f6-c482-b473-e1b60ecbd9b9",
+		overrides = {
+			body = {
+				Vec3    = { NonSkinColor = { 0.044398725, 0.01316299, 0.0006657844 } }
+			}
+		}
+	}
+}
+
+-- All these NPCs have their own tattoos, so need to add a charvis override
+-- so they use a copy of the vanilla mat.
+---@type table<Guid, Guid>
+local NPC_HEADS = {
+	["02871152-ffff-f766-280a-9f425414b7c1"] = "0cf50e64-1f55-c50c-f509-f9a569df4b5d",
+	["03564d96-dba2-740c-72cc-67ece12cd7e5"] = "6c964b1b-8aad-ec37-d96c-3e4e9f2c7d8e",
+	["08d20d42-1cd7-cf71-3663-0390cb335f17"] = "e7bae092-5101-03b7-126c-f4c8591ee5ab",
+	["091a7490-4504-9753-3464-e5662471ae94"] = "40aa0aa0-21f2-725e-52d8-ca007be4b5dc",
+	["0c27d981-af5e-aae7-1227-7b6866f9e830"] = "033c6b85-95b0-c1aa-a293-e57768c29867",
+	["0f0463ca-8385-13d7-6326-a306f6d2de5f"] = "40aa0aa0-21f2-725e-52d8-ca007be4b5dc",
+	["0f8a19b8-3861-6523-db60-09973f40549a"] = "a74e13fb-3192-5624-ba53-12eb86fafbe9",
+	["1076079a-e142-285f-8909-b9167564df00"] = "8b2b974d-3329-375f-8a51-5ce082e317b8",
+	["1412ca02-ea0a-6593-fc09-e47cc9ce9fc6"] = "14d2707e-c83f-3348-282f-4e3680ffb46f",
+	["163526a2-742c-cef4-c1cb-e5c212acb1d6"] = "bc0ff325-a024-7087-9b0f-c5729078c41c",
+	["17ea1a8e-ae71-d928-a37c-529eb6e8cdc2"] = "7cbc0929-fbcb-a7f3-bf28-2e5603f0c287",
+	["18fc83e1-aca6-1ecb-ba5e-0e1ae7030add"] = "eb1e7e3c-3606-4d26-67e1-cc38b17a659f",
+	["19a8a068-ce82-a52e-4198-32065bfd8c04"] = "0532ddf5-9a92-ce5b-acf3-da35ae213ebe",
+	["1a342cef-6629-b957-5911-47472fdd78c5"] = "db058e00-bf53-75ae-53e5-76de13fd3d56",
+	["1b1b42a8-4567-97e5-8f86-fcb8271b8289"] = "cc260104-8d2b-291d-807a-49c32dc4db85",
+	["1cd56a39-9e2c-2590-ff66-7e81ff5bace5"] = "a64788bb-f3b6-5635-c694-06cc1c1c9807",
+	["1d967830-760b-24b3-9604-f141c10ff924"] = "67024e43-236d-f6c1-5633-50e98147fb82",
+	["1d9ab9ed-531a-5b9c-9d4e-df294d967297"] = "c42cce19-8b66-9059-ea9c-ded280fa644b",
+	["2195182e-11b0-ee12-f9c6-97f3b245430d"] = "b19b052d-70a1-fde6-27cf-7eaed437d6dd",
+	["226fc68c-c38e-fb0b-f3a7-c570566aca86"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["26775520-3f11-8cd4-478e-70730fc89bd5"] = "d74eadbc-2d98-8977-7074-760d4f497f6d",
+	["2808816d-b4a7-481a-dc06-e8f669e6bf80"] = "b1bb354c-6464-40c7-c1df-d21817d9787c",
+	["2987de9b-dd32-e8c4-3c63-e3085c416f6f"] = "d182747f-564a-a402-3f6f-b5baec7a83f2",
+	["2a970d18-fe30-06b8-738b-12cce5d5bc73"] = "e4cc70e2-aab3-4b7b-fb1f-210cf7c25e1d",
+	["2aae30df-7b73-5c36-0aa5-a057321feb98"] = "c0d01a7f-4d5b-7d25-71ff-fcaadb68d185",
+	["2b70b970-f438-1436-e8e3-24f9ac5bf2da"] = "5e9a26ce-ba59-a6e6-b6a1-8564df9684c5",
+	["2e8d1053-44dc-f647-2731-cab6bc21a3b1"] = "b1bb354c-6464-40c7-c1df-d21817d9787c",
+	["30bb2971-d375-a6c9-f953-2efc65e66c09"] = "033c6b85-95b0-c1aa-a293-e57768c29867",
+	["319f18aa-7d69-fccf-0068-631fa2736a32"] = "e2b960bf-cc22-94bd-19c8-96c67efe7b1d",
+	["31ad04d8-9f4b-e75d-c52c-789e953698fa"] = "0532ddf5-9a92-ce5b-acf3-da35ae213ebe",
+	["31e01f61-f963-234a-aa9a-cfb289026d98"] = "21922da7-c85e-7fed-6543-03c8ecd42994",
+	["35e6325e-2165-497a-87ce-f0dd71fc8775"] = "fc604993-f615-883c-548a-71da10f70389",
+	["37123a87-9025-12c5-2a9d-c6eb83340884"] = "e2b960bf-cc22-94bd-19c8-96c67efe7b1d",
+	["38c9c279-f25e-58b0-796c-1a317dbe9b74"] = "5e9a26ce-ba59-a6e6-b6a1-8564df9684c5",
+	["39eec5ba-854b-b259-9ef3-e77247994666"] = "baba6333-5ecf-f73e-6031-c2d12294711d",
+	["39f3409c-39ab-f20d-c583-e4e8ba7c62b7"] = "21922da7-c85e-7fed-6543-03c8ecd42994",
+	["3b04b842-7492-98a0-4efd-da4a557bd129"] = "7c7733bb-af61-4c4d-0aae-1ffe84be9c60",
+	["3c421063-b616-a593-805b-e0e606fabb32"] = "65e34ff1-55b0-3ec2-f8b2-44f570798e6b",
+	["3d208d76-d321-b60b-c0a0-1660deef4cbe"] = "aaefa42a-d6d3-4144-bff0-a34af0c6bea8",
+	["3e25f369-2c74-ae8f-e6ff-f7c75e89b6a9"] = "eae5c2c3-b1ee-86cf-c52b-7865024a72ee",
+	["3f2488b5-bba0-82a6-5a77-5b6541248708"] = "c3b57aa9-c5be-a373-d222-a66e24f4e3dc",
+	["3f4054b8-8141-8f57-80c8-aa796a973a0a"] = "7c7733bb-af61-4c4d-0aae-1ffe84be9c60",
+	["4906e968-b9d6-80de-e063-2119bf66c489"] = "1baa5bef-dffa-39fa-cf09-c7659ff050d8",
+	["4b845259-f29b-6c45-82e8-d11323e94b69"] = "21922da7-c85e-7fed-6543-03c8ecd42994",
+	["4b8f44f5-59d4-63e9-d0f6-0c717f097f35"] = "e2b960bf-cc22-94bd-19c8-96c67efe7b1d",
+	["4c7711fa-3b72-8ee3-e005-aeb40d165184"] = "e2b960bf-cc22-94bd-19c8-96c67efe7b1d",
+	["4cb1b276-017b-d045-1102-f3898af087b9"] = "7c3c16bb-4fa0-df16-7574-f5538571ce6e",
+	["4e848862-d1bc-81f5-d06a-855b5c8185b8"] = "cb075fae-d997-65ef-7778-2c0788ff6db5",
+	["5076e4fe-7757-7c8f-2293-d4efe7eca004"] = "7c7733bb-af61-4c4d-0aae-1ffe84be9c60",
+	["519e3961-b211-06ce-cf8f-5d83c60efae3"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["520d13dc-4372-42d5-81f0-95651a34108c"] = "86af664c-33ab-63cc-46cf-06f114677519",
+	["534b40d0-b329-841c-5538-fa42b339e676"] = "1baa5bef-dffa-39fa-cf09-c7659ff050d8",
+	["558f8f79-342a-448e-3224-405195d8a555"] = "adb474ab-243d-4c2f-6b9b-183f62a690c1",
+	["55dbf9ef-9235-ea12-544b-7ffad034ecc9"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["57cb5c27-bc91-16ed-932d-87251e377f8e"] = "f075f175-ed1d-b44b-52f1-4e7622b73861",
+	["58149b02-a62b-d24e-068b-19c0cda126d9"] = "93043e96-2c69-ea90-3185-7315a14531c8",
+	["58b14401-dbf9-8df1-3c11-cd9dea2c2c88"] = "b19b052d-70a1-fde6-27cf-7eaed437d6dd",
+	["59d75818-ad01-29bc-c51f-525086d2c6dc"] = "9d1e0a59-31b7-18ce-ad1f-271906185983",
+	["5a3eca21-f521-1b01-2662-02a8910e5e7f"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["5bf887e4-07dd-8311-d2a2-b7152790f673"] = "25a9b109-ba26-a89b-3084-add745cfa98b",
+	["5cfc4a6c-fa62-e59a-c361-6e3df2bfe776"] = "ef46ad0c-055f-b312-db79-02d213e422e2",
+	["5d2719c4-ba52-1d84-168a-09c657e4d3ef"] = "aaefa42a-d6d3-4144-bff0-a34af0c6bea8",
+	["5e7ab9e9-92ca-0d84-262e-3b03969480fd"] = "9d1e0a59-31b7-18ce-ad1f-271906185983",
+	["5e9e0c89-9030-5576-5603-992af9aad00e"] = "19acb251-86e0-74bf-c071-f9811c348cf6",
+	["60d53021-b00a-5b2c-2c75-e4e2e482c4c5"] = "3eea87d2-b8b0-94e6-4b37-a137c0b09655",
+	["62bdb381-a3fa-46e5-d6df-a5efc86077f7"] = "113da9c0-0257-a492-3caf-fac4ff9aef7d",
+	["64c1235f-783f-a1eb-e6e3-4b989363f0ad"] = "0cf50e64-1f55-c50c-f509-f9a569df4b5d",
+	["65056d08-ee1e-20e0-ec55-317162457e7a"] = "eae5c2c3-b1ee-86cf-c52b-7865024a72ee",
+	["66a1afd7-5393-3c92-6977-38174571c958"] = "6c964b1b-8aad-ec37-d96c-3e4e9f2c7d8e",
+	["6ab99d8b-fcb8-deb0-f87c-c608b995ac9b"] = "113da9c0-0257-a492-3caf-fac4ff9aef7d",
+	["6b55899b-c4a8-e619-fc8b-27d07d290dc4"] = "40aa0aa0-21f2-725e-52d8-ca007be4b5dc",
+	["7140e2c0-2698-def5-fa07-f5cd1caf6291"] = "14d2707e-c83f-3348-282f-4e3680ffb46f",
+	["731d761f-d74b-67bc-e853-1644392675ee"] = "d182747f-564a-a402-3f6f-b5baec7a83f2",
+	["75415bd8-9eb8-c0d0-f176-2984f733a05c"] = "da1323a3-2fa5-a33a-3036-9c90edfc8672",
+	["762c61c4-deae-f947-b42a-f028fcfeebf9"] = "9fac1951-454c-3a2a-85d7-16d31dd0f3e4",
+	["76494592-a2e3-05f2-fb11-ff2ca44f8217"] = "cc260104-8d2b-291d-807a-49c32dc4db85",
+	["776d8606-21f9-8234-c60e-1d2bfcfd205d"] = "1b9c843e-610e-7308-b568-97f87a4b5f51",
+	["7bed67a1-cb2c-bfb7-c493-53865913614d"] = "14d2707e-c83f-3348-282f-4e3680ffb46f",
+	["7c1b2767-b47e-addf-b0f0-55f6c69445f7"] = "2a7cc164-0f04-3053-3ad1-2ec7971cce70",
+	["7c39ab2e-73dc-39cc-9616-0ab925a5c054"] = "9facd26b-cd69-ee9d-a3f1-8301c99ce4ad",
+	["7c7d2427-db21-ed71-2a73-f086055aa161"] = "1b9c843e-610e-7308-b568-97f87a4b5f51",
+	["7e4d8ca2-20d1-eed5-845c-ccbab49e6ec1"] = "701a29c0-84b5-2a52-f8bc-2db144206979",
+	["8050ab29-ba7c-666b-ccec-886e72a0d8bb"] = "113da9c0-0257-a492-3caf-fac4ff9aef7d",
+	["80e29305-6fc5-b5e4-5b2f-ad2b2136268d"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["836d60d4-a35c-14bb-3c95-22211dffa3fc"] = "19acb251-86e0-74bf-c071-f9811c348cf6",
+	["8480ed72-11cf-9f22-c5b7-7d1b47edf3fe"] = "40aa0aa0-21f2-725e-52d8-ca007be4b5dc",
+	["86d52118-bc3c-e026-0aae-2b5d23fd2e79"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["8825b351-6c36-cf42-0365-1fa5712c9acd"] = "8b2b974d-3329-375f-8a51-5ce082e317b8",
+	["8c7c4d28-8cb8-561c-9958-c6eb53efe4e9"] = "eae5c2c3-b1ee-86cf-c52b-7865024a72ee",
+	["8ca61b9f-fc79-f33e-329b-764aac9accaa"] = "9d1e0a59-31b7-18ce-ad1f-271906185983",
+	["9237c81d-0ecf-641c-b901-27f3e43e0800"] = "2fcc4ab0-64ec-fa29-da44-d2032e728809",
+	["94be86cc-d048-f25e-446a-6f251b56446e"] = "65e34ff1-55b0-3ec2-f8b2-44f570798e6b",
+	["9678de1b-3343-4524-9d0f-aae87b1377e4"] = "798923fd-e345-278b-4b51-b082a8d11b14",
+	["969817a2-0097-854b-d386-ea43a14b1812"] = "f21abdd9-6dba-254c-5d54-dcd94d32dde0",
+	["97acb8e2-f132-c7b0-21bc-4ff11f74519f"] = "cb075fae-d997-65ef-7778-2c0788ff6db5",
+	["97edf16f-d33f-7f34-feaa-e8b1b12a4202"] = "eae5c2c3-b1ee-86cf-c52b-7865024a72ee",
+	["97f3a88d-baf8-9c78-76cc-c8cd7637bcee"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["98d7cd0c-f0b1-1107-d4eb-a11c39f65ca0"] = "f075f175-ed1d-b44b-52f1-4e7622b73861",
+	["9a807484-640f-3309-d5e1-672ea1cc46e3"] = "7c7733bb-af61-4c4d-0aae-1ffe84be9c60",
+	["9b55fb6f-528c-14a5-95fc-a78058bc142d"] = "eae5c2c3-b1ee-86cf-c52b-7865024a72ee",
+	["9c948cff-0a69-723c-e622-b818e1cc3fbf"] = "1a75da43-f449-57c2-81c9-892e79d978e0",
+	["9f7be716-8668-1b19-50a6-8fa9e391fd73"] = "21922da7-c85e-7fed-6543-03c8ecd42994",
+	["a2f92047-cf70-a2c2-fa8c-c92f6c935af9"] = "36945246-8b66-95c8-9f0b-37e757896f37",
+	["a339beac-0ae7-b23b-9601-5baafa708f18"] = "b19b052d-70a1-fde6-27cf-7eaed437d6dd",
+	["a4453c57-324b-60de-7e9a-ba17e5c31ba3"] = "b6ea4bcc-d9e9-28b2-d6c4-55552544d5b3",
+	["a954fcec-f6ca-22d4-d205-a7e4557fc3ad"] = "bc07491d-6001-152a-df7a-91ed89966d68",
+	["aab45903-f04f-8fc5-2f5e-1aff5cbaab21"] = "36945246-8b66-95c8-9f0b-37e757896f37",
+	["ab93b52a-6db9-1a6b-5d79-0216f4d9efba"] = "c4d7496d-7d7a-f792-501c-cee666e12474",
+	["ac5173a6-45b0-75cf-7a11-6f6fb557fbf5"] = "0532ddf5-9a92-ce5b-acf3-da35ae213ebe",
+	["ad68d01b-10a1-1fd0-a595-5daf95759a9f"] = "2fcc4ab0-64ec-fa29-da44-d2032e728809",
+	["b0109451-b307-b8f7-5fa9-035bcf872e9c"] = "d182747f-564a-a402-3f6f-b5baec7a83f2",
+	["b0fc0399-d524-0c4f-e366-0251943caf25"] = "c4d7496d-7d7a-f792-501c-cee666e12474",
+	["b28e0e3e-a656-978a-6385-7069bcb86d26"] = "eae5c2c3-b1ee-86cf-c52b-7865024a72ee",
+	["b2a04ccf-17b8-1a20-83e1-b9e65b5d5b7f"] = "3eea87d2-b8b0-94e6-4b37-a137c0b09655",
+	["b54c36df-759a-928d-7158-32cbe5f8658a"] = "bc0ff325-a024-7087-9b0f-c5729078c41c",
+	["b7e31644-9538-c017-7e41-e9d74968ba1f"] = "033c6b85-95b0-c1aa-a293-e57768c29867",
+	["b8bd9533-b4fa-813e-30cd-3dfa73c36042"] = "a64788bb-f3b6-5635-c694-06cc1c1c9807",
+	["b97cf979-b7c2-f156-e622-d6b6a56b707f"] = "0cf50e64-1f55-c50c-f509-f9a569df4b5d",
+	["ba180e09-d354-9495-d105-87c64eb83245"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["bb4dc6b1-3f39-b280-54b7-9ca1ce8f1ab1"] = "21922da7-c85e-7fed-6543-03c8ecd42994",
+	["bca8a35e-1f7a-592f-1435-bd78dbb68406"] = "cc260104-8d2b-291d-807a-49c32dc4db85",
+	["c322f2aa-f0f0-f3eb-4ce3-89496000a08f"] = "d74eadbc-2d98-8977-7074-760d4f497f6d",
+	["c5c25b8b-c8a1-fcb5-2b10-31d7405a68af"] = "1e89298e-3945-47d9-e9f6-ce66f51eba2c",
+	["c7d58531-302b-0f5c-1111-ea16813106a1"] = "7b4e0a76-d1f1-bc84-5d02-662788d285cb",
+	["c9d76957-61ee-86fd-b12d-38b7c59f4a9d"] = "3fa9fa66-bb29-453b-471e-6eb669a9603b",
+	["ca90df09-a517-fa81-d248-8b111d352c5a"] = "fc604993-f615-883c-548a-71da10f70389",
+	["cae9995c-9f07-2bd5-f694-ad48416f661c"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["ccd378b2-5aac-3991-8d5c-15c6477e5177"] = "1baa5bef-dffa-39fa-cf09-c7659ff050d8",
+	["ccf003d5-ba8e-3c45-c742-4cde57ebac57"] = "cb075fae-d997-65ef-7778-2c0788ff6db5",
+	["cd043ac2-d68f-aaae-14ae-d97c2bc02391"] = "c42cce19-8b66-9059-ea9c-ded280fa644b",
+	["d2227259-e644-dd57-473b-58d414c03e03"] = "bc07491d-6001-152a-df7a-91ed89966d68",
+	["d5dd624b-f674-0942-4229-8a9c28315396"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["da0ef689-ed8d-417f-ccf5-0c5baf6e6178"] = "ef46ad0c-055f-b312-db79-02d213e422e2",
+	["daa4fea4-82cf-e065-cdd0-a2f2576f0222"] = "e2b960bf-cc22-94bd-19c8-96c67efe7b1d",
+	["dcd500e5-8ea6-ff2c-2532-5b258caba792"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["ded466fe-42f4-7f54-b911-79ca8019a40d"] = "6c964b1b-8aad-ec37-d96c-3e4e9f2c7d8e",
+	["e02a3c80-e89d-ef80-899f-a2b2ddc07be3"] = "e2b960bf-cc22-94bd-19c8-96c67efe7b1d",
+	["e11e0f5d-1d94-b87c-b45b-214cfecf5f49"] = "6d61216e-5d23-8dec-690e-07aee978ee7a",
+	["e2064948-3c34-0b12-b9de-dd6f4b979798"] = "fe678743-42c1-6537-68c8-92b4a7fea615",
+	["e2479dec-3cf4-f9c5-0310-72126ad89633"] = "033c6b85-95b0-c1aa-a293-e57768c29867",
+	["e30798b2-ad55-3386-f5b5-a5d855a67417"] = "1437459b-8ee9-8d0a-c498-af6cf4498c13",
+	["e4f8bcf0-3447-6826-8673-b05c8face296"] = "09f3eeaa-bb4f-0aeb-ff67-70f7fbdab818",
+	["e5ca3cd5-ee6c-f627-a03d-5c5b8e3a8856"] = "1e89298e-3945-47d9-e9f6-ce66f51eba2c",
+	["e6e4bb21-ba89-b1e3-a2c6-1b46e6f385b4"] = "6a8c84c8-cb42-f6c7-1d65-272c24e228ab",
+	["e72b5ae6-0a74-3405-7025-bc607c27f40d"] = "21922da7-c85e-7fed-6543-03c8ecd42994",
+	["ef492aa4-d10c-0078-624e-1be8704d75fe"] = "033c6b85-95b0-c1aa-a293-e57768c29867",
+	["f2cec5f1-a3c2-5553-ae8c-d7c70c00c040"] = "65e34ff1-55b0-3ec2-f8b2-44f570798e6b",
+	["f3ad8866-ae7c-73f3-cc78-332caab84eb2"] = "033c6b85-95b0-c1aa-a293-e57768c29867",
+	["f3afa030-1e55-088e-f083-7fb2d39643b8"] = "547b75df-f5f9-cd51-904f-b6128a363de0",
+	["f5595302-3af2-0546-a410-e5417a40b455"] = "a829b81d-c7db-f623-b806-75a44d95be82",
+	["f78eee5e-bebd-f97e-a4c7-ed7b812e2b8e"] = "ed0cb2f0-f43e-ff65-3198-f654021de386",
+	["f7f4152f-1927-5a3b-0694-f4980ae20729"] = "c88737ca-bbc0-47e9-7bfb-4424a4e63ed4",
+	["f81e9644-60e0-c9ed-8865-7ee52a9411b8"] = "33e7fab0-64ed-2ffd-94fe-f73d18138a97",
+	["f91f02f3-4fb2-0435-c46e-820d5765f2cd"] = "fc604993-f615-883c-548a-71da10f70389",
+	["fa671c8c-487a-297a-9d73-5fb7b769a3e7"] = "93043e96-2c69-ea90-3185-7315a14531c8",
+	["fc614365-42d2-0cf6-5a86-5396b2e39d5d"] = "c42cce19-8b66-9059-ea9c-ded280fa644b",
+	["fdcc2a47-61af-20e5-818e-2e3d50885622"] = "c42cce19-8b66-9059-ea9c-ded280fa644b",
+	["fedf1050-a2b6-e913-1cd2-e3b9effd2b90"] = "cc260104-8d2b-291d-807a-49c32dc4db85",
+	["ff8da1b2-e690-9ae5-97c4-a9544480fe1d"] = "fe678743-42c1-6537-68c8-92b4a7fea615"
+}
+
+return {
+	Compat     = COMPAT,
+	Companions = COMPANIONS_VIS,
+	Player     = PLAYER_VIS,
+	NPCHeads   = NPC_HEADS
+}

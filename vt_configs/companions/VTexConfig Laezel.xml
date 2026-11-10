@@ -10,7 +10,7 @@
 	
 	<Paths>
 		<SourceTextures>vt_conversion\textures</SourceTextures>
-		<VirtualTextures>STAV\Public\STAV\VTextures\Companions</VirtualTextures>
+		<VirtualTextures>STAV [VT]\Public\STAV\VTextures\Companions</VirtualTextures>
 	</Paths>
 	
 	<Layers>
@@ -20,7 +20,7 @@
 	</Layers>
 
 	<Textures>
-		<Texture Name="8a8e59cc112842798ea2416649432c9f">
+		<Texture Name="103d7b474e5b4133b4a5c136aba92e07">
 			<Layer Name="Albedo" Source="STAV_Laezel_Albedo.DDS" />
 			<Layer Name="Normal" Source="STAV_Laezel_Normal.DDS" />
 			<Layer Name="Physical" Source="STAV_Laezel_Physical.DDS" />

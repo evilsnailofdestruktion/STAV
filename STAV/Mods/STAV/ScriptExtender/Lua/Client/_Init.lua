@@ -1,1 +1,6 @@
+Ext.Require("Client/UIMap.lua")
 Ext.Require("Client/Main.lua")
+Ext.Require("Client/Presets.lua")
+Ext.Require("Client/Applying.lua")
+Ext.Require("Client/Overriding.lua")
+Ext.Require("Client/Timelining.lua")

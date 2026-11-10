@@ -10,7 +10,7 @@
 	
 	<Paths>
 		<SourceTextures>vt_conversion\textures</SourceTextures>
-		<VirtualTextures>STAV\Public\STAV\VTextures\Companions</VirtualTextures>
+		<VirtualTextures>STAV [VT]\Public\STAV\VTextures\Companions</VirtualTextures>
 	</Paths>
 	
 	<Layers>
@@ -20,7 +20,7 @@
 	</Layers>
 
 	<Textures>
-		<Texture Name="8a8e59cc112842798ea2416649432c9f">
+		<Texture Name="3d2272511aa2432f83c3f1f13f890067">
 			<Layer Name="Albedo" Source="STAV_Minsc_Albedo.DDS" />
 			<Layer Name="Normal" Source="STAV_Minsc_Normal.DDS" />
 			<Layer Name="Physical" Source="STAV_Minsc_Physical.DDS" />
