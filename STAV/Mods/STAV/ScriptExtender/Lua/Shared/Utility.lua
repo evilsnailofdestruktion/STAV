@@ -59,7 +59,8 @@ function U.PatchProgressions(tableUUIDs, field, entry, level)
 	for _, uuid in pairs(Ext.StaticData.GetAll("Progression")) do
 		local prog = Ext.StaticData.Get(uuid, "Progression")
 		if tableUUIDs[prog.TableUUID] and (not level or prog.Level == level) then
-			prog[field] = U.AddIfMissing(prog[field], entry)
+			local value = U.AddIfMissing(prog[field], entry)
+			if value ~= prog[field] then prog[field] = value end
 			patched = patched + 1
 		end
 	end

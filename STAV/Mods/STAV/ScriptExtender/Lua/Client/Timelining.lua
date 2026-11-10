@@ -153,19 +153,19 @@ local function WatchKarlach(e)
 end
 
 local function ApplyTimelineLook(e)
-	local tac = e.ClientTimelineActorControl
-	if not tac then return end
+	local tac, tl = e.ClientTimelineActorControl, e.TLPreviewDummy
+	if not tac or not tl then return end
 	local owner = findTimelineOwner(tac.Actor)
 	local look = owner and Vars.GetLook(owner)
 	if not look then
 		local own = U.GetLiveCharacter()
-		if own and e.TLPreviewDummy.OriginalCharacterTemplate == own.GameObjectVisual.RootTemplateId then
+		if own and tl.OriginalCharacterTemplate == own.GameObjectVisual.RootTemplateId then
 			look = Vars.GetLook(own)
 			if not look and ui.Changed then look = ui.State end
 		end
 	end
 	if not look then return end
-	P.Debug():Raw("TL "):C21(e.TLPreviewDummy.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")."):Print()
+	P.Debug():Raw("TL "):C21(tl.Name):Raw(": applying ("):C21(owner and "owner" or "self"):Raw(")."):Print()
 	Applying.ApplyLookToEntity(e, look)
 end
 

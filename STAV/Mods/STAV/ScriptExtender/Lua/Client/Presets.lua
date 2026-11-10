@@ -4,6 +4,7 @@ local Map = Ext.Require("Client/UIMap.lua")
 local M = {}
 
 local DIR = "STAV"
+local RESERVED = { index = true, config = true }
 
 local function validateLook(look)
 	for key, value in pairs(look) do
@@ -50,7 +51,7 @@ end
 
 function M.Normalize(name)
 	name = tostring(name or ""):gsub("^%s+", ""):gsub("%s+$", "")
-	return name ~= "" and name or nil
+	return name ~= "" and not RESERVED[name:lower()] and name or nil
 end
 
 function M.List()

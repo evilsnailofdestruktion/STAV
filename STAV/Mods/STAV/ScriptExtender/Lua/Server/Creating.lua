@@ -1,6 +1,5 @@
 local E       = Ext.Require("Shared/Events.lua")
 local P       = Ext.Require("Shared/Printing.lua")
-local U       = Ext.Require("Shared/Utility.lua")
 local NetDefs = Ext.Require("Shared/NetDefs.lua")
 local Vars    = Ext.Require("Shared/Vars.lua")
 local Params  = Ext.Require("Shared/Params.lua")
@@ -128,7 +127,7 @@ E.ChangeAppearanceCancelled.Subscribe(function(p)
 end)
 
 -- On level load: ping clients (first-CC clients resend their in-memory look once their
--- avatar resolves) and re-apply any persisted look per party member (reload case).
+-- avatar resolves) and re-apply any persisted look per character (reload case).
 local didInitialApply = false
 
 E.LevelGameplayStarted.Subscribe(function()
@@ -136,8 +135,8 @@ E.LevelGameplayStarted.Subscribe(function()
 		NetDefs.NET_AVATAR_PING:Broadcast({})
 		if didInitialApply then return end
 		didInitialApply = true
-		for _, row in ipairs(Osi.DB_PartOfTheTeam:Get(nil)) do
-			applyToCharacter(U.Guid(row[1]))
+		for _, uuid in ipairs(Ext.Vars.GetEntitiesWithVariable("STAV_Look")) do
+			applyToCharacter(uuid)
 		end
 	end)
 end)
