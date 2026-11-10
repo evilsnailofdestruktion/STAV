@@ -39,7 +39,9 @@ local PRESETS = {
 	{ 173, 235, 179 },	-- C32 #adebb3 Mint Green
 	{ 239, 197, 118 },	-- C33 #efc576 Lathander's Dawn
 	{ 127, 0,   255 },	-- C34 #7f00ff Arcane Violet
-	{ 255, 180, 255 }		-- C35 #ffb4ff Pale Lilac
+	{ 255, 180, 255 },	-- C35 #ffb4ff Pale Lilac
+	{ 191, 213, 255 },	-- C36 #bfd5ff Starlit Haze
+	{ 72, 68, 101 }		-- C37 #484465 Raven Ash
 }
 
 -- Internals
@@ -143,7 +145,8 @@ P.Palette = {
 		"Seelie Green", "Unseelie Violet", "Deep Teal", "Neon Seelie Green", "Neon Unseelie Violet",
 		"Neon Teal", "Twilight Veil", "Gloaming Wisp", "Dusk Violet", "Fae Lilac", "Nightshade", "Moonshade",
 		"Umbral Bloom", "Orchid Mist", "Arcane Azure", "Mystra's Light", "Netherese Shroud", "Glacial Gleam",
-		"Midnight Weave", "Arcane Radiance", "Mint Green", "Lathander's Dawn", "Arcane Violet", "Pale Lilac"
+		"Midnight Weave", "Arcane Radiance", "Mint Green", "Lathander's Dawn", "Arcane Violet", "Pale Lilac",
+		"Starlit Haze", "Raven Ash"
 	}
 }
 
@@ -156,7 +159,7 @@ end
 
 function P.Debug()
 	if not P.IsDebug() then return NullBuilder end
-	return P.Log():C16("[STAV - ", Machine, "]"):C21("[", Ext.Timer.MonotonicTime(), "] ")
+	return P.Log():C36("[STAV - ", Machine, "]"):C33("[", Ext.Timer.MonotonicTime(), "] ")
 end
 
 return P

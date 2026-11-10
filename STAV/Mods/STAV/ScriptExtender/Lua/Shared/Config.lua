@@ -8,8 +8,8 @@ local DEFAULT = {
 	AutoOpenCC        = true,
 	AutoOpenPhotoMode = true,
 	Debug             = false,
-	ThemeStyle        = "chromed",
-	ThemeAccent       = 16
+	ThemeStyle        = "ccee",
+	ThemeAccent       = 36
 }
 
 local data = {}

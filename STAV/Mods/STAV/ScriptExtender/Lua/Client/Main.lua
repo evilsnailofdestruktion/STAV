@@ -287,8 +287,7 @@ local DEFAULT = {
 	{ "ScrollbarGrabActive",  { 0.42, 0.42, 0.47, 1.00 } },
 }
 
--- Engine defaults for the colours Daniela overrides but Chromed/CCEE leave alone;
--- re-applied on the non-Daniela path so a Daniela → other switch fully reverts
+-- Defaults for the colours Daniela overrides but Chromed/CCEE leave alone.
 local DEFAULT_EXTRAS = {
 	{ "TextDisabled",              { 0.86, 0.79, 0.68, 0.28 } },
 	{ "ChildBg",                   { 0.12, 0.11, 0.11, 0.40 } },

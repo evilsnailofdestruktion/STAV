@@ -252,7 +252,7 @@ if Ext.IsClient() then
 		if modId then
 			local mod = U.IsGuid(modId) and Ext.Mod.GetMod(modId)
 			if not mod then
-				P.Log():C16("[STAV] "):C7("Mod not found or not loaded."):Print()
+				P.Log():C36("[STAV] "):C7("Mod not found or not loaded."):Print()
 				return
 			end
 			local heads = collectHeads(modId)
@@ -262,7 +262,7 @@ if Ext.IsClient() then
 					for _, issue in ipairs(head.issues) do printIssue(issue) end
 				end
 			end
-			P.Log():C16("[STAV] "):C3(#heads):C7(" heads checked for "):C2(mod.Info.Name):C7("."):Print()
+			P.Log():C36("[STAV] "):C3(#heads):C7(" heads checked for "):C2(mod.Info.Name):C7("."):Print()
 			return
 		end
 
@@ -276,7 +276,7 @@ if Ext.IsClient() then
 		printSection("=== Modded head materials with additional params:", heads, "extraParams")
 		printSection("=== Modded head materials carrying another LOD's params:", heads, "wrongLOD")
 
-		P.Log():C16("[STAV] "):C3(#heads):C7(" heads checked: ")
+		P.Log():C36("[STAV] "):C3(#heads):C7(" heads checked: ")
 			:C3(countHeads(heads, "missingVisual")):C7(" missing visuals, ")
 			:C3(countHeads(heads, "missingMaterial")):C7(" missing materials, ")
 			:C3(countHeads(heads, "unpatched")):C7(" heads not patched, ")
@@ -286,16 +286,16 @@ if Ext.IsClient() then
 
 	Ext.RegisterConsoleCommand("stav_race", function(_, sub, kind, uuid)
 		if sub ~= "gen" or (kind ~= "override" and kind ~= "upsert") or not uuid then
-			P.Log():C16("[STAV] "):Raw("Usage: !stav_race gen <override|upsert> <mod uuid>"):Print()
+			P.Log():C36("[STAV] "):Raw("Usage: !stav_race gen <override|upsert> <mod uuid>"):Print()
 			return
 		end
 		if not U.IsGuid(uuid) then
-			P.Log():C16("[STAV] "):Raw("Invalid mod UUID."):Print()
+			P.Log():C36("[STAV] "):Raw("Invalid mod UUID."):Print()
 			return
 		end
 		local mod = Ext.Mod.GetMod(uuid)
 		if not mod then
-			P.Log():C16("[STAV] "):Raw("Mod not found or not loaded."):Print()
+			P.Log():C36("[STAV] "):Raw("Mod not found or not loaded."):Print()
 			return
 		end
 
@@ -335,7 +335,7 @@ if Ext.IsClient() then
 		end
 
 		if count == 0 then
-			P.Log():C16("[STAV] "):Raw("No race charvis found for ", mod.Info.Name, "."):Print()
+			P.Log():C36("[STAV] "):Raw("No race charvis found for ", mod.Info.Name, "."):Print()
 			return
 		end
 
@@ -344,6 +344,6 @@ if Ext.IsClient() then
 		table.sort(raceList)
 
 		Ext.IO.SaveFile("STAVConfig.json", Ext.Json.Stringify({ Entries = entries, Races = raceList }))
-		P.Log():C16("[STAV] Exported ", count, " ", kind, " charvis and ", #raceList, " races for ", mod.Info.Name, " to Script Extender/STAVConfig.json."):Print()
+		P.Log():C36("[STAV] Exported ", count, " ", kind, " charvis and ", #raceList, " races for ", mod.Info.Name, " to Script Extender/STAVConfig.json."):Print()
 	end)
 end

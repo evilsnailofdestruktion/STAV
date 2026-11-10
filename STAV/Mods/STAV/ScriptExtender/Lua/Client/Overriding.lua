@@ -491,7 +491,7 @@ local function ApplyAll()
 end
 
 E.StatsLoaded.Subscribe(function()
-	P.Log():GradC(16, 21):G("[STAV] Snailzx Tattoos And VTs "):C17("v", U.Version):G(" loaded."):Print()
+	P.Log():GradC(36, 22):G("[STAV] Snailzx Tattoos And VTs "):C33("v", U.Version):G(" loaded."):Print()
 	ApplyAll()
 end)
 
